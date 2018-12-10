@@ -1,0 +1,23 @@
+{
+    "name": "cavator",
+    "version": "0.0.0",
+    "description": "A educative history game made as a school asignment.s",
+    "main": "app.js",
+    "contributors": [
+        {
+            "name": "Jan de Mul",
+            "email": "jandemul2001@gmail.com",
+            "url": "https://github.com/JandeMul"
+        },
+        {
+            "name": "Jarno Korstanje"
+        },
+        {
+            "name": "Pasha Jansen"
+        },
+        {
+            "name": "Ricardo de Deijn"
+        }
+    ],
+    "license": "MIT"
+}
