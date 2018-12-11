@@ -1,4 +1,4 @@
-class Canvas {
+class CanvasHelper {
     private readonly _canvas: HTMLCanvasElement;
     private readonly _context: CanvasRenderingContext2D;
 
@@ -7,7 +7,6 @@ class Canvas {
         this._context = this._canvas.getContext('2d');
         this._canvas.width = window.innerWidth;
         this._canvas.height = window.innerHeight;
-        console.log("Canvas constructor active");
     }
 
     public clear(): void {

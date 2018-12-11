@@ -1,10 +1,10 @@
 class Game {
     private readonly canvasElement: HTMLCanvasElement;
-    private readonly _canvas: Canvas;
+    private readonly _canvas: CanvasHelper;
 
     public constructor() {
         this.canvasElement = <HTMLCanvasElement>document.getElementById('canvas');
-        this._canvas = new Canvas(this.canvasElement);
+        this._canvas = new CanvasHelper(this.canvasElement);
     }
 
     public draw = () => {
