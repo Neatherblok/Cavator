@@ -9,11 +9,18 @@ class Canvas {
     clear() {
         this._context.clearRect(0, 0, this._canvas.width, this._canvas.height);
     }
+    writeTextToCanvas(aText, aFontSize, aXpos, aYpos, aColor = "white", aAlignment = "center") {
+        this._context.font = `${aFontSize}px Minecraft`;
+        this._context.fillStyle = aColor;
+        this._context.textAlign = aAlignment;
+        this._context.fillText(aText, aXpos, aYpos);
+    }
 }
 class Game {
     constructor() {
         this.draw = () => {
             this._canvas.clear();
+            this._canvas.writeTextToCanvas(`Your score`, 50, 200, 200, "black", "center");
         };
         this.canvasElement = document.getElementById('canvas');
         this._canvas = new Canvas(this.canvasElement);

@@ -9,6 +9,7 @@ class Game {
 
     public draw = () => {
         this._canvas.clear();
+        this._canvas.writeTextToCanvas(`Your score`, 50, 200, 200, "black", "center");
     }
 }
 

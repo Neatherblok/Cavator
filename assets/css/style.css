@@ -1,3 +1,8 @@
+@font-face {
+    font-family: 'Minecraft';
+    src: url('../fonts/Minecraft.ttf') format('truetype');
+}
+
 *{
     margin: 0;
     padding: 0;
@@ -5,6 +10,7 @@
 
 canvas {
     background-image: url("../images/background.png");
+    cursor: url('../images/cursor.png'), auto;	
 }
 
 body {
