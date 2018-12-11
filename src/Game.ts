@@ -17,5 +17,5 @@ window.addEventListener('load', init);
 
 function init(): void {
     const cavator = new Game();
-    window.setInterval(cavator.draw, 500 / 30)
+    window.setInterval(cavator.draw, 1000 / 60)
 }
