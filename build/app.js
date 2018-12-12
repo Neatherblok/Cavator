@@ -1,14 +1,12 @@
 class Game {
     constructor() {
-        this.screen = new Array(Startscreen, GameScreen, EraSelectionScreen);
-        this.currentGameScreen = 0;
         this.draw = () => {
             this._canvas.clear();
-            this.screen[this.currentGameScreen];
-            console.log(Startscreen);
+            this.startScreen.test();
         };
         this.canvasElement = document.getElementById('canvas');
         this._canvas = new CanvasHelper(this.canvasElement);
+        this.startScreen = new StartScreen;
     }
 }
 window.addEventListener('load', init);
@@ -90,12 +88,15 @@ class GameScreen extends Game {
         this.holes = new Holes(this.canvasElement, "..\assets\images\hole1.png", 100, 100, 32, 32);
     }
 }
-class Startscreen extends Game {
+class StartScreen extends Game {
     constructor() {
         super();
         this.draw = () => {
-            this._canvas.writeTextToCanvas("Cavator", 30, this._canvas.getCenter().X, this._canvas.getCenter().Y, "black");
+            console.log("StartScreen");
         };
+    }
+    test() {
+        console.log("test");
     }
 }
 //# sourceMappingURL=app.js.map

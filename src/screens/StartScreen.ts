@@ -7,7 +7,12 @@ class StartScreen extends Game {
     }
 
     public draw = () => {
-        this._canvas.writeTextToCanvas("Cavator", 30, this._canvas.getCenter().X, this._canvas.getCenter().Y, "black");
+        console.log("StartScreen");
+    }
+
+    public test() {
+        console.log("test");
+        
     }
 
 }
