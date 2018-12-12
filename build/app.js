@@ -1,12 +1,16 @@
 class Game {
     constructor() {
-        this.screen = new Array(Startscreen, GameScreen, EraSelectionScreen);
-        this.currentGameScreen = 0;
+        this.screen = new Array('this.Startscreen.draw()', 'this.Gamescreen.draw()', 'this.EraSelectionscreen.draw()');
+        this.currentGameScreenNumber = 1;
         this.draw = () => {
             this._canvas.clear();
-            this.screen[this.currentGameScreen];
-            console.log(Startscreen);
+            const currentGameScreen = this.screen[this.currentGameScreenNumber].replace("'", "");
+            console.log(currentGameScreen);
+            currentGameScreen;
         };
+        this.Startscreen = new StartScreen();
+        this.Gamescreen = new GameScreen();
+        this.EraSelectionscreen = new EraSelectionScreen();
         this.canvasElement = document.getElementById('canvas');
         this._canvas = new CanvasHelper(this.canvasElement);
     }
@@ -80,22 +84,28 @@ class MathHelper {
     }
 }
 class EraSelectionScreen {
-}
-class GameScreen extends Game {
     constructor() {
-        super();
+        this.draw = () => {
+        };
+    }
+}
+class GameScreen {
+    constructor() {
         this.draw = () => {
             this.holes.draw();
         };
-        this.holes = new Holes(this.canvasElement, "..\assets\images\hole1.png", 100, 100, 32, 32);
+        this.canvasElement = document.getElementById('canvas');
+        this._canvas = new CanvasHelper(this.canvasElement);
+        this.holes = new Holes(this.canvasElement, "./assets/images/hole1.png", 100, 100, 32, 32);
     }
 }
-class Startscreen extends Game {
+class StartScreen {
     constructor() {
-        super();
         this.draw = () => {
             this._canvas.writeTextToCanvas("Cavator", 30, this._canvas.getCenter().X, this._canvas.getCenter().Y, "black");
         };
+        this.canvasElement = document.getElementById('canvas');
+        this._canvas = new CanvasHelper(this.canvasElement);
     }
 }
 //# sourceMappingURL=app.js.map

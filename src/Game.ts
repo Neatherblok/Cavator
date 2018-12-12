@@ -1,18 +1,25 @@
 class Game {
     protected readonly canvasElement: HTMLCanvasElement;
     protected readonly _canvas: CanvasHelper;
-    private screen:any[] = new Array(StartScreen, GameScreen, EraSelectionScreen);
-    protected currentGameScreen: number = 0;
+    private Startscreen: StartScreen;
+    private Gamescreen: GameScreen;
+    private EraSelectionscreen: EraSelectionScreen;
+    private screen:string[] = new Array('this.Startscreen.draw()', 'this.Gamescreen.draw()', 'this.EraSelectionscreen.draw()');
+    protected currentGameScreenNumber: number = 1;
 
     public constructor() {
+        this.Startscreen = new StartScreen();
+        this.Gamescreen = new GameScreen();
+        this.EraSelectionscreen = new EraSelectionScreen();
         this.canvasElement = <HTMLCanvasElement>document.getElementById('canvas');
         this._canvas = new CanvasHelper(this.canvasElement);
     }
 
     public draw = () => {
         this._canvas.clear();
-        this.screen[this.currentGameScreen];
-        console.log(StartScreen.draw());
+        const currentGameScreen = this.screen[this.currentGameScreenNumber].replace("'", "")
+        console.log(currentGameScreen)
+        currentGameScreen;
     }
 }
 
