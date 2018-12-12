@@ -13,6 +13,8 @@ function init() {
     const cavator = new Game();
     window.setInterval(cavator.draw, 1000 / 60);
 }
+class Holes {
+}
 class CanvasHelper {
     constructor(canvas) {
         this._canvas = canvas;
@@ -52,6 +54,11 @@ class MathHelper {
     }
 }
 class GameScreen extends Game {
+    constructor() {
+        super();
+        this.draw = () => {
+        };
+    }
 }
 class Startscreen extends Game {
     constructor() {
