@@ -1,9 +1,16 @@
 class Game {
     constructor() {
+        this.screen = new Array('this.Startscreen.draw()', 'this.Gamescreen.draw()', 'this.EraSelectionscreen.draw()');
+        this.currentGameScreenNumber = 1;
         this.draw = () => {
             this._canvas.clear();
-            this.startScreen.test();
+            const currentGameScreen = this.screen[this.currentGameScreenNumber].replace("'", "");
+            console.log(currentGameScreen);
+            currentGameScreen;
         };
+        this.Startscreen = new StartScreen();
+        this.Gamescreen = new GameScreen();
+        this.EraSelectionscreen = new EraSelectionScreen();
         this.canvasElement = document.getElementById('canvas');
         this._canvas = new CanvasHelper(this.canvasElement);
         this.startScreen = new StartScreen;
@@ -78,22 +85,28 @@ class MathHelper {
     }
 }
 class EraSelectionScreen {
-}
-class GameScreen extends Game {
     constructor() {
-        super();
+        this.draw = () => {
+        };
+    }
+}
+class GameScreen {
+    constructor() {
         this.draw = () => {
             this.holes.draw();
         };
-        this.holes = new Holes(this.canvasElement, "..\assets\images\hole1.png", 100, 100, 32, 32);
+        this.canvasElement = document.getElementById('canvas');
+        this._canvas = new CanvasHelper(this.canvasElement);
+        this.holes = new Holes(this.canvasElement, "./assets/images/hole1.png", 100, 100, 32, 32);
     }
 }
-class StartScreen extends Game {
+class StartScreen {
     constructor() {
-        super();
         this.draw = () => {
             console.log("StartScreen");
         };
+        this.canvasElement = document.getElementById('canvas');
+        this._canvas = new CanvasHelper(this.canvasElement);
     }
     test() {
         console.log("test");
