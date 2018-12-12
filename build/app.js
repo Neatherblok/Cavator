@@ -1,5 +1,6 @@
 class Game {
-    constructor() {
+    constructor(counter = 90) {
+        this.counter = counter;
         this.screen = new Array("this.Startscreen.draw()", "this.Gamescreen.draw()", "this.EraSelectionscreen.draw()");
         this.currentGameScreenNumber = 1;
         this.draw = () => {
@@ -12,6 +13,13 @@ class Game {
         this.EraSelectionscreen = new EraSelectionScreen();
         this.canvasElement = document.getElementById('canvas');
         this._canvas = new CanvasHelper(this.canvasElement);
+        let intervalId = setInterval(() => {
+            this.counter = this.counter - 1;
+            console.log(this.counter);
+            this._canvas.writeTextToCanvas(`time left: ${this.counter}`, 20, 100, 100);
+            if (this.counter === 0)
+                clearInterval(intervalId);
+        }, 1000);
     }
 }
 window.addEventListener('load', init);
