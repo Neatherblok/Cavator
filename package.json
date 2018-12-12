@@ -20,7 +20,9 @@
             "name": "Pasha Jansen"
         },
         {
-            "name": "Ricardo de Deijn"
+            "name": "Ricardo de Deijn",
+            "email": "rdedeijn@zeelandnet.nl",
+            "url": "https://www.facebook.com/Ricardo.de.Deijn"
         }
     ],
     "main": "index.js",
