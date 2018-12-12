@@ -9,7 +9,7 @@ class StartScreen{
     }
 
     public draw = () => {
-        this._canvas.writeTextToCanvas("Cavator", 30, this._canvas.getCenter().X, this._canvas.getCenter().Y, "black");
+        this._canvas.writeTextToCanvas("Cavator", 100, this._canvas.getCenter().X, this._canvas.getCenter().Y - 200, "black");
     }
 
 }

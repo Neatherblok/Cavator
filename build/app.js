@@ -1,11 +1,10 @@
 class Game {
     constructor() {
-        this.screen = new Array('this.Startscreen.draw()', 'this.Gamescreen.draw()', 'this.EraSelectionscreen.draw()');
-        this.currentGameScreenNumber = 1;
+        this.screen = new Array("this.Startscreen.draw()", "this.Gamescreen.draw()", "this.EraSelectionscreen.draw()");
+        this.currentGameScreenNumber = 0;
         this.draw = () => {
             this._canvas.clear();
-            const currentGameScreen = this.screen[this.currentGameScreenNumber].replace("'", "");
-            console.log(currentGameScreen);
+            let currentGameScreen = eval(this.screen[this.currentGameScreenNumber]);
             currentGameScreen;
         };
         this.Startscreen = new StartScreen();
@@ -102,7 +101,7 @@ class GameScreen {
 class StartScreen {
     constructor() {
         this.draw = () => {
-            this._canvas.writeTextToCanvas("Cavator", 30, this._canvas.getCenter().X, this._canvas.getCenter().Y, "black");
+            this._canvas.writeTextToCanvas("Cavator", 100, this._canvas.getCenter().X, this._canvas.getCenter().Y - 200, "black");
         };
         this.canvasElement = document.getElementById('canvas');
         this._canvas = new CanvasHelper(this.canvasElement);

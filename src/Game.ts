@@ -4,8 +4,8 @@ class Game {
     private Startscreen: StartScreen;
     private Gamescreen: GameScreen;
     private EraSelectionscreen: EraSelectionScreen;
-    private screen:string[] = new Array('this.Startscreen.draw()', 'this.Gamescreen.draw()', 'this.EraSelectionscreen.draw()');
-    protected currentGameScreenNumber: number = 1;
+    private screen:string[] = new Array("this.Startscreen.draw()", "this.Gamescreen.draw()", "this.EraSelectionscreen.draw()");
+    protected currentGameScreenNumber: number = 0;
 
     public constructor() {
         this.Startscreen = new StartScreen();
@@ -17,8 +17,7 @@ class Game {
 
     public draw = () => {
         this._canvas.clear();
-        const currentGameScreen = this.screen[this.currentGameScreenNumber].replace("'", "")
-        console.log(currentGameScreen)
+        let currentGameScreen = eval(this.screen[this.currentGameScreenNumber])
         currentGameScreen;
     }
 }
