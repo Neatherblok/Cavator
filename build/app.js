@@ -1,30 +1,32 @@
 class Game {
-    constructor(counter = 90) {
-        this.counter = counter;
-        this.screen = new Array("this.Startscreen.draw()", "this.Gamescreen.interval()", "this.EraSelectionscreen.draw()");
+    constructor() {
+        this.screen = ["this.Startscreen.draw()", "this.Gamescreen.draw()", "this.EraSelectionscreen.draw()"];
         this.currentGameScreenNumber = 0;
+        this.counter = 90;
         this.draw = () => {
             this._canvas.clear();
+            console.log;
             let currentGameScreen = eval(this.screen[this.currentGameScreenNumber]);
+            console.log(currentGameScreen);
             currentGameScreen;
+            this._canvas.writeTextToCanvas(`time left: ${this.counter}`, 20, 100, 100);
         };
+        this.canvasElement = document.getElementById('canvas');
+        this._canvas = new CanvasHelper(this.canvasElement);
         this.Startscreen = new StartScreen();
         this.Gamescreen = new GameScreen();
         this.EraSelectionscreen = new EraSelectionScreen();
-        this.canvasElement = document.getElementById('canvas');
-        this._canvas = new CanvasHelper(this.canvasElement);
+        this.itemList = new ItemList;
         let intervalId = setInterval(() => {
-            this.counter = this.counter - 1;
+            this.counter--;
             console.log(this.counter);
-            this._canvas.writeTextToCanvas(`time left: ${this.counter}`, 20, 100, 100);
             if (this.counter === 0)
                 clearInterval(intervalId);
         }, 1000);
-        this.itemList = new ItemList;
     }
     nextScreen() {
         this.currentGameScreenNumber++;
-        console.log('done');
+        console.log(this.currentGameScreenNumber);
     }
 }
 window.addEventListener('load', init);
@@ -32,31 +34,6 @@ function init() {
     const cavator = new Game();
     window.setInterval(cavator.draw, 1000 / 60);
     window.addEventListener("click", cavator.nextScreen);
-}
-class Holes {
-    constructor(canvas, imageSource, xCoor, yCoor, width, height) {
-        this._canvas = new CanvasHelper(canvas);
-        this._imageSrc = imageSource;
-        this._xPos = xCoor;
-        this._yPos = yCoor;
-        this._width = width;
-        this._height = height;
-    }
-    draw() {
-        this._canvas.writeImageToCanvas(this._imageSrc, this._xPos, this._yPos);
-    }
-    getX() {
-        return this._xPos;
-    }
-    getY() {
-        return this._yPos;
-    }
-    getWidth() {
-        return this._width;
-    }
-    getHeight() {
-        return this._height;
-    }
 }
 class ItemList {
     constructor() {
@@ -95,6 +72,31 @@ class ItemList {
     }
 }
 ;
+class Holes {
+    constructor(canvas, imageSource, xCoor, yCoor, width, height) {
+        this._canvas = new CanvasHelper(canvas);
+        this._imageSrc = imageSource;
+        this._xPos = xCoor;
+        this._yPos = yCoor;
+        this._width = width;
+        this._height = height;
+    }
+    draw() {
+        this._canvas.writeImageToCanvas(this._imageSrc, this._xPos, this._yPos);
+    }
+    getX() {
+        return this._xPos;
+    }
+    getY() {
+        return this._yPos;
+    }
+    getWidth() {
+        return this._width;
+    }
+    getHeight() {
+        return this._height;
+    }
+}
 class CanvasHelper {
     constructor(canvas) {
         this._canvas = canvas;

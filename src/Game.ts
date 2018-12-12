@@ -5,36 +5,36 @@ class Game {
     private Gamescreen: GameScreen;
     private EraSelectionscreen: EraSelectionScreen;
     private itemList: ItemList;
-    private screen:string[] = new Array("this.Startscreen.draw()", "this.Gamescreen.interval()", "this.EraSelectionscreen.draw()");
-    protected currentGameScreenNumber: number = 0;
+    private screen: string[] = ["this.Startscreen.draw()", "this.Gamescreen.draw()", "this.EraSelectionscreen.draw()"];
+    private currentGameScreenNumber: number = 0;
+    protected counter: number = 90;
 
-    public constructor(
-        public counter = 90
-    ) {
+    public constructor() {
+        this.canvasElement = <HTMLCanvasElement>document.getElementById('canvas');
+        this._canvas = new CanvasHelper(this.canvasElement);
         this.Startscreen = new StartScreen();
         this.Gamescreen = new GameScreen();
         this.EraSelectionscreen = new EraSelectionScreen();
-        this.canvasElement = <HTMLCanvasElement>document.getElementById('canvas');
-        this._canvas = new CanvasHelper(this.canvasElement);
-        //this.item = new Item;
+        this.itemList = new ItemList;
         let intervalId = setInterval(() => {
-            this.counter = this.counter - 1;
+            this.counter--;
             console.log(this.counter);
-            this._canvas.writeTextToCanvas(`time left: ${this.counter}`, 20, 100, 100)
             if(this.counter === 0) clearInterval(intervalId)
         }, 1000)
-        this.itemList = new ItemList;
     }
 
     public draw = () => {
         this._canvas.clear();
+        console.log
         let currentGameScreen = eval(this.screen[this.currentGameScreenNumber])
+        console.log(currentGameScreen)
         currentGameScreen;
+        this._canvas.writeTextToCanvas(`time left: ${this.counter}`, 20, 100, 100)
     }
 
     public nextScreen(){
         this.currentGameScreenNumber++
-        console.log('done')
+        console.log(this.currentGameScreenNumber)
     }
 }
 
