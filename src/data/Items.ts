@@ -31,7 +31,7 @@ class Item {
 
     public getItem(
         itemNumber: number,
-        property: any
+        property: string
     ) {
         const item = this._itemList[itemNumber][property]
         console.log(item);
