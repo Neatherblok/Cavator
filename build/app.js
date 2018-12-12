@@ -49,6 +49,11 @@ class CanvasHelper {
         image.src = aSrc;
     }
 }
+class MathHelper {
+    static randomNumber(min, max) {
+        return Math.round(Math.random() * (max - min) + min);
+    }
+}
 class GameScreen extends Game {
 }
 class Startscreen extends Game {
