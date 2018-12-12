@@ -11,7 +11,6 @@ class Game {
         this.EraSelectionscreen = new EraSelectionScreen();
         this.canvasElement = <HTMLCanvasElement>document.getElementById('canvas');
         this._canvas = new CanvasHelper(this.canvasElement);
-        this.Startscreen = new StartScreen;
     }
 
     public draw = () => {
