@@ -49,4 +49,30 @@ class CanvasHelper {
         });
         image.src = aSrc;
     }
+
+    public writeButtonToCanvas(aCaption: string, aXpos: number = -1, aYpos: number = -1) {
+        let buttonImage = new Image();
+        buttonImage.src = "./assets/images/UI/buttonBlue.png";
+        // Make sure the image is loaded first otherwise nothing will draw.
+
+        buttonImage.addEventListener('load', (): void => {
+            let dx = aXpos;
+            let dy = aYpos;
+            // if x axis is not set, lets center the button horizontally
+            if (dx < 0) dx = (this.getWidth() - buttonImage.width) / 2;
+            // if y axis is not set, lets center the button vertically
+            if (dy < 0) dy = this.getHeight() / 2 + buttonImage.height;
+
+            // center the text based upon the font
+            let fontX = dx + ((buttonImage.width + aCaption.length - 18) / 2); // - 1/2 fontsize + buttonBorder
+            let fontY = dy + (buttonImage.height - 12); // - 1/2 fontsize + buttonBorder
+            this._context.drawImage(buttonImage, dx, dy);
+            this.writeTextToCanvas(aCaption, 20, fontX, fontY, '#000');
+
+            // check if there is a valid callback given
+            // if the callback is valid store the callback in the Map
+            
+        });
+
+    }
 }

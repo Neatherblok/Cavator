@@ -20,6 +20,7 @@ class Game {
             if (this.counter === 0)
                 clearInterval(intervalId);
         }, 1000);
+        this.itemList = new ItemList;
     }
 }
 window.addEventListener('load', init);
@@ -52,7 +53,7 @@ class Holes {
         return this._height;
     }
 }
-class Item {
+class ItemList {
     constructor() {
         this._itemList = new Array();
         this._itemList =
@@ -62,26 +63,28 @@ class Item {
                     source: "../assets/img/items/karel_de_grote.png",
                     era: 3,
                     hint1: "Was eerst Koning der Franken, werd vervolgens keizer van het West-Romeinse Rijk",
-                    hint2: "Zorgde voor de Karolingische renaissance"
+                    hint2: "Zorgde voor de Karolingische renaissance",
+                    hint3: ""
                 },
                 {
                     name: "VOC munt",
                     source: "../assets/img/items/voc_munt.png",
                     era: 6,
                     hint1: "De VOC = Verenigde Oost-Indische Compagnie",
-                    hint2: "Zorgde voor een financiële opbloei"
+                    hint2: "Zorgde voor een financiële opbloei",
+                    hint3: ""
                 },
                 {
                     name: "Weverij",
                     source: "../assets/img/items/weverij.png",
                     era: 8,
                     hint1: "Het stoken van kolen zorgt voor de aandrijving",
-                    hint2: "Soms werkten ook kinderen in de weverij"
+                    hint2: "Soms werkten ook kinderen in de weverij",
+                    hint3: ""
                 }
             ];
-        console.log(this._itemList[1][name]);
     }
-    getItem(itemNumber, property) {
+    getItemProperty(itemNumber, property) {
         const item = this._itemList[itemNumber][property];
         console.log(item);
     }
@@ -119,6 +122,22 @@ class CanvasHelper {
         });
         image.src = aSrc;
     }
+    writeButtonToCanvas(aCaption, aXpos = -1, aYpos = -1) {
+        let buttonImage = new Image();
+        buttonImage.src = "./assets/images/UI/buttonBlue.png";
+        buttonImage.addEventListener('load', () => {
+            let dx = aXpos;
+            let dy = aYpos;
+            if (dx < 0)
+                dx = (this.getWidth() - buttonImage.width) / 2;
+            if (dy < 0)
+                dy = this.getHeight() / 2 + buttonImage.height;
+            let fontX = dx + ((buttonImage.width + aCaption.length - 18) / 2);
+            let fontY = dy + (buttonImage.height - 12);
+            this._context.drawImage(buttonImage, dx, dy);
+            this.writeTextToCanvas(aCaption, 20, fontX, fontY, '#000');
+        });
+    }
 }
 class MathHelper {
     static randomNumber(min, max) {
@@ -149,7 +168,8 @@ class GameScreen {
 class StartScreen {
     constructor() {
         this.draw = () => {
-            this._canvas.writeTextToCanvas("Cavator", 100, this._canvas.getCenter().X, this._canvas.getCenter().Y - 200, "black");
+            this._canvas.writeImageToCanvas("./assets/images/Cavator_logo/CavatorLogo.png", this._canvas.getCenter().X - 200, this._canvas.getCenter().Y - 300);
+            this._canvas.writeButtonToCanvas("Play", undefined, this._canvas.getCenter().Y + 200);
         };
         this.canvasElement = document.getElementById('canvas');
         this._canvas = new CanvasHelper(this.canvasElement);

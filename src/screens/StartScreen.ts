@@ -9,7 +9,9 @@ class StartScreen{
     }
 
     public draw = () => {
-        this._canvas.writeTextToCanvas("Cavator", 100, this._canvas.getCenter().X, this._canvas.getCenter().Y - 200, "black");
+        this._canvas.writeImageToCanvas("./assets/images/Cavator_logo/CavatorLogo.png", this._canvas.getCenter().X-200, this._canvas.getCenter().Y-300)
+        this._canvas.writeButtonToCanvas("Play", undefined, this._canvas.getCenter().Y + 200);
+
     }
 
 }
