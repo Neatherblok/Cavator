@@ -1,7 +1,7 @@
 class Game {
     constructor() {
         this.screen = new Array("this.Startscreen.draw()", "this.Gamescreen.interval()", "this.EraSelectionscreen.draw()");
-        this.currentGameScreenNumber = 1;
+        this.currentGameScreenNumber = 0;
         this.draw = () => {
             this._canvas.clear();
             let currentGameScreen = eval(this.screen[this.currentGameScreenNumber]);
@@ -14,11 +14,16 @@ class Game {
         this._canvas = new CanvasHelper(this.canvasElement);
         this.itemList = new ItemList;
     }
+    nextScreen() {
+        this.currentGameScreenNumber++;
+        console.log('done');
+    }
 }
 window.addEventListener('load', init);
 function init() {
     const cavator = new Game();
-    cavator.draw();
+    window.setInterval(cavator.draw, 1000 / 60);
+    window.addEventListener("click", cavator.nextScreen);
 }
 class Holes {
     constructor(canvas, imageSource, xCoor, yCoor, width, height) {
@@ -114,6 +119,22 @@ class CanvasHelper {
         });
         image.src = aSrc;
     }
+    writeButtonToCanvas(aCaption, aXpos = -1, aYpos = -1) {
+        let buttonImage = new Image();
+        buttonImage.src = "./assets/images/UI/buttonBlue.png";
+        buttonImage.addEventListener('load', () => {
+            let dx = aXpos;
+            let dy = aYpos;
+            if (dx < 0)
+                dx = (this.getWidth() - buttonImage.width) / 2;
+            if (dy < 0)
+                dy = this.getHeight() / 2 + buttonImage.height;
+            let fontX = dx + ((buttonImage.width + aCaption.length - 18) / 2);
+            let fontY = dy + (buttonImage.height - 12);
+            this._context.drawImage(buttonImage, dx, dy);
+            this.writeTextToCanvas(aCaption, 20, fontX, fontY, '#000');
+        });
+    }
 }
 class MathHelper {
     static randomNumber(min, max) {
@@ -148,6 +169,7 @@ class StartScreen {
     constructor() {
         this.draw = () => {
             this._canvas.writeImageToCanvas("./assets/images/Cavator_logo/CavatorLogo.png", this._canvas.getCenter().X - 200, this._canvas.getCenter().Y - 300);
+            this._canvas.writeButtonToCanvas("Play", undefined, this._canvas.getCenter().Y + 200);
         };
         this.canvasElement = document.getElementById('canvas');
         this._canvas = new CanvasHelper(this.canvasElement);
