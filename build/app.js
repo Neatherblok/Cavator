@@ -1,6 +1,6 @@
 class Game {
     constructor() {
-        this.screen = new Array("this.Startscreen.draw()", "this.Gamescreen.draw()", "this.EraSelectionscreen.draw()");
+        this.screen = new Array("this.Startscreen.draw()", "this.Gamescreen.interval()", "this.EraSelectionscreen.draw()");
         this.currentGameScreenNumber = 1;
         this.draw = () => {
             this._canvas.clear();
@@ -18,7 +18,7 @@ class Game {
 window.addEventListener('load', init);
 function init() {
     const cavator = new Game();
-    window.setInterval(cavator.draw, 1000 / 60);
+    cavator.draw();
 }
 class Holes {
     constructor(canvas, imageSource, xCoor, yCoor, width, height) {
@@ -114,22 +114,6 @@ class CanvasHelper {
         });
         image.src = aSrc;
     }
-    writeButtonToCanvas(aCaption, aXpos = -1, aYpos = -1) {
-        let buttonImage = new Image();
-        buttonImage.src = "./assets/images/UI/buttonBlue.png";
-        buttonImage.addEventListener('load', () => {
-            let dx = aXpos;
-            let dy = aYpos;
-            if (dx < 0)
-                dx = (this.getWidth() - buttonImage.width) / 2;
-            if (dy < 0)
-                dy = this.getHeight() / 2 + buttonImage.height;
-            let fontX = dx + ((buttonImage.width + aCaption.length - 18) / 2);
-            let fontY = dy + (buttonImage.height - 12);
-            this._context.drawImage(buttonImage, dx, dy);
-            this.writeTextToCanvas(aCaption, 20, fontX, fontY, '#000');
-        });
-    }
 }
 class MathHelper {
     static randomNumber(min, max) {
@@ -156,12 +140,14 @@ class GameScreen {
             this.holes.push(new Holes(this.canvasElement, "./assets/images/hole1.png", MathHelper.randomNumber(0, this._canvas.getWidth() - 200), MathHelper.randomNumber(0, this._canvas.getHeight() - 200), 130, 120));
         }
     }
+    interval() {
+        window.setInterval(this.draw, 1000 / 60);
+    }
 }
 class StartScreen {
     constructor() {
         this.draw = () => {
             this._canvas.writeImageToCanvas("./assets/images/Cavator_logo/CavatorLogo.png", this._canvas.getCenter().X - 200, this._canvas.getCenter().Y - 300);
-            this._canvas.writeButtonToCanvas("Play", undefined, this._canvas.getCenter().Y + 200);
         };
         this.canvasElement = document.getElementById('canvas');
         this._canvas = new CanvasHelper(this.canvasElement);

@@ -16,4 +16,8 @@ class GameScreen{
             this.holes[i].draw();
         }
     }
+
+    public interval() {
+        window.setInterval(this.draw, 1000/60);
+    }
 }
