@@ -1,5 +1,5 @@
 class Game {
-    private readonly canvasElement: HTMLCanvasElement;
+    protected readonly canvasElement: HTMLCanvasElement;
     protected readonly _canvas: CanvasHelper;
     private screen:any[] = new Array(StartScreen, GameScreen, EraSelectionScreen);
     protected currentGameScreen: number = 0;
