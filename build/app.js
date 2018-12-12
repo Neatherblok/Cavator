@@ -12,6 +12,7 @@ class Game {
         this.EraSelectionscreen = new EraSelectionScreen();
         this.canvasElement = document.getElementById('canvas');
         this._canvas = new CanvasHelper(this.canvasElement);
+        this.itemList = new ItemList;
     }
 }
 window.addEventListener('load', init);
@@ -44,7 +45,7 @@ class Holes {
         return this._height;
     }
 }
-class Item {
+class ItemList {
     constructor() {
         this._itemList = new Array();
         this._itemList =
@@ -54,26 +55,28 @@ class Item {
                     source: "../assets/img/items/karel_de_grote.png",
                     era: 3,
                     hint1: "Was eerst Koning der Franken, werd vervolgens keizer van het West-Romeinse Rijk",
-                    hint2: "Zorgde voor de Karolingische renaissance"
+                    hint2: "Zorgde voor de Karolingische renaissance",
+                    hint3: ""
                 },
                 {
                     name: "VOC munt",
                     source: "../assets/img/items/voc_munt.png",
                     era: 6,
                     hint1: "De VOC = Verenigde Oost-Indische Compagnie",
-                    hint2: "Zorgde voor een financiële opbloei"
+                    hint2: "Zorgde voor een financiële opbloei",
+                    hint3: ""
                 },
                 {
                     name: "Weverij",
                     source: "../assets/img/items/weverij.png",
                     era: 8,
                     hint1: "Het stoken van kolen zorgt voor de aandrijving",
-                    hint2: "Soms werkten ook kinderen in de weverij"
+                    hint2: "Soms werkten ook kinderen in de weverij",
+                    hint3: ""
                 }
             ];
-        console.log(this._itemList[1][name]);
     }
-    getItem(itemNumber, property) {
+    getItemProperty(itemNumber, property) {
         const item = this._itemList[itemNumber][property];
         console.log(item);
     }

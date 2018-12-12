@@ -4,7 +4,7 @@ class Game {
     private Startscreen: StartScreen;
     private Gamescreen: GameScreen;
     private EraSelectionscreen: EraSelectionScreen;
-    //private item: Item;
+    private itemList: ItemList;
     private screen:string[] = new Array("this.Startscreen.draw()", "this.Gamescreen.draw()", "this.EraSelectionscreen.draw()");
     protected currentGameScreenNumber: number = 0;
 
@@ -14,13 +14,12 @@ class Game {
         this.EraSelectionscreen = new EraSelectionScreen();
         this.canvasElement = <HTMLCanvasElement>document.getElementById('canvas');
         this._canvas = new CanvasHelper(this.canvasElement);
-        //this.item = new Item;
+        this.itemList = new ItemList;
     }
 
     public draw = () => {
         this._canvas.clear();
         let currentGameScreen = eval(this.screen[this.currentGameScreenNumber])
-        //this.item.getItem(2, "era");
         currentGameScreen;
     }
 }
