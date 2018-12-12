@@ -5,7 +5,7 @@ class Game {
     private Gamescreen: GameScreen;
     private EraSelectionscreen: EraSelectionScreen;
     private itemList: ItemList;
-    private screen:string[] = new Array("this.Startscreen.draw()", "this.Gamescreen.draw()", "this.EraSelectionscreen.draw()");
+    private screen:string[] = new Array("this.Startscreen.draw()", "this.Gamescreen.interval()", "this.EraSelectionscreen.draw()");
     protected currentGameScreenNumber: number = 1;
 
     public constructor(
