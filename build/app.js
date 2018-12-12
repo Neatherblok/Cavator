@@ -17,6 +17,29 @@ function init() {
     window.setInterval(cavator.draw, 1000 / 60);
 }
 class Holes {
+    constructor(canvas, imageSource, xCoor, yCoor, width, height) {
+        this._canvas = new CanvasHelper(canvas);
+        this._imageSrc = imageSource;
+        this._xPos = xCoor;
+        this._yPos = yCoor;
+        this._width = width;
+        this._height = height;
+    }
+    draw() {
+        this._canvas.writeImageToCanvas(this._imageSrc, this._xPos, this._yPos);
+    }
+    getX() {
+        return this._xPos;
+    }
+    getY() {
+        return this._yPos;
+    }
+    getWidth() {
+        return this._width;
+    }
+    getHeight() {
+        return this._height;
+    }
 }
 class CanvasHelper {
     constructor(canvas) {
@@ -60,12 +83,17 @@ class GameScreen extends Game {
     constructor() {
         super();
         this.draw = () => {
+            this.holes.draw();
         };
+        this.holes = new Holes(this.canvasElement, "..\assets\images\hole1.png", 100, 100, 32, 32);
     }
 }
 class Startscreen extends Game {
     constructor() {
         super();
+        this.draw = () => {
+            this._canvas.writeTextToCanvas("Cavator", 30, this._canvas.getCenter().X, this._canvas.getCenter().Y, "black");
+        };
     }
 }
 //# sourceMappingURL=app.js.map

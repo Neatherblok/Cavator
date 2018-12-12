@@ -1,8 +1,8 @@
 class Game {
-    private readonly canvasElement: HTMLCanvasElement;
+    protected readonly canvasElement: HTMLCanvasElement;
     protected readonly _canvas: CanvasHelper;
     private screen:string[] = new Array("Startscreen", "Gamescreen", "EraSelectionscreen");
-    protected currentGameScreen: number = 0
+    protected currentGameScreen: number = 1;
 
     public constructor() {
         this.canvasElement = <HTMLCanvasElement>document.getElementById('canvas');
