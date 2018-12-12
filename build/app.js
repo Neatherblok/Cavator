@@ -1,5 +1,6 @@
 class Game {
-    constructor() {
+    constructor(counter = 90) {
+        this.counter = counter;
         this.screen = new Array("this.Startscreen.draw()", "this.Gamescreen.interval()", "this.EraSelectionscreen.draw()");
         this.currentGameScreenNumber = 0;
         this.draw = () => {
@@ -12,6 +13,13 @@ class Game {
         this.EraSelectionscreen = new EraSelectionScreen();
         this.canvasElement = document.getElementById('canvas');
         this._canvas = new CanvasHelper(this.canvasElement);
+        let intervalId = setInterval(() => {
+            this.counter = this.counter - 1;
+            console.log(this.counter);
+            this._canvas.writeTextToCanvas(`time left: ${this.counter}`, 20, 100, 100);
+            if (this.counter === 0)
+                clearInterval(intervalId);
+        }, 1000);
         this.itemList = new ItemList;
     }
     nextScreen() {
@@ -57,7 +65,7 @@ class ItemList {
             [
                 {
                     name: "Karel de Grote",
-                    source: "../assets/img/items/karel_de_grote.png",
+                    source: "../assets/images/items/karel_de_grote.png",
                     era: 3,
                     hint1: "Was eerst Koning der Franken, werd vervolgens keizer van het West-Romeinse Rijk",
                     hint2: "Zorgde voor de Karolingische renaissance",
@@ -65,7 +73,7 @@ class ItemList {
                 },
                 {
                     name: "VOC munt",
-                    source: "../assets/img/items/voc_munt.png",
+                    source: "../assets/images/items/voc_munt.png",
                     era: 6,
                     hint1: "De VOC = Verenigde Oost-Indische Compagnie",
                     hint2: "Zorgde voor een financiële opbloei",
@@ -73,7 +81,7 @@ class ItemList {
                 },
                 {
                     name: "Weverij",
-                    source: "../assets/img/items/weverij.png",
+                    source: "../assets/images/items/weverij.png",
                     era: 8,
                     hint1: "Het stoken van kolen zorgt voor de aandrijving",
                     hint2: "Soms werkten ook kinderen in de weverij",
@@ -160,9 +168,6 @@ class GameScreen {
         for (let index = 0; index < MathHelper.randomNumber(1, 6); index++) {
             this.holes.push(new Holes(this.canvasElement, "./assets/images/hole1.png", MathHelper.randomNumber(0, this._canvas.getWidth() - 200), MathHelper.randomNumber(0, this._canvas.getHeight() - 200), 130, 120));
         }
-    }
-    interval() {
-        window.setInterval(this.draw, 1000 / 60);
     }
 }
 class StartScreen {
