@@ -1,6 +1,8 @@
 class Game {
     private readonly canvasElement: HTMLCanvasElement;
     private readonly _canvas: CanvasHelper;
+    private screen:string[] = new Array("Startscreen", "Gamescreen", "EraSelectionscreen");
+    protected currentGameScreen: number = 1
 
     public constructor() {
         this.canvasElement = <HTMLCanvasElement>document.getElementById('canvas');
@@ -9,7 +11,8 @@ class Game {
 
     public draw = () => {
         this._canvas.clear();
-        this._canvas.writeTextToCanvas(`Your score`, 50, 200, 200, "black", "center");
+        this.screen[this.currentGameScreen];
+        console.log(this.screen[this.currentGameScreen]);
     }
 }
 

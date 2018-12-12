@@ -1,8 +1,11 @@
 class Game {
     constructor() {
+        this.screen = new Array("Startscreen", "Gamescreen", "EraSelectionscreen");
+        this.currentGameScreen = 1;
         this.draw = () => {
             this._canvas.clear();
-            this._canvas.writeTextToCanvas(`Your score`, 50, 200, 200, "black", "center");
+            this.screen[this.currentGameScreen];
+            console.log(this.screen[this.currentGameScreen]);
         };
         this.canvasElement = document.getElementById('canvas');
         this._canvas = new CanvasHelper(this.canvasElement);
