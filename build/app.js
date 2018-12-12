@@ -30,4 +30,11 @@ class CanvasHelper {
         this._context.fillText(aText, aXpos, aYpos);
     }
 }
+class GameScreen extends Game {
+}
+class Startscreen extends Game {
+    constructor() {
+        super();
+    }
+}
 //# sourceMappingURL=app.js.map
