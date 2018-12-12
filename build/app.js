@@ -1,7 +1,7 @@
 class Game {
     constructor() {
         this.screen = new Array("this.Startscreen.draw()", "this.Gamescreen.draw()", "this.EraSelectionscreen.draw()");
-        this.currentGameScreenNumber = 0;
+        this.currentGameScreenNumber = 1;
         this.draw = () => {
             this._canvas.clear();
             let currentGameScreen = eval(this.screen[this.currentGameScreenNumber]);
