@@ -1,5 +1,5 @@
 class Item {
-    public _itemList: Array<any>;
+    private readonly _itemList =  new Array<any>();
 
     constructor() {
         this._itemList = 
@@ -26,14 +26,15 @@ class Item {
                 hint2:"Soms werkten ook kinderen in de weverij"
             }
         ];
-        console.log(this._itemList[1].name)
+        console.log(this._itemList[1][name])
     }
 
     public getItem(
         itemNumber: number,
-        property: string
+        property: any
     ) {
-       return this._itemList[itemNumber].property;
+        const item = this._itemList[itemNumber][property]
+        console.log(item);
     }
 
 };
