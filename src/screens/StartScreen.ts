@@ -1,4 +1,6 @@
-class Startscreen extends Game {
+///<reference path="../Game.ts"/>
+
+class StartScreen extends Game {
 
     public constructor(){
         super();

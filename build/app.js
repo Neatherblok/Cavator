@@ -1,11 +1,11 @@
 class Game {
     constructor() {
-        this.screen = new Array("Startscreen", "Gamescreen", "EraSelectionscreen");
-        this.currentGameScreen = 1;
+        this.screen = new Array(Startscreen, GameScreen, EraSelectionScreen);
+        this.currentGameScreen = 0;
         this.draw = () => {
             this._canvas.clear();
             this.screen[this.currentGameScreen];
-            console.log(this.screen[this.currentGameScreen]);
+            console.log(Startscreen);
         };
         this.canvasElement = document.getElementById('canvas');
         this._canvas = new CanvasHelper(this.canvasElement);
@@ -56,6 +56,8 @@ class MathHelper {
         return Math.round(Math.random() * (max - min) + min);
     }
 }
+class EraSelectionScreen {
+}
 class GameScreen extends Game {
     constructor() {
         super();
@@ -66,6 +68,9 @@ class GameScreen extends Game {
 class Startscreen extends Game {
     constructor() {
         super();
+        this.draw = () => {
+            this._canvas.writeTextToCanvas("Cavator", 30, this._canvas.getCenter().X, this._canvas.getCenter().Y, "black");
+        };
     }
 }
 //# sourceMappingURL=app.js.map

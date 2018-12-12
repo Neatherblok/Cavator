@@ -1,8 +1,8 @@
 class Game {
     private readonly canvasElement: HTMLCanvasElement;
     protected readonly _canvas: CanvasHelper;
-    private screen:string[] = new Array("Startscreen", "Gamescreen", "EraSelectionscreen");
-    protected currentGameScreen: number = 0
+    private screen:any[] = new Array(StartScreen, GameScreen, EraSelectionScreen);
+    protected currentGameScreen: number = 0;
 
     public constructor() {
         this.canvasElement = <HTMLCanvasElement>document.getElementById('canvas');
@@ -12,7 +12,7 @@ class Game {
     public draw = () => {
         this._canvas.clear();
         this.screen[this.currentGameScreen];
-        console.log(this.screen[this.currentGameScreen]);
+        console.log(StartScreen.draw());
     }
 }
 
