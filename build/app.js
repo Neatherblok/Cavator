@@ -7,9 +7,16 @@ class Game {
             let currentGameScreen = eval(this.screen[this.currentGameScreenNumber]);
             currentGameScreen;
         };
-        this.nextScreen = () => {
+        this.nextScreen = (event) => {
             console.log(this.currentGameScreenNumber);
-            this.currentGameScreenNumber++;
+            if (this.currentGameScreenNumber === 0) {
+                console.log(event.clientY);
+                if (event.clientX >= (this._canvas.getCenter().X - 111) && event.clientX <= (this._canvas.getCenter().X + 111)
+                    && event.clientY >= (this._canvas.getCenter().Y + 200) && event.clientY <= this._canvas.getCenter().Y + 239) {
+                    console.log("jup");
+                    this.currentGameScreenNumber++;
+                }
+            }
             console.log(this.currentGameScreenNumber);
             if (this.currentGameScreenNumber === 1) {
                 this.Gamescreen.timer();
@@ -173,11 +180,13 @@ class GameScreen {
     constructor() {
         this.holes = new Array();
         this.counter = 180;
+        this.score = 0;
         this.draw = () => {
             for (let i = 0; i < this.holes.length; i++) {
                 this.holes[i].draw();
             }
             this._canvas.writeTextToCanvas(`Time left: ${this.counter}`, 20, 100, 50);
+            this._canvas.writeTextToCanvas(`Score: ${this.score}`, 20, 100, 75);
         };
         this.canvasElement = document.getElementById('canvas');
         this._canvas = new CanvasHelper(this.canvasElement);
@@ -188,7 +197,6 @@ class GameScreen {
     timer() {
         let intervalId = setInterval(() => {
             this.counter--;
-            console.log(this.counter);
             if (this.counter === 0)
                 clearInterval(intervalId);
         }, 1000);
