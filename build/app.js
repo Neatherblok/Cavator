@@ -1,7 +1,7 @@
 class Game {
     constructor() {
         this.screen = ["this.Startscreen.draw()", "this.Gamescreen.draw()", "this.EraSelectionscreen.draw()"];
-        this.currentGameScreenNumber = 0;
+        this.currentGameScreenNumber = 1;
         this.draw = () => {
             this._canvas.clear();
             let currentGameScreen = eval(this.screen[this.currentGameScreenNumber]);
@@ -44,21 +44,6 @@ class MouseListener {
     }
     mouseHandlers() {
         document.addEventListener('mousemove', this.onMouseMove);
-    }
-}
-class ScreenSelector {
-    constructor(_gameScreenNumber) {
-        this.screen = ["this.Startscreen.draw()", "this.Gamescreen.draw()", "this.EraSelectionscreen.draw()"];
-        this.currentGameScreenNumber = 0;
-        this.currentGameScreen = eval(this.screen[this.currentGameScreenNumber]);
-        this.currentGameScreenNumber = _gameScreenNumber;
-    }
-    current() {
-        return this.currentGameScreen;
-    }
-    nextScreen() {
-        this.currentGameScreenNumber++;
-        console.log(this.currentGameScreenNumber);
     }
 }
 class ItemList {
