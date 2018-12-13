@@ -19,10 +19,7 @@ class Game {
 
     public draw = () => {
         this._canvas.clear();
-        //console.log(this.screen[this.currentGameScreenNumber])
-        //console.log(this.currentGameScreenNumber)
         let currentGameScreen = eval(this.screen[this.currentGameScreenNumber])
-        //console.log(currentGameScreen)
         currentGameScreen;
     }
 
@@ -30,7 +27,11 @@ class Game {
         console.log(this.currentGameScreenNumber)
         this.currentGameScreenNumber++
         console.log(this.currentGameScreenNumber)
+        if(this.currentGameScreenNumber === 1){
+            this.Gamescreen.timer()
+        }
     }
+
 }
 
 window.addEventListener('load', init);
