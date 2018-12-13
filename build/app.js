@@ -11,7 +11,6 @@ class Game {
             console.log(this.currentGameScreenNumber);
             if (this.currentGameScreenNumber == 2) {
                 this.currentGameScreenNumber = 1;
-                this.Gamescreen.timer();
             }
             else if (this.currentGameScreenNumber == 1) {
                 for (let i = 0; i < this.Gamescreen.hole().length; i++) {
