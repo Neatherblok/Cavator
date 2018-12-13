@@ -3,6 +3,7 @@ class GameScreen {
     protected readonly _canvas: CanvasHelper;
     private holes = new Array<Holes>();
     protected counter: number = 180;
+    protected score: number = 0;
 
     public constructor() {
         this.canvasElement = <HTMLCanvasElement>document.getElementById('canvas');
@@ -17,6 +18,7 @@ class GameScreen {
             this.holes[i].draw();
         }
         this._canvas.writeTextToCanvas(`Time left: ${this.counter}`, 20, 100, 50)
+        this._canvas.writeTextToCanvas(`Score: ${this.score}`, 20, 100, 75 )
     }
 
     public timer() {
@@ -26,4 +28,10 @@ class GameScreen {
             if (this.counter === 0) clearInterval(intervalId)
         }, 1000)
     }
+
+    // public scoreCounter() {
+    //     if (answer() === true) {
+    //         this.score++;
+    //     }
+    // }
 }
