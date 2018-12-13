@@ -118,11 +118,11 @@ class Item {
             },
             {
                 name:"Hoge Bi",
-                source:"../assets/images/items/.png",
+                source:"../assets/images/items/hoge_bi.png",
                 era:8,
-                hint1:"",
-                hint2:"",
-                hint3:""
+                hint1:"Wordt ook wel vélocipède genoemd.",
+                hint2:"Werd gebruikt in de late Victoriaanse tijd.",
+                hint3:"De fiets werd op de Wereldtentoonstelling van Parijs gepresenteerd."
             },
             {
                 name:"Weverij",
@@ -134,43 +134,43 @@ class Item {
             },
             {
                 name:"Vliegtuigbom",
-                source:"../assets/images/items/voc_munt.png",
+                source:"../assets/images/items/vliegtuigbom.png",
                 era:9,
-                hint1:"",
-                hint2:"",
-                hint3:""
+                hint1:"Overblijfsel van een oorlog.",
+                hint2:"Gevonden in Vlissingen.",
+                hint3:"Vliegtuigbommen werden veel gebruikt in een Blitzkrieg."
             },
             {
                 name:"Elektrische fiets",
-                source:"../assets/images/items/voc_munt.png",
+                source:"../assets/images/items/elektrische_fiets.png",
                 era:9,
-                hint1:"",
-                hint2:"",
-                hint3:""
+                hint1:"Deze fiets is ontwikkeld door Philips.",
+                hint2:"Door de benzineschaarste leefde de belangstelling op.",
+                hint3:"In Amsterdam kwam een elektrische fietstaxi in gebruik."
             },
             {
                 name:"Jodenster",
-                source:"../assets/images/items/voc_munt.png",
+                source:"../assets/images/items/jodenster.png",
                 era:9,
-                hint1:"",
-                hint2:"",
-                hint3:""
+                hint1:"Een kenteken dat Joden moesten dragen.",
+                hint2:"Dit gelde alleen in bepaalde gedeeltes van Europa voor een bepaalde periode.",
+                hint3:"Alle Joden vanaf 6 jaar oud moesten de ster dragen."
             },
             {
                 name:"Handboek televisie",
-                source:"../assets/images/items/voc_munt.png",
+                source:"../assets/images/items/handboek_televisie.png",
                 era:10,
-                hint1:"",
-                hint2:"",
-                hint3:""
+                hint1:"Boekje ter informatie over hoe een televisie werkt.",
+                hint2:"De eerste landelijke uitzending was vanuit studio Irene in Hilversum.",
+                hint3:"De eerste televisiezender heette Nederland 1."
             },
             {
                 name:"Game Boy",
-                source:"../assets/images/items/voc_munt.png",
+                source:"../assets/images/items/game_boy.png",
                 era:10,
-                hint1:"",
-                hint2:"",
-                hint3:""
+                hint1:"Uitgebracht door Nintendo in Japan.",
+                hint2:"Bekend van spelletjes als Super Mario en Pokémon.",
+                hint3:"De spelletjes stonden op cassettes."
             }
         ];
     }
@@ -179,7 +179,7 @@ class Item {
         itemNumber: number,
         property: string
     ) {
-       return this._itemList[itemNumber].property;
+       return this._itemList[itemNumber][property];
     }
 
 };
