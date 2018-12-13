@@ -27,6 +27,14 @@ class ItemList {
                 hint1:"Het stoken van kolen zorgt voor de aandrijving",
                 hint2:"Soms werkten ook kinderen in de weverij",
                 hint3:""
+            },
+            {
+                name:"Weverij",
+                source:"../assets/images/items/willemVanOranje.png",
+                era:8,
+                hint1:"Dit is Willem van Oranje",
+                hint2:"Hij is vader des vaderlands",
+                hint3:""
             }
         ];
     }
