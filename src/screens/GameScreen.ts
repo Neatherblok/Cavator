@@ -16,6 +16,7 @@ class GameScreen {
         for (let i = 0; i < this.holes.length; i++) {
             this.holes[i].draw();
         }
+        this._canvas.writeTextToCanvas(`Time left: ${this.counter}`, 20, 100, 50)
     }
 
     public timer() {
