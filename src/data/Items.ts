@@ -114,11 +114,11 @@ class Item {
                 era:7,
                 hint1:"Het lukte hem een groot deel van Europa onder Frans gezag te brengen.",
                 hint2:"Hij was een befaamd militair mastermind.",
-                hint3:""
+                hint3:"Zijn broer Lodewijk werd koning van Holland."
             },
             {
                 name:"Hoge Bi",
-                source:"../assets/images/items/voc_munt.png",
+                source:"../assets/images/items/.png",
                 era:8,
                 hint1:"",
                 hint2:"",
