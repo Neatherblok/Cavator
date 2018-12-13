@@ -22,7 +22,7 @@ class GameScreen {
     public timer() {
         let intervalId = setInterval(() => {
             this.counter--;
-            console.log(this.counter);
+            //console.log(this.counter);
             if (this.counter === 0) clearInterval(intervalId)
         }, 1000)
     }
