@@ -4,10 +4,13 @@ class Game {
         this.currentGameScreenNumber = 0;
         this.draw = () => {
             this._canvas.clear();
-            console.log;
             let currentGameScreen = eval(this.screen[this.currentGameScreenNumber]);
-            console.log(currentGameScreen);
             currentGameScreen;
+        };
+        this.nextScreen = () => {
+            console.log(this.currentGameScreenNumber);
+            this.currentGameScreenNumber++;
+            console.log(this.currentGameScreenNumber);
         };
         this.canvasElement = document.getElementById('canvas');
         this._canvas = new CanvasHelper(this.canvasElement);
@@ -15,10 +18,6 @@ class Game {
         this.Gamescreen = new GameScreen();
         this.EraSelectionscreen = new EraSelectionScreen();
         this.itemList = new ItemList;
-    }
-    nextScreen() {
-        this.currentGameScreenNumber++;
-        console.log(this.currentGameScreenNumber);
     }
 }
 window.addEventListener('load', init);

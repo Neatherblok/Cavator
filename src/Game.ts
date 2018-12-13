@@ -19,13 +19,15 @@ class Game {
 
     public draw = () => {
         this._canvas.clear();
-        console.log
+        //console.log(this.screen[this.currentGameScreenNumber])
+        //console.log(this.currentGameScreenNumber)
         let currentGameScreen = eval(this.screen[this.currentGameScreenNumber])
-        console.log(currentGameScreen)
+        //console.log(currentGameScreen)
         currentGameScreen;
     }
 
-    public nextScreen(){
+    public nextScreen = () => {
+        console.log(this.currentGameScreenNumber)
         this.currentGameScreenNumber++
         console.log(this.currentGameScreenNumber)
     }
