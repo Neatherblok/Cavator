@@ -1,7 +1,7 @@
 class Game {
     constructor() {
         this.screen = ["this.Startscreen.draw()", "this.Gamescreen.draw()", "this.EraSelectionscreen.draw()"];
-        this.currentGameScreenNumber = 0;
+        this.currentGameScreenNumber = 1;
         this.draw = () => {
             this._canvas.clear();
             console.log;
@@ -19,6 +19,9 @@ class Game {
     nextScreen() {
         this.currentGameScreenNumber++;
         console.log(this.currentGameScreenNumber);
+    }
+    gameScreenValue() {
+        return 1444;
     }
 }
 window.addEventListener('load', init);
@@ -185,6 +188,7 @@ class GameScreen {
     constructor() {
         this.holes = new Array();
         this.counter = 180;
+        this.score = 0;
         this.draw = () => {
             for (let i = 0; i < this.holes.length; i++) {
                 this.holes[i].draw();
@@ -195,13 +199,15 @@ class GameScreen {
         this._canvas = new CanvasHelper(this.canvasElement);
         for (let index = 0; index < MathHelper.randomNumber(1, 6); index++) {
             this.holes.push(new Holes(this.canvasElement, "./assets/images/hole1.png", MathHelper.randomNumber(0, this._canvas.getWidth() - 200), MathHelper.randomNumber(0, this._canvas.getHeight() - 200), 130, 120));
-            let intervalId = setInterval(() => {
-                this.counter--;
-                console.log(this.counter);
-                if (this.counter === 0)
-                    clearInterval(intervalId);
-            }, 1000);
         }
+        let intervalId = setInterval(() => {
+            this.counter--;
+            console.log(this.counter);
+            if (this.counter === 0) {
+                clearInterval(intervalId);
+                alert("TIME UP!");
+            }
+        }, 1000);
     }
 }
 class StartScreen {
