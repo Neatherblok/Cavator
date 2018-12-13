@@ -8,6 +8,7 @@ class Game {
     private screen: string[] = ["this.Startscreen.draw()", "this.Gamescreen.draw()", "this.EraSelectionscreen.draw()"];
     private currentGameScreenNumber: number = 0;
 
+
     public constructor() {
         this.canvasElement = <HTMLCanvasElement>document.getElementById('canvas');
         this._canvas = new CanvasHelper(this.canvasElement);
@@ -30,7 +31,7 @@ class Game {
         if(this.currentGameScreenNumber === 1){
             this.Gamescreen.timer()
         }
-    }
+ }
 }
 
 window.addEventListener('load', init);

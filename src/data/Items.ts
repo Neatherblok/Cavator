@@ -37,6 +37,7 @@ class ItemList {
     ) {
         const item = this._itemList[itemNumber][property]
         console.log(item);
+        return item;
     }
 
 };

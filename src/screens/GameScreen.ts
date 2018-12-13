@@ -25,5 +25,4 @@ class GameScreen {
             if (this.counter === 0) clearInterval(intervalId)
         }, 1000)
     }
-
 }
