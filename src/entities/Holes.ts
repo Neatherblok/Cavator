@@ -30,6 +30,8 @@ class Holes {
     public getX(): number {
         return this._xPos;
     }
+
+    public getY(): number {
         return this._yPos
     }
 

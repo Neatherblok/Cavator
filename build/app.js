@@ -35,6 +35,21 @@ function init() {
     window.setInterval(cavator.draw, 1000 / 60);
     window.addEventListener("click", cavator.nextScreen);
 }
+class ScreenSelector {
+    constructor(_gameScreenNumber) {
+        this.screen = ["this.Startscreen.draw()", "this.Gamescreen.draw()", "this.EraSelectionscreen.draw()"];
+        this.currentGameScreenNumber = 0;
+        this.currentGameScreen = eval(this.screen[this.currentGameScreenNumber]);
+        this.currentGameScreenNumber = _gameScreenNumber;
+    }
+    current() {
+        return this.currentGameScreen;
+    }
+    nextScreen() {
+        this.currentGameScreenNumber++;
+        console.log(this.currentGameScreenNumber);
+    }
+}
 class ItemList {
     constructor() {
         this._itemList = new Array();
