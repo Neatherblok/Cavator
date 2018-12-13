@@ -1,7 +1,7 @@
 class Game {
     constructor() {
         this.screen = ["this.Startscreen.draw()", "this.Gamescreen.draw()", "this.EraSelectionscreen.draw()"];
-        this.currentGameScreenNumber = 1;
+        this.currentGameScreenNumber = 0;
         this.draw = () => {
             this._canvas.clear();
             let currentGameScreen = eval(this.screen[this.currentGameScreenNumber]);
@@ -188,12 +188,10 @@ class GameScreen {
     constructor() {
         this.holes = new Array();
         this.counter = 180;
-        this.score = 0;
         this.draw = () => {
             for (let i = 0; i < this.holes.length; i++) {
                 this.holes[i].draw();
             }
-            this._canvas.writeTextToCanvas(`time left: ${this.counter}`, 20, 100, 100);
         };
         this.canvasElement = document.getElementById('canvas');
         this._canvas = new CanvasHelper(this.canvasElement);
