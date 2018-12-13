@@ -25,17 +25,17 @@ class Game {
 
     public nextScreen = (event:any) => {
         console.log(this.currentGameScreenNumber)
-        if(this.currentGameScreenNumber === 0){
+        if(this.currentGameScreenNumber == 1){
+            console.log("jaa")
+            ++this.currentGameScreenNumber
+        }
+        else if(this.currentGameScreenNumber == 0){
             console.log(event.clientY)
             if (event.clientX >= (this._canvas.getCenter().X - 111) && event.clientX <= (this._canvas.getCenter().X + 111)
                 && event.clientY >= (this._canvas.getCenter().Y + 200) && event.clientY <= this._canvas.getCenter().Y + 239){
-                console.log("jup")
-                this.currentGameScreenNumber++
+                ++this.currentGameScreenNumber;
+                this.Gamescreen.timer()
             }
-        }
-        console.log(this.currentGameScreenNumber)
-        if(this.currentGameScreenNumber === 1){
-            this.Gamescreen.timer()
         }
     }
 
