@@ -1,9 +1,44 @@
+class Item {
+    constructor() {
+        this._itemList =
+            [
+                {
+                    name: "Karel de Grote",
+                    source: "../assets/img/items/karel_de_grote.png",
+                    era: 3,
+                    hint1: "Was eerst Koning der Franken, werd vervolgens keizer van het West-Romeinse Rijk",
+                    hint2: "Zorgde voor de Karolingische renaissance"
+                },
+                {
+                    name: "VOC munt",
+                    source: "../assets/img/items/voc_munt.png",
+                    era: 6,
+                    hint1: "De VOC = Verenigde Oost-Indische Compagnie",
+                    hint2: "Zorgde voor een financiële opbloei"
+                },
+                {
+                    name: "Weverij",
+                    source: "../assets/img/items/weverij.png",
+                    era: 8,
+                    hint1: "Het stoken van kolen zorgt voor de aandrijving",
+                    hint2: "Soms werkten ook kinderen in de weverij"
+                }
+            ];
+        console.log(this._itemList[1].name);
+    }
+    getItem(itemNumber, property) {
+        return this._itemList[itemNumber].property;
+    }
+}
+;
 class Game {
     constructor() {
         this.draw = () => {
             this._canvas.clear();
             this._canvas.writeTextToCanvas(`Your score`, 50, 200, 200, "black", "center");
+            console.log("hoi");
         };
+        this.item = new Item;
         this.canvasElement = document.getElementById('canvas');
         this._canvas = new CanvasHelper(this.canvasElement);
     }
