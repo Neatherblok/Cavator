@@ -3,6 +3,7 @@ class GameScreen {
     protected readonly _canvas: CanvasHelper;
     private holes = new Array<Holes>();
     protected counter: number = 180;
+    protected score: number = 0;
 
     public constructor() {
         this.canvasElement = <HTMLCanvasElement>document.getElementById('canvas');
