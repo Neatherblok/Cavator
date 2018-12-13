@@ -11,6 +11,9 @@ class Game {
             console.log(this.currentGameScreenNumber);
             this.currentGameScreenNumber++;
             console.log(this.currentGameScreenNumber);
+            if (this.currentGameScreenNumber === 1) {
+                this.Gamescreen.timer();
+            }
         };
         this.canvasElement = document.getElementById('canvas');
         this._canvas = new CanvasHelper(this.canvasElement);
@@ -194,6 +197,14 @@ class GameScreen {
         for (let index = 0; index < MathHelper.randomNumber(1, 6); index++) {
             this.holes.push(new Holes(this.canvasElement, "./assets/images/hole1.png", MathHelper.randomNumber(0, this._canvas.getWidth() - 200), MathHelper.randomNumber(0, this._canvas.getHeight() - 200), 130, 120));
         }
+    }
+    timer() {
+        let intervalId = setInterval(() => {
+            this.counter--;
+            console.log(this.counter);
+            if (this.counter === 0)
+                clearInterval(intervalId);
+        }, 1000);
     }
 }
 class StartScreen {

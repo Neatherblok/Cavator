@@ -27,6 +27,9 @@ class Game {
         console.log(this.currentGameScreenNumber)
         this.currentGameScreenNumber++
         console.log(this.currentGameScreenNumber)
+        if(this.currentGameScreenNumber === 1){
+            this.Gamescreen.timer()
+        }
     }
 }
 
