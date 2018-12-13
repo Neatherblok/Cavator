@@ -1,15 +1,13 @@
 class Game {
     constructor() {
         this.screen = ["this.Startscreen.draw()", "this.Gamescreen.draw()", "this.EraSelectionscreen.draw()"];
-        this.currentGameScreenNumber = 1;
-        this.counter = 90;
+        this.currentGameScreenNumber = 0;
         this.draw = () => {
             this._canvas.clear();
             console.log;
             let currentGameScreen = eval(this.screen[this.currentGameScreenNumber]);
             console.log(currentGameScreen);
             currentGameScreen;
-            this._canvas.writeTextToCanvas(`time left: ${this.counter}`, 20, 100, 100);
         };
         this.canvasElement = document.getElementById('canvas');
         this._canvas = new CanvasHelper(this.canvasElement);
@@ -17,12 +15,6 @@ class Game {
         this.Gamescreen = new GameScreen();
         this.EraSelectionscreen = new EraSelectionScreen();
         this.itemList = new ItemList;
-        let intervalId = setInterval(() => {
-            this.counter--;
-            console.log(this.counter);
-            if (this.counter === 0)
-                clearInterval(intervalId);
-        }, 1000);
     }
     nextScreen() {
         this.currentGameScreenNumber++;
@@ -34,6 +26,23 @@ function init() {
     const cavator = new Game();
     window.setInterval(cavator.draw, 1000 / 60);
     window.addEventListener("click", cavator.nextScreen);
+}
+class MouseListener {
+    constructor() {
+        this.onMouseMove = (event) => {
+            clearTimeout(this.dTimer);
+            this.dTimer = setTimeout(() => {
+                console.log(event.pageX, event.pageY);
+            }, 500);
+        };
+        this.init();
+    }
+    init() {
+        this.mouseHandlers();
+    }
+    mouseHandlers() {
+        document.addEventListener('mousemove', this.onMouseMove);
+    }
 }
 class ScreenSelector {
     constructor(_gameScreenNumber) {
@@ -175,15 +184,23 @@ class EraSelectionScreen {
 class GameScreen {
     constructor() {
         this.holes = new Array();
+        this.counter = 180;
         this.draw = () => {
             for (let i = 0; i < this.holes.length; i++) {
                 this.holes[i].draw();
             }
+            this._canvas.writeTextToCanvas(`time left: ${this.counter}`, 20, 100, 100);
         };
         this.canvasElement = document.getElementById('canvas');
         this._canvas = new CanvasHelper(this.canvasElement);
         for (let index = 0; index < MathHelper.randomNumber(1, 6); index++) {
             this.holes.push(new Holes(this.canvasElement, "./assets/images/hole1.png", MathHelper.randomNumber(0, this._canvas.getWidth() - 200), MathHelper.randomNumber(0, this._canvas.getHeight() - 200), 130, 120));
+            let intervalId = setInterval(() => {
+                this.counter--;
+                console.log(this.counter);
+                if (this.counter === 0)
+                    clearInterval(intervalId);
+            }, 1000);
         }
     }
 }
