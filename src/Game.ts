@@ -6,7 +6,7 @@ class Game {
     private EraSelectionscreen: EraSelectionScreen;
     private itemList: ItemList;
     private screen: string[] = ["this.Startscreen.draw()", "this.Gamescreen.draw()", "this.EraSelectionscreen.draw()"];
-    private currentGameScreenNumber: number = 1;
+    private currentGameScreenNumber: number = 0;
 
     public constructor() {
         this.canvasElement = <HTMLCanvasElement>document.getElementById('canvas');
@@ -19,10 +19,7 @@ class Game {
 
     public draw = () => {
         this._canvas.clear();
-        //console.log(this.screen[this.currentGameScreenNumber])
-        //console.log(this.currentGameScreenNumber)
         let currentGameScreen = eval(this.screen[this.currentGameScreenNumber])
-        //console.log(currentGameScreen)
         currentGameScreen;
     }
 
@@ -30,10 +27,6 @@ class Game {
         console.log(this.currentGameScreenNumber)
         this.currentGameScreenNumber++
         console.log(this.currentGameScreenNumber)
-    }
-
-    public gameScreenValue():number {
-        return 1444;
     }
 }
 
