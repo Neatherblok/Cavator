@@ -33,20 +33,130 @@ class Item {
 ;
 class Game {
     constructor() {
+        this.screen = ["this.Startscreen.draw()", "this.Gamescreen.draw()", "this.EraSelectionscreen.draw()"];
+        this.currentGameScreenNumber = 0;
         this.draw = () => {
             this._canvas.clear();
-            this._canvas.writeTextToCanvas(`Your score`, 50, 200, 200, "black", "center");
-            console.log("hoi");
+            let currentGameScreen = eval(this.screen[this.currentGameScreenNumber]);
+            currentGameScreen;
+        };
+        this.nextScreen = () => {
+            console.log(this.currentGameScreenNumber);
+            this.currentGameScreenNumber++;
+            console.log(this.currentGameScreenNumber);
+            if (this.currentGameScreenNumber === 1) {
+                this.Gamescreen.timer();
+            }
+
         };
         this.item = new Item;
         this.canvasElement = document.getElementById('canvas');
         this._canvas = new CanvasHelper(this.canvasElement);
+        this.Startscreen = new StartScreen();
+        this.Gamescreen = new GameScreen();
+        this.EraSelectionscreen = new EraSelectionScreen();
+        this.itemList = new ItemList;
     }
 }
 window.addEventListener('load', init);
 function init() {
     const cavator = new Game();
     window.setInterval(cavator.draw, 1000 / 60);
+    window.addEventListener("click", cavator.nextScreen);
+}
+class MouseListener {
+    constructor() {
+        this.onMouseMove = (event) => {
+            clearTimeout(this.dTimer);
+            this.dTimer = setTimeout(() => {
+                console.log(event.pageX, event.pageY);
+            }, 500);
+        };
+        this.init();
+    }
+    init() {
+        this.mouseHandlers();
+    }
+    mouseHandlers() {
+        document.addEventListener('mousemove', this.onMouseMove);
+    }
+}
+class ScreenSelector {
+    constructor(_gameScreenNumber) {
+        this.screen = ["this.Startscreen.draw()", "this.Gamescreen.draw()", "this.EraSelectionscreen.draw()"];
+        this.currentGameScreenNumber = 0;
+        this.currentGameScreen = eval(this.screen[this.currentGameScreenNumber]);
+        this.currentGameScreenNumber = _gameScreenNumber;
+    }
+    current() {
+        return this.currentGameScreen;
+    }
+    nextScreen() {
+        this.currentGameScreenNumber++;
+        console.log(this.currentGameScreenNumber);
+    }
+}
+class ItemList {
+    constructor() {
+        this._itemList = new Array();
+        this._itemList =
+            [
+                {
+                    name: "Karel de Grote",
+                    source: "../assets/images/items/karel_de_grote.png",
+                    era: 3,
+                    hint1: "Was eerst Koning der Franken, werd vervolgens keizer van het West-Romeinse Rijk",
+                    hint2: "Zorgde voor de Karolingische renaissance",
+                    hint3: ""
+                },
+                {
+                    name: "VOC munt",
+                    source: "../assets/images/items/voc_munt.png",
+                    era: 6,
+                    hint1: "De VOC = Verenigde Oost-Indische Compagnie",
+                    hint2: "Zorgde voor een financiële opbloei",
+                    hint3: ""
+                },
+                {
+                    name: "Weverij",
+                    source: "../assets/images/items/weverij.png",
+                    era: 8,
+                    hint1: "Het stoken van kolen zorgt voor de aandrijving",
+                    hint2: "Soms werkten ook kinderen in de weverij",
+                    hint3: ""
+                }
+            ];
+    }
+    getItemProperty(itemNumber, property) {
+        const item = this._itemList[itemNumber][property];
+        console.log(item);
+    }
+}
+;
+class Holes {
+    constructor(canvas, imageSource, xCoor, yCoor, width, height) {
+        this._canvas = new CanvasHelper(canvas);
+        this._imageSrc = imageSource;
+        this._xPos = xCoor;
+        this._yPos = yCoor;
+        this._width = width;
+        this._height = height;
+    }
+    draw() {
+        this._canvas.writeImageToCanvas(this._imageSrc, this._xPos, this._yPos);
+    }
+    getX() {
+        return this._xPos;
+    }
+    getY() {
+        return this._yPos;
+    }
+    getWidth() {
+        return this._width;
+    }
+    getHeight() {
+        return this._height;
+    }
 }
 class ScreenSelector {
     constructor(_gameScreenNumber) {
@@ -112,7 +222,42 @@ class CanvasHelper {
         });
     }
 }
-class GameScreen extends Game {
+
+class MathHelper {
+    static randomNumber(min, max) {
+        return Math.round(Math.random() * (max - min) + min);
+    }
+}
+class EraSelectionScreen {
+    constructor() {
+        this.draw = () => {
+        };
+    }
+}
+class GameScreen {
+    constructor() {
+        this.holes = new Array();
+        this.counter = 180;
+        this.draw = () => {
+            for (let i = 0; i < this.holes.length; i++) {
+                this.holes[i].draw();
+            }
+        };
+        this.canvasElement = document.getElementById('canvas');
+        this._canvas = new CanvasHelper(this.canvasElement);
+        for (let index = 0; index < MathHelper.randomNumber(1, 6); index++) {
+            this.holes.push(new Holes(this.canvasElement, "./assets/images/hole1.png", MathHelper.randomNumber(0, this._canvas.getWidth() - 200), MathHelper.randomNumber(0, this._canvas.getHeight() - 200), 130, 120));
+        }
+    }
+    timer() {
+        let intervalId = setInterval(() => {
+            this.counter--;
+            console.log(this.counter);
+            if (this.counter === 0)
+                clearInterval(intervalId);
+        }, 1000);
+    }
+
 }
 class StartScreen {
     constructor() {
