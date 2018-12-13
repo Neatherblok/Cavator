@@ -1,21 +1,40 @@
-///<reference path="./data/Items.ts" />
-
 class Game {
-    private readonly canvasElement: HTMLCanvasElement;
-    private readonly _canvas: CanvasHelper;
-    private item: Item
+    protected readonly canvasElement: HTMLCanvasElement;
+    protected readonly _canvas: CanvasHelper;
+    private Startscreen: StartScreen;
+    private Gamescreen: GameScreen;
+    private EraSelectionscreen: EraSelectionScreen;
+    private itemList: ItemList;
+    private screen: string[] = ["this.Startscreen.draw()", "this.Gamescreen.draw()", "this.EraSelectionscreen.draw()"];
+    private currentGameScreenNumber: number = 1;
+    protected counter: number = 90;
 
     public constructor() {
-        this.item = new Item;
-
         this.canvasElement = <HTMLCanvasElement>document.getElementById('canvas');
         this._canvas = new CanvasHelper(this.canvasElement);
+        this.Startscreen = new StartScreen();
+        this.Gamescreen = new GameScreen();
+        this.EraSelectionscreen = new EraSelectionScreen();
+        this.itemList = new ItemList;
+        let intervalId = setInterval(() => {
+            this.counter--;
+            console.log(this.counter);
+            if(this.counter === 0) clearInterval(intervalId)
+        }, 1000)
     }
 
     public draw = () => {
         this._canvas.clear();
-        this._canvas.writeTextToCanvas(`Your score`, 50, 200, 200, "black", "center");
-        console.log("hoi")
+        console.log
+        let currentGameScreen = eval(this.screen[this.currentGameScreenNumber])
+        console.log(currentGameScreen)
+        currentGameScreen;
+        this._canvas.writeTextToCanvas(`time left: ${this.counter}`, 20, 100, 100)
+    }
+
+    public nextScreen(){
+        this.currentGameScreenNumber++
+        console.log(this.currentGameScreenNumber)
     }
 }
 
@@ -23,5 +42,6 @@ window.addEventListener('load', init);
 
 function init(): void {
     const cavator = new Game();
-    window.setInterval(cavator.draw, 1000 / 60)
+    window.setInterval(cavator.draw, 1000/60);
+    window.addEventListener("click", cavator.nextScreen);
 }

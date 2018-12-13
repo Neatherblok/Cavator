@@ -48,6 +48,21 @@ function init() {
     const cavator = new Game();
     window.setInterval(cavator.draw, 1000 / 60);
 }
+class ScreenSelector {
+    constructor(_gameScreenNumber) {
+        this.screen = ["this.Startscreen.draw()", "this.Gamescreen.draw()", "this.EraSelectionscreen.draw()"];
+        this.currentGameScreenNumber = 0;
+        this.currentGameScreen = eval(this.screen[this.currentGameScreenNumber]);
+        this.currentGameScreenNumber = _gameScreenNumber;
+    }
+    current() {
+        return this.currentGameScreen;
+    }
+    nextScreen() {
+        this.currentGameScreenNumber++;
+        console.log(this.currentGameScreenNumber);
+    }
+}
 class CanvasHelper {
     constructor(canvas) {
         this._canvas = canvas;
@@ -58,18 +73,55 @@ class CanvasHelper {
     clear() {
         this._context.clearRect(0, 0, this._canvas.width, this._canvas.height);
     }
+    getWidth() {
+        return this._canvas.width;
+    }
+    getHeight() {
+        return this._canvas.height;
+    }
+    getCenter() {
+        return { X: this.getWidth() / 2, Y: this.getHeight() / 2 };
+    }
     writeTextToCanvas(aText, aFontSize, aXpos, aYpos, aColor = "white", aAlignment = "center") {
         this._context.font = `${aFontSize}px Minecraft`;
         this._context.fillStyle = aColor;
         this._context.textAlign = aAlignment;
         this._context.fillText(aText, aXpos, aYpos);
     }
+    writeImageToCanvas(aSrc, aXpos, aYpos) {
+        let image = new Image();
+        image.addEventListener('load', () => {
+            this._context.drawImage(image, aXpos, aYpos);
+        });
+        image.src = aSrc;
+    }
+    writeButtonToCanvas(aCaption, aXpos = -1, aYpos = -1) {
+        let buttonImage = new Image();
+        buttonImage.src = "./assets/images/UI/buttonBlue.png";
+        buttonImage.addEventListener('load', () => {
+            let dx = aXpos;
+            let dy = aYpos;
+            if (dx < 0)
+                dx = (this.getWidth() - buttonImage.width) / 2;
+            if (dy < 0)
+                dy = this.getHeight() / 2 + buttonImage.height;
+            let fontX = dx + ((buttonImage.width + aCaption.length - 18) / 2);
+            let fontY = dy + (buttonImage.height - 12);
+            this._context.drawImage(buttonImage, dx, dy);
+            this.writeTextToCanvas(aCaption, 20, fontX, fontY, '#000');
+        });
+    }
 }
 class GameScreen extends Game {
 }
-class Startscreen extends Game {
+class StartScreen {
     constructor() {
-        super();
+        this.draw = () => {
+            this._canvas.writeImageToCanvas("./assets/images/Cavator_logo/CavatorLogo.png", this._canvas.getCenter().X - 200, this._canvas.getCenter().Y - 300);
+            this._canvas.writeButtonToCanvas("Play", undefined, this._canvas.getCenter().Y + 200);
+        };
+        this.canvasElement = document.getElementById('canvas');
+        this._canvas = new CanvasHelper(this.canvasElement);
     }
 }
 //# sourceMappingURL=app.js.map
