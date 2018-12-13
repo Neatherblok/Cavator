@@ -4,7 +4,7 @@ class Game {
     private Startscreen: StartScreen;
     private Gamescreen: GameScreen;
     private EraSelectionscreen: EraSelectionScreen;
-    private itemList: ItemList;
+    private itemList: Item;
     private screen: string[] = ["this.Startscreen.draw()", "this.Gamescreen.draw()", "this.EraSelectionscreen.draw()"];
     private currentGameScreenNumber: number = 0;
 
@@ -14,7 +14,7 @@ class Game {
         this.Startscreen = new StartScreen();
         this.Gamescreen = new GameScreen();
         this.EraSelectionscreen = new EraSelectionScreen();
-        this.itemList = new ItemList;
+        this.itemList = new Item;
     }
 
     public draw = () => {
