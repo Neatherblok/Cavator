@@ -29,6 +29,10 @@ class GameScreen {
         }, 1000)
     }
 
+    public hole(){
+        return this.holes
+    }
+
     // public scoreCounter() {
     //     if (answer() === true) {
     //         this.score++;

@@ -9,16 +9,24 @@ class Game {
         };
         this.nextScreen = (event) => {
             console.log(this.currentGameScreenNumber);
-            if (this.currentGameScreenNumber == 1) {
-                console.log("jaa");
-                ++this.currentGameScreenNumber;
+            if (this.currentGameScreenNumber == 2) {
+                this.currentGameScreenNumber = 1;
+                this.Gamescreen.timer();
+            }
+            else if (this.currentGameScreenNumber == 1) {
+                for (let i = 0; i < this.Gamescreen.hole().length; i++) {
+                    if (this.Gamescreen.hole()[i].getX() <= event.clientX && this.Gamescreen.hole()[i].getX() + 128 >= event.clientX
+                        && this.Gamescreen.hole()[i].getY() <= event.clientY && this.Gamescreen.hole()[i].getY() + 110 >= event.clientY) {
+                        this.currentGameScreenNumber++;
+                    }
+                }
             }
             else if (this.currentGameScreenNumber == 0) {
-                console.log(event.clientY);
                 if (event.clientX >= (this._canvas.getCenter().X - 111) && event.clientX <= (this._canvas.getCenter().X + 111)
                     && event.clientY >= (this._canvas.getCenter().Y + 200) && event.clientY <= this._canvas.getCenter().Y + 239) {
                     ++this.currentGameScreenNumber;
                     this.Gamescreen.timer();
+                    console.log(this.Gamescreen.hole());
                 }
             }
         };
@@ -181,9 +189,17 @@ class Item {
                     name: "Weverij",
                     source: "../assets/images/items/weverij.png",
                     era: 8,
-                    hint1: "Het stoken van kolen zorgt voor de aandrijving.",
-                    hint2: "Soms werkten ook kinderen in de weverij.",
-                    hint3: "Door de afscheiding van België moest Nederland zelf textiel gaan produceren."
+                    hint1: "Het stoken van kolen zorgt voor de aandrijving",
+                    hint2: "Soms werkten ook kinderen in de weverij",
+                    hint3: ""
+                },
+                {
+                    name: "Willem van Oranje",
+                    source: "../assets/images/items/willemVanOranje.png",
+                    era: 5,
+                    hint1: "Dit is Willem van Oranje",
+                    hint2: "Hij is vader des vaderlands",
+                    hint3: ""
                 },
                 {
                     name: "Vliegtuigbom",
@@ -341,6 +357,9 @@ class GameScreen {
             if (this.counter === 0)
                 clearInterval(intervalId);
         }, 1000);
+    }
+    hole() {
+        return this.holes;
     }
 }
 class StartScreen {
