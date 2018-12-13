@@ -187,10 +187,13 @@ class GameScreen {
     constructor() {
         this.holes = new Array();
         this.counter = 180;
+        this.score = 0;
         this.draw = () => {
             for (let i = 0; i < this.holes.length; i++) {
                 this.holes[i].draw();
             }
+            this._canvas.writeTextToCanvas(`Time left: ${this.counter}`, 20, 100, 50);
+            this._canvas.writeTextToCanvas(`Score: ${this.score}`, 20, 100, 75);
         };
         this.canvasElement = document.getElementById('canvas');
         this._canvas = new CanvasHelper(this.canvasElement);
@@ -202,8 +205,9 @@ class GameScreen {
         let intervalId = setInterval(() => {
             this.counter--;
             console.log(this.counter);
-            if (this.counter === 0)
+            if (this.counter === 0) {
                 clearInterval(intervalId);
+            }
         }, 1000);
     }
 }
