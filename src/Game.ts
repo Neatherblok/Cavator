@@ -4,7 +4,7 @@ class Game {
     private Startscreen: StartScreen;
     private Gamescreen: GameScreen;
     private EraSelectionscreen: EraSelectionScreen;
-    private itemList: ItemList;
+    private itemList: Item;
     private screen: string[] = ["this.Startscreen.draw()", "this.Gamescreen.draw()", "this.EraSelectionscreen.draw()"];
     private currentGameScreenNumber: number = 0;
 
@@ -14,7 +14,7 @@ class Game {
         this.Startscreen = new StartScreen();
         this.Gamescreen = new GameScreen();
         this.EraSelectionscreen = new EraSelectionScreen();
-        this.itemList = new ItemList;
+        this.itemList = new Item;
     }
 
     public draw = () => {
@@ -23,12 +23,19 @@ class Game {
         currentGameScreen;
     }
 
-    public nextScreen = () => {
+    public nextScreen = (event:any) => {
         console.log(this.currentGameScreenNumber)
-        this.currentGameScreenNumber++
-        console.log(this.currentGameScreenNumber)
-        if(this.currentGameScreenNumber === 1){
-            this.Gamescreen.timer()
+        if(this.currentGameScreenNumber == 1){
+            console.log("jaa")
+            ++this.currentGameScreenNumber
+        }
+        else if(this.currentGameScreenNumber == 0){
+            console.log(event.clientY)
+            if (event.clientX >= (this._canvas.getCenter().X - 111) && event.clientX <= (this._canvas.getCenter().X + 111)
+                && event.clientY >= (this._canvas.getCenter().Y + 200) && event.clientY <= this._canvas.getCenter().Y + 239){
+                ++this.currentGameScreenNumber;
+                this.Gamescreen.timer()
+            }
         }
     }
 
