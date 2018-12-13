@@ -1,40 +1,7 @@
-class Item {
-    constructor() {
-        this._itemList =
-            [
-                {
-                    name: "Karel de Grote",
-                    source: "../assets/img/items/karel_de_grote.png",
-                    era: 3,
-                    hint1: "Was eerst Koning der Franken, werd vervolgens keizer van het West-Romeinse Rijk",
-                    hint2: "Zorgde voor de Karolingische renaissance"
-                },
-                {
-                    name: "VOC munt",
-                    source: "../assets/img/items/voc_munt.png",
-                    era: 6,
-                    hint1: "De VOC = Verenigde Oost-Indische Compagnie",
-                    hint2: "Zorgde voor een financiële opbloei"
-                },
-                {
-                    name: "Weverij",
-                    source: "../assets/img/items/weverij.png",
-                    era: 8,
-                    hint1: "Het stoken van kolen zorgt voor de aandrijving",
-                    hint2: "Soms werkten ook kinderen in de weverij"
-                }
-            ];
-        console.log(this._itemList[1].name);
-    }
-    getItem(itemNumber, property) {
-        return this._itemList[itemNumber].property;
-    }
-}
-;
 class Game {
     constructor() {
         this.screen = ["this.Startscreen.draw()", "this.Gamescreen.draw()", "this.EraSelectionscreen.draw()"];
-        this.currentGameScreenNumber = 0;
+        this.currentGameScreenNumber = 1;
         this.draw = () => {
             this._canvas.clear();
             let currentGameScreen = eval(this.screen[this.currentGameScreenNumber]);
@@ -47,9 +14,7 @@ class Game {
             if (this.currentGameScreenNumber === 1) {
                 this.Gamescreen.timer();
             }
-
         };
-        this.item = new Item;
         this.canvasElement = document.getElementById('canvas');
         this._canvas = new CanvasHelper(this.canvasElement);
         this.Startscreen = new StartScreen();
@@ -130,6 +95,7 @@ class ItemList {
     getItemProperty(itemNumber, property) {
         const item = this._itemList[itemNumber][property];
         console.log(item);
+        return item;
     }
 }
 ;
@@ -156,21 +122,6 @@ class Holes {
     }
     getHeight() {
         return this._height;
-    }
-}
-class ScreenSelector {
-    constructor(_gameScreenNumber) {
-        this.screen = ["this.Startscreen.draw()", "this.Gamescreen.draw()", "this.EraSelectionscreen.draw()"];
-        this.currentGameScreenNumber = 0;
-        this.currentGameScreen = eval(this.screen[this.currentGameScreenNumber]);
-        this.currentGameScreenNumber = _gameScreenNumber;
-    }
-    current() {
-        return this.currentGameScreen;
-    }
-    nextScreen() {
-        this.currentGameScreenNumber++;
-        console.log(this.currentGameScreenNumber);
     }
 }
 class CanvasHelper {
@@ -222,7 +173,6 @@ class CanvasHelper {
         });
     }
 }
-
 class MathHelper {
     static randomNumber(min, max) {
         return Math.round(Math.random() * (max - min) + min);
@@ -238,10 +188,12 @@ class GameScreen {
     constructor() {
         this.holes = new Array();
         this.counter = 180;
+        this.score = 0;
         this.draw = () => {
             for (let i = 0; i < this.holes.length; i++) {
                 this.holes[i].draw();
             }
+            this._canvas.writeTextToCanvas(`time left: ${this.counter}`, 20, 100, 100);
         };
         this.canvasElement = document.getElementById('canvas');
         this._canvas = new CanvasHelper(this.canvasElement);
@@ -257,7 +209,6 @@ class GameScreen {
                 clearInterval(intervalId);
         }, 1000);
     }
-
 }
 class StartScreen {
     constructor() {
