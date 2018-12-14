@@ -32,9 +32,9 @@ class Game {
            // }
         }
         else if (this.currentGameScreenNumber == 1) {
-            for(let i = 0; i < this.Gamescreen.hole().length; i++){
-                if(this.Gamescreen.hole()[i].getX() <= event.clientX && this.Gamescreen.hole()[i].getX()+128 >= event.clientX 
-                && this.Gamescreen.hole()[i].getY() <= event.clientY && this.Gamescreen.hole()[i].getY()+110 >= event.clientY){
+            for(let i = 0; i < this.Gamescreen.holes().length; i++){
+                if(this.Gamescreen.holes()[i].getX() <= event.clientX && this.Gamescreen.holes()[i].getX()+128 >= event.clientX 
+                && this.Gamescreen.holes()[i].getY() <= event.clientY && this.Gamescreen.holes()[i].getY()+110 >= event.clientY){
                     this.currentGameScreenNumber++;
                 }
             }
@@ -45,7 +45,7 @@ class Game {
                 && event.clientY >= (this._canvas.getCenter().Y + 200) && event.clientY <= this._canvas.getCenter().Y + 239) {
                 ++this.currentGameScreenNumber;
                 this.Gamescreen.timer()
-                console.log(this.Gamescreen.hole())
+                console.log(this.Gamescreen.holes())
             }
         }
     }

@@ -9,8 +9,8 @@ class CanvasHelper {
         this._canvas.height = window.innerHeight;
     }
 
-    public clear(): void {
-        this._context.clearRect(0, 0, this._canvas.width, this._canvas.height)
+    public clear(minXCoor:number = 0, minYCoor: number = 0, maxXCoor: number = this._canvas.width, maxYCoor: number = this._canvas.height): void {
+        this._context.clearRect(minXCoor, minYCoor, maxXCoor, maxYCoor)
     }
 
     public getWidth(): number {

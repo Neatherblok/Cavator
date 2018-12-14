@@ -1,4 +1,4 @@
-class Holes {
+class Hole {
 
     protected _xPos: number;
     protected _yPos: number;
