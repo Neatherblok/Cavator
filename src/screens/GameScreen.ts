@@ -4,12 +4,14 @@ class GameScreen {
     private hole = new Array<Hole>();
     protected counter: number = 180;
     protected score: number = 0;
+    private imageUrl: string;
 
-    public constructor() {
+    public constructor(imageUrl: string) {
+        this.imageUrl = imageUrl
         this.canvasElement = <HTMLCanvasElement>document.getElementById('canvas');
         this._canvas = new CanvasHelper(this.canvasElement);
         for (let index = 0; index < MathHelper.randomNumber(1, 6); index++) {
-            this.hole.push(new Hole(this.canvasElement, "./assets/images/hole1.png", MathHelper.randomNumber(0, this._canvas.getWidth() - 200), MathHelper.randomNumber(0, this._canvas.getHeight() - 200), 130, 120))
+            this.hole.push(new Hole(this.canvasElement, this.imageUrl, MathHelper.randomNumber(0, this._canvas.getWidth() - 200), MathHelper.randomNumber(0, this._canvas.getHeight() - 200), 130, 120))
         }
     }
 
@@ -31,6 +33,11 @@ class GameScreen {
 
     public holes(){
         return this.hole
+    }
+
+    public regenerateHole(numberOfHole:number){
+        this.hole.splice(numberOfHole, 1);
+        this.hole.push(new Hole(this.canvasElement, this.imageUrl, MathHelper.randomNumber(0, this._canvas.getWidth() - 200), MathHelper.randomNumber(0, this._canvas.getHeight() - 200), 130, 120))
     }
 
     // public scoreCounter() {

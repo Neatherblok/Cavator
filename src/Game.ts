@@ -12,7 +12,7 @@ class Game {
         this.canvasElement = <HTMLCanvasElement>document.getElementById('canvas');
         this._canvas = new CanvasHelper(this.canvasElement);
         this.Startscreen = new StartScreen();
-        this.Gamescreen = new GameScreen();
+        this.Gamescreen = new GameScreen("./assets/images/hole1.png");
         this.EraSelectionscreen = new EraSelectionScreen();
         this.itemList = new Item;
     }
@@ -36,6 +36,7 @@ class Game {
                 if(this.Gamescreen.holes()[i].getX() <= event.clientX && this.Gamescreen.holes()[i].getX()+128 >= event.clientX 
                 && this.Gamescreen.holes()[i].getY() <= event.clientY && this.Gamescreen.holes()[i].getY()+110 >= event.clientY){
                     this.currentGameScreenNumber++;
+                    this.Gamescreen.regenerateHole(i);
                 }
             }
 
@@ -44,6 +45,7 @@ class Game {
             if (event.clientX >= (this._canvas.getCenter().X - 111) && event.clientX <= (this._canvas.getCenter().X + 111)
                 && event.clientY >= (this._canvas.getCenter().Y + 200) && event.clientY <= this._canvas.getCenter().Y + 239) {
                 ++this.currentGameScreenNumber;
+                window.setInterval(this.draw, 1000 / 60);
                 this.Gamescreen.timer()
                 console.log(this.Gamescreen.holes())
             }
@@ -56,6 +58,6 @@ window.addEventListener('load', init);
 
 function init(): void {
     const cavator = new Game();
-    window.setInterval(cavator.draw, 1000 / 60);
+    cavator.draw()
     window.addEventListener("click", cavator.nextScreen);
 }

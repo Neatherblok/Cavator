@@ -17,6 +17,7 @@ class Game {
                     if (this.Gamescreen.holes()[i].getX() <= event.clientX && this.Gamescreen.holes()[i].getX() + 128 >= event.clientX
                         && this.Gamescreen.holes()[i].getY() <= event.clientY && this.Gamescreen.holes()[i].getY() + 110 >= event.clientY) {
                         this.currentGameScreenNumber++;
+                        this.Gamescreen.regenerateHole(i);
                     }
                 }
             }
@@ -24,6 +25,7 @@ class Game {
                 if (event.clientX >= (this._canvas.getCenter().X - 111) && event.clientX <= (this._canvas.getCenter().X + 111)
                     && event.clientY >= (this._canvas.getCenter().Y + 200) && event.clientY <= this._canvas.getCenter().Y + 239) {
                     ++this.currentGameScreenNumber;
+                    window.setInterval(this.draw, 1000 / 60);
                     this.Gamescreen.timer();
                     console.log(this.Gamescreen.holes());
                 }
@@ -32,7 +34,7 @@ class Game {
         this.canvasElement = document.getElementById('canvas');
         this._canvas = new CanvasHelper(this.canvasElement);
         this.Startscreen = new StartScreen();
-        this.Gamescreen = new GameScreen();
+        this.Gamescreen = new GameScreen("./assets/images/hole1.png");
         this.EraSelectionscreen = new EraSelectionScreen();
         this.itemList = new Item;
     }
@@ -40,7 +42,7 @@ class Game {
 window.addEventListener('load', init);
 function init() {
     const cavator = new Game();
-    window.setInterval(cavator.draw, 1000 / 60);
+    cavator.draw();
     window.addEventListener("click", cavator.nextScreen);
 }
 class MouseListener {
@@ -291,6 +293,9 @@ class CanvasHelper {
     getCenter() {
         return { X: this.getWidth() / 2, Y: this.getHeight() / 2 };
     }
+    loopImage(image, aXpos, aYpos) {
+        this._context.drawImage(image, aXpos, aYpos);
+    }
     writeTextToCanvas(aText, aFontSize, aXpos, aYpos, aColor = "white", aAlignment = "center") {
         this._context.font = `${aFontSize}px Minecraft`;
         this._context.fillStyle = aColor;
@@ -333,7 +338,7 @@ class EraSelectionScreen {
     }
 }
 class GameScreen {
-    constructor() {
+    constructor(imageUrl) {
         this.hole = new Array();
         this.counter = 180;
         this.score = 0;
@@ -344,10 +349,11 @@ class GameScreen {
             this._canvas.writeTextToCanvas(`Time left: ${this.counter}`, 20, 100, 50);
             this._canvas.writeTextToCanvas(`Score: ${this.score}`, 20, 100, 75);
         };
+        this.imageUrl = imageUrl;
         this.canvasElement = document.getElementById('canvas');
         this._canvas = new CanvasHelper(this.canvasElement);
         for (let index = 0; index < MathHelper.randomNumber(1, 6); index++) {
-            this.hole.push(new Hole(this.canvasElement, "./assets/images/hole1.png", MathHelper.randomNumber(0, this._canvas.getWidth() - 200), MathHelper.randomNumber(0, this._canvas.getHeight() - 200), 130, 120));
+            this.hole.push(new Hole(this.canvasElement, this.imageUrl, MathHelper.randomNumber(0, this._canvas.getWidth() - 200), MathHelper.randomNumber(0, this._canvas.getHeight() - 200), 130, 120));
         }
     }
     timer() {
@@ -359,6 +365,10 @@ class GameScreen {
     }
     holes() {
         return this.hole;
+    }
+    regenerateHole(numberOfHole) {
+        this.hole.splice(numberOfHole, 1);
+        this.hole.push(new Hole(this.canvasElement, this.imageUrl, MathHelper.randomNumber(0, this._canvas.getWidth() - 200), MathHelper.randomNumber(0, this._canvas.getHeight() - 200), 130, 120));
     }
 }
 class StartScreen {
