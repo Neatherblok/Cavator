@@ -35,7 +35,7 @@ class Game {
             for(let i = 0; i < this.Gamescreen.holes().length; i++){
                 if(this.Gamescreen.holes()[i].getX() <= event.clientX && this.Gamescreen.holes()[i].getX()+128 >= event.clientX 
                 && this.Gamescreen.holes()[i].getY() <= event.clientY && this.Gamescreen.holes()[i].getY()+110 >= event.clientY){
-                    this.currentGameScreenNumber++;
+                    this.currentGameScreenNumber = 2;
                     this.Gamescreen.regenerateHole(i);
                 }
             }
@@ -44,7 +44,7 @@ class Game {
         else if (this.currentGameScreenNumber == 0) {
             if (event.clientX >= (this._canvas.getCenter().X - 111) && event.clientX <= (this._canvas.getCenter().X + 111)
                 && event.clientY >= (this._canvas.getCenter().Y + 200) && event.clientY <= this._canvas.getCenter().Y + 239) {
-                ++this.currentGameScreenNumber;
+                this.currentGameScreenNumber = 1;
                 window.setInterval(this.draw, 1000 / 60);
                 this.Gamescreen.timer()
                 console.log(this.Gamescreen.holes())
