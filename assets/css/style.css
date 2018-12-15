@@ -8,9 +8,7 @@
     padding: 0;
 }
 
-#canvas {
-    cursor: url(../images/cursor.png), auto;	
-}
+
 
 body {
     overflow: hidden;

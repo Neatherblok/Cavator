@@ -27,12 +27,14 @@ class GameScreen {
         let intervalId = setInterval(() => {
             this.counter--;
             //console.log(this.counter);
-            if (this.counter === 0) clearInterval(intervalId)
+            if (this.counter === 0){
+                clearInterval(intervalId)
+            }
         }, 1000)
     }
 
-    public holes(){
-        return this.hole
+    public getHoles(){
+        return this.hole;
     }
 
     public regenerateHole(numberOfHole:number){

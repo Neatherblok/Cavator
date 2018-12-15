@@ -30,6 +30,7 @@ class Game {
             //    && event.clientY >= (this._canvas.getCenter().Y + 160) && event.clientY <= this._canvas.getCenter().Y + 199) {
             this.currentGameScreenNumber = 1;
             this.canvasElement.style.backgroundImage = "url(./assets/images/backgrounds/groundBackground.png)";
+            this.canvasElement.style.cursor = "url(./assets/images/cursor.png), auto"
             let intervalId = setInterval(() => {
                 this.draw();
                 if (this.currentGameScreenNumber === 2) clearInterval(intervalId)
@@ -37,11 +38,12 @@ class Game {
             // }
         }
         else if (this.currentGameScreenNumber == 1) {
-            for (let i = 0; i < this.Gamescreen.holes().length; i++) {
-                if (this.Gamescreen.holes()[i].getX() <= event.clientX && this.Gamescreen.holes()[i].getX() + 128 >= event.clientX
-                    && this.Gamescreen.holes()[i].getY() <= event.clientY && this.Gamescreen.holes()[i].getY() + 110 >= event.clientY) {
+            for (let i = 0; i < this.Gamescreen.getHoles().length; i++) {
+                if (this.Gamescreen.getHoles()[i].getX() <= event.clientX && this.Gamescreen.getHoles()[i].getX() + 128 >= event.clientX
+                    && this.Gamescreen.getHoles()[i].getY() <= event.clientY && this.Gamescreen.getHoles()[i].getY() + 110 >= event.clientY) {
                     this.currentGameScreenNumber = 2;
                     this.canvasElement.style.backgroundImage = "url(./assets/images/backgrounds/tableBackground.jpg)";
+                    this.canvasElement.style.cursor = "auto"
                     this.Gamescreen.regenerateHole(i);
 
                 }
@@ -53,12 +55,13 @@ class Game {
                 && event.clientY >= (this._canvas.getCenter().Y + 200) && event.clientY <= this._canvas.getCenter().Y + 239) {
                 this.currentGameScreenNumber = 1;
                 // window.setInterval(this.draw, 1000 / 60);
+                this.canvasElement.style.cursor = "url(./assets/images/cursor.png), auto"
                 let intervalId = setInterval(() => {
                     this.draw();
                     if (this.currentGameScreenNumber === 2) clearInterval(intervalId)
                 }, 1000 / 60)
                 this.Gamescreen.timer()
-                console.log(this.Gamescreen.holes())
+                console.log(this.Gamescreen.getHoles())
             }
         }
     }
