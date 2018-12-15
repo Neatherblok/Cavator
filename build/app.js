@@ -11,6 +11,8 @@ class Game {
             console.log(this.currentGameScreenNumber);
             if (this.currentGameScreenNumber == 2) {
                 this.currentGameScreenNumber = 1;
+                let canvas = document.getElementById('canvas');
+                canvas.style.backgroundImage = "url(./assets/images/backgrounds/groundBackground.png)";
                 let intervalId = setInterval(() => {
                     this.draw();
                     if (this.currentGameScreenNumber === 2)
@@ -22,6 +24,8 @@ class Game {
                     if (this.Gamescreen.holes()[i].getX() <= event.clientX && this.Gamescreen.holes()[i].getX() + 128 >= event.clientX
                         && this.Gamescreen.holes()[i].getY() <= event.clientY && this.Gamescreen.holes()[i].getY() + 110 >= event.clientY) {
                         this.currentGameScreenNumber = 2;
+                        let canvas = document.getElementById('canvas');
+                        canvas.style.backgroundImage = "url(./assets/images/backgrounds/tableBackground.jpg)";
                         this.Gamescreen.regenerateHole(i);
                     }
                 }

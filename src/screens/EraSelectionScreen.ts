@@ -12,6 +12,7 @@ class EraSelectionScreen {
 
     public draw = () => {
         this._canvas.writeImageToCanvas(this.itemList.getItemProperty(this.randomItemPicker(),"source"),this._canvas.getCenter().X, this._canvas.getCenter().Y-200)
+        
     }
 
     public randomItemPicker(){

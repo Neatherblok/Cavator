@@ -28,19 +28,24 @@ class Game {
         if (this.currentGameScreenNumber == 2) {
             //if (event.clientX >= (this._canvas.getCenter().X - 111) && event.clientX <= (this._canvas.getCenter().X + 111)
             //    && event.clientY >= (this._canvas.getCenter().Y + 160) && event.clientY <= this._canvas.getCenter().Y + 199) {
-                this.currentGameScreenNumber = 1;
-                let intervalId = setInterval(() => {
-                    this.draw();
-                    if (this.currentGameScreenNumber === 2) clearInterval(intervalId)
-                }, 1000 / 60)
-           // }
+            this.currentGameScreenNumber = 1;
+            let canvas = document.getElementById('canvas') as HTMLElement;
+            canvas.style.backgroundImage = "url(./assets/images/backgrounds/groundBackground.png)";
+            let intervalId = setInterval(() => {
+                this.draw();
+                if (this.currentGameScreenNumber === 2) clearInterval(intervalId)
+            }, 1000 / 60)
+            // }
         }
         else if (this.currentGameScreenNumber == 1) {
-            for(let i = 0; i < this.Gamescreen.holes().length; i++){
-                if(this.Gamescreen.holes()[i].getX() <= event.clientX && this.Gamescreen.holes()[i].getX()+128 >= event.clientX 
-                && this.Gamescreen.holes()[i].getY() <= event.clientY && this.Gamescreen.holes()[i].getY()+110 >= event.clientY){
+            for (let i = 0; i < this.Gamescreen.holes().length; i++) {
+                if (this.Gamescreen.holes()[i].getX() <= event.clientX && this.Gamescreen.holes()[i].getX() + 128 >= event.clientX
+                    && this.Gamescreen.holes()[i].getY() <= event.clientY && this.Gamescreen.holes()[i].getY() + 110 >= event.clientY) {
                     this.currentGameScreenNumber = 2;
+                    let canvas = document.getElementById('canvas') as HTMLElement;
+                    canvas.style.backgroundImage = "url(./assets/images/backgrounds/tableBackground.jpg)";
                     this.Gamescreen.regenerateHole(i);
+
                 }
             }
 
