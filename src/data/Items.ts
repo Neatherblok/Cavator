@@ -142,7 +142,7 @@ class Item {
             },
             {
                 name:"Weverij",
-                source:"./assets/images/items/weverij.png",
+                source:"./assets/images/items/8weverij.png",
                 era:8,
                 hint1:"Het stoken van kolen zorgt voor de aandrijving",
                 hint2:"Soms werkten ook kinderen in de weverij",

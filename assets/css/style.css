@@ -8,8 +8,8 @@
     padding: 0;
 }
 
-canvas {
-    cursor: url('../images/cursor.png'), auto;	
+#canvas {
+    cursor: url(../images/cursor.png), auto;	
 }
 
 body {

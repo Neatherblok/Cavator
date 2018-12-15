@@ -11,8 +11,7 @@ class Game {
             console.log(this.currentGameScreenNumber);
             if (this.currentGameScreenNumber == 2) {
                 this.currentGameScreenNumber = 1;
-                let canvas = document.getElementById('canvas');
-                canvas.style.backgroundImage = "url(./assets/images/backgrounds/groundBackground.png)";
+                this.canvasElement.style.backgroundImage = "url(./assets/images/backgrounds/groundBackground.png)";
                 let intervalId = setInterval(() => {
                     this.draw();
                     if (this.currentGameScreenNumber === 2)
@@ -24,8 +23,7 @@ class Game {
                     if (this.Gamescreen.holes()[i].getX() <= event.clientX && this.Gamescreen.holes()[i].getX() + 128 >= event.clientX
                         && this.Gamescreen.holes()[i].getY() <= event.clientY && this.Gamescreen.holes()[i].getY() + 110 >= event.clientY) {
                         this.currentGameScreenNumber = 2;
-                        let canvas = document.getElementById('canvas');
-                        canvas.style.backgroundImage = "url(./assets/images/backgrounds/tableBackground.jpg)";
+                        this.canvasElement.style.backgroundImage = "url(./assets/images/backgrounds/tableBackground.jpg)";
                         this.Gamescreen.regenerateHole(i);
                     }
                 }
@@ -209,7 +207,7 @@ class Item {
                 },
                 {
                     name: "Weverij",
-                    source: "./assets/images/items/weverij.png",
+                    source: "./assets/images/items/8weverij.png",
                     era: 8,
                     hint1: "Het stoken van kolen zorgt voor de aandrijving",
                     hint2: "Soms werkten ook kinderen in de weverij",
@@ -375,7 +373,7 @@ class GameScreen {
         this.imageUrl = imageUrl;
         this.canvasElement = document.getElementById('canvas');
         this._canvas = new CanvasHelper(this.canvasElement);
-        for (let index = 0; index < MathHelper.randomNumber(1, 6); index++) {
+        for (let index = 0; index < MathHelper.randomNumber(3, 6); index++) {
             this.hole.push(new Hole(this.canvasElement, this.imageUrl, MathHelper.randomNumber(0, this._canvas.getWidth() - 200), MathHelper.randomNumber(0, this._canvas.getHeight() - 200), 130, 120));
         }
     }

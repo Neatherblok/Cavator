@@ -10,7 +10,7 @@ class GameScreen {
         this.imageUrl = imageUrl
         this.canvasElement = <HTMLCanvasElement>document.getElementById('canvas');
         this._canvas = new CanvasHelper(this.canvasElement);
-        for (let index = 0; index < MathHelper.randomNumber(1, 6); index++) {
+        for (let index = 0; index < MathHelper.randomNumber(3, 6); index++) {
             this.hole.push(new Hole(this.canvasElement, this.imageUrl, MathHelper.randomNumber(0, this._canvas.getWidth() - 200), MathHelper.randomNumber(0, this._canvas.getHeight() - 200), 130, 120))
         }
     }
