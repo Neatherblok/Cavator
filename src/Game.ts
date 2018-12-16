@@ -28,8 +28,10 @@ class Game {
         if (this.currentGameScreenNumber == 2) {
             //if (event.clientX >= (this._canvas.getCenter().X - 111) && event.clientX <= (this._canvas.getCenter().X + 111)
             //    && event.clientY >= (this._canvas.getCenter().Y + 160) && event.clientY <= this._canvas.getCenter().Y + 199) {
+            this.Gamescreen.addCounter();
             this.currentGameScreenNumber = 1;
             this.canvasElement.style.backgroundImage = "url(./assets/images/backgrounds/groundBackground.png)";
+            this.canvasElement.style.backgroundSize = "auto";
             this.canvasElement.style.cursor = "url(./assets/images/cursor.png), auto"
             let intervalId = setInterval(() => {
                 this.draw();
@@ -42,7 +44,8 @@ class Game {
                 if (this.Gamescreen.getHoles()[i].getX() <= event.clientX && this.Gamescreen.getHoles()[i].getX() + 128 >= event.clientX
                     && this.Gamescreen.getHoles()[i].getY() <= event.clientY && this.Gamescreen.getHoles()[i].getY() + 110 >= event.clientY) {
                     this.currentGameScreenNumber = 2;
-                    this.canvasElement.style.backgroundImage = "url(./assets/images/backgrounds/tableBackground.jpg)";
+                    this.canvasElement.style.backgroundImage = "url(./assets/images/backgrounds/tableBackgroundConcept.jpg)";
+                    this.canvasElement.style.backgroundSize = "100% 100%"
                     this.canvasElement.style.cursor = "auto"
                     this.Gamescreen.regenerateHole(i);
 
