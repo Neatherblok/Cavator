@@ -87,3 +87,5 @@ function init(): void {
     window.addEventListener("click", cavator.nextScreen);
     cavator.canvasElement.style.cursor = "url(./assets/images/featherCursor.png), auto";
 }
+
+//negeer deze
