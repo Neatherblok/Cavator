@@ -7,7 +7,7 @@ class Game {
     private itemList: Item;
     private MouseListener: MouseListener;
     private screen: string[] = ["this.Startscreen.draw()", "this.Gamescreen.draw()", "this.EraSelectionscreen.draw()"];
-    private sounds = ['buttonHitSFX', 'digging1', 'digging2', 'digging3', 'digging4', 'digging5'];
+    private sounds: string[] = ['buttonHitSFX', 'digging1', 'digging2', 'digging3', 'digging4', 'digging5'];
     private currentGameScreenNumber: number = 0;
 
     public constructor() {
@@ -83,16 +83,21 @@ class Game {
             for (let i = 0; i < this.Gamescreen.getHoles().length; i++) {
                 if (this.Gamescreen.getHoles()[i].getX() <= event.clientX && this.Gamescreen.getHoles()[i].getX() + 128 >= event.clientX
                     && this.Gamescreen.getHoles()[i].getY() <= event.clientY && this.Gamescreen.getHoles()[i].getY() + 110 >= event.clientY) {
+
                     const randomDigSound = MathHelper.randomNumber(1, this.sounds.length - 1);
                     let audioLink = `./assets/sounds/sfx/diggingSFX/${this.sounds[randomDigSound]}.mp3`
                     let audio: HTMLAudioElement = new Audio(audioLink);
                     audio.play();
-                    if (this.clicksLeft() == 0) {
+                    if(this.Gamescreen.getHoles()[i].getClicks() == 0){
+                        console.log('bigger than 0')
                         this.currentGameScreenNumber = 2;
                         this.canvasElement.style.backgroundImage = "url(./assets/images/backgrounds/tableBackgroundConcept.jpg)";
                         this.canvasElement.style.backgroundSize = "100% 100%"
                         this.canvasElement.style.cursor = "url(./assets/images/FeatherCursor2.png), auto"
                         this.Gamescreen.regenerateHole(i);
+                    }
+                    else{
+                        this.Gamescreen.getHoles()[i].lowerClicks();
                     }
 
                 }
@@ -116,10 +121,6 @@ class Game {
                 console.log(this.Gamescreen.getHoles())
             }
         }
-    }
-
-    public clicksLeft() {
-        return 0;
     }
 
 
