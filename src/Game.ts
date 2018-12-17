@@ -1,5 +1,5 @@
 class Game {
-    protected readonly canvasElement: HTMLCanvasElement;
+    public readonly canvasElement: HTMLCanvasElement;
     protected readonly _canvas: CanvasHelper;
     private Startscreen: StartScreen;
     private Gamescreen: GameScreen;
@@ -76,13 +76,13 @@ class Game {
             }
         }
     }
-
 }
 
 window.addEventListener('load', init);
 
 function init(): void {
     const cavator = new Game();
-    cavator.draw()
+    cavator.draw();
     window.addEventListener("click", cavator.nextScreen);
+    cavator.canvasElement.style.cursor = "url(./assets/images/FeatherCursor.png), auto";
 }

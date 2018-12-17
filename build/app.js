@@ -69,6 +69,7 @@ function init() {
     const cavator = new Game();
     cavator.draw();
     window.addEventListener("click", cavator.nextScreen);
+    cavator.canvasElement.style.cursor = "url(./assets/images/FeatherCursor.png), auto";
 }
 class MouseListener {
     constructor() {

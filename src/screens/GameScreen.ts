@@ -20,29 +20,28 @@ class GameScreen {
             this.hole[i].draw();
         }
         this._canvas.writeTextToCanvas(`Time left: ${this.counter}`, 20, 100, 50)
-        this._canvas.writeTextToCanvas(`Score: ${this.score}`, 20, 100, 75 )
+        this._canvas.writeTextToCanvas(`Score: ${this.score}`, 20, 100, 75)
     }
 
     public timer() {
         let intervalId = setInterval(() => {
             this.counter--;
-            //console.log(this.counter);
-            if (this.counter === 0){
+            if (this.counter === 0) {
                 clearInterval(intervalId)
             }
         }, 1000)
     }
 
-    public getHoles(){
+    public getHoles() {
         return this.hole;
     }
 
-    public regenerateHole(numberOfHole:number){
+    public regenerateHole(numberOfHole: number) {
         this.hole.splice(numberOfHole, 1);
         this.hole.push(new Hole(this.canvasElement, this.imageUrl, MathHelper.randomNumber(0, this._canvas.getWidth() - 200), MathHelper.randomNumber(0, this._canvas.getHeight() - 200), 130, 120))
     }
 
     public addScoreCounter() {
-            this.score++;
+        this.score++;
     }
 }
