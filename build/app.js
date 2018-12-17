@@ -33,7 +33,7 @@ class Game {
                         this.currentGameScreenNumber = 2;
                         this.canvasElement.style.backgroundImage = "url(./assets/images/backgrounds/tableBackgroundConcept.jpg)";
                         this.canvasElement.style.backgroundSize = "100% 100%";
-                        this.canvasElement.style.cursor = "auto";
+                        this.canvasElement.style.cursor = "url(./assets/images/FeatherCursor.png), auto";
                         this.Gamescreen.regenerateHole(i);
                     }
                 }
@@ -69,7 +69,7 @@ function init() {
     const cavator = new Game();
     cavator.draw();
     window.addEventListener("click", cavator.nextScreen);
-    cavator.canvasElement.style.cursor = "url(./assets/images/FeatherCursor.png), auto";
+    cavator.canvasElement.style.cursor = "url(./assets/images/featherCursor.png), auto";
 }
 class MouseListener {
     constructor() {
