@@ -3,6 +3,7 @@ class EraSelectionScreen {
     protected readonly canvasElement: HTMLCanvasElement;
     protected readonly _canvas: CanvasHelper;
     private itemList: Item;
+    private pickedItem: number;
 
     public constructor(){
         this.canvasElement = <HTMLCanvasElement>document.getElementById('canvas');
@@ -11,12 +12,18 @@ class EraSelectionScreen {
     }
 
     public draw = () => {
-        this._canvas.writeImageToCanvas(this.itemList.getItemProperty(this.randomItemPicker(),"source"),this._canvas.getCenter().X, this._canvas.getCenter().Y-200)
+        this.randomItemPicker();
+        this._canvas.writeImageToCanvas(this.itemList.getItemProperty(this.pickedItem,"source"),this._canvas.getCenter().X, this._canvas.getCenter().Y-200)
         
     }
 
     public randomItemPicker(){
-        return MathHelper.randomNumber(0, this.itemList.getItemArrayLength())
+        this.pickedItem = MathHelper.randomNumber(0, this.itemList.getItemArrayLength())
+    }
+
+    public randomItemNumber(){
+        return this.itemList.getItemProperty(this.pickedItem,"era")
+        //return 10;
     }
 
 }

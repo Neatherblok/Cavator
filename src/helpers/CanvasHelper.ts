@@ -1,6 +1,6 @@
 class CanvasHelper {
     private readonly _canvas: HTMLCanvasElement;
-    private readonly _context: CanvasRenderingContext2D;
+    public readonly _context: CanvasRenderingContext2D;
 
     constructor(canvas: HTMLCanvasElement) {
         this._canvas = canvas;
