@@ -33,11 +33,13 @@ class Game {
                         let audioLink = `./assets/sounds/sfx/diggingSFX/${this.sounds[randomDigSound]}.mp3`;
                         let audio = new Audio(audioLink);
                         audio.play();
-                        this.currentGameScreenNumber = 2;
-                        this.canvasElement.style.backgroundImage = "url(./assets/images/backgrounds/tableBackgroundConcept.jpg)";
-                        this.canvasElement.style.backgroundSize = "100% 100%";
-                        this.canvasElement.style.cursor = "auto";
-                        this.Gamescreen.regenerateHole(i);
+                        if (this.clicksLeft() == 0) {
+                            this.currentGameScreenNumber = 2;
+                            this.canvasElement.style.backgroundImage = "url(./assets/images/backgrounds/tableBackgroundConcept.jpg)";
+                            this.canvasElement.style.backgroundSize = "100% 100%";
+                            this.canvasElement.style.cursor = "url(./assets/images/FeatherCursor.png), auto";
+                            this.Gamescreen.regenerateHole(i);
+                        }
                     }
                 }
             }
@@ -67,12 +69,16 @@ class Game {
         this.MouseListener = new MouseListener();
         this.itemList = new Item;
     }
+    clicksLeft() {
+        return 0;
+    }
 }
 window.addEventListener('load', init);
 function init() {
     const cavator = new Game();
     cavator.draw();
     window.addEventListener("click", cavator.nextScreen);
+    cavator.canvasElement.style.cursor = "url(./assets/images/featherCursor.png), auto";
 }
 class MouseListener {
     constructor() {
