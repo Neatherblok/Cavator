@@ -71,6 +71,7 @@ class Game {
                         let audioLink = `./assets/sounds/sfx/diggingSFX/${this.sounds[randomDigSound]}.mp3`;
                         let audio = new Audio(audioLink);
                         audio.play();
+
                         if (this.clicksLeft() == 0) {
                             this.currentGameScreenNumber = 2;
                             this.canvasElement.style.backgroundImage = "url(./assets/images/backgrounds/tableBackgroundConcept.jpg)";
@@ -78,6 +79,7 @@ class Game {
                             this.canvasElement.style.cursor = "url(./assets/images/FeatherCursor2.png), auto";
                             this.Gamescreen.regenerateHole(i);
                         }
+
                     }
                 }
             }
@@ -117,6 +119,7 @@ function init() {
     cavator.draw();
     window.addEventListener("click", cavator.nextScreen);
     cavator.canvasElement.style.cursor = "url(./assets/images/FeatherCursor2.png), auto";
+
 }
 class MouseListener {
     constructor() {
