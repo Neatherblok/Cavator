@@ -9,7 +9,7 @@ class HighscoreScreen {
     }
 
     public draw = () => {
-        this._canvas.writeTextToCanvas('You are done for now', 20, this._canvas.getCenter().X, this._canvas.getCenter().Y )
+
     }
 
 }

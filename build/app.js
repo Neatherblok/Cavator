@@ -1,6 +1,7 @@
 class Game {
     constructor() {
         this.screen = ["this.Startscreen.draw()", "this.Gamescreen.draw()", "this.EraSelectionscreen.draw()"];
+        this.sounds = ['buttonHitSFX', 'digging1', 'digging2', 'digging3', 'digging4', 'digging5'];
         this.currentGameScreenNumber = 0;
         this.draw = () => {
             this._canvas.clear();
@@ -10,7 +11,7 @@ class Game {
         this.nextScreen = (event) => {
             console.log(this.currentGameScreenNumber);
             if (this.currentGameScreenNumber == 2) {
-                this.Gamescreen.addCounter();
+                this.Gamescreen.addScoreCounter();
                 this.currentGameScreenNumber = 1;
                 this.canvasElement.style.backgroundImage = "url(./assets/images/backgrounds/groundBackground.png)";
                 this.canvasElement.style.backgroundSize = "auto";
@@ -25,6 +26,10 @@ class Game {
                 for (let i = 0; i < this.Gamescreen.getHoles().length; i++) {
                     if (this.Gamescreen.getHoles()[i].getX() <= event.clientX && this.Gamescreen.getHoles()[i].getX() + 128 >= event.clientX
                         && this.Gamescreen.getHoles()[i].getY() <= event.clientY && this.Gamescreen.getHoles()[i].getY() + 110 >= event.clientY) {
+                        const randomDigSound = MathHelper.randomNumber(1, this.sounds.length - 1);
+                        let audioLink = `./assets/sounds/sfx/diggingSFX/${this.sounds[randomDigSound]}.mp3`;
+                        let audio = new Audio(audioLink);
+                        audio.play();
                         this.currentGameScreenNumber = 2;
                         this.canvasElement.style.backgroundImage = "url(./assets/images/backgrounds/tableBackgroundConcept.jpg)";
                         this.canvasElement.style.backgroundSize = "100% 100%";
@@ -36,6 +41,9 @@ class Game {
             else if (this.currentGameScreenNumber == 0) {
                 if (event.clientX >= (this._canvas.getCenter().X - 111) && event.clientX <= (this._canvas.getCenter().X + 111)
                     && event.clientY >= (this._canvas.getCenter().Y + 200) && event.clientY <= this._canvas.getCenter().Y + 239) {
+                    let audioLink = "./assets/sounds/sfx/buttonHitSFX.mp3";
+                    let audio = new Audio(audioLink);
+                    audio.play();
                     this.currentGameScreenNumber = 1;
                     this.canvasElement.style.cursor = "url(./assets/images/cursor.png), auto";
                     let intervalId = setInterval(() => {
@@ -398,14 +406,13 @@ class GameScreen {
         this.hole.splice(numberOfHole, 1);
         this.hole.push(new Hole(this.canvasElement, this.imageUrl, MathHelper.randomNumber(0, this._canvas.getWidth() - 200), MathHelper.randomNumber(0, this._canvas.getHeight() - 200), 130, 120));
     }
-    addCounter() {
+    addScoreCounter() {
         this.score++;
     }
 }
 class HighscoreScreen {
     constructor() {
         this.draw = () => {
-            this._canvas.writeTextToCanvas('You are done for now', 20, this._canvas.getCenter().X, this._canvas.getCenter().Y);
         };
         this.canvasElement = document.getElementById('canvas');
         this._canvas = new CanvasHelper(this.canvasElement);

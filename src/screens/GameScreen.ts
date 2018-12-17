@@ -42,7 +42,7 @@ class GameScreen {
         this.hole.push(new Hole(this.canvasElement, this.imageUrl, MathHelper.randomNumber(0, this._canvas.getWidth() - 200), MathHelper.randomNumber(0, this._canvas.getHeight() - 200), 130, 120))
     }
 
-    public addCounter() {
+    public addScoreCounter() {
             this.score++;
     }
 }
