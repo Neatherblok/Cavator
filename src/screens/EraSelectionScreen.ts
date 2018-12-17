@@ -23,6 +23,7 @@ class EraSelectionScreen {
 
     public randomItemNumber(){
         return this.itemList.getItemProperty(this.pickedItem,"era")
+        //return 10;
     }
 
 }

@@ -30,8 +30,9 @@ class Game {
         console.log(this.currentGameScreenNumber)
         if (this.currentGameScreenNumber == 2) {
             if (event.clientX >= this.MouseListener.eraScreenClick(this.EraSelectionscreen.randomItemNumber()).Xmin && event.clientX <= this.MouseListener.eraScreenClick(this.EraSelectionscreen.randomItemNumber()).Xmax
-               && event.clientY >= this.MouseListener.eraScreenClick(this.EraSelectionscreen.randomItemNumber()).Ymin && event.clientY <= this.MouseListener.eraScreenClick(this.EraSelectionscreen.randomItemNumber()).Ymax) {
-            this.Gamescreen.addScoreCounter();
+                && event.clientY >= this.MouseListener.eraScreenClick(this.EraSelectionscreen.randomItemNumber()).Ymin && event.clientY <= this.MouseListener.eraScreenClick(this.EraSelectionscreen.randomItemNumber()).Ymax) {
+                this.Gamescreen.addScoreCounter();
+            }
             this.currentGameScreenNumber = 1;
             this.canvasElement.style.backgroundImage = "url(./assets/images/backgrounds/groundBackground.png)";
             this.canvasElement.style.backgroundSize = "auto";
@@ -40,7 +41,7 @@ class Game {
                 this.draw();
                 if (this.currentGameScreenNumber === 2) clearInterval(intervalId)
             }, 1000 / 60)
-          }
+
         }
         else if (this.currentGameScreenNumber == 1) {
             for (let i = 0; i < this.Gamescreen.getHoles().length; i++) {
