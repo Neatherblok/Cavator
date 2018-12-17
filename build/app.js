@@ -11,16 +11,19 @@ class Game {
         this.nextScreen = (event) => {
             console.log(this.currentGameScreenNumber);
             if (this.currentGameScreenNumber == 2) {
-                this.Gamescreen.addScoreCounter();
-                this.currentGameScreenNumber = 1;
-                this.canvasElement.style.backgroundImage = "url(./assets/images/backgrounds/groundBackground.png)";
-                this.canvasElement.style.backgroundSize = "auto";
-                this.canvasElement.style.cursor = "url(./assets/images/cursor.png), auto";
-                let intervalId = setInterval(() => {
-                    this.draw();
-                    if (this.currentGameScreenNumber === 2)
-                        clearInterval(intervalId);
-                }, 1000 / 60);
+                if (event.clientX >= this.MouseListener.eraScreenClick(this.EraSelectionscreen.randomItemNumber()).Xmin && event.clientX <= this.MouseListener.eraScreenClick(this.EraSelectionscreen.randomItemNumber()).Xmax
+                    && event.clientY >= this.MouseListener.eraScreenClick(this.EraSelectionscreen.randomItemNumber()).Ymin && event.clientY <= this.MouseListener.eraScreenClick(this.EraSelectionscreen.randomItemNumber()).Ymax) {
+                    this.Gamescreen.addScoreCounter();
+                    this.currentGameScreenNumber = 1;
+                    this.canvasElement.style.backgroundImage = "url(./assets/images/backgrounds/groundBackground.png)";
+                    this.canvasElement.style.backgroundSize = "auto";
+                    this.canvasElement.style.cursor = "url(./assets/images/cursor.png), auto";
+                    let intervalId = setInterval(() => {
+                        this.draw();
+                        if (this.currentGameScreenNumber === 2)
+                            clearInterval(intervalId);
+                    }, 1000 / 60);
+                }
             }
             else if (this.currentGameScreenNumber == 1) {
                 for (let i = 0; i < this.Gamescreen.getHoles().length; i++) {
@@ -61,6 +64,7 @@ class Game {
         this.Startscreen = new StartScreen();
         this.Gamescreen = new GameScreen("./assets/images/hole1.png");
         this.EraSelectionscreen = new EraSelectionScreen();
+        this.MouseListener = new MouseListener();
         this.itemList = new Item;
     }
 }
@@ -78,6 +82,8 @@ class MouseListener {
                 console.log(event.pageX, event.pageY);
             }, 500);
         };
+        this.canvasElement = document.getElementById('canvas');
+        this._canvas = new CanvasHelper(this.canvasElement);
         this.init();
     }
     init() {
@@ -85,6 +91,38 @@ class MouseListener {
     }
     mouseHandlers() {
         document.addEventListener('mousemove', this.onMouseMove);
+    }
+    eraScreenClick(eraNumber) {
+        if (eraNumber == 1) {
+            return { Xmin: 110, Xmax: 192, Ymin: this._canvas.getHeight() - 126, Ymax: this._canvas.getHeight() - 55 };
+        }
+        else if (eraNumber == 2) {
+            return { Xmin: 110, Xmax: 192, Ymin: this._canvas.getHeight() - 126, Ymax: this._canvas.getHeight() - 55 };
+        }
+        else if (eraNumber == 3) {
+            return { Xmin: 110, Xmax: 192, Ymin: this._canvas.getHeight() - 126, Ymax: this._canvas.getHeight() - 55 };
+        }
+        else if (eraNumber == 4) {
+            return { Xmin: 110, Xmax: 192, Ymin: this._canvas.getHeight() - 126, Ymax: this._canvas.getHeight() - 55 };
+        }
+        else if (eraNumber == 5) {
+            return { Xmin: 110, Xmax: 192, Ymin: this._canvas.getHeight() - 126, Ymax: this._canvas.getHeight() - 55 };
+        }
+        else if (eraNumber == 6) {
+            return { Xmin: 110, Xmax: 192, Ymin: this._canvas.getHeight() - 126, Ymax: this._canvas.getHeight() - 55 };
+        }
+        else if (eraNumber == 7) {
+            return { Xmin: 110, Xmax: 192, Ymin: this._canvas.getHeight() - 126, Ymax: this._canvas.getHeight() - 55 };
+        }
+        else if (eraNumber == 8) {
+            return { Xmin: 110, Xmax: 192, Ymin: this._canvas.getHeight() - 126, Ymax: this._canvas.getHeight() - 55 };
+        }
+        else if (eraNumber == 9) {
+            return { Xmin: 110, Xmax: 192, Ymin: this._canvas.getHeight() - 126, Ymax: this._canvas.getHeight() - 55 };
+        }
+        else if (eraNumber == 10) {
+            return { Xmin: 110, Xmax: 192, Ymin: this._canvas.getHeight() - 126, Ymax: this._canvas.getHeight() - 55 };
+        }
     }
 }
 class Item {
@@ -362,14 +400,18 @@ class MathHelper {
 class EraSelectionScreen {
     constructor() {
         this.draw = () => {
-            this._canvas.writeImageToCanvas(this.itemList.getItemProperty(this.randomItemPicker(), "source"), this._canvas.getCenter().X, this._canvas.getCenter().Y - 200);
+            this.randomItemPicker();
+            this._canvas.writeImageToCanvas(this.itemList.getItemProperty(this.pickedItem, "source"), this._canvas.getCenter().X, this._canvas.getCenter().Y - 200);
         };
         this.canvasElement = document.getElementById('canvas');
         this._canvas = new CanvasHelper(this.canvasElement);
         this.itemList = new Item;
     }
     randomItemPicker() {
-        return MathHelper.randomNumber(0, this.itemList.getItemArrayLength());
+        this.pickedItem = MathHelper.randomNumber(0, this.itemList.getItemArrayLength());
+    }
+    randomItemNumber() {
+        return this.itemList.getItemProperty(this.pickedItem, "era");
     }
 }
 class GameScreen {
