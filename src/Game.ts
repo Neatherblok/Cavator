@@ -33,6 +33,9 @@ class Game {
                 && event.clientY >= this.MouseListener.eraScreenClick(this.EraSelectionscreen.randomItemNumber()).Ymin && event.clientY <= this.MouseListener.eraScreenClick(this.EraSelectionscreen.randomItemNumber()).Ymax) {
                 this.Gamescreen.addScoreCounter();
                 this.currentGameScreenNumber = 1;
+                let audioLink = `./assets/sounds/sfx/checkSFX/rightSFX.mp3`
+                let audio: HTMLAudioElement = new Audio(audioLink);
+                audio.play();
                 this.canvasElement.style.backgroundImage = "url(./assets/images/backgrounds/groundBackground.png)";
                 this.canvasElement.style.backgroundSize = "auto";
                 this.canvasElement.style.cursor = "url(./assets/images/cursor.png), auto"
@@ -64,6 +67,9 @@ class Game {
                 && !(event.clientX >= this.MouseListener.eraScreenClick(this.EraSelectionscreen.randomItemNumber()).Xmin && event.clientX <= this.MouseListener.eraScreenClick(this.EraSelectionscreen.randomItemNumber()).Xmax
                     && event.clientY >= this.MouseListener.eraScreenClick(this.EraSelectionscreen.randomItemNumber()).Ymin && event.clientY <= this.MouseListener.eraScreenClick(this.EraSelectionscreen.randomItemNumber()).Ymax)) {
                 this.currentGameScreenNumber = 1;
+                let audioLink = `./assets/sounds/sfx/checkSFX/wrongSFX.mp3`
+                let audio: HTMLAudioElement = new Audio(audioLink);
+                audio.play();
                 this.canvasElement.style.backgroundImage = "url(./assets/images/backgrounds/groundBackground.png)";
                 this.canvasElement.style.backgroundSize = "auto";
                 this.canvasElement.style.cursor = "url(./assets/images/cursor.png), auto"
