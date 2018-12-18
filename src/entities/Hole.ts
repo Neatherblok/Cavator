@@ -6,6 +6,7 @@ class Hole {
     protected readonly _height: number;
     protected readonly _imageSrc: string;
     protected readonly _canvas: CanvasHelper;
+    private _clicks: number;
 
     public constructor(
         canvas: HTMLCanvasElement,
@@ -13,7 +14,8 @@ class Hole {
         xCoor: number,
         yCoor: number,
         width: number,
-        height: number
+        height: number,
+        clicks: number
     ){
         this._canvas = new CanvasHelper(canvas);
         this._imageSrc = imageSource;
@@ -21,6 +23,7 @@ class Hole {
         this._yPos = yCoor;
         this._width = width;
         this._height = height;
+        this._clicks = clicks;
     }
 
     public draw() {
@@ -41,5 +44,13 @@ class Hole {
 
     public getHeight(): number {
         return this._height;
+    }
+
+    public getClicks(): number {
+        return this._clicks;
+    }
+
+    public lowerClicks() {
+        this._clicks--;
     }
 }
