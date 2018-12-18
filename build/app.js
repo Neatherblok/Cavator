@@ -213,6 +213,14 @@ class Item {
                     hint3: "Hij droeg dierenvellen kleding en een koperen bijl."
                 },
                 {
+                    name: "Hunebed",
+                    source: "./assets/images/items/1hunebed.png",
+                    era: 1,
+                    hint1: "Hunebedden zijn resten van grafkamers.",
+                    hint2: "Ze zijn terug te vinden in het gebied van de trechterbekercultuur.",
+                    hint3: "De meeste hunebedden zijn in Drenthe."
+                },
+                {
                     name: "Colosseum",
                     source: "./assets/images/items/2colosseum.png",
                     era: 2,
@@ -229,6 +237,14 @@ class Item {
                     hint3: "De helm is verguld zilveren versierd."
                 },
                 {
+                    name: "Ostrakon",
+                    source: "./assets/images/items/2ostrakon.png",
+                    era: 2,
+                    hint1: "Werd gebruikt om minder belangrijke dingen op te schrijven.",
+                    hint2: "In Athene werd hiermee een stem uitgebracht.",
+                    hint3: "Papyrus was hier te duur voor."
+                },
+                {
                     name: "Zwaard van Sint Cosmas en Damianus",
                     source: "./assets/images/items/3zwaard_sint_cosmas.png",
                     era: 3,
@@ -239,6 +255,14 @@ class Item {
                 {
                     name: "Karel de Grote",
                     source: "./assets/images/items/3karel_de_grote.png",
+                    era: 3,
+                    hint1: "Was eerst Koning der Franken, werd vervolgens keizer van het Heilige Roomse Rijk.",
+                    hint2: "Zorgde voor de Karolingische renaissance.",
+                    hint3: "Onder hem kregen kunst, literatuur en architectuur een ongewone opleving."
+                },
+                {
+                    name: "Penannulaire broche",
+                    source: "./assets/images/items/3penannulaire’ (in de vorm van een onvolledige ring) broche.png",
                     era: 3,
                     hint1: "Was eerst Koning der Franken, werd vervolgens keizer van het Heilige Roomse Rijk.",
                     hint2: "Zorgde voor de Karolingische renaissance.",
