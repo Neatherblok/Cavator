@@ -71,15 +71,17 @@ class Game {
                         let audioLink = `./assets/sounds/sfx/diggingSFX/${this.sounds[randomDigSound]}.mp3`;
                         let audio = new Audio(audioLink);
                         audio.play();
-
-                        if (this.clicksLeft() == 0) {
+                        if (this.Gamescreen.getHoles()[i].getClicks() == 0) {
+                            console.log('bigger than 0');
                             this.currentGameScreenNumber = 2;
                             this.canvasElement.style.backgroundImage = "url(./assets/images/backgrounds/tableBackgroundConcept.jpg)";
                             this.canvasElement.style.backgroundSize = "100% 100%";
                             this.canvasElement.style.cursor = "url(./assets/images/FeatherCursor2.png), auto";
                             this.Gamescreen.regenerateHole(i);
                         }
-
+                        else {
+                            this.Gamescreen.getHoles()[i].lowerClicks();
+                        }
                     }
                 }
             }
@@ -109,9 +111,6 @@ class Game {
         this.MouseListener = new MouseListener();
         this.itemList = new Item;
     }
-    clicksLeft() {
-        return 0;
-    }
 }
 window.addEventListener('load', init);
 function init() {
@@ -119,7 +118,6 @@ function init() {
     cavator.draw();
     window.addEventListener("click", cavator.nextScreen);
     cavator.canvasElement.style.cursor = "url(./assets/images/FeatherCursor2.png), auto";
-
 }
 class MouseListener {
     constructor() {
@@ -363,13 +361,14 @@ class Item {
 }
 ;
 class Hole {
-    constructor(canvas, imageSource, xCoor, yCoor, width, height) {
+    constructor(canvas, imageSource, xCoor, yCoor, width, height, clicks) {
         this._canvas = new CanvasHelper(canvas);
         this._imageSrc = imageSource;
         this._xPos = xCoor;
         this._yPos = yCoor;
         this._width = width;
         this._height = height;
+        this._clicks = clicks;
     }
     draw() {
         this._canvas.writeImageToCanvas(this._imageSrc, this._xPos, this._yPos);
@@ -385,6 +384,12 @@ class Hole {
     }
     getHeight() {
         return this._height;
+    }
+    getClicks() {
+        return this._clicks;
+    }
+    lowerClicks() {
+        this._clicks--;
     }
 }
 class CanvasHelper {
@@ -448,6 +453,7 @@ class EraSelectionScreen {
     constructor() {
         this.draw = () => {
             this.randomItemPicker();
+            this._canvas.writeTextToCanvas(`Je hebt ${this.itemList.getItemProperty(this.pickedItem, "name")} gevonden!`, 45, this._canvas.getCenter().X, 100, "yellow");
             this._canvas.writeImageToCanvas(this.itemList.getItemProperty(this.pickedItem, "source"), this._canvas.getCenter().X, this._canvas.getCenter().Y - 200);
         };
         this.canvasElement = document.getElementById('canvas');
@@ -477,7 +483,7 @@ class GameScreen {
         this.canvasElement = document.getElementById('canvas');
         this._canvas = new CanvasHelper(this.canvasElement);
         for (let index = 0; index < MathHelper.randomNumber(3, 6); index++) {
-            this.hole.push(new Hole(this.canvasElement, this.imageUrl, MathHelper.randomNumber(0, this._canvas.getWidth() - 200), MathHelper.randomNumber(0, this._canvas.getHeight() - 200), 130, 120));
+            this.hole.push(new Hole(this.canvasElement, this.imageUrl, MathHelper.randomNumber(0, this._canvas.getWidth() - 200), MathHelper.randomNumber(0, this._canvas.getHeight() - 200), 130, 120, MathHelper.randomNumber(0, 2)));
         }
     }
     timer() {
@@ -493,7 +499,7 @@ class GameScreen {
     }
     regenerateHole(numberOfHole) {
         this.hole.splice(numberOfHole, 1);
-        this.hole.push(new Hole(this.canvasElement, this.imageUrl, MathHelper.randomNumber(0, this._canvas.getWidth() - 200), MathHelper.randomNumber(0, this._canvas.getHeight() - 200), 130, 120));
+        this.hole.push(new Hole(this.canvasElement, this.imageUrl, MathHelper.randomNumber(0, this._canvas.getWidth() - 200), MathHelper.randomNumber(0, this._canvas.getHeight() - 200), 130, 120, MathHelper.randomNumber(0, 2)));
     }
     addScoreCounter() {
         this.score++;
