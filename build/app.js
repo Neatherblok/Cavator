@@ -1,20 +1,18 @@
 class Game {
     constructor() {
-        this.screen = ["this.Startscreen.draw()", "this.Gamescreen.draw()", "this.EraSelectionscreen.draw()", "this.HighscoreScreen.draw()"];
+        this.screen = ["this.Startscreen.draw()", "this.Gamescreen.draw()", "this.EraSelectionscreen.draw()", "this.HighscoreScreen.draw(this.Gamescreen.getScore())"];
         this.sounds = ['buttonHitSFX', 'digging1', 'digging2', 'digging3', 'digging4', 'digging5'];
         this.currentGameScreenNumber = 0;
         this.draw = () => {
             this._canvas.clear();
-            let currentGameScreen = eval(this.screen[this.currentGameScreenNumber]);
-            console.log(currentGameScreen);
-            currentGameScreen;
+            eval(this.screen[this.currentGameScreenNumber]);
         };
         this.nextScreen = (event) => {
             console.log(this.currentGameScreenNumber);
             if (this.currentGameScreenNumber == 2) {
                 if (event.clientX >= this.MouseListener.eraScreenClick(this.EraSelectionscreen.randomItemNumber()).Xmin && event.clientX <= this.MouseListener.eraScreenClick(this.EraSelectionscreen.randomItemNumber()).Xmax
                     && event.clientY >= this.MouseListener.eraScreenClick(this.EraSelectionscreen.randomItemNumber()).Ymin && event.clientY <= this.MouseListener.eraScreenClick(this.EraSelectionscreen.randomItemNumber()).Ymax) {
-                    this._gameHelper.addScore();
+                    this.Gamescreen.addScoreCounter();
                     this.currentGameScreenNumber = 1;
                     let audioLink = `./assets/sounds/sfx/checkSFX/rightSFX.mp3`;
                     let audio = new Audio(audioLink);
@@ -26,6 +24,10 @@ class Game {
                         this.draw();
                         if (this.currentGameScreenNumber === 2)
                             clearInterval(intervalId);
+                        if (this.Gamescreen.getCounter() === 0) {
+                            this.HighscoreScreen = new HighscoreScreen();
+                            this.currentGameScreenNumber = 3;
+                        }
                     }, 1000 / 60);
                 }
                 else if (event.clientX >= this.MouseListener.eraScreenClick(1).Xmin && event.clientX <= this.MouseListener.eraScreenClick(1).Xmax
@@ -61,6 +63,10 @@ class Game {
                         this.draw();
                         if (this.currentGameScreenNumber === 2)
                             clearInterval(intervalId);
+                        if (this.Gamescreen.getCounter() === 0) {
+                            this.HighscoreScreen = new HighscoreScreen();
+                            this.currentGameScreenNumber = 3;
+                        }
                     }, 1000 / 60);
                 }
             }
@@ -93,9 +99,17 @@ class Game {
                     let audio = new Audio(audioLink);
                     audio.play();
                     this.currentGameScreenNumber = 1;
+                    let intervalId = setInterval(() => {
+                        this.draw();
+                        if (this.currentGameScreenNumber === 2)
+                            clearInterval(intervalId);
+                        if (this.Gamescreen.getCounter() === 0) {
+                            this.HighscoreScreen = new HighscoreScreen();
+                            this.currentGameScreenNumber = 3;
+                        }
+                    }, 1000 / 60);
                     this.canvasElement.style.cursor = "url(./assets/images/cursor.png), auto";
-                    this._gameHelper.timer();
-                    this._gameHelper.interval();
+                    this.Gamescreen.timer();
                     console.log(this.Gamescreen.getHoles());
                 }
             }
@@ -108,12 +122,6 @@ class Game {
         this.MouseListener = new MouseListener();
         this.itemList = new Item();
         this._gameHelper = new GameHelper();
-    }
-    currentGameScreen() {
-        return this.currentGameScreenNumber;
-    }
-    HighscoreScreen() {
-        this.currentGameScreenNumber = 4;
     }
 }
 window.addEventListener('load', init);
@@ -457,24 +465,12 @@ class GameHelper {
     }
     timer() {
         let intervalId = setInterval(() => {
-            this.counter--;
+            --this.counter;
             if (this.counter === 0) {
                 clearInterval(intervalId);
             }
         }, 1000);
     }
-    interval() {
-        let intervalId = setInterval(() => {
-            this._game.draw();
-            if (this._game.currentGameScreen() === 2)
-                clearInterval(intervalId);
-            if (this.counter === 0) {
-                clearInterval(intervalId);
-                this._game.HighscoreScreen();
-            }
-        }, 1000 / 60);
-    }
-    ;
     addScore() {
         this.score++;
     }
@@ -508,12 +504,15 @@ class EraSelectionScreen {
 class GameScreen {
     constructor(imageUrl) {
         this.hole = new Array();
+        this.counter = 5;
+        this.score = 0;
         this.draw = () => {
             for (let i = 0; i < this.hole.length; i++) {
                 this.hole[i].draw();
             }
-            this._canvas.writeTextToCanvas(`Time left: ${this._gameHelper.counter}`, 20, 100, 50);
-            this._canvas.writeTextToCanvas(`Score: ${this._gameHelper.getScore()}`, 20, 100, 75);
+            this._canvas.writeTextToCanvas(`Tijd over: ${this.counter} seconden`, 20, 160, 50);
+            console.log(this.counter);
+            this._canvas.writeTextToCanvas(`Score: ${this.score}`, 20, 100, 75);
         };
         this.imageUrl = imageUrl;
         this.canvasElement = document.getElementById('canvas');
@@ -523,8 +522,25 @@ class GameScreen {
             this.hole.push(new Hole(this.canvasElement, this.imageUrl, MathHelper.randomNumber(0, this._canvas.getWidth() - 200), MathHelper.randomNumber(0, this._canvas.getHeight() - 200), 130, 120, MathHelper.randomNumber(0, 2)));
         }
     }
+    timer() {
+        let intervalId = setInterval(() => {
+            this.counter--;
+            if (this.counter === 0) {
+                clearInterval(intervalId);
+            }
+        }, 1000);
+    }
     getHoles() {
         return this.hole;
+    }
+    getCounter() {
+        return this.counter;
+    }
+    addScoreCounter() {
+        this.score++;
+    }
+    getScore() {
+        return this.score;
     }
     regenerateHole(numberOfHole) {
         this.hole.splice(numberOfHole, 1);
@@ -533,9 +549,14 @@ class GameScreen {
 }
 class HighscoreScreen {
     constructor() {
-        this.draw = () => {
-            this._canvas.writeTextToCanvas(`Je hebt een score van ${this._gameHelper.getScore()} behaald!`, 45, this._canvas.getCenter().X, 100, "yellow");
+        this.draw = (score) => {
+            this._canvas.writeTextToCanvas(`Je hebt een score van behaald!`, 45, this._canvas.getCenter().X, 100, "yellow");
             this._canvas.writeButtonToCanvas("Probeer opnieuw", undefined, this._canvas.getCenter().Y + 200);
+            this._canvas.writeTextToCanvas(`Je hebt iets gevonden!`, 45, this._canvas.getCenter().X, 100, "yellow");
+            this._canvas._context.font = `45px Minecraft`;
+            this._canvas._context.fillStyle = "yellow";
+            this._canvas._context.textAlign = "center";
+            this._canvas._context.fillText('jup', 100, 100);
         };
         this.canvasElement = document.getElementById('canvas');
         this._canvas = new CanvasHelper(this.canvasElement);

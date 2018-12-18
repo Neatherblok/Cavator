@@ -3,6 +3,8 @@ class GameScreen {
     protected readonly _canvas: CanvasHelper;
     private _gameHelper: GameHelper;
     private hole = new Array<Hole>();
+    protected counter: number = 5;
+    public score: number = 0;
     private imageUrl: string;
 
     public constructor(imageUrl: string) {
@@ -19,12 +21,34 @@ class GameScreen {
         for (let i = 0; i < this.hole.length; i++) {
             this.hole[i].draw();
         }
-        this._canvas.writeTextToCanvas(`Time left: ${this._gameHelper.counter}`, 20, 100, 50)
-        this._canvas.writeTextToCanvas(`Score: ${this._gameHelper.getScore()}`, 20, 100, 75)
+        this._canvas.writeTextToCanvas(`Tijd over: ${this.counter} seconden`, 20, 160, 50)
+        console.log(this.counter);
+        this._canvas.writeTextToCanvas(`Score: ${this.score}`, 20, 100, 75)
+    }
+
+    public timer() {
+        let intervalId = setInterval(() => {
+            this.counter--;
+            if (this.counter === 0) {
+                clearInterval(intervalId)
+            }
+        }, 1000)
     }
 
     public getHoles() {
         return this.hole;
+    }
+
+    public getCounter(){
+        return this.counter;
+    }
+
+    public addScoreCounter() {
+        this.score++;
+    }
+
+    public getScore(){
+        return this.score;
     }
 
     public regenerateHole(numberOfHole: number) {
