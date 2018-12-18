@@ -47,7 +47,9 @@ class Game {
                     if (this.Gamescreen.getCounter() === 0)
                     {
                         this.HighscoreScreen = new HighscoreScreen();
+                        clearInterval(intervalId)
                         this.currentGameScreenNumber = 3;
+                        this.draw();
                     }
                 }, 1000 / 60)
             }
@@ -85,7 +87,9 @@ class Game {
                     if (this.currentGameScreenNumber === 2) clearInterval(intervalId)
                     if (this.Gamescreen.getCounter() === 0){
                         this.HighscoreScreen = new HighscoreScreen();
+                        clearInterval(intervalId)
                         this.currentGameScreenNumber = 3;
+                        this.draw();
                     }
                 }, 1000 / 60)
             }
@@ -125,8 +129,10 @@ class Game {
                     this.draw();
                     if (this.currentGameScreenNumber === 2) clearInterval(intervalId)
                     if (this.Gamescreen.getCounter() === 0) {
+                        clearInterval(intervalId)
                         this.HighscoreScreen = new HighscoreScreen();
                         this.currentGameScreenNumber = 3;
+                        this.draw();
                     }
                 }, 1000 / 60)
                 this.canvasElement.style.cursor = "url(./assets/images/cursor.png), auto"
