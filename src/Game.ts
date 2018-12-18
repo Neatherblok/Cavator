@@ -21,6 +21,9 @@ class Game {
         this.MouseListener = new MouseListener();
         this.itemList = new Item();
         this._gameHelper = new GameHelper();
+        let audioLink = `./assets/sounds/music/dutch_street_organ.wav`
+        let backgroundMusic: HTMLAudioElement = new Audio(audioLink);
+        backgroundMusic.play();
     }
 
     public draw = () => {
