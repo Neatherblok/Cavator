@@ -46,15 +46,16 @@ class Game {
                 this.canvasElement.style.backgroundSize = "auto";
                 this.canvasElement.style.cursor = "url(./assets/images/cursor.png), auto"
                 let intervalId = setInterval(() => {
-                    this.draw();
                     if (this.currentGameScreenNumber === 2) clearInterval(intervalId)
-                    if (this.Gamescreen.getCounter() === 0)
-                    {
-                        this.HighscoreScreen = new HighscoreScreen();
+                    if (this.Gamescreen.getCounter() === 0) {
                         clearInterval(intervalId)
+                        this.HighscoreScreen = new HighscoreScreen();
                         this.currentGameScreenNumber = 3;
-                        this.draw();
+                        this.canvasElement.style.cursor = "url(./assets/images/FeatherCursor2.png), auto"
+                    
                     }
+                        this.draw();
+                    
                 }, 1000 / 60)
             }
             else if (event.clientX >= this.MouseListener.eraScreenClick(1).Xmin && event.clientX <= this.MouseListener.eraScreenClick(1).Xmax
@@ -87,14 +88,16 @@ class Game {
                 this.canvasElement.style.backgroundSize = "auto";
                 this.canvasElement.style.cursor = "url(./assets/images/cursor.png), auto"
                 let intervalId = setInterval(() => {
-                    this.draw();
                     if (this.currentGameScreenNumber === 2) clearInterval(intervalId)
-                    if (this.Gamescreen.getCounter() === 0){
-                        this.HighscoreScreen = new HighscoreScreen();
+                    if (this.Gamescreen.getCounter() === 0) {
                         clearInterval(intervalId)
+                        this.HighscoreScreen = new HighscoreScreen();
                         this.currentGameScreenNumber = 3;
-                        this.draw();
+                        this.canvasElement.style.cursor = "url(./assets/images/FeatherCursor2.png), auto"
+                    
                     }
+                        this.draw();
+                    
                 }, 1000 / 60)
             }
         }
@@ -130,14 +133,16 @@ class Game {
                 audio.play();
                 this.currentGameScreenNumber = 1;
                 let intervalId = setInterval(() => {
-                    this.draw();
                     if (this.currentGameScreenNumber === 2) clearInterval(intervalId)
                     if (this.Gamescreen.getCounter() === 0) {
                         clearInterval(intervalId)
                         this.HighscoreScreen = new HighscoreScreen();
                         this.currentGameScreenNumber = 3;
-                        this.draw();
+                        this.canvasElement.style.cursor = "url(./assets/images/FeatherCursor2.png), auto"
+                    
                     }
+                        this.draw();
+                    
                 }, 1000 / 60)
                 this.canvasElement.style.cursor = "url(./assets/images/cursor.png), auto"
                 this.Gamescreen.timer()

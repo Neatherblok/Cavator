@@ -3,7 +3,7 @@ class GameScreen {
     protected readonly _canvas: CanvasHelper;
     private _gameHelper: GameHelper;
     private hole = new Array<Hole>();
-    protected counter: number = 5;
+    protected counter: number = 150;
     public score: number = 0;
     private imageUrl: string;
 
@@ -21,7 +21,7 @@ class GameScreen {
         for (let i = 0; i < this.hole.length; i++) {
             this.hole[i].draw();
         }
-        this._canvas.writeTextToCanvas(`Tijd over: ${this.counter} seconden`, 20, 160, 50)
+        this._canvas.writeTextToCanvas(`Tijd over: ${this.counter} seconden`, 20, 175, 50)
         console.log(this.counter);
         this._canvas.writeTextToCanvas(`Score: ${this.score}`, 20, 100, 75)
     }
