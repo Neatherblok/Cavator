@@ -1,11 +1,12 @@
 class Game {
     constructor() {
-        this.screen = ["this.Startscreen.draw()", "this.Gamescreen.draw()", "this.EraSelectionscreen.draw()"];
+        this.screen = ["this.Startscreen.draw()", "this.Gamescreen.draw()", "this.EraSelectionscreen.draw()", "this.HighscoreScreen.draw()"];
         this.sounds = ['buttonHitSFX', 'digging1', 'digging2', 'digging3', 'digging4', 'digging5'];
         this.currentGameScreenNumber = 0;
         this.draw = () => {
             this._canvas.clear();
             let currentGameScreen = eval(this.screen[this.currentGameScreenNumber]);
+            console.log(currentGameScreen);
             currentGameScreen;
         };
         this.nextScreen = (event) => {
@@ -94,6 +95,7 @@ class Game {
                     this.currentGameScreenNumber = 1;
                     this.canvasElement.style.cursor = "url(./assets/images/cursor.png), auto";
                     this._gameHelper.timer();
+                    this._gameHelper.interval();
                     console.log(this.Gamescreen.getHoles());
                 }
             }
@@ -109,6 +111,9 @@ class Game {
     }
     currentGameScreen() {
         return this.currentGameScreenNumber;
+    }
+    HighscoreScreen() {
+        this.currentGameScreenNumber = 4;
     }
 }
 window.addEventListener('load', init);
@@ -449,7 +454,6 @@ class GameHelper {
         this.score = 0;
         this.canvasElement = document.getElementById('canvas');
         this._canvas = new CanvasHelper(this.canvasElement);
-        this._game = new Game();
     }
     timer() {
         let intervalId = setInterval(() => {
@@ -464,8 +468,10 @@ class GameHelper {
             this._game.draw();
             if (this._game.currentGameScreen() === 2)
                 clearInterval(intervalId);
-            if (this.counter === 0)
+            if (this.counter === 0) {
                 clearInterval(intervalId);
+                this._game.HighscoreScreen();
+            }
         }, 1000 / 60);
     }
     ;
@@ -528,6 +534,8 @@ class GameScreen {
 class HighscoreScreen {
     constructor() {
         this.draw = () => {
+            this._canvas.writeTextToCanvas(`Je hebt een score van ${this._gameHelper.getScore()} behaald!`, 45, this._canvas.getCenter().X, 100, "yellow");
+            this._canvas.writeButtonToCanvas("Probeer opnieuw", undefined, this._canvas.getCenter().Y + 200);
         };
         this.canvasElement = document.getElementById('canvas');
         this._canvas = new CanvasHelper(this.canvasElement);

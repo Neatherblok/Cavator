@@ -9,7 +9,6 @@ class GameHelper {
     public constructor(){
         this.canvasElement = <HTMLCanvasElement>document.getElementById('canvas');
         this._canvas = new CanvasHelper(this.canvasElement);
-        this._game = new Game();
     }
 
     public timer() {
@@ -25,7 +24,10 @@ class GameHelper {
         let intervalId = setInterval(() => {
             this._game.draw();
             if (this._game.currentGameScreen() === 2) clearInterval(intervalId)
-            if (this.counter === 0) clearInterval(intervalId)
+            if (this.counter === 0){
+                clearInterval(intervalId)
+                this._game.HighscoreScreen();
+            }
         }, 1000 / 60)
     };
 

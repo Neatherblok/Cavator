@@ -7,7 +7,7 @@ class Game {
     private itemList: Item;
     private MouseListener: MouseListener;
     private _gameHelper: GameHelper;
-    private screen: string[] = ["this.Startscreen.draw()", "this.Gamescreen.draw()", "this.EraSelectionscreen.draw()"];
+    private screen: string[] = ["this.Startscreen.draw()", "this.Gamescreen.draw()", "this.EraSelectionscreen.draw()", "this.HighscoreScreen.draw()"];
     private sounds: string[] = ['buttonHitSFX', 'digging1', 'digging2', 'digging3', 'digging4', 'digging5'];
     private currentGameScreenNumber: number = 0;
 
@@ -25,6 +25,7 @@ class Game {
     public draw = () => {
         this._canvas.clear();
         let currentGameScreen = eval(this.screen[this.currentGameScreenNumber])
+        console.log(currentGameScreen)
         currentGameScreen;
     }
 
@@ -104,7 +105,6 @@ class Game {
 
                 }
             }
-
         }
         else if (this.currentGameScreenNumber == 0) {
             if (event.clientX >= (this._canvas.getCenter().X - 111) && event.clientX <= (this._canvas.getCenter().X + 111)
@@ -116,6 +116,7 @@ class Game {
                 // window.setInterval(this.draw, 1000 / 60);
                 this.canvasElement.style.cursor = "url(./assets/images/cursor.png), auto"
                 this._gameHelper.timer()
+                this._gameHelper.interval()
                 console.log(this.Gamescreen.getHoles())
             }
         }
@@ -125,6 +126,9 @@ class Game {
         return this.currentGameScreenNumber
     }
 
+    public HighscoreScreen(){
+        this.currentGameScreenNumber = 4;
+    }
 }
 
 window.addEventListener('load', init);
