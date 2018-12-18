@@ -13,7 +13,7 @@ class Game {
             if (this.currentGameScreenNumber == 2) {
                 if (event.clientX >= this.MouseListener.eraScreenClick(this.EraSelectionscreen.randomItemNumber()).Xmin && event.clientX <= this.MouseListener.eraScreenClick(this.EraSelectionscreen.randomItemNumber()).Xmax
                     && event.clientY >= this.MouseListener.eraScreenClick(this.EraSelectionscreen.randomItemNumber()).Ymin && event.clientY <= this.MouseListener.eraScreenClick(this.EraSelectionscreen.randomItemNumber()).Ymax) {
-                    this.Gamescreen.addScoreCounter();
+                    this._gameHelper.addScore();
                     this.currentGameScreenNumber = 1;
                     let audioLink = `./assets/sounds/sfx/checkSFX/rightSFX.mp3`;
                     let audio = new Audio(audioLink);
@@ -460,15 +460,21 @@ class GameHelper {
         }, 1000);
     }
     interval() {
-        if (this.counter > 0) {
-            let intervalId = setInterval(() => {
-                this._game.draw();
-                if (this._game.currentGameScreen() === 2)
-                    clearInterval(intervalId);
-            }, 1000 / 60);
-        }
+        let intervalId = setInterval(() => {
+            this._game.draw();
+            if (this._game.currentGameScreen() === 2)
+                clearInterval(intervalId);
+            if (this.counter === 0)
+                clearInterval(intervalId);
+        }, 1000 / 60);
     }
     ;
+    addScore() {
+        this.score++;
+    }
+    getScore() {
+        return this.score;
+    }
 }
 class MathHelper {
     static randomNumber(min, max) {
@@ -501,7 +507,7 @@ class GameScreen {
                 this.hole[i].draw();
             }
             this._canvas.writeTextToCanvas(`Time left: ${this._gameHelper.counter}`, 20, 100, 50);
-            this._canvas.writeTextToCanvas(`Score: ${this._gameHelper.score}`, 20, 100, 75);
+            this._canvas.writeTextToCanvas(`Score: ${this._gameHelper.getScore()}`, 20, 100, 75);
         };
         this.imageUrl = imageUrl;
         this.canvasElement = document.getElementById('canvas');
@@ -517,9 +523,6 @@ class GameScreen {
     regenerateHole(numberOfHole) {
         this.hole.splice(numberOfHole, 1);
         this.hole.push(new Hole(this.canvasElement, this.imageUrl, MathHelper.randomNumber(0, this._canvas.getWidth() - 200), MathHelper.randomNumber(0, this._canvas.getHeight() - 200), 130, 120, MathHelper.randomNumber(0, 2)));
-    }
-    addScoreCounter() {
-        this._gameHelper.score++;
     }
 }
 class HighscoreScreen {

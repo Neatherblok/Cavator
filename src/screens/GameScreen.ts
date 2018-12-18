@@ -20,7 +20,7 @@ class GameScreen {
             this.hole[i].draw();
         }
         this._canvas.writeTextToCanvas(`Time left: ${this._gameHelper.counter}`, 20, 100, 50)
-        this._canvas.writeTextToCanvas(`Score: ${this._gameHelper.score}`, 20, 100, 75)
+        this._canvas.writeTextToCanvas(`Score: ${this._gameHelper.getScore()}`, 20, 100, 75)
     }
 
     public getHoles() {
@@ -30,9 +30,5 @@ class GameScreen {
     public regenerateHole(numberOfHole: number) {
         this.hole.splice(numberOfHole, 1);
         this.hole.push(new Hole(this.canvasElement, this.imageUrl, MathHelper.randomNumber(0, this._canvas.getWidth() - 200), MathHelper.randomNumber(0, this._canvas.getHeight() - 200), 130, 120, MathHelper.randomNumber(0,2)))
-    }
-
-    public addScoreCounter() {
-        this._gameHelper.score++;
     }
 }
