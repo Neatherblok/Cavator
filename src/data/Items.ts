@@ -22,7 +22,7 @@ class Item {
                 hint3:"Hij droeg dierenvellen kleding en een koperen bijl."
             },
             {
-                name:"Hunebed",
+                name:"een hunebed",
                 source:"./assets/images/items/1hunebed.png",
                 era:1,
                 hint1:"Hunebedden zijn resten van grafkamers.",
@@ -47,7 +47,7 @@ class Item {
                 hint3:"De helm is verguld zilveren versierd."
             },
             {
-                name:"Ostrakon",
+                name:"een ostrakon",
                 source:"./assets/images/items/2ostrakon.png",
                 era:2,
                 hint1:"Werd gebruikt om minder belangrijke dingen op te schrijven.",
@@ -72,7 +72,7 @@ class Item {
                 hint3:"Onder hem kregen kunst, literatuur en architectuur een ongewone opleving."
             },
             {
-                name:"Penannulaire broche",
+                name:"een penannulaire broche",
                 source:"./assets/images/items/3broche.png",
                 era:3,
                 hint1:"Was eigendom van een belangrijke viking.",
@@ -97,7 +97,7 @@ class Item {
                 hint3:"Het strijkglas is een voorganger van het moderne strijkijzer."
             },
             {
-                name:"Narrenschoen",
+                name:"een narrenschoen",
                 source:"./assets/images/items/4narrenschoen.png",
                 era:4,
                 hint1:"De hofnar is de grappenmaker van een vorst.",
@@ -197,7 +197,7 @@ class Item {
                 hint3:"Later kwamen er sociale voorzieningen voor de fabrieksarbeiders."
             },
             {
-                name:"Eerste foto",
+                name:"de eerste foto",
                 source:"./assets/images/items/8eerste_foto.png",
                 era:8,
                 hint1:"Gemaakt door Joseph Niépce.",
@@ -247,7 +247,7 @@ class Item {
                 hint3:"De spelletjes stonden op cassettes."
             },
             {
-                name:"Eerste mobiele telefoon",
+                name:"de eerste mobiele telefoon",
                 source:"./assets/images/items/10mobiele_telefoon.png",
                 era:10,
                 hint1:"Gemaakt door Ericsson.",
