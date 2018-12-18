@@ -1,16 +1,27 @@
 class Game {
     constructor() {
-        this.screen = ["this.Startscreen.draw()", "this.Gamescreen.draw()", "this.EraSelectionscreen.draw()"];
+        this.screen = ["this.Startscreen.draw()", "this.Gamescreen.draw()", "this.EraSelectionscreen.draw()", "this.HighscoreScreen.draw(this.Gamescreen.getScore())"];
         this.sounds = ['buttonHitSFX', 'digging1', 'digging2', 'digging3', 'digging4', 'digging5'];
         this.currentGameScreenNumber = 0;
         this.draw = () => {
             this._canvas.clear();
-            let currentGameScreen = eval(this.screen[this.currentGameScreenNumber]);
-            currentGameScreen;
+            eval(this.screen[this.currentGameScreenNumber]);
         };
         this.nextScreen = (event) => {
             console.log(this.currentGameScreenNumber);
-            if (this.currentGameScreenNumber == 2) {
+            if (this.currentGameScreenNumber == 3) {
+                if (event.clientX >= (this._canvas.getCenter().X - 111) && event.clientX <= (this._canvas.getCenter().X + 111)
+                    && event.clientY >= (this._canvas.getCenter().Y + 200) && event.clientY <= this._canvas.getCenter().Y + 239) {
+                    let audioLink = "./assets/sounds/sfx/buttonHitSFX.mp3";
+                    let audio = new Audio(audioLink);
+                    audio.play();
+                    this.currentGameScreenNumber = 0;
+                    this.Gamescreen.resetCounter();
+                    this.Gamescreen.resetScore();
+                    this.draw();
+                }
+            }
+            else if (this.currentGameScreenNumber == 2) {
                 if (event.clientX >= this.MouseListener.eraScreenClick(this.EraSelectionscreen.randomItemNumber()).Xmin && event.clientX <= this.MouseListener.eraScreenClick(this.EraSelectionscreen.randomItemNumber()).Xmax
                     && event.clientY >= this.MouseListener.eraScreenClick(this.EraSelectionscreen.randomItemNumber()).Ymin && event.clientY <= this.MouseListener.eraScreenClick(this.EraSelectionscreen.randomItemNumber()).Ymax) {
                     this.Gamescreen.addScoreCounter();
@@ -22,9 +33,15 @@ class Game {
                     this.canvasElement.style.backgroundSize = "auto";
                     this.canvasElement.style.cursor = "url(./assets/images/cursor.png), auto";
                     let intervalId = setInterval(() => {
-                        this.draw();
                         if (this.currentGameScreenNumber === 2)
                             clearInterval(intervalId);
+                        if (this.Gamescreen.getCounter() === 0) {
+                            clearInterval(intervalId);
+                            this.HighscoreScreen = new HighscoreScreen();
+                            this.currentGameScreenNumber = 3;
+                            this.canvasElement.style.cursor = "url(./assets/images/FeatherCursor2.png), auto";
+                        }
+                        this.draw();
                     }, 1000 / 60);
                 }
                 else if (event.clientX >= this.MouseListener.eraScreenClick(1).Xmin && event.clientX <= this.MouseListener.eraScreenClick(1).Xmax
@@ -57,9 +74,15 @@ class Game {
                     this.canvasElement.style.backgroundSize = "auto";
                     this.canvasElement.style.cursor = "url(./assets/images/cursor.png), auto";
                     let intervalId = setInterval(() => {
-                        this.draw();
                         if (this.currentGameScreenNumber === 2)
                             clearInterval(intervalId);
+                        if (this.Gamescreen.getCounter() === 0) {
+                            clearInterval(intervalId);
+                            this.HighscoreScreen = new HighscoreScreen();
+                            this.currentGameScreenNumber = 3;
+                            this.canvasElement.style.cursor = "url(./assets/images/FeatherCursor2.png), auto";
+                        }
+                        this.draw();
                     }, 1000 / 60);
                 }
             }
@@ -92,12 +115,18 @@ class Game {
                     let audio = new Audio(audioLink);
                     audio.play();
                     this.currentGameScreenNumber = 1;
-                    this.canvasElement.style.cursor = "url(./assets/images/cursor.png), auto";
                     let intervalId = setInterval(() => {
-                        this.draw();
                         if (this.currentGameScreenNumber === 2)
                             clearInterval(intervalId);
+                        if (this.Gamescreen.getCounter() === 0) {
+                            clearInterval(intervalId);
+                            this.HighscoreScreen = new HighscoreScreen();
+                            this.currentGameScreenNumber = 3;
+                            this.canvasElement.style.cursor = "url(./assets/images/FeatherCursor2.png), auto";
+                        }
+                        this.draw();
                     }, 1000 / 60);
+                    this.canvasElement.style.cursor = "url(./assets/images/cursor.png), auto";
                     this.Gamescreen.timer();
                     console.log(this.Gamescreen.getHoles());
                 }
@@ -109,7 +138,11 @@ class Game {
         this.Gamescreen = new GameScreen("./assets/images/hole1.png");
         this.EraSelectionscreen = new EraSelectionScreen();
         this.MouseListener = new MouseListener();
-        this.itemList = new Item;
+        this.itemList = new Item();
+        let audioLink = `./assets/sounds/music/dutch_street_organ.wav`;
+        let backgroundMusic = new Audio(audioLink);
+        backgroundMusic.loop = true;
+        backgroundMusic.play();
     }
 }
 window.addEventListener('load', init);
@@ -175,7 +208,7 @@ class Item {
         this._itemList =
             [
                 {
-                    name: "Speerpunt",
+                    name: "een speerpunt",
                     source: "./assets/images/items/1speerpunt.png",
                     era: 1,
                     hint1: "Gevonden in midden Frankrijk, 1989.",
@@ -191,7 +224,7 @@ class Item {
                     hint3: "Hij droeg dierenvellen kleding en een koperen bijl."
                 },
                 {
-                    name: "Colosseum",
+                    name: "het Colosseum",
                     source: "./assets/images/items/2colosseum.png",
                     era: 2,
                     hint1: "Het gebouw staat in Rome, Italië.",
@@ -199,7 +232,7 @@ class Item {
                     hint3: "Het werd officieel geopend door keizer Titus."
                 },
                 {
-                    name: "De helm van Deurne",
+                    name: "de helm van Deurne",
                     source: "./assets/images/items/2helm_van_deurne.png",
                     era: 2,
                     hint1: "Deze helm was van een Romeins officier",
@@ -207,7 +240,7 @@ class Item {
                     hint3: "De helm is verguld zilveren versierd."
                 },
                 {
-                    name: "Zwaard van Sint Cosmas en Damianus",
+                    name: "het zwaard van Sint Cosmas en Damianus",
                     source: "./assets/images/items/3zwaard_sint_cosmas.png",
                     era: 3,
                     hint1: "Zij zouden allebei geneesheren zijn geweest.",
@@ -223,7 +256,7 @@ class Item {
                     hint3: "Onder hem kregen kunst, literatuur en architectuur een ongewone opleving."
                 },
                 {
-                    name: "Penning uit Holland",
+                    name: "een penning uit Holland",
                     source: "./assets/images/items/4penning.png",
                     era: 4,
                     hint1: "Penning (munt) met beeltenis van graaf Dirk VII van Holland",
@@ -231,7 +264,7 @@ class Item {
                     hint3: "Omdat Dirk geen zonen had, maakte hij Holland erfelijk voor vrouwen."
                 },
                 {
-                    name: "Rotterdams strijkglas",
+                    name: "een Rotterdams strijkglas",
                     source: "./assets/images/items/4strijkglas.png",
                     era: 4,
                     hint1: "Glas gevonden in Rotterdam, 2017.",
@@ -239,7 +272,7 @@ class Item {
                     hint3: "Het strijkglas is een voorganger van het moderne strijkijzer."
                 },
                 {
-                    name: "Mona Lisa",
+                    name: "de Mona Lisa",
                     source: "./assets/images/items/5mona_lisa.png",
                     era: 5,
                     hint1: "Geschilderd door Leonardo Da Vinci.",
@@ -247,7 +280,7 @@ class Item {
                     hint3: "Er zijn talloze kopieën van gemaakt."
                 },
                 {
-                    name: "Tandenstoker",
+                    name: "een tandenstoker",
                     source: "./assets/images/items/5tandenstoker.png",
                     era: 5,
                     hint1: "De tandenstoker was een modieus accessoire.",
@@ -263,7 +296,7 @@ class Item {
                     hint3: ""
                 },
                 {
-                    name: "De Nachtwacht",
+                    name: "de Nachtwacht",
                     source: "./assets/images/items/6nachtwacht.png",
                     era: 6,
                     hint1: "Gemaakt door Rembrandt van Rijn",
@@ -271,7 +304,7 @@ class Item {
                     hint3: "Bij het inkorten verdween de afbeelding van twee schutters."
                 },
                 {
-                    name: "VOC munt",
+                    name: "een VOC munt",
                     source: "./assets/images/items/6voc_munt.png",
                     era: 6,
                     hint1: "De VOC = Verenigde Oost-Indische Compagnie.",
@@ -279,7 +312,7 @@ class Item {
                     hint3: "De VOC was de eerste multinational ter wereld."
                 },
                 {
-                    name: "Trekschuit",
+                    name: "een Trekschuit",
                     source: "./assets/images/items/7trekschuit.png",
                     era: 7,
                     hint1: "Binnenvaartschip dat werd getrokken door paarden aan de oever.",
@@ -295,7 +328,7 @@ class Item {
                     hint3: "Zijn broer Lodewijk werd koning van Holland."
                 },
                 {
-                    name: "Hoge Bi",
+                    name: "een hoge Bi",
                     source: "./assets/images/items/8hoge_bi.png",
                     era: 8,
                     hint1: "Wordt ook wel vélocipède genoemd.",
@@ -303,7 +336,7 @@ class Item {
                     hint3: "Deze fiets werd op de Wereldtentoonstelling van Parijs gepresenteerd."
                 },
                 {
-                    name: "Weverij",
+                    name: "een weverij",
                     source: "./assets/images/items/8weverij.png",
                     era: 8,
                     hint1: "Het stoken van kolen zorgt voor de aandrijving",
@@ -311,7 +344,7 @@ class Item {
                     hint3: "Later kwamen er sociale voorzieningen voor de fabrieksarbeiders."
                 },
                 {
-                    name: "Vliegtuigbom",
+                    name: "een vliegtuigbom",
                     source: "./assets/images/items/9vliegtuigbom.png",
                     era: 9,
                     hint1: "Overblijfsel van een oorlog.",
@@ -319,7 +352,7 @@ class Item {
                     hint3: "Vliegtuigbommen werden veel gebruikt in een Blitzkrieg."
                 },
                 {
-                    name: "Elektrische fiets",
+                    name: "een elektrische fiets",
                     source: "./assets/images/items/9elektrische_fiets.png",
                     era: 9,
                     hint1: "Deze fiets is ontwikkeld door Philips.",
@@ -327,7 +360,7 @@ class Item {
                     hint3: "In Amsterdam kwam een elektrische fietstaxi in gebruik."
                 },
                 {
-                    name: "Jodenster",
+                    name: "een jodenster",
                     source: "./assets/images/items/9jodenster.png",
                     era: 9,
                     hint1: "Een kenteken dat Joden moesten dragen.",
@@ -335,7 +368,7 @@ class Item {
                     hint3: "Alle Joden vanaf 6 jaar oud moesten de ster dragen."
                 },
                 {
-                    name: "Handboek televisie",
+                    name: "een televisie handboek",
                     source: "./assets/images/items/10handboek_televisie.png",
                     era: 10,
                     hint1: "Boekje ter informatie over hoe een televisie werkt.",
@@ -343,7 +376,7 @@ class Item {
                     hint3: "De eerste televisiezender heette Nederland 1."
                 },
                 {
-                    name: "Game Boy",
+                    name: "een Game Boy",
                     source: "./assets/images/items/10game_boy.png",
                     era: 10,
                     hint1: "Uitgebracht door Nintendo in Japan.",
@@ -454,7 +487,7 @@ class EraSelectionScreen {
         this.draw = () => {
             this.randomItemPicker();
             this._canvas.writeTextToCanvas(`Je hebt ${this.itemList.getItemProperty(this.pickedItem, "name")} gevonden!`, 45, this._canvas.getCenter().X, 100, "yellow");
-            this._canvas.writeImageToCanvas(this.itemList.getItemProperty(this.pickedItem, "source"), this._canvas.getCenter().X, this._canvas.getCenter().Y - 200);
+            this._canvas.writeImageToCanvas(this.itemList.getItemProperty(this.pickedItem, "source"), this._canvas.getCenter().X - 150, this._canvas.getCenter().Y - 200);
         };
         this.canvasElement = document.getElementById('canvas');
         this._canvas = new CanvasHelper(this.canvasElement);
@@ -470,13 +503,14 @@ class EraSelectionScreen {
 class GameScreen {
     constructor(imageUrl) {
         this.hole = new Array();
-        this.counter = 180;
+        this.counter = 150;
         this.score = 0;
         this.draw = () => {
             for (let i = 0; i < this.hole.length; i++) {
                 this.hole[i].draw();
             }
-            this._canvas.writeTextToCanvas(`Time left: ${this.counter}`, 20, 100, 50);
+            this._canvas.writeTextToCanvas(`Tijd over: ${this.counter} seconden`, 20, 175, 50);
+            console.log(this.counter);
             this._canvas.writeTextToCanvas(`Score: ${this.score}`, 20, 100, 75);
         };
         this.imageUrl = imageUrl;
@@ -497,17 +531,31 @@ class GameScreen {
     getHoles() {
         return this.hole;
     }
-    regenerateHole(numberOfHole) {
-        this.hole.splice(numberOfHole, 1);
-        this.hole.push(new Hole(this.canvasElement, this.imageUrl, MathHelper.randomNumber(0, this._canvas.getWidth() - 200), MathHelper.randomNumber(0, this._canvas.getHeight() - 200), 130, 120, MathHelper.randomNumber(0, 2)));
+    getCounter() {
+        return this.counter;
     }
     addScoreCounter() {
         this.score++;
     }
+    getScore() {
+        return this.score;
+    }
+    resetCounter() {
+        this.counter = 150;
+    }
+    resetScore() {
+        this.score = 0;
+    }
+    regenerateHole(numberOfHole) {
+        this.hole.splice(numberOfHole, 1);
+        this.hole.push(new Hole(this.canvasElement, this.imageUrl, MathHelper.randomNumber(0, this._canvas.getWidth() - 200), MathHelper.randomNumber(0, this._canvas.getHeight() - 200), 130, 120, MathHelper.randomNumber(0, 2)));
+    }
 }
 class HighscoreScreen {
     constructor() {
-        this.draw = () => {
+        this.draw = (score) => {
+            this._canvas.writeTextToCanvas(`Je hebt een score van ${score} behaald!`, 45, this._canvas.getCenter().X, 100, "yellow");
+            this._canvas.writeButtonToCanvas("Probeer opnieuw", undefined, this._canvas.getCenter().Y + 200);
         };
         this.canvasElement = document.getElementById('canvas');
         this._canvas = new CanvasHelper(this.canvasElement);

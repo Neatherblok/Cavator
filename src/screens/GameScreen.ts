@@ -2,8 +2,8 @@ class GameScreen {
     protected readonly canvasElement: HTMLCanvasElement;
     protected readonly _canvas: CanvasHelper;
     private hole = new Array<Hole>();
-    protected counter: number = 180;
-    protected score: number = 0;
+    protected counter: number = 150;
+    private score: number = 0;
     private imageUrl: string;
 
     public constructor(imageUrl: string) {
@@ -19,7 +19,8 @@ class GameScreen {
         for (let i = 0; i < this.hole.length; i++) {
             this.hole[i].draw();
         }
-        this._canvas.writeTextToCanvas(`Time left: ${this.counter}`, 20, 100, 50)
+        this._canvas.writeTextToCanvas(`Tijd over: ${this.counter} seconden`, 20, 175, 50)
+        console.log(this.counter);
         this._canvas.writeTextToCanvas(`Score: ${this.score}`, 20, 100, 75)
     }
 
@@ -36,12 +37,28 @@ class GameScreen {
         return this.hole;
     }
 
-    public regenerateHole(numberOfHole: number) {
-        this.hole.splice(numberOfHole, 1);
-        this.hole.push(new Hole(this.canvasElement, this.imageUrl, MathHelper.randomNumber(0, this._canvas.getWidth() - 200), MathHelper.randomNumber(0, this._canvas.getHeight() - 200), 130, 120, MathHelper.randomNumber(0,2)))
+    public getCounter(){
+        return this.counter;
     }
 
     public addScoreCounter() {
         this.score++;
+    }
+
+    public getScore(){
+        return this.score;
+    }
+
+    public resetCounter(){
+        this.counter = 150;
+    }
+
+    public resetScore(){
+        this.score = 0;
+    }
+
+    public regenerateHole(numberOfHole: number) {
+        this.hole.splice(numberOfHole, 1);
+        this.hole.push(new Hole(this.canvasElement, this.imageUrl, MathHelper.randomNumber(0, this._canvas.getWidth() - 200), MathHelper.randomNumber(0, this._canvas.getHeight() - 200), 130, 120, MathHelper.randomNumber(0,2)))
     }
 }
