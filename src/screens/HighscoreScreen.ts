@@ -9,7 +9,7 @@ class HighscoreScreen {
     }
 
     public draw = () => {
-
+        this._canvas.writeTextToCanvas(`Je hebt een score van ${} behaald!`, 45, this._canvas.getCenter().X, 100, "yellow")
     }
 
 }
