@@ -9,7 +9,19 @@ class Game {
         };
         this.nextScreen = (event) => {
             console.log(this.currentGameScreenNumber);
-            if (this.currentGameScreenNumber == 2) {
+            if (this.currentGameScreenNumber == 3) {
+                if (event.clientX >= (this._canvas.getCenter().X - 111) && event.clientX <= (this._canvas.getCenter().X + 111)
+                    && event.clientY >= (this._canvas.getCenter().Y + 200) && event.clientY <= this._canvas.getCenter().Y + 239) {
+                    let audioLink = "./assets/sounds/sfx/buttonHitSFX.mp3";
+                    let audio = new Audio(audioLink);
+                    audio.play();
+                    this.currentGameScreenNumber = 0;
+                    this.Gamescreen.resetCounter();
+                    this.Gamescreen.resetScore();
+                    this.draw();
+                }
+            }
+            else if (this.currentGameScreenNumber == 2) {
                 if (event.clientX >= this.MouseListener.eraScreenClick(this.EraSelectionscreen.randomItemNumber()).Xmin && event.clientX <= this.MouseListener.eraScreenClick(this.EraSelectionscreen.randomItemNumber()).Xmax
                     && event.clientY >= this.MouseListener.eraScreenClick(this.EraSelectionscreen.randomItemNumber()).Ymin && event.clientY <= this.MouseListener.eraScreenClick(this.EraSelectionscreen.randomItemNumber()).Ymax) {
                     this.Gamescreen.addScoreCounter();
@@ -127,7 +139,6 @@ class Game {
         this.EraSelectionscreen = new EraSelectionScreen();
         this.MouseListener = new MouseListener();
         this.itemList = new Item();
-        this._gameHelper = new GameHelper();
         let audioLink = `./assets/sounds/music/dutch_street_organ.wav`;
         let backgroundMusic = new Audio(audioLink);
         backgroundMusic.loop = true;
@@ -466,28 +477,6 @@ class CanvasHelper {
         });
     }
 }
-class GameHelper {
-    constructor() {
-        this.counter = 180;
-        this.score = 0;
-        this.canvasElement = document.getElementById('canvas');
-        this._canvas = new CanvasHelper(this.canvasElement);
-    }
-    timer() {
-        let intervalId = setInterval(() => {
-            --this.counter;
-            if (this.counter === 0) {
-                clearInterval(intervalId);
-            }
-        }, 1000);
-    }
-    addScore() {
-        this.score++;
-    }
-    getScore() {
-        return this.score;
-    }
-}
 class MathHelper {
     static randomNumber(min, max) {
         return Math.round(Math.random() * (max - min) + min);
@@ -526,7 +515,6 @@ class GameScreen {
         };
         this.imageUrl = imageUrl;
         this.canvasElement = document.getElementById('canvas');
-        this._gameHelper = new GameHelper();
         this._canvas = new CanvasHelper(this.canvasElement);
         for (let index = 0; index < MathHelper.randomNumber(3, 6); index++) {
             this.hole.push(new Hole(this.canvasElement, this.imageUrl, MathHelper.randomNumber(0, this._canvas.getWidth() - 200), MathHelper.randomNumber(0, this._canvas.getHeight() - 200), 130, 120, MathHelper.randomNumber(0, 2)));
@@ -551,6 +539,12 @@ class GameScreen {
     }
     getScore() {
         return this.score;
+    }
+    resetCounter() {
+        this.counter = 150;
+    }
+    resetScore() {
+        this.score = 0;
     }
     regenerateHole(numberOfHole) {
         this.hole.splice(numberOfHole, 1);

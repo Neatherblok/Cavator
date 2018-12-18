@@ -7,7 +7,6 @@ class Game {
     private HighscoreScreen: HighscoreScreen;
     private itemList: Item;
     private MouseListener: MouseListener;
-    private _gameHelper: GameHelper;
     private screen: string[] = ["this.Startscreen.draw()", "this.Gamescreen.draw()", "this.EraSelectionscreen.draw()", "this.HighscoreScreen.draw(this.Gamescreen.getScore())"];
     private sounds: string[] = ['buttonHitSFX', 'digging1', 'digging2', 'digging3', 'digging4', 'digging5'];
     private currentGameScreenNumber: number = 0;
@@ -20,7 +19,6 @@ class Game {
         this.EraSelectionscreen = new EraSelectionScreen();
         this.MouseListener = new MouseListener();
         this.itemList = new Item();
-        this._gameHelper = new GameHelper();
         let audioLink = `./assets/sounds/music/dutch_street_organ.wav`
         let backgroundMusic: HTMLAudioElement = new Audio(audioLink);
         backgroundMusic.loop = true;
@@ -34,7 +32,20 @@ class Game {
 
     public nextScreen = (event: any) => {
         console.log(this.currentGameScreenNumber)
-        if (this.currentGameScreenNumber == 2) {
+        if(this.currentGameScreenNumber == 3){
+            if (event.clientX >= (this._canvas.getCenter().X - 111) && event.clientX <= (this._canvas.getCenter().X + 111)
+            && event.clientY >= (this._canvas.getCenter().Y + 200) && event.clientY <= this._canvas.getCenter().Y + 239) {
+                let audioLink = "./assets/sounds/sfx/buttonHitSFX.mp3"
+                let audio: HTMLAudioElement = new Audio(audioLink);
+                audio.play();
+                this.currentGameScreenNumber = 0;
+                this.Gamescreen.resetCounter();
+                this.Gamescreen.resetScore();
+                this.draw();
+
+            }
+        }
+        else if (this.currentGameScreenNumber == 2) {
             if (event.clientX >= this.MouseListener.eraScreenClick(this.EraSelectionscreen.randomItemNumber()).Xmin && event.clientX <= this.MouseListener.eraScreenClick(this.EraSelectionscreen.randomItemNumber()).Xmax
                 && event.clientY >= this.MouseListener.eraScreenClick(this.EraSelectionscreen.randomItemNumber()).Ymin && event.clientY <= this.MouseListener.eraScreenClick(this.EraSelectionscreen.randomItemNumber()).Ymax) {
                 this.Gamescreen.addScoreCounter();
