@@ -6,6 +6,7 @@ class Game {
     private EraSelectionscreen: EraSelectionScreen;
     private itemList: Item;
     private MouseListener: MouseListener;
+    private _gameHelper: GameHelper;
     private screen: string[] = ["this.Startscreen.draw()", "this.Gamescreen.draw()", "this.EraSelectionscreen.draw()"];
     private sounds: string[] = ['buttonHitSFX', 'digging1', 'digging2', 'digging3', 'digging4', 'digging5'];
     private currentGameScreenNumber: number = 0;
@@ -17,7 +18,8 @@ class Game {
         this.Gamescreen = new GameScreen("./assets/images/hole1.png");
         this.EraSelectionscreen = new EraSelectionScreen();
         this.MouseListener = new MouseListener();
-        this.itemList = new Item;
+        this.itemList = new Item();
+        this._gameHelper = new GameHelper();
     }
 
     public draw = () => {
@@ -113,16 +115,15 @@ class Game {
                 this.currentGameScreenNumber = 1;
                 // window.setInterval(this.draw, 1000 / 60);
                 this.canvasElement.style.cursor = "url(./assets/images/cursor.png), auto"
-                let intervalId = setInterval(() => {
-                    this.draw();
-                    if (this.currentGameScreenNumber === 2) clearInterval(intervalId)
-                }, 1000 / 60)
-                this.Gamescreen.timer()
+                this._gameHelper.timer()
                 console.log(this.Gamescreen.getHoles())
             }
         }
     }
 
+    public currentGameScreen(){
+        return this.currentGameScreenNumber
+    }
 
 }
 

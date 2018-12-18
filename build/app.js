@@ -93,12 +93,7 @@ class Game {
                     audio.play();
                     this.currentGameScreenNumber = 1;
                     this.canvasElement.style.cursor = "url(./assets/images/cursor.png), auto";
-                    let intervalId = setInterval(() => {
-                        this.draw();
-                        if (this.currentGameScreenNumber === 2)
-                            clearInterval(intervalId);
-                    }, 1000 / 60);
-                    this.Gamescreen.timer();
+                    this._gameHelper.timer();
                     console.log(this.Gamescreen.getHoles());
                 }
             }
@@ -109,7 +104,11 @@ class Game {
         this.Gamescreen = new GameScreen("./assets/images/hole1.png");
         this.EraSelectionscreen = new EraSelectionScreen();
         this.MouseListener = new MouseListener();
-        this.itemList = new Item;
+        this.itemList = new Item();
+        this._gameHelper = new GameHelper();
+    }
+    currentGameScreen() {
+        return this.currentGameScreenNumber;
     }
 }
 window.addEventListener('load', init);
@@ -444,6 +443,33 @@ class CanvasHelper {
         });
     }
 }
+class GameHelper {
+    constructor() {
+        this.counter = 180;
+        this.score = 0;
+        this.canvasElement = document.getElementById('canvas');
+        this._canvas = new CanvasHelper(this.canvasElement);
+        this._game = new Game();
+    }
+    timer() {
+        let intervalId = setInterval(() => {
+            this.counter--;
+            if (this.counter === 0) {
+                clearInterval(intervalId);
+            }
+        }, 1000);
+    }
+    interval() {
+        if (this.counter > 0) {
+            let intervalId = setInterval(() => {
+                this._game.draw();
+                if (this._game.currentGameScreen() === 2)
+                    clearInterval(intervalId);
+            }, 1000 / 60);
+        }
+    }
+    ;
+}
 class MathHelper {
     static randomNumber(min, max) {
         return Math.round(Math.random() * (max - min) + min);
@@ -470,29 +496,20 @@ class EraSelectionScreen {
 class GameScreen {
     constructor(imageUrl) {
         this.hole = new Array();
-        this.counter = 180;
-        this.score = 0;
         this.draw = () => {
             for (let i = 0; i < this.hole.length; i++) {
                 this.hole[i].draw();
             }
-            this._canvas.writeTextToCanvas(`Time left: ${this.counter}`, 20, 100, 50);
-            this._canvas.writeTextToCanvas(`Score: ${this.score}`, 20, 100, 75);
+            this._canvas.writeTextToCanvas(`Time left: ${this._gameHelper.counter}`, 20, 100, 50);
+            this._canvas.writeTextToCanvas(`Score: ${this._gameHelper.score}`, 20, 100, 75);
         };
         this.imageUrl = imageUrl;
         this.canvasElement = document.getElementById('canvas');
+        this._gameHelper = new GameHelper();
         this._canvas = new CanvasHelper(this.canvasElement);
         for (let index = 0; index < MathHelper.randomNumber(3, 6); index++) {
             this.hole.push(new Hole(this.canvasElement, this.imageUrl, MathHelper.randomNumber(0, this._canvas.getWidth() - 200), MathHelper.randomNumber(0, this._canvas.getHeight() - 200), 130, 120, MathHelper.randomNumber(0, 2)));
         }
-    }
-    timer() {
-        let intervalId = setInterval(() => {
-            this.counter--;
-            if (this.counter === 0) {
-                clearInterval(intervalId);
-            }
-        }, 1000);
     }
     getHoles() {
         return this.hole;
@@ -502,7 +519,7 @@ class GameScreen {
         this.hole.push(new Hole(this.canvasElement, this.imageUrl, MathHelper.randomNumber(0, this._canvas.getWidth() - 200), MathHelper.randomNumber(0, this._canvas.getHeight() - 200), 130, 120, MathHelper.randomNumber(0, 2)));
     }
     addScoreCounter() {
-        this.score++;
+        this._gameHelper.score++;
     }
 }
 class HighscoreScreen {
