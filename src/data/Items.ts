@@ -6,7 +6,7 @@ class Item {
         [
             // ERA 1
             {
-                name:"Speerpunt",
+                name:"een speerpunt",
                 source:"./assets/images/items/1speerpunt.png",
                 era:1,
                 hint1:"Gevonden in midden Frankrijk, 1989.",
@@ -31,7 +31,7 @@ class Item {
             },
             // ERA 2
             {
-                name:"Colosseum",
+                name:"het Colosseum",
                 source:"./assets/images/items/2colosseum.png",
                 era:2,
                 hint1:"Het gebouw staat in Rome, Italië.",
@@ -39,7 +39,7 @@ class Item {
                 hint3:"Het werd officieel geopend door keizer Titus."
             },
             {
-                name:"De helm van Deurne",
+                name:"de helm van Deurne",
                 source:"./assets/images/items/2helm_van_deurne.png",
                 era:2,
                 hint1:"Deze helm was van een Romeins officier",
@@ -56,7 +56,7 @@ class Item {
             },
             // ERA 3
             {
-                name:"Zwaard van Sint Cosmas en Damianus",
+                name:"het zwaard van Sint Cosmas en Damianus",
                 source:"./assets/images/items/3zwaard_sint_cosmas.png",
                 era:3,
                 hint1:"Zij zouden allebei geneesheren zijn geweest.",
@@ -81,7 +81,7 @@ class Item {
             },
             // ERA 4
             {
-                name:"Penning uit Holland",
+                name:"een penning uit Holland",
                 source:"./assets/images/items/4penning.png",
                 era:4,
                 hint1:"Penning (munt) met beeltenis van graaf Dirk VII van Holland",
@@ -89,7 +89,7 @@ class Item {
                 hint3:"Omdat Dirk geen zonen had, maakte hij Holland erfelijk voor vrouwen."
             },
             {
-                name:"Rotterdams strijkglas",
+                name:"een Rotterdams strijkglas",
                 source:"./assets/images/items/4strijkglas.png",
                 era:4,
                 hint1:"Glas gevonden in Rotterdam, 2017.",
@@ -106,7 +106,7 @@ class Item {
             },
             // ERA 5
             {
-                name:"Mona Lisa",
+                name:"de Mona Lisa",
                 source:"./assets/images/items/5mona_lisa.png",
                 era:5,
                 hint1:"Geschilderd door Leonardo Da Vinci.",
@@ -114,7 +114,7 @@ class Item {
                 hint3:"Er zijn talloze kopieën van gemaakt."
             },
             {
-                name:"Tandenstoker",
+                name:"een tandenstoker",
                 source:"./assets/images/items/5tandenstoker.png",
                 era:5,
                 hint1:"De tandenstoker was een modieus accessoire.",
@@ -139,7 +139,7 @@ class Item {
             },
             // ERA 6
             {
-                name:"De Nachtwacht",
+                name:"de Nachtwacht",
                 source:"./assets/images/items/6nachtwacht.png",
                 era:6,
                 hint1:"Gemaakt door Rembrandt van Rijn",
@@ -147,7 +147,7 @@ class Item {
                 hint3:"Bij het inkorten verdween de afbeelding van twee schutters."
             },
             {
-                name:"VOC munt",
+                name:"een VOC munt",
                 source:"./assets/images/items/6voc_munt.png",
                 era:6,
                 hint1:"De VOC = Verenigde Oost-Indische Compagnie.",
@@ -164,7 +164,7 @@ class Item {
             },
             // ERA 7
             {
-                name:"Trekschuit",
+                name:"een Trekschuit",
                 source:"./assets/images/items/7trekschuit.png",
                 era:7,
                 hint1:"Binnenvaartschip dat werd getrokken door paarden aan de oever.",
@@ -181,7 +181,7 @@ class Item {
             },
             // ERA 8
             {
-                name:"Hoge Bi",
+                name:"een hoge Bi",
                 source:"./assets/images/items/8hoge_bi.png",
                 era:8,
                 hint1:"Wordt ook wel vélocipède genoemd.",
@@ -189,7 +189,7 @@ class Item {
                 hint3:"Deze fiets werd op de Wereldtentoonstelling van Parijs gepresenteerd."
             },
             {
-                name:"Weverij",
+                name:"een weverij",
                 source:"./assets/images/items/8weverij.png",
                 era:8,
                 hint1:"Het stoken van kolen zorgt voor de aandrijving.",
@@ -206,7 +206,7 @@ class Item {
             },
             // ERA 9
             {
-                name:"Vliegtuigbom",
+                name:"een vliegtuigbom",
                 source:"./assets/images/items/9vliegtuigbom.png",
                 era:9,
                 hint1:"Overblijfsel van een oorlog.",
@@ -214,7 +214,7 @@ class Item {
                 hint3:"Vliegtuigbommen werden veel gebruikt in een Blitzkrieg."
             },
             {
-                name:"Elektrische fiets",
+                name:"een elektrische fiets",
                 source:"./assets/images/items/9elektrische_fiets.png",
                 era:9,
                 hint1:"Deze fiets is ontwikkeld door Philips.",
@@ -222,7 +222,7 @@ class Item {
                 hint3:"In Amsterdam kwam een elektrische fietstaxi in gebruik."
             },
             {
-                name:"Jodenster",
+                name:"een jodenster",
                 source:"./assets/images/items/9jodenster.png",
                 era:9,
                 hint1:"Een kenteken dat Joden moesten dragen.",
@@ -231,7 +231,7 @@ class Item {
             },
             // ERA 10
             {
-                name:"Handboek televisie",
+                name:"een televisie handboek",
                 source:"./assets/images/items/10handboek_televisie.png",
                 era:10,
                 hint1:"Boekje ter informatie over hoe een televisie werkt.",
@@ -239,7 +239,7 @@ class Item {
                 hint3:"De eerste televisiezender heette Nederland 1."
             },
             {
-                name:"Game Boy",
+                name:"een Game Boy",
                 source:"./assets/images/items/10game_boy.png",
                 era:10,
                 hint1:"Uitgebracht door Nintendo in Japan.",

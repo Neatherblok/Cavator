@@ -14,7 +14,7 @@ class EraSelectionScreen {
     public draw = () => {
         this.randomItemPicker();
         this._canvas.writeTextToCanvas(`Je hebt ${this.itemList.getItemProperty(this.pickedItem, "name")} gevonden!`, 45, this._canvas.getCenter().X, 100, "yellow")
-        this._canvas.writeImageToCanvas(this.itemList.getItemProperty(this.pickedItem,"source"),this._canvas.getCenter().X, this._canvas.getCenter().Y-200)
+        this._canvas.writeImageToCanvas(this.itemList.getItemProperty(this.pickedItem,"source"),this._canvas.getCenter().X-150, this._canvas.getCenter().Y-200)
         
     }
 
