@@ -130,6 +130,7 @@ class Game {
         this._gameHelper = new GameHelper();
         let audioLink = `./assets/sounds/music/dutch_street_organ.wav`;
         let backgroundMusic = new Audio(audioLink);
+        backgroundMusic.loop = true;
         backgroundMusic.play();
     }
 }
