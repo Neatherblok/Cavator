@@ -33,7 +33,7 @@ class Game {
         if (this.currentGameScreenNumber == 2) {
             if (event.clientX >= this.MouseListener.eraScreenClick(this.EraSelectionscreen.randomItemNumber()).Xmin && event.clientX <= this.MouseListener.eraScreenClick(this.EraSelectionscreen.randomItemNumber()).Xmax
                 && event.clientY >= this.MouseListener.eraScreenClick(this.EraSelectionscreen.randomItemNumber()).Ymin && event.clientY <= this.MouseListener.eraScreenClick(this.EraSelectionscreen.randomItemNumber()).Ymax) {
-                this.Gamescreen.addScoreCounter();
+                this._gameHelper.addScore();
                 this.currentGameScreenNumber = 1;
                 let audioLink = `./assets/sounds/sfx/checkSFX/rightSFX.mp3`
                 let audio: HTMLAudioElement = new Audio(audioLink);
