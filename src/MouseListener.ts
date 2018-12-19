@@ -19,34 +19,34 @@ class MouseListener {
 
     public eraScreenClick(eraNumber: number): {Xmin: number, Xmax: number, Ymin: number, Ymax: number}{
       if(eraNumber == 1){
-        return {Xmin: 110, Xmax: 193, Ymin: this._canvas.getHeight()-127, Ymax: this._canvas.getHeight()-56}
+        return {Xmin: this._canvas.getWidth()*0.017, Xmax: this._canvas.getWidth()*0.017+102, Ymin: this._canvas.getHeight()-200, Ymax: this._canvas.getHeight()-83}
       }
       else if(eraNumber == 2){
-        return {Xmin: 252, Xmax: 335, Ymin: this._canvas.getHeight()-127, Ymax: this._canvas.getHeight()-56}
+        return {Xmin: this._canvas.getWidth()*0.117, Xmax: this._canvas.getWidth()*0.117+102, Ymin: this._canvas.getHeight()-200, Ymax: this._canvas.getHeight()-83}
       }
       else if(eraNumber == 3){
-        return {Xmin: 394, Xmax: 477, Ymin: this._canvas.getHeight()-127, Ymax: this._canvas.getHeight()-56}
+        return {Xmin: this._canvas.getWidth()*0.217, Xmax: this._canvas.getWidth()*0.217+102, Ymin: this._canvas.getHeight()-200, Ymax: this._canvas.getHeight()-83}
       }
       else if(eraNumber == 4){
-        return {Xmin: 540, Xmax: 623, Ymin: this._canvas.getHeight()-127, Ymax: this._canvas.getHeight()-56}
+        return {Xmin: this._canvas.getWidth()*0.317, Xmax: this._canvas.getWidth()*0.317+102, Ymin: this._canvas.getHeight()-200, Ymax: this._canvas.getHeight()-83}
       }
       else if(eraNumber == 5){
-        return {Xmin: 683, Xmax: 766, Ymin: this._canvas.getHeight()-127, Ymax: this._canvas.getHeight()-56}
+        return {Xmin: this._canvas.getWidth()*0.417, Xmax: this._canvas.getWidth()*0.417+102, Ymin: this._canvas.getHeight()-200, Ymax: this._canvas.getHeight()-83}
       }
       else if(eraNumber == 6){
-        return {Xmin: 825, Xmax: 908, Ymin: this._canvas.getHeight()-127, Ymax: this._canvas.getHeight()-56}
+        return {Xmin: this._canvas.getWidth()*0.517, Xmax: this._canvas.getWidth()*0.517+102, Ymin: this._canvas.getHeight()-200, Ymax: this._canvas.getHeight()-83}
       }
       else if(eraNumber == 7){
-        return {Xmin: 969, Xmax: 1052, Ymin: this._canvas.getHeight()-127, Ymax: this._canvas.getHeight()-56}
+        return {Xmin: this._canvas.getWidth()*0.617, Xmax: this._canvas.getWidth()*0.617+102, Ymin: this._canvas.getHeight()-200, Ymax: this._canvas.getHeight()-83}
       }
       else if(eraNumber == 8){
-        return {Xmin: 1113, Xmax: 1196, Ymin: this._canvas.getHeight()-127, Ymax: this._canvas.getHeight()-56}
+        return {Xmin: this._canvas.getWidth()*0.717, Xmax: this._canvas.getWidth()*0.717+102, Ymin: this._canvas.getHeight()-200, Ymax: this._canvas.getHeight()-83}
       }
       else if(eraNumber == 9){
-        return {Xmin: 1263, Xmax: 1346, Ymin: this._canvas.getHeight()-127, Ymax: this._canvas.getHeight()-56}
+        return {Xmin: this._canvas.getWidth()*0.817, Xmax: this._canvas.getWidth()*0.817+102, Ymin: this._canvas.getHeight()-200, Ymax: this._canvas.getHeight()-83}
       }
       else if(eraNumber == 10){
-        return {Xmin: 1413, Xmax: 1496, Ymin: this._canvas.getHeight()-127, Ymax: this._canvas.getHeight()-56}
+        return {Xmin: this._canvas.getWidth()*0.917, Xmax: this._canvas.getWidth()*0.917+102, Ymin: this._canvas.getHeight()-200, Ymax: this._canvas.getHeight()-83}
       }
     }
   
