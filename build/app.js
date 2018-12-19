@@ -398,7 +398,7 @@ class Item {
                     hint3: "De VOC was de eerste multinational ter wereld."
                 },
                 {
-                    name: "Paleis op de Dam",
+                    name: "het Paleis op de Dam",
                     source: "./assets/images/items/6paleis_dam.png",
                     era: 6,
                     hint1: "Het werd gebouwd als stadhuis.",
@@ -422,7 +422,7 @@ class Item {
                     hint3: "Er is een replica gebouwd van het schip in Amsterdam"
                 },
                 {
-                    name: "Stoommachine",
+                    name: "een stoommachine",
                     source: "./assets/images/items/7stoommachine.png",
                     era: 7,
                     hint1: "De eerste, werkende stoommachine werd ontworpen door Thomas Savery en Thomas Newcomen",
