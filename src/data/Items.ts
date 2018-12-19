@@ -169,6 +169,14 @@ class Item {
                 hint2:"Hij schrijft 95 stellingen waarin hij de wantoestanden aan de kaak stelt.",
                 hint3:"Deze daad wordt gezien als het begin van de reformatie."
             },
+            {
+                name:"een boterspaan",
+                source:"./assets/images/items/5boterspaan.png",
+                era:5,
+                hint1:"Houten lepel die werd gebruikt om boter te scheppen.",
+                hint2:"De lepel had groeven zodat de boter niet bleef plakken.",
+                hint3:"boter word pas vanaf de 16e eeuw gegeten, daarvoor werd het als zelf gebruikt."
+            },
             // ERA 6
             {
                 name:"de Nachtwacht",
