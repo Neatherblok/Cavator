@@ -30,8 +30,8 @@ class Item {
                 hint3:"De meeste hunebedden zijn in Drenthe."
             },
             {
-                name:"een T-rex fossiel gevonden",
-                source:"./assets/images/items/1tRexFossiel.jpg",
+                name:"een T-rex fossiel",
+                source:"./assets/images/items/1tRexFossiel.png",
                 era: 1,
                 hint1: "De T-rex of Tyrannosaurus Rex betekend koning-tiransauriër.",
                 hint2: "Deze Dinosauriërs leefden in het laat krijt.",
