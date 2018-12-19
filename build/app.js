@@ -139,13 +139,16 @@ class Game {
         this.EraSelectionscreen = new EraSelectionScreen();
         this.MouseListener = new MouseListener();
         this.itemList = new Item();
+        this.audioLink = `./assets/sounds/music/dutch_street_organ.wav`;
+        this.backgroundMusic = new Audio(this.audioLink);
         this.playBackgroundMusic();
     }
     playBackgroundMusic() {
-        let audioLink = `./assets/sounds/music/dutch_street_organ.wav`;
-        let backgroundMusic = new Audio(audioLink);
-        backgroundMusic.loop = true;
-        backgroundMusic.play();
+        this.backgroundMusic.loop = true;
+        this.backgroundMusic.play();
+    }
+    pauseBackgroundMusic() {
+        this.backgroundMusic.pause();
     }
 }
 window.addEventListener('load', init);

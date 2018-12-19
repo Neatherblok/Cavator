@@ -10,6 +10,8 @@ class Game {
     private screen: string[] = ["this.Startscreen.draw()", "this.Gamescreen.draw()", "this.EraSelectionscreen.draw()", "this.HighscoreScreen.draw(this.Gamescreen.getScore())"];
     private sounds: string[] = ['buttonHitSFX', 'digging1', 'digging2', 'digging3', 'digging4', 'digging5'];
     private currentGameScreenNumber: number = 0;
+    private audioLink: string;
+    private backgroundMusic: HTMLAudioElement;
 
     public constructor() {
         this.canvasElement = <HTMLCanvasElement>document.getElementById('canvas');
@@ -19,6 +21,8 @@ class Game {
         this.EraSelectionscreen = new EraSelectionScreen();
         this.MouseListener = new MouseListener();
         this.itemList = new Item();
+        this.audioLink = `./assets/sounds/music/dutch_street_organ.wav`;
+        this.backgroundMusic = new Audio(this.audioLink);
         this.playBackgroundMusic();
     }
 
@@ -27,11 +31,14 @@ class Game {
         eval(this.screen[this.currentGameScreenNumber])
     }
 
+
     public playBackgroundMusic() {
-        let audioLink = `./assets/sounds/music/dutch_street_organ.wav`
-        let backgroundMusic: HTMLAudioElement = new Audio(audioLink);
-        backgroundMusic.loop = true;
-        backgroundMusic.play();
+        this.backgroundMusic.loop = true;
+        this.backgroundMusic.play();
+    }
+
+    public pauseBackgroundMusic() {
+        this.backgroundMusic.pause();
     }
 
     public nextScreen = (event: any) => {
