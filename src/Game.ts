@@ -124,7 +124,7 @@ class Game {
                     if (this.Gamescreen.getHoles()[i].getClicks() == 0) {
                         console.log('bigger than 0')
                         this.currentGameScreenNumber = 2;
-                        this.canvasElement.style.backgroundImage = "url(./assets/images/backgrounds/tableBackgroundConcept.jpg)";
+                        this.canvasElement.style.backgroundImage = "url(./assets/images/backgrounds/tableBackground.jpg)";
                         this.canvasElement.style.backgroundSize = "100% 100%"
                         this.canvasElement.style.cursor = "url(./assets/images/FeatherCursor2.png), auto"
                         this.Gamescreen.regenerateHole(i);
