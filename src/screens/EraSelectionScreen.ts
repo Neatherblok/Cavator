@@ -33,10 +33,11 @@ class EraSelectionScreen {
         this._canvas._context.lineTo(this._canvas.getWidth()*0.985, this._canvas.getHeight()-79);
         this._canvas._context.stroke();
         this._canvas._context.strokeStyle = "yellow";
-        this._canvas._context.strokeRect(this._canvas.getWidth()*0.75-1, this._canvas.getHeight()*0.18-1, 262, 442);
+        this._canvas._context.strokeRect(this._canvas.getWidth()*0.70-1, this._canvas.getHeight()*0.18-1, 382, 392);
         this._canvas._context.fillStyle = "grey";
-        this._canvas._context.fillRect(this._canvas.getWidth()*0.75, this._canvas.getHeight()*0.18, 260, 440);
-        this._canvas.writeTextToCanvas('Hints', 40, this._canvas.getWidth()*0.90, this._canvas.getHeight()*0.24, "black", "right");
+        this._canvas._context.fillRect(this._canvas.getWidth()*0.70, this._canvas.getHeight()*0.18, 380, 390);
+        this._canvas.writeTextToCanvas('Hints', 40, this._canvas.getWidth()*0.85, this._canvas.getHeight()*0.24, "black", "right");
+        this._canvas.writeTextToCanvas(this.itemList.getItemProperty(this.pickedItem, "hint1"), 20, this._canvas.getWidth()*0.83, this._canvas.getHeight()*0.28, "black", "center");
     }
 
     public randomItemPicker(){
