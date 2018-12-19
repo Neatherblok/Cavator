@@ -139,6 +139,9 @@ class Game {
         this.EraSelectionscreen = new EraSelectionScreen();
         this.MouseListener = new MouseListener();
         this.itemList = new Item();
+        this.playBackgroundMusic();
+    }
+    playBackgroundMusic() {
         let audioLink = `./assets/sounds/music/dutch_street_organ.wav`;
         let backgroundMusic = new Audio(audioLink);
         backgroundMusic.loop = true;
@@ -254,6 +257,14 @@ class Item {
                     hint1: "Werd gebruikt om minder belangrijke dingen op te schrijven.",
                     hint2: "In Athene werd hiermee een stem uitgebracht.",
                     hint3: "Papyrus was hier te duur voor."
+                },
+                {
+                    name: "het masker van Toetanchamon",
+                    source: "./assets/images/items/maskerToetanchamon.png",
+                    era: 2,
+                    hint1: "Toetanchamon was een farao van de 18e Dynastie.",
+                    hint2: "Het graf van de farao werd gevonden in 1922 door Howard Carter.",
+                    hint3: "Toetanchamon was maar 19 toen hij stierf."
                 },
                 {
                     name: "het zwaard van Sint Cosmas en Damianus",

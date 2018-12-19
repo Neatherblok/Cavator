@@ -19,15 +19,19 @@ class Game {
         this.EraSelectionscreen = new EraSelectionScreen();
         this.MouseListener = new MouseListener();
         this.itemList = new Item();
-        let audioLink = `./assets/sounds/music/dutch_street_organ.wav`
-        let backgroundMusic: HTMLAudioElement = new Audio(audioLink);
-        backgroundMusic.loop = true;
-        backgroundMusic.play();
+        this.playBackgroundMusic();
     }
 
     public draw = () => {
         this._canvas.clear();
         eval(this.screen[this.currentGameScreenNumber])
+    }
+
+    public playBackgroundMusic() {
+        let audioLink = `./assets/sounds/music/dutch_street_organ.wav`
+        let backgroundMusic: HTMLAudioElement = new Audio(audioLink);
+        backgroundMusic.loop = true;
+        backgroundMusic.play();
     }
 
     public nextScreen = (event: any) => {
