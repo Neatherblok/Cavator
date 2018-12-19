@@ -317,6 +317,14 @@ class Item {
                 hint1:"Gemaakt door Ericsson.",
                 hint2:"Het werd gebruikt door dokters in Zweden.",
                 hint3:"Hij weegt 14 kilogram."
+            },
+            {
+                name:"de Oosterscheldekering",
+                source:"./assets/images/items/10oosterscheldekering.png",
+                era:10,
+                hint1:"Kan gesloten worden bij hoog water.",
+                hint2:"Is onderdeel van het Deltaplan.",
+                hint3:"Dit plan werd gestart na de stormvloed."
             }
         ];
     }
