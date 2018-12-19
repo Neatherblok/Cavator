@@ -10,6 +10,8 @@ class Game {
     private screen: string[] = ["this.Startscreen.draw()", "this.Gamescreen.draw()", "this.EraSelectionscreen.draw()", "this.HighscoreScreen.draw(this.Gamescreen.getScore())"];
     private sounds: string[] = ['buttonHitSFX', 'digging1', 'digging2', 'digging3', 'digging4', 'digging5'];
     private currentGameScreenNumber: number = 0;
+    private audioLink: string;
+    private backgroundMusic: HTMLAudioElement;
 
     public constructor() {
         this.canvasElement = <HTMLCanvasElement>document.getElementById('canvas');
@@ -19,15 +21,24 @@ class Game {
         this.EraSelectionscreen = new EraSelectionScreen();
         this.MouseListener = new MouseListener();
         this.itemList = new Item();
-        let audioLink = `./assets/sounds/music/dutch_street_organ.wav`
-        let backgroundMusic: HTMLAudioElement = new Audio(audioLink);
-        backgroundMusic.loop = true;
-        backgroundMusic.play();
+        this.audioLink = `./assets/sounds/music/dutch_street_organ.wav`;
+        this.backgroundMusic = new Audio(this.audioLink);
+        this.playBackgroundMusic();
     }
 
     public draw = () => {
         this._canvas.clear();
         eval(this.screen[this.currentGameScreenNumber])
+    }
+
+
+    public playBackgroundMusic() {
+        this.backgroundMusic.loop = true;
+        this.backgroundMusic.play();
+    }
+
+    public pauseBackgroundMusic() {
+        this.backgroundMusic.pause();
     }
 
     public nextScreen = (event: any) => {
@@ -124,7 +135,7 @@ class Game {
                     if (this.Gamescreen.getHoles()[i].getClicks() == 0) {
                         console.log('bigger than 0')
                         this.currentGameScreenNumber = 2;
-                        this.canvasElement.style.backgroundImage = "url(./assets/images/backgrounds/tableBackgroundConcept.jpg)";
+                        this.canvasElement.style.backgroundImage = "url(./assets/images/backgrounds/tableBackground.jpg)";
                         this.canvasElement.style.backgroundSize = "100% 100%"
                         this.canvasElement.style.cursor = "url(./assets/images/FeatherCursor2.png), auto"
                         this.Gamescreen.regenerateHole(i);

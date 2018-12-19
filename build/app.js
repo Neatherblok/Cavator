@@ -97,7 +97,7 @@ class Game {
                         if (this.Gamescreen.getHoles()[i].getClicks() == 0) {
                             console.log('bigger than 0');
                             this.currentGameScreenNumber = 2;
-                            this.canvasElement.style.backgroundImage = "url(./assets/images/backgrounds/tableBackgroundConcept.jpg)";
+                            this.canvasElement.style.backgroundImage = "url(./assets/images/backgrounds/tableBackground.jpg)";
                             this.canvasElement.style.backgroundSize = "100% 100%";
                             this.canvasElement.style.cursor = "url(./assets/images/FeatherCursor2.png), auto";
                             this.Gamescreen.regenerateHole(i);
@@ -139,10 +139,16 @@ class Game {
         this.EraSelectionscreen = new EraSelectionScreen();
         this.MouseListener = new MouseListener();
         this.itemList = new Item();
-        let audioLink = `./assets/sounds/music/dutch_street_organ.wav`;
-        let backgroundMusic = new Audio(audioLink);
-        backgroundMusic.loop = true;
-        backgroundMusic.play();
+        this.audioLink = `./assets/sounds/music/dutch_street_organ.wav`;
+        this.backgroundMusic = new Audio(this.audioLink);
+        this.playBackgroundMusic();
+    }
+    playBackgroundMusic() {
+        this.backgroundMusic.loop = true;
+        this.backgroundMusic.play();
+    }
+    pauseBackgroundMusic() {
+        this.backgroundMusic.pause();
     }
 }
 window.addEventListener('load', init);
@@ -172,34 +178,34 @@ class MouseListener {
     }
     eraScreenClick(eraNumber) {
         if (eraNumber == 1) {
-            return { Xmin: 110, Xmax: 193, Ymin: this._canvas.getHeight() - 127, Ymax: this._canvas.getHeight() - 56 };
+            return { Xmin: this._canvas.getWidth() * 0.017, Xmax: this._canvas.getWidth() * 0.017 + 102, Ymin: this._canvas.getHeight() - 200, Ymax: this._canvas.getHeight() - 83 };
         }
         else if (eraNumber == 2) {
-            return { Xmin: 252, Xmax: 335, Ymin: this._canvas.getHeight() - 127, Ymax: this._canvas.getHeight() - 56 };
+            return { Xmin: this._canvas.getWidth() * 0.117, Xmax: this._canvas.getWidth() * 0.117 + 102, Ymin: this._canvas.getHeight() - 200, Ymax: this._canvas.getHeight() - 83 };
         }
         else if (eraNumber == 3) {
-            return { Xmin: 394, Xmax: 477, Ymin: this._canvas.getHeight() - 127, Ymax: this._canvas.getHeight() - 56 };
+            return { Xmin: this._canvas.getWidth() * 0.217, Xmax: this._canvas.getWidth() * 0.217 + 102, Ymin: this._canvas.getHeight() - 200, Ymax: this._canvas.getHeight() - 83 };
         }
         else if (eraNumber == 4) {
-            return { Xmin: 540, Xmax: 623, Ymin: this._canvas.getHeight() - 127, Ymax: this._canvas.getHeight() - 56 };
+            return { Xmin: this._canvas.getWidth() * 0.317, Xmax: this._canvas.getWidth() * 0.317 + 102, Ymin: this._canvas.getHeight() - 200, Ymax: this._canvas.getHeight() - 83 };
         }
         else if (eraNumber == 5) {
-            return { Xmin: 683, Xmax: 766, Ymin: this._canvas.getHeight() - 127, Ymax: this._canvas.getHeight() - 56 };
+            return { Xmin: this._canvas.getWidth() * 0.417, Xmax: this._canvas.getWidth() * 0.417 + 102, Ymin: this._canvas.getHeight() - 200, Ymax: this._canvas.getHeight() - 83 };
         }
         else if (eraNumber == 6) {
-            return { Xmin: 825, Xmax: 908, Ymin: this._canvas.getHeight() - 127, Ymax: this._canvas.getHeight() - 56 };
+            return { Xmin: this._canvas.getWidth() * 0.517, Xmax: this._canvas.getWidth() * 0.517 + 102, Ymin: this._canvas.getHeight() - 200, Ymax: this._canvas.getHeight() - 83 };
         }
         else if (eraNumber == 7) {
-            return { Xmin: 969, Xmax: 1052, Ymin: this._canvas.getHeight() - 127, Ymax: this._canvas.getHeight() - 56 };
+            return { Xmin: this._canvas.getWidth() * 0.617, Xmax: this._canvas.getWidth() * 0.617 + 102, Ymin: this._canvas.getHeight() - 200, Ymax: this._canvas.getHeight() - 83 };
         }
         else if (eraNumber == 8) {
-            return { Xmin: 1113, Xmax: 1196, Ymin: this._canvas.getHeight() - 127, Ymax: this._canvas.getHeight() - 56 };
+            return { Xmin: this._canvas.getWidth() * 0.717, Xmax: this._canvas.getWidth() * 0.717 + 102, Ymin: this._canvas.getHeight() - 200, Ymax: this._canvas.getHeight() - 83 };
         }
         else if (eraNumber == 9) {
-            return { Xmin: 1263, Xmax: 1346, Ymin: this._canvas.getHeight() - 127, Ymax: this._canvas.getHeight() - 56 };
+            return { Xmin: this._canvas.getWidth() * 0.817, Xmax: this._canvas.getWidth() * 0.817 + 102, Ymin: this._canvas.getHeight() - 200, Ymax: this._canvas.getHeight() - 83 };
         }
         else if (eraNumber == 10) {
-            return { Xmin: 1413, Xmax: 1496, Ymin: this._canvas.getHeight() - 127, Ymax: this._canvas.getHeight() - 56 };
+            return { Xmin: this._canvas.getWidth() * 0.917, Xmax: this._canvas.getWidth() * 0.917 + 102, Ymin: this._canvas.getHeight() - 200, Ymax: this._canvas.getHeight() - 83 };
         }
     }
 }
@@ -232,6 +238,14 @@ class Item {
                     hint3: "De meeste hunebedden zijn in Drenthe."
                 },
                 {
+                    name: "een T-rex fossiel",
+                    source: "./assets/images/items/1tRexFossiel.png",
+                    era: 1,
+                    hint1: "De T-rex of Tyrannosaurus Rex betekend koning-tiransauriër.",
+                    hint2: "Deze Dinosauriërs leefden in het laat krijt.",
+                    hint3: "Het eerste fossiel van een T-rex werd gevonden 1874."
+                },
+                {
                     name: "het Colosseum",
                     source: "./assets/images/items/2colosseum.png",
                     era: 2,
@@ -254,6 +268,14 @@ class Item {
                     hint1: "Werd gebruikt om minder belangrijke dingen op te schrijven.",
                     hint2: "In Athene werd hiermee een stem uitgebracht.",
                     hint3: "Papyrus was hier te duur voor."
+                },
+                {
+                    name: "het masker van Toetanchamon",
+                    source: "./assets/images/items/2maskerToetanchamon.png",
+                    era: 2,
+                    hint1: "Toetanchamon was een farao van de 18e Dynastie.",
+                    hint2: "Het graf van de farao werd gevonden in 1922 door Howard Carter.",
+                    hint3: "Toetanchamon was maar 19 toen hij stierf."
                 },
                 {
                     name: "het zwaard van Sint Cosmas en Damianus",
@@ -280,6 +302,14 @@ class Item {
                     hint3: "Gemaakt in Schotland of Ierland."
                 },
                 {
+                    name: "een viking zwaard.",
+                    source: "./assets/images/items/3vikingZwaard.png",
+                    era: 3,
+                    hint1: "Het zwaard is gevonden in Skaftárhreppur, IJsland.",
+                    hint2: "Het is misschien wel het zwaard van ingólfur Arnarson, de eerste inwoner van IJsland.",
+                    hint3: "Het zwaard was waarschijnlijk ceremonitieel en werd gebruikt voor een begrafenis.",
+                },
+                {
                     name: "een penning uit Holland",
                     source: "./assets/images/items/4penning.png",
                     era: 4,
@@ -302,6 +332,14 @@ class Item {
                     hint1: "De hofnar is de grappenmaker van een vorst.",
                     hint2: "Hij kon grappen maken zonder dat hij gestraft werd.",
                     hint3: "Soms droeg hij ook een staf."
+                },
+                {
+                    name: "het stadhuis van Haarlem",
+                    source: "./assets/images/items/4stadhuisHaarlem.png",
+                    era: 4,
+                    hint1: "Het gebouw staat op de grote markt in Haarlem en word tegenwoordig vooral gebruikt als trouwlocatie.",
+                    hint2: "Het stadhuis is ontworpen door onder andere Lieve de Key.",
+                    hint3: "Het gebouw is tegenwoordig ook een rijksmonument."
                 },
                 {
                     name: "de Mona Lisa",
@@ -334,6 +372,14 @@ class Item {
                     hint1: "Hij was tegen het aflaatsysteem van de katholieke kerk.",
                     hint2: "Hij schrijft 95 stellingen waarin hij de wantoestanden aan de kaak stelt.",
                     hint3: "Deze daad wordt gezien als het begin van de reformatie."
+                },
+                {
+                    name: "een boterspaan",
+                    source: "./assets/images/items/5boterspaan.png",
+                    era: 5,
+                    hint1: "Houten lepel die werd gebruikt om boter te scheppen.",
+                    hint2: "De lepel had groeven zodat de boter niet bleef plakken.",
+                    hint3: "boter word pas vanaf de 16e eeuw gegeten, daarvoor werd het als zelf gebruikt."
                 },
                 {
                     name: "de Nachtwacht",
@@ -552,6 +598,29 @@ class EraSelectionScreen {
             this.randomItemPicker();
             this._canvas.writeTextToCanvas(`Je hebt ${this.itemList.getItemProperty(this.pickedItem, "name")} gevonden!`, 45, this._canvas.getCenter().X, 100, "yellow");
             this._canvas.writeImageToCanvas(this.itemList.getItemProperty(this.pickedItem, "source"), this._canvas.getCenter().X - 150, this._canvas.getCenter().Y - 200);
+            this._canvas.writeImageToCanvas("./assets/images/eraLogos/era1.png", this._canvas.getWidth() * 0.017, this._canvas.getHeight() - 200);
+            this._canvas.writeImageToCanvas("./assets/images/eraLogos/era2.png", this._canvas.getWidth() * 0.117, this._canvas.getHeight() - 200);
+            this._canvas.writeImageToCanvas("./assets/images/eraLogos/era3.png", this._canvas.getWidth() * 0.217, this._canvas.getHeight() - 200);
+            this._canvas.writeImageToCanvas("./assets/images/eraLogos/era4.png", this._canvas.getWidth() * 0.317, this._canvas.getHeight() - 200);
+            this._canvas.writeImageToCanvas("./assets/images/eraLogos/era5.png", this._canvas.getWidth() * 0.417, this._canvas.getHeight() - 200);
+            this._canvas.writeImageToCanvas("./assets/images/eraLogos/era6.png", this._canvas.getWidth() * 0.517, this._canvas.getHeight() - 200);
+            this._canvas.writeImageToCanvas("./assets/images/eraLogos/era7.png", this._canvas.getWidth() * 0.617, this._canvas.getHeight() - 200);
+            this._canvas.writeImageToCanvas("./assets/images/eraLogos/era8.png", this._canvas.getWidth() * 0.717, this._canvas.getHeight() - 200);
+            this._canvas.writeImageToCanvas("./assets/images/eraLogos/era9.png", this._canvas.getWidth() * 0.817, this._canvas.getHeight() - 200);
+            this._canvas.writeImageToCanvas("./assets/images/eraLogos/era10.png", this._canvas.getWidth() * 0.917, this._canvas.getHeight() - 200);
+            this._canvas._context.lineWidth = 2;
+            this._canvas._context.beginPath();
+            this._canvas._context.moveTo(this._canvas.getWidth() * 0.014, this._canvas.getHeight() - 80);
+            this._canvas._context.lineTo(this._canvas.getWidth() * 0.985, this._canvas.getHeight() - 80);
+            this._canvas._context.moveTo(this._canvas.getWidth() * 0.014, this._canvas.getHeight() - 79);
+            this._canvas._context.lineTo(this._canvas.getWidth() * 0.985, this._canvas.getHeight() - 79);
+            this._canvas._context.stroke();
+            this._canvas._context.strokeStyle = "yellow";
+            this._canvas._context.strokeRect(this._canvas.getWidth() * 0.70 - 1, this._canvas.getHeight() * 0.18 - 1, 382, this._canvas.getHeight() * 0.5 + 2);
+            this._canvas._context.fillStyle = "grey";
+            this._canvas._context.fillRect(this._canvas.getWidth() * 0.70, this._canvas.getHeight() * 0.18, 380, this._canvas.getHeight() * 0.5);
+            this._canvas.writeTextToCanvas('Hints', 40, this._canvas.getWidth() * 0.85, this._canvas.getHeight() * 0.24, "black", "right");
+            this._canvas.writeTextToCanvas(this.itemList.getItemProperty(this.pickedItem, "hint1"), 20, this._canvas.getWidth() * 0.83, this._canvas.getHeight() * 0.28, "black", "center");
         };
         this.canvasElement = document.getElementById('canvas');
         this._canvas = new CanvasHelper(this.canvasElement);
@@ -573,9 +642,9 @@ class GameScreen {
             for (let i = 0; i < this.hole.length; i++) {
                 this.hole[i].draw();
             }
-            this._canvas.writeTextToCanvas(`Tijd over: ${this.counter} seconden`, 20, 175, 50);
+            this._canvas.writeTextToCanvas(`Tijd over: ${this.counter} seconden`, 20, 75, 50, "white", "left");
             console.log(this.counter);
-            this._canvas.writeTextToCanvas(`Score: ${this.score}`, 20, 100, 75);
+            this._canvas.writeTextToCanvas(`Score: ${this.score}`, 20, 75, 75, "white", "left");
         };
         this.imageUrl = imageUrl;
         this.canvasElement = document.getElementById('canvas');

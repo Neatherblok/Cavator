@@ -19,9 +19,9 @@ class GameScreen {
         for (let i = 0; i < this.hole.length; i++) {
             this.hole[i].draw();
         }
-        this._canvas.writeTextToCanvas(`Tijd over: ${this.counter} seconden`, 20, 175, 50)
+        this._canvas.writeTextToCanvas(`Tijd over: ${this.counter} seconden`, 20, 75, 50, "white", "left")
         console.log(this.counter);
-        this._canvas.writeTextToCanvas(`Score: ${this.score}`, 20, 100, 75)
+        this._canvas.writeTextToCanvas(`Score: ${this.score}`, 20, 75, 75, "white", "left")
     }
 
     public timer() {
