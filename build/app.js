@@ -97,7 +97,7 @@ class Game {
                         if (this.Gamescreen.getHoles()[i].getClicks() == 0) {
                             console.log('bigger than 0');
                             this.currentGameScreenNumber = 2;
-                            this.canvasElement.style.backgroundImage = "url(./assets/images/backgrounds/tableBackgroundConcept.jpg)";
+                            this.canvasElement.style.backgroundImage = "url(./assets/images/backgrounds/tableBackground.jpg)";
                             this.canvasElement.style.backgroundSize = "100% 100%";
                             this.canvasElement.style.cursor = "url(./assets/images/FeatherCursor2.png), auto";
                             this.Gamescreen.regenerateHole(i);
@@ -254,6 +254,14 @@ class Item {
                     hint1: "Werd gebruikt om minder belangrijke dingen op te schrijven.",
                     hint2: "In Athene werd hiermee een stem uitgebracht.",
                     hint3: "Papyrus was hier te duur voor."
+                },
+                {
+                    name: "het masker van Toetanchamon",
+                    source: "./assets/images/items/maskerToetanchamon.png",
+                    era: 2,
+                    hint1: "Toetanchamon was een farao van de 18e Dynastie.",
+                    hint2: "Het graf van de farao werd gevonden in 1922 door Howard Carter.",
+                    hint3: "Toetanchamon was maar 19 toen hij stierf."
                 },
                 {
                     name: "het zwaard van Sint Cosmas en Damianus",
@@ -552,6 +560,28 @@ class EraSelectionScreen {
             this.randomItemPicker();
             this._canvas.writeTextToCanvas(`Je hebt ${this.itemList.getItemProperty(this.pickedItem, "name")} gevonden!`, 45, this._canvas.getCenter().X, 100, "yellow");
             this._canvas.writeImageToCanvas(this.itemList.getItemProperty(this.pickedItem, "source"), this._canvas.getCenter().X - 150, this._canvas.getCenter().Y - 200);
+            this._canvas.writeImageToCanvas("./assets/images/eraLogos/era1.png", this._canvas.getWidth() * 0.017, this._canvas.getHeight() - 200);
+            this._canvas.writeImageToCanvas("./assets/images/eraLogos/era2.png", this._canvas.getWidth() * 0.117, this._canvas.getHeight() - 200);
+            this._canvas.writeImageToCanvas("./assets/images/eraLogos/era3.png", this._canvas.getWidth() * 0.217, this._canvas.getHeight() - 200);
+            this._canvas.writeImageToCanvas("./assets/images/eraLogos/era4.png", this._canvas.getWidth() * 0.317, this._canvas.getHeight() - 200);
+            this._canvas.writeImageToCanvas("./assets/images/eraLogos/era5.png", this._canvas.getWidth() * 0.417, this._canvas.getHeight() - 200);
+            this._canvas.writeImageToCanvas("./assets/images/eraLogos/era6.png", this._canvas.getWidth() * 0.517, this._canvas.getHeight() - 200);
+            this._canvas.writeImageToCanvas("./assets/images/eraLogos/era7.png", this._canvas.getWidth() * 0.617, this._canvas.getHeight() - 200);
+            this._canvas.writeImageToCanvas("./assets/images/eraLogos/era8.png", this._canvas.getWidth() * 0.717, this._canvas.getHeight() - 200);
+            this._canvas.writeImageToCanvas("./assets/images/eraLogos/era9.png", this._canvas.getWidth() * 0.817, this._canvas.getHeight() - 200);
+            this._canvas.writeImageToCanvas("./assets/images/eraLogos/era10.png", this._canvas.getWidth() * 0.917, this._canvas.getHeight() - 200);
+            this._canvas._context.lineWidth = 2;
+            this._canvas._context.beginPath();
+            this._canvas._context.moveTo(this._canvas.getWidth() * 0.014, this._canvas.getHeight() - 80);
+            this._canvas._context.lineTo(this._canvas.getWidth() * 0.985, this._canvas.getHeight() - 80);
+            this._canvas._context.moveTo(this._canvas.getWidth() * 0.014, this._canvas.getHeight() - 79);
+            this._canvas._context.lineTo(this._canvas.getWidth() * 0.985, this._canvas.getHeight() - 79);
+            this._canvas._context.stroke();
+            this._canvas._context.strokeStyle = "yellow";
+            this._canvas._context.strokeRect(this._canvas.getWidth() * 0.75 - 1, this._canvas.getHeight() * 0.18 - 1, 262, 442);
+            this._canvas._context.fillStyle = "grey";
+            this._canvas._context.fillRect(this._canvas.getWidth() * 0.75, this._canvas.getHeight() * 0.18, 260, 440);
+            this._canvas.writeTextToCanvas('Hints', 40, this._canvas.getWidth() * 0.90, this._canvas.getHeight() * 0.24, "black", "right");
         };
         this.canvasElement = document.getElementById('canvas');
         this._canvas = new CanvasHelper(this.canvasElement);
@@ -573,9 +603,9 @@ class GameScreen {
             for (let i = 0; i < this.hole.length; i++) {
                 this.hole[i].draw();
             }
-            this._canvas.writeTextToCanvas(`Tijd over: ${this.counter} seconden`, 20, 175, 50);
+            this._canvas.writeTextToCanvas(`Tijd over: ${this.counter} seconden`, 20, 75, 50, "white", "left");
             console.log(this.counter);
-            this._canvas.writeTextToCanvas(`Score: ${this.score}`, 20, 100, 75);
+            this._canvas.writeTextToCanvas(`Score: ${this.score}`, 20, 75, 75, "white", "left");
         };
         this.imageUrl = imageUrl;
         this.canvasElement = document.getElementById('canvas');
