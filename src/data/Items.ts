@@ -54,6 +54,14 @@ class Item {
                 hint2:"In Athene werd hiermee een stem uitgebracht.",
                 hint3:"Papyrus was hier te duur voor."
             },
+            {
+                name:"het masker van Toetanchamon",
+                source:"./assets/images/items/maskerToetanchamon.png",
+                era:2,
+                hint1:"Toetanchamon was een farao van de 18e Dynastie.",
+                hint2:"Het graf van de farao werd gevonden in 1922 door Howard Carter.",
+                hint3:"Toetanchamon was maar 19 toen hij stierf."
+            },
             // ERA 3
             {
                 name:"het zwaard van Sint Cosmas en Damianus",
