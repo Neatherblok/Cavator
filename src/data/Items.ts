@@ -301,6 +301,14 @@ class Item {
                 hint2:"Dit gelde alleen in bepaalde gedeeltes van Europa voor een bepaalde periode.",
                 hint3:"Alle Joden vanaf 6 jaar oud moesten de ster dragen."
             },
+            {
+                name:"een propaganda poster",
+                source:"./assets/images/items/9propaganda.png",
+                era:9,
+                hint1:"Een poster van de Verenigde Staten.",
+                hint2:"Er was een tekort aan soldaten.",
+                hint3:"Het personage op de poster is Uncle Sam."
+            },
             // ERA 10
             {
                 name:"een televisie handboek",

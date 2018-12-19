@@ -502,6 +502,14 @@ class Item {
                     hint3: "Alle Joden vanaf 6 jaar oud moesten de ster dragen."
                 },
                 {
+                    name: "een propaganda poster",
+                    source: "./assets/images/items/9propaganda.png",
+                    era: 9,
+                    hint1: "Een poster van de Verenigde Staten.",
+                    hint2: "Er was een tekort aan soldaten.",
+                    hint3: "Het personage op de poster is Uncle Sam."
+                },
+                {
                     name: "een televisie handboek",
                     source: "./assets/images/items/10handboek_televisie.png",
                     era: 10,
