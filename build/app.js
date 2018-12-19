@@ -239,9 +239,9 @@ class Item {
                 },
                 {
                     name: "een T-rex fossiel",
-                    source: "./assets/images/items/1tRexFossiel.png",
+                    source: "./assets/images/items/1t_rex.png",
                     era: 1,
-                    hint1: "De T-rex of Tyrannosaurus Rex betekend koning-tiransauriër.",
+                    hint1: "De T-rex of Tyrannosaurus Rex betekent koning-tiransauriër.",
                     hint2: "Deze Dinosauriërs leefden in het laat krijt.",
                     hint3: "Het eerste fossiel van een T-rex werd gevonden 1874."
                 },
@@ -271,7 +271,7 @@ class Item {
                 },
                 {
                     name: "het masker van Toetanchamon",
-                    source: "./assets/images/items/2maskerToetanchamon.png",
+                    source: "./assets/images/items/2masker_toetanchamon.png",
                     era: 2,
                     hint1: "Toetanchamon was een farao van de 18e Dynastie.",
                     hint2: "Het graf van de farao werd gevonden in 1922 door Howard Carter.",
@@ -303,7 +303,7 @@ class Item {
                 },
                 {
                     name: "een viking zwaard.",
-                    source: "./assets/images/items/3vikingZwaard.png",
+                    source: "./assets/images/items/3viking_zwaard.png",
                     era: 3,
                     hint1: "Het zwaard is gevonden in Skaftárhreppur, IJsland.",
                     hint2: "Het is misschien wel het zwaard van ingólfur Arnarson, de eerste inwoner van IJsland.",
@@ -335,7 +335,7 @@ class Item {
                 },
                 {
                     name: "het stadhuis van Haarlem",
-                    source: "./assets/images/items/4stadhuisHaarlem.png",
+                    source: "./assets/images/items/4stadhuis_haarlem.png",
                     era: 4,
                     hint1: "Het gebouw staat op de grote markt in Haarlem en word tegenwoordig vooral gebruikt als trouwlocatie.",
                     hint2: "Het stadhuis is ontworpen door onder andere Lieve de Key.",
@@ -414,6 +414,22 @@ class Item {
                     hint3: "Het was een van de voorlopers van modern openbaar vervoer."
                 },
                 {
+                    name: "De Amsterdam",
+                    source: "./assets/images/items/7amsterdam.png",
+                    era: 7,
+                    hint1: "De Amsterdam was een transportschip voor de VOC",
+                    hint2: "Tijdens de eerste reis van het schip ging de Amsterdam verloren door een storm",
+                    hint3: "Er is een replica gebouwd van het schip in Amsterdam"
+                },
+                {
+                    name: "Stoommachine",
+                    source: "./assets/images/items/7stoommachine.png",
+                    era: 7,
+                    hint1: "De eerste, werkende stoommachine werd ontworpen door Thomas Savery en Thomas Newcomen",
+                    hint2: "Deze werd verbeterd door James Watt",
+                    hint3: "Deze verbeteringen maakte de stoommachine tot wat het nu is"
+                },
+                {
                     name: "Napoleon Bonaparte",
                     source: "./assets/images/items/7napoleon.png",
                     era: 7,
@@ -474,7 +490,7 @@ class Item {
                     source: "./assets/images/items/10handboek_televisie.png",
                     era: 10,
                     hint1: "Boekje ter informatie over hoe een televisie werkt.",
-                    hint2: "De eerste landelijke uitzending was vanuit studio Irene in Hilversum.",
+                    hint2: "De eerste landelijke uitzending was vanuit Hilversum.",
                     hint3: "De eerste televisiezender heette Nederland 1."
                 },
                 {
