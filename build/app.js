@@ -406,6 +406,14 @@ class Item {
                     hint3: "Het bevindt zich op de Dam in Amsterdam."
                 },
                 {
+                    name: "een straatlantaarn",
+                    source: "./assets/images/items/6lantaarn.png",
+                    era: 6,
+                    hint1: "Ontworpen door Jan van der Heyden.",
+                    hint2: "Als brandstof werd raapolie gebruikt.",
+                    hint3: "De lantaarn was voorzien van 2 ruiten."
+                },
+                {
                     name: "een trekschuit",
                     source: "./assets/images/items/7trekschuit.png",
                     era: 7,
