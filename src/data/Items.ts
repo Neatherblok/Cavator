@@ -164,7 +164,7 @@ class Item {
             },
             // ERA 7
             {
-                name:"een Trekschuit",
+                name:"een trekschuit",
                 source:"./assets/images/items/7trekschuit.png",
                 era:7,
                 hint1:"Binnenvaartschip dat werd getrokken door paarden aan de oever.",
