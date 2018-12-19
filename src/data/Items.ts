@@ -268,6 +268,14 @@ class Item {
                 hint2:"Het duurde 8 uur om de foto te maken.",
                 hint3:"Hij noemde het 'schrijven met de zon'."
             },
+            {
+                name:"Max Havelaar",
+                source:"./assets/images/items/8max_havelaar.png",
+                era:8,
+                hint1:"Boek geschreven door Multatuli.",
+                hint2:"In het boek werd kritiek gegeven op het cultuurstelsel.",
+                hint3:"Dit stelsel was in Nederlands-Indië."
+            },
             // ERA 9
             {
                 name:"een vliegtuigbom",

@@ -470,6 +470,14 @@ class Item {
                     hint3: "Hij noemde het 'schrijven met de zon'."
                 },
                 {
+                    name: "Max Havelaar",
+                    source: "./assets/images/items/8max_havelaar.png",
+                    era: 8,
+                    hint1: "Boek geschreven door Multatuli.",
+                    hint2: "In het boek werd kritiek gegeven op het cultuurstelsel.",
+                    hint3: "Dit stelsel was in Nederlands-Indië."
+                },
+                {
                     name: "een vliegtuigbom",
                     source: "./assets/images/items/9vliegtuigbom.png",
                     era: 9,
