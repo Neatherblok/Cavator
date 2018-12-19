@@ -29,6 +29,14 @@ class Item {
                 hint2:"Ze zijn terug te vinden in het gebied van de trechterbekercultuur.",
                 hint3:"De meeste hunebedden zijn in Drenthe."
             },
+            {
+                name:"een T-rex fossiel gevonden",
+                source:"./assets/images/items/1tRexFossiel.jpg",
+                era: 1,
+                hint1: "De T-rex of Tyrannosaurus Rex betekend koning-tiransauriër.",
+                hint2: "Deze Dinosauriërs leefden in het laat krijt.",
+                hint3: "Het eerste fossiel van een T-rex werd gevonden 1874."
+            },
             // ERA 2
             {
                 name:"het Colosseum",
@@ -56,7 +64,7 @@ class Item {
             },
             {
                 name:"het masker van Toetanchamon",
-                source:"./assets/images/items/maskerToetanchamon.png",
+                source:"./assets/images/items/2maskerToetanchamon.png",
                 era:2,
                 hint1:"Toetanchamon was een farao van de 18e Dynastie.",
                 hint2:"Het graf van de farao werd gevonden in 1922 door Howard Carter.",
@@ -87,6 +95,14 @@ class Item {
                 hint2:"Het is een onvolledige ring.",
                 hint3:"Gemaakt in Schotland of Ierland."
             },
+            {
+                name:"een viking zwaard.",
+                source:"./assets/images/items/3vikingZwaard.png",
+                era:3,
+                hint1:"Het zwaard is gevonden in Skaftárhreppur, IJsland.",
+                hint2:"Het is misschien wel het zwaard van ingólfur Arnarson, de eerste inwoner van IJsland.",
+                hint3:"Het zwaard was waarschijnlijk ceremonitieel en werd gebruikt voor een begrafenis.",
+            },
             // ERA 4
             {
                 name:"een penning uit Holland",
@@ -111,6 +127,14 @@ class Item {
                 hint1:"De hofnar is de grappenmaker van een vorst.",
                 hint2:"Hij kon grappen maken zonder dat hij gestraft werd.",
                 hint3:"Soms droeg hij ook een staf."
+            },
+            {
+                name:"het stadhuis van Haarlem",
+                source:"./assets/images/items/4stadhuisHaarlem.png",
+                era:4,
+                hint1:"Het gebouw staat op de grote markt in Haarlem en word tegenwoordig vooral gebruikt als trouwlocatie.",
+                hint2:"Het stadhuis is ontworpen door onder andere Lieve de Key.",
+                hint3:"Het gebouw is tegenwoordig ook een rijksmonument."
             },
             // ERA 5
             {
