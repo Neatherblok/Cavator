@@ -100,8 +100,8 @@ class Item {
                 source:"./assets/images/items/3viking_zwaard.png",
                 era:3,
                 hint1:"Het zwaard is gevonden in Skaftárhreppur, IJsland.",
-                hint2:"Het is misschien wel het zwaard van ingólfur Arnarson, de eerste inwoner van IJsland.",
-                hint3:"Het zwaard was waarschijnlijk ceremonitieel en werd gebruikt voor een begrafenis.",
+                hint2:"Het is misschien het zwaard van de eerste inwoner van IJsland.",
+                hint3:"Het zwaard werd waarschijnlijk gebruikt voor een begrafenis.",
             },
             // ERA 4
             {
