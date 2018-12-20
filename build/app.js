@@ -437,14 +437,6 @@ class Item {
                     hint3: "Er is een replica gebouwd van het schip in Amsterdam"
                 },
                 {
-                    name: "een stoommachine",
-                    source: "./assets/images/items/7stoommachine.png",
-                    era: 7,
-                    hint1: "De eerste, werkende stoommachine werd ontworpen door Thomas Savery en Thomas Newcomen",
-                    hint2: "Deze werd verbeterd door James Watt",
-                    hint3: "Deze verbeteringen maakte de stoommachine tot wat het nu is"
-                },
-                {
                     name: "Napoleon Bonaparte",
                     source: "./assets/images/items/7napoleon.png",
                     era: 7,
@@ -483,6 +475,14 @@ class Item {
                     hint1: "Boek geschreven door Multatuli.",
                     hint2: "In het boek werd kritiek gegeven op het cultuurstelsel.",
                     hint3: "Dit stelsel was in Nederlands-Indië."
+                },
+                {
+                    name: "een stoommachine",
+                    source: "./assets/images/items/7stoommachine.png",
+                    era: 8,
+                    hint1: "De eerste, werkende stoommachine werd ontworpen door Thomas Savery en Thomas Newcomen",
+                    hint2: "Deze werd verbeterd door James Watt",
+                    hint3: "Deze verbeteringen maakte de stoommachine tot wat het nu is"
                 },
                 {
                     name: "een vliegtuigbom",
