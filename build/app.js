@@ -1,6 +1,6 @@
 class Game {
     constructor() {
-        this.screen = ["this.Startscreen.draw()", "this.Gamescreen.draw()", "this.EraSelectionscreen.draw()", "this.HighscoreScreen.draw(this.Gamescreen.getScore())"];
+        this.screen = ["this.Startscreen.draw()", "this.Gamescreen.draw()", "this.EraSelectionscreen.draw(this.Gamescreen.getCounter())", "this.HighscoreScreen.draw(this.Gamescreen.getScore())"];
         this.sounds = ['buttonHitSFX', 'digging1', 'digging2', 'digging3', 'digging4', 'digging5'];
         this.currentGameScreenNumber = 0;
         this.draw = () => {
@@ -87,14 +87,14 @@ class Game {
                 }
             }
             else if (this.currentGameScreenNumber == 1) {
-                for (let i = 0; i < this.Gamescreen.getHoles().length; i++) {
-                    if (this.Gamescreen.getHoles()[i].getX() <= event.clientX && this.Gamescreen.getHoles()[i].getX() + 128 >= event.clientX
-                        && this.Gamescreen.getHoles()[i].getY() <= event.clientY && this.Gamescreen.getHoles()[i].getY() + 110 >= event.clientY) {
+                for (let i = 0; i < this.Gamescreen.getHole().length; i++) {
+                    if (this.Gamescreen.getHole()[i].getX() <= event.clientX && this.Gamescreen.getHole()[i].getX() + 128 >= event.clientX
+                        && this.Gamescreen.getHole()[i].getY() <= event.clientY && this.Gamescreen.getHole()[i].getY() + 110 >= event.clientY) {
                         const randomDigSound = MathHelper.randomNumber(1, this.sounds.length - 1);
                         let audioLink = `./assets/sounds/sfx/diggingSFX/${this.sounds[randomDigSound]}.mp3`;
                         let audio = new Audio(audioLink);
                         audio.play();
-                        if (this.Gamescreen.getHoles()[i].getClicks() == 0) {
+                        if (this.Gamescreen.getHole()[i].getClicks() == 0) {
                             console.log('bigger than 0');
                             this.currentGameScreenNumber = 2;
                             this.canvasElement.style.backgroundImage = "url(./assets/images/backgrounds/tableBackground.jpg)";
@@ -103,7 +103,7 @@ class Game {
                             this.Gamescreen.regenerateHole(i);
                         }
                         else {
-                            this.Gamescreen.getHoles()[i].lowerClicks();
+                            this.Gamescreen.getHole()[i].lowerClicks();
                         }
                     }
                 }
@@ -128,7 +128,7 @@ class Game {
                     }, 1000 / 60);
                     this.canvasElement.style.cursor = "url(./assets/images/shovelCursor.png), auto";
                     this.Gamescreen.timer();
-                    console.log(this.Gamescreen.getHoles());
+                    console.log(this.Gamescreen.getHole());
                 }
             }
         };
@@ -649,8 +649,9 @@ class MathHelper {
 }
 class EraSelectionScreen {
     constructor() {
-        this.draw = () => {
+        this.draw = (counter) => {
             this.randomItemPicker();
+            this._canvas.writeTextToCanvas(`Tijd over: ${counter} seconden`, 20, 75, 50, "white", "left");
             this._canvas.writeTextToCanvas(`Je hebt ${this.itemList.getItemProperty(this.pickedItem, "name")} gevonden!`, 45, this._canvas.getCenter().X, 100, "yellow");
             this._canvas.writeImageToCanvas(this.itemList.getItemProperty(this.pickedItem, "source"), this._canvas.getCenter().X - 150, this._canvas.getCenter().Y - 200);
             this._canvas.writeImageToCanvas("./assets/images/eraLogos/era1.png", this._canvas.getWidth() * 0.017, this._canvas.getHeight() - 200);
@@ -721,7 +722,7 @@ class GameScreen {
             }
         }, 1000);
     }
-    getHoles() {
+    getHole() {
         return this.hole;
     }
     getCounter() {

@@ -1,7 +1,7 @@
 class Item {
     public _itemList: Array<any>;
 
-    constructor() {
+    public constructor() {
         this._itemList = 
         [
             // ERA 1

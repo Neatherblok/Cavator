@@ -11,8 +11,9 @@ class EraSelectionScreen {
         this.itemList = new Item;
     }
 
-    public draw = () => {
+    public draw = (counter:number) => {
         this.randomItemPicker();
+        this._canvas.writeTextToCanvas(`Tijd over: ${counter} seconden`, 20, 75, 50, "white", "left")
         this._canvas.writeTextToCanvas(`Je hebt ${this.itemList.getItemProperty(this.pickedItem, "name")} gevonden!`, 45, this._canvas.getCenter().X, 100, "yellow")
         this._canvas.writeImageToCanvas(this.itemList.getItemProperty(this.pickedItem, "source"), this._canvas.getCenter().X - 150, this._canvas.getCenter().Y - 200)
         this._canvas.writeImageToCanvas("./assets/images/eraLogos/era1.png", this._canvas.getWidth() * 0.017, this._canvas.getHeight() - 200)

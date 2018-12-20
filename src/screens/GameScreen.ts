@@ -33,7 +33,7 @@ class GameScreen {
         }, 1000)
     }
 
-    public getHoles() {
+    public getHole() {
         return this.hole;
     }
 

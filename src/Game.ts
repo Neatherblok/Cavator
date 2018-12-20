@@ -7,7 +7,7 @@ class Game {
     private HighscoreScreen: HighscoreScreen;
     private itemList: Item;
     private MouseListener: MouseListener;
-    private screen: string[] = ["this.Startscreen.draw()", "this.Gamescreen.draw()", "this.EraSelectionscreen.draw()", "this.HighscoreScreen.draw(this.Gamescreen.getScore())"];
+    private screen: string[] = ["this.Startscreen.draw()", "this.Gamescreen.draw()", "this.EraSelectionscreen.draw(this.Gamescreen.getCounter())", "this.HighscoreScreen.draw(this.Gamescreen.getScore())"];
     private sounds: string[] = ['buttonHitSFX', 'digging1', 'digging2', 'digging3', 'digging4', 'digging5'];
     private currentGameScreenNumber: number = 0;
     private audioLink: string;
@@ -31,20 +31,6 @@ class Game {
     public draw = () => {
         this._canvas.clear();
         eval(this.screen[this.currentGameScreenNumber])
-    }
-
-    public playBackgroundMusic() {
-        this.backgroundMusic.loop = true;
-        this.backgroundMusic.play();
-    }
-
-    public muteBackgroundMusic() {
-        if (this.backgroundMusic.muted == false) {
-            this.backgroundMusic.muted = true;
-        }
-        else {
-            this.backgroundMusic.muted = false;
-        }
     }
 
     public nextScreen = (event: any) => {
@@ -130,15 +116,15 @@ class Game {
             }
         }
         else if (this.currentGameScreenNumber == 1) {
-            for (let i = 0; i < this.Gamescreen.getHoles().length; i++) {
-                if (this.Gamescreen.getHoles()[i].getX() <= event.clientX && this.Gamescreen.getHoles()[i].getX() + 128 >= event.clientX
-                    && this.Gamescreen.getHoles()[i].getY() <= event.clientY && this.Gamescreen.getHoles()[i].getY() + 110 >= event.clientY) {
+            for (let i = 0; i < this.Gamescreen.getHole().length; i++) {
+                if (this.Gamescreen.getHole()[i].getX() <= event.clientX && this.Gamescreen.getHole()[i].getX() + 128 >= event.clientX
+                    && this.Gamescreen.getHole()[i].getY() <= event.clientY && this.Gamescreen.getHole()[i].getY() + 110 >= event.clientY) {
 
                     const randomDigSound = MathHelper.randomNumber(1, this.sounds.length - 1);
                     let audioLink = `./assets/sounds/sfx/diggingSFX/${this.sounds[randomDigSound]}.mp3`
                     let audio: HTMLAudioElement = new Audio(audioLink);
                     audio.play();
-                    if (this.Gamescreen.getHoles()[i].getClicks() == 0) {
+                    if (this.Gamescreen.getHole()[i].getClicks() == 0) {
                         console.log('bigger than 0')
                         this.currentGameScreenNumber = 2;
                         this.canvasElement.style.backgroundImage = "url(./assets/images/backgrounds/tableBackground.jpg)";
@@ -147,11 +133,12 @@ class Game {
                         this.Gamescreen.regenerateHole(i);
                     }
                     else {
-                        this.Gamescreen.getHoles()[i].lowerClicks();
+                        this.Gamescreen.getHole()[i].lowerClicks();
                     }
 
                 }
             }
+
         }
         else if (this.currentGameScreenNumber == 0) {
             if (event.clientX >= (this._canvas.getCenter().X - 111) && event.clientX <= (this._canvas.getCenter().X + 111)
@@ -174,8 +161,23 @@ class Game {
                 }, 1000 / 60)
                 this.canvasElement.style.cursor = "url(./assets/images/shovelCursor.png), auto"
                 this.Gamescreen.timer()
-                console.log(this.Gamescreen.getHoles())
+                console.log(this.Gamescreen.getHole())
             }
+        }
+    }
+
+    
+    public playBackgroundMusic() {
+        this.backgroundMusic.loop = true;
+        this.backgroundMusic.play();
+    }
+
+    public muteBackgroundMusic() {
+        if (this.backgroundMusic.muted == false) {
+            this.backgroundMusic.muted = true;
+        }
+        else {
+            this.backgroundMusic.muted = false;
         }
     }
 }
