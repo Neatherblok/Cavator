@@ -31,7 +31,7 @@ class Game {
                     audio.play();
                     this.canvasElement.style.backgroundImage = "url(./assets/images/backgrounds/groundBackground.png)";
                     this.canvasElement.style.backgroundSize = "auto";
-                    this.canvasElement.style.cursor = "url(./assets/images/cursor.png), auto";
+                    this.canvasElement.style.cursor = "url(./assets/images/shovelCursor.png), auto";
                     let intervalId = setInterval(() => {
                         if (this.currentGameScreenNumber === 2)
                             clearInterval(intervalId);
@@ -72,7 +72,7 @@ class Game {
                     audio.play();
                     this.canvasElement.style.backgroundImage = "url(./assets/images/backgrounds/groundBackground.png)";
                     this.canvasElement.style.backgroundSize = "auto";
-                    this.canvasElement.style.cursor = "url(./assets/images/cursor.png), auto";
+                    this.canvasElement.style.cursor = "url(./assets/images/shovelCursor.png), auto";
                     let intervalId = setInterval(() => {
                         if (this.currentGameScreenNumber === 2)
                             clearInterval(intervalId);
@@ -126,7 +126,7 @@ class Game {
                         }
                         this.draw();
                     }, 1000 / 60);
-                    this.canvasElement.style.cursor = "url(./assets/images/cursor.png), auto";
+                    this.canvasElement.style.cursor = "url(./assets/images/shovelCursor.png), auto";
                     this.Gamescreen.timer();
                     console.log(this.Gamescreen.getHoles());
                 }
@@ -306,8 +306,8 @@ class Item {
                     source: "./assets/images/items/3vikingZwaard.png",
                     era: 3,
                     hint1: "Het zwaard is gevonden in Skaftárhreppur, IJsland.",
-                    hint2: "Het is misschien wel het zwaard van ingólfur Arnarson, de eerste inwoner van IJsland.",
-                    hint3: "Het zwaard was waarschijnlijk ceremonitieel en werd gebruikt voor een begrafenis.",
+                    hint2: "Het is misschien het zwaard van de eerste inwoner van IJsland.",
+                    hint3: "Het zwaard werd waarschijnlijk gebruikt voor een begrafenis.",
                 },
                 {
                     name: "een penning uit Holland",
@@ -616,11 +616,16 @@ class EraSelectionScreen {
             this._canvas._context.lineTo(this._canvas.getWidth() * 0.985, this._canvas.getHeight() - 79);
             this._canvas._context.stroke();
             this._canvas._context.strokeStyle = "yellow";
-            this._canvas._context.strokeRect(this._canvas.getWidth() * 0.70 - 1, this._canvas.getHeight() * 0.18 - 1, 382, this._canvas.getHeight() * 0.5 + 2);
+            this._canvas._context.strokeRect(this._canvas.getWidth() * 0.70 - 1, this._canvas.getHeight() * 0.18 - 1, 422, this._canvas.getHeight() * 0.5 + 2);
             this._canvas._context.fillStyle = "grey";
-            this._canvas._context.fillRect(this._canvas.getWidth() * 0.70, this._canvas.getHeight() * 0.18, 380, this._canvas.getHeight() * 0.5);
-            this._canvas.writeTextToCanvas('Hints', 40, this._canvas.getWidth() * 0.85, this._canvas.getHeight() * 0.24, "black", "right");
-            this._canvas.writeTextToCanvas(this.itemList.getItemProperty(this.pickedItem, "hint1"), 20, this._canvas.getWidth() * 0.83, this._canvas.getHeight() * 0.28, "black", "center");
+            this._canvas._context.fillRect(this._canvas.getWidth() * 0.70, this._canvas.getHeight() * 0.18, 420, this._canvas.getHeight() * 0.5);
+            this._canvas.writeTextToCanvas('Hints', 40, this._canvas.getWidth() * 0.87, this._canvas.getHeight() * 0.24, "black", "right");
+            for (let i = 1; i <= 3; i++) {
+                this._canvas.writeTextToCanvas(`• ${this.itemList.getItemProperty(this.pickedItem, `hint${i}`).split(" ").splice(0, 5).join(" ")}`, 20, this._canvas.getWidth() * 0.83, this._canvas.getHeight() * (0.15 + 0.13 * i), "black", "center");
+                if (this.itemList.getItemProperty(this.pickedItem, `hint${i}`).length > 6) {
+                    this._canvas.writeTextToCanvas(this.itemList.getItemProperty(this.pickedItem, `hint${i}`).split(" ").splice(5, this.itemList.getItemProperty(this.pickedItem, `hint${i}`).length).join(" "), 20, this._canvas.getWidth() * 0.83, this._canvas.getHeight() * (0.20 + 0.13 * i), "black", "center");
+                }
+            }
         };
         this.canvasElement = document.getElementById('canvas');
         this._canvas = new CanvasHelper(this.canvasElement);

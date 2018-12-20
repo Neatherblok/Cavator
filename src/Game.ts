@@ -66,7 +66,7 @@ class Game {
                 audio.play();
                 this.canvasElement.style.backgroundImage = "url(./assets/images/backgrounds/groundBackground.png)";
                 this.canvasElement.style.backgroundSize = "auto";
-                this.canvasElement.style.cursor = "url(./assets/images/cursor.png), auto"
+                this.canvasElement.style.cursor = "url(./assets/images/shovelCursor.png), auto"
                 let intervalId = setInterval(() => {
                     if (this.currentGameScreenNumber === 2) clearInterval(intervalId)
                     if (this.Gamescreen.getCounter() === 0) {
@@ -108,7 +108,7 @@ class Game {
                 audio.play();
                 this.canvasElement.style.backgroundImage = "url(./assets/images/backgrounds/groundBackground.png)";
                 this.canvasElement.style.backgroundSize = "auto";
-                this.canvasElement.style.cursor = "url(./assets/images/cursor.png), auto"
+                this.canvasElement.style.cursor = "url(./assets/images/shovelCursor.png), auto"
                 let intervalId = setInterval(() => {
                     if (this.currentGameScreenNumber === 2) clearInterval(intervalId)
                     if (this.Gamescreen.getCounter() === 0) {
@@ -166,7 +166,7 @@ class Game {
                         this.draw();
                     
                 }, 1000 / 60)
-                this.canvasElement.style.cursor = "url(./assets/images/cursor.png), auto"
+                this.canvasElement.style.cursor = "url(./assets/images/shovelCursor.png), auto"
                 this.Gamescreen.timer()
                 console.log(this.Gamescreen.getHoles())
             }
