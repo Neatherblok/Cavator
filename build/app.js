@@ -1,11 +1,13 @@
 class Game {
     constructor() {
-        this.screen = ["this.Startscreen.draw()", "this.Gamescreen.draw()", "this.EraSelectionscreen.draw(this.Gamescreen.getCounter())", "this.HighscoreScreen.draw(this.Gamescreen.getScore())"];
+        this.screen = ["this.Startscreen.draw()", "this.Gamescreen.draw()", "this.EraSelectionscreen.draw()", "this.HighscoreScreen.draw(this.Gamescreen.getScore())"];
         this.sounds = ['buttonHitSFX', 'digging1', 'digging2', 'digging3', 'digging4', 'digging5'];
         this.currentGameScreenNumber = 0;
+        this.time = 150;
         this.draw = () => {
             this._canvas.clear();
             eval(this.screen[this.currentGameScreenNumber]);
+            console.log(this.time);
         };
         this.nextScreen = (event) => {
             console.log(this.currentGameScreenNumber);
@@ -16,7 +18,7 @@ class Game {
                     let audio = new Audio(audioLink);
                     audio.play();
                     this.currentGameScreenNumber = 0;
-                    this.Gamescreen.resetCounter();
+                    this.resetCounter();
                     this.Gamescreen.resetScore();
                     this.draw();
                 }
@@ -35,7 +37,7 @@ class Game {
                     let intervalId = setInterval(() => {
                         if (this.currentGameScreenNumber === 2)
                             clearInterval(intervalId);
-                        if (this.Gamescreen.getCounter() === 0) {
+                        if (this.time === 0) {
                             clearInterval(intervalId);
                             this.HighscoreScreen = new HighscoreScreen();
                             this.currentGameScreenNumber = 3;
@@ -76,7 +78,7 @@ class Game {
                     let intervalId = setInterval(() => {
                         if (this.currentGameScreenNumber === 2)
                             clearInterval(intervalId);
-                        if (this.Gamescreen.getCounter() === 0) {
+                        if (this.time === 0) {
                             clearInterval(intervalId);
                             this.HighscoreScreen = new HighscoreScreen();
                             this.currentGameScreenNumber = 3;
@@ -114,11 +116,12 @@ class Game {
                     let audioLink = "./assets/sounds/sfx/buttonHitSFX.mp3";
                     let audio = new Audio(audioLink);
                     audio.play();
+                    this.timer();
                     this.currentGameScreenNumber = 1;
                     let intervalId = setInterval(() => {
                         if (this.currentGameScreenNumber === 2)
                             clearInterval(intervalId);
-                        if (this.Gamescreen.getCounter() === 0) {
+                        if (this.time === 0) {
                             clearInterval(intervalId);
                             this.HighscoreScreen = new HighscoreScreen();
                             this.currentGameScreenNumber = 3;
@@ -127,8 +130,6 @@ class Game {
                         this.draw();
                     }, 1000 / 60);
                     this.canvasElement.style.cursor = "url(./assets/images/shovelCursor.png), auto";
-                    this.Gamescreen.timer();
-                    console.log(this.Gamescreen.getHole());
                 }
             }
         };
@@ -156,6 +157,20 @@ class Game {
         else {
             this.backgroundMusic.muted = false;
         }
+    }
+    timer() {
+        let intervalId = setInterval(() => {
+            const timerText = document.getElementById("timerText");
+            timerText.innerHTML = `Tijd over: ${this.time} seconden`;
+            this.time--;
+            if (this.time === 0) {
+                clearInterval(intervalId);
+                timerText.innerHTML = '';
+            }
+        }, 1000);
+    }
+    resetCounter() {
+        this.time = 150;
     }
 }
 window.addEventListener('load', init);
@@ -649,9 +664,8 @@ class MathHelper {
 }
 class EraSelectionScreen {
     constructor() {
-        this.draw = (counter) => {
+        this.draw = () => {
             this.randomItemPicker();
-            this._canvas.writeTextToCanvas(`Tijd over: ${counter} seconden`, 20, 75, 50, "white", "left");
             this._canvas.writeTextToCanvas(`Je hebt ${this.itemList.getItemProperty(this.pickedItem, "name")} gevonden!`, 45, this._canvas.getCenter().X, 100, "yellow");
             this._canvas.writeImageToCanvas(this.itemList.getItemProperty(this.pickedItem, "source"), this._canvas.getCenter().X - 150, this._canvas.getCenter().Y - 200);
             this._canvas.writeImageToCanvas("./assets/images/eraLogos/era1.png", this._canvas.getWidth() * 0.017, this._canvas.getHeight() - 200);
@@ -688,7 +702,7 @@ class EraSelectionScreen {
         this.itemList = new Item;
     }
     randomItemPicker() {
-        this.pickedItem = MathHelper.randomNumber(0, this.itemList.getItemArrayLength());
+        this.pickedItem = MathHelper.randomNumber(0, this.itemList.getItemArrayLength() - 1);
     }
     randomItemNumber() {
         return this.itemList.getItemProperty(this.pickedItem, "era");
@@ -697,14 +711,11 @@ class EraSelectionScreen {
 class GameScreen {
     constructor(imageUrl) {
         this.hole = new Array();
-        this.counter = 150;
         this.score = 0;
         this.draw = () => {
             for (let i = 0; i < this.hole.length; i++) {
                 this.hole[i].draw();
             }
-            this._canvas.writeTextToCanvas(`Tijd over: ${this.counter} seconden`, 20, 75, 50, "white", "left");
-            console.log(this.counter);
             this._canvas.writeTextToCanvas(`Score: ${this.score}`, 20, 75, 75, "white", "left");
         };
         this.imageUrl = imageUrl;
@@ -714,28 +725,14 @@ class GameScreen {
             this.hole.push(new Hole(this.canvasElement, this.imageUrl, MathHelper.randomNumber(0, this._canvas.getWidth() - 200), MathHelper.randomNumber(0, this._canvas.getHeight() - 200), 130, 120, MathHelper.randomNumber(0, 2)));
         }
     }
-    timer() {
-        let intervalId = setInterval(() => {
-            this.counter--;
-            if (this.counter === 0) {
-                clearInterval(intervalId);
-            }
-        }, 1000);
-    }
     getHole() {
         return this.hole;
-    }
-    getCounter() {
-        return this.counter;
     }
     addScoreCounter() {
         this.score++;
     }
     getScore() {
         return this.score;
-    }
-    resetCounter() {
-        this.counter = 150;
     }
     resetScore() {
         this.score = 0;

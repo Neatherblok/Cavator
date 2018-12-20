@@ -7,11 +7,12 @@ class Game {
     private HighscoreScreen: HighscoreScreen;
     private itemList: Item;
     private MouseListener: MouseListener;
-    private screen: string[] = ["this.Startscreen.draw()", "this.Gamescreen.draw()", "this.EraSelectionscreen.draw(this.Gamescreen.getCounter())", "this.HighscoreScreen.draw(this.Gamescreen.getScore())"];
+    private screen: string[] = ["this.Startscreen.draw()", "this.Gamescreen.draw()", "this.EraSelectionscreen.draw()", "this.HighscoreScreen.draw(this.Gamescreen.getScore())"];
     private sounds: string[] = ['buttonHitSFX', 'digging1', 'digging2', 'digging3', 'digging4', 'digging5'];
     private currentGameScreenNumber: number = 0;
     private audioLink: string;
     private backgroundMusic: HTMLAudioElement;
+    private time: number = 150;
 
     public constructor() {
         this.canvasElement = <HTMLCanvasElement>document.getElementById('canvas');
@@ -31,6 +32,7 @@ class Game {
     public draw = () => {
         this._canvas.clear();
         eval(this.screen[this.currentGameScreenNumber])
+        console.log(this.time)
     }
 
     public nextScreen = (event: any) => {
@@ -42,7 +44,7 @@ class Game {
                 let audio: HTMLAudioElement = new Audio(audioLink);
                 audio.play();
                 this.currentGameScreenNumber = 0;
-                this.Gamescreen.resetCounter();
+                this.resetCounter();
                 this.Gamescreen.resetScore();
                 this.draw();
 
@@ -61,7 +63,7 @@ class Game {
                 this.canvasElement.style.cursor = "url(./assets/images/shovelCursor.png), auto"
                 let intervalId = setInterval(() => {
                     if (this.currentGameScreenNumber === 2) clearInterval(intervalId)
-                    if (this.Gamescreen.getCounter() === 0) {
+                    if (this.time === 0) {
                         clearInterval(intervalId)
                         this.HighscoreScreen = new HighscoreScreen();
                         this.currentGameScreenNumber = 3;
@@ -103,7 +105,7 @@ class Game {
                 this.canvasElement.style.cursor = "url(./assets/images/shovelCursor.png), auto"
                 let intervalId = setInterval(() => {
                     if (this.currentGameScreenNumber === 2) clearInterval(intervalId)
-                    if (this.Gamescreen.getCounter() === 0) {
+                    if (this.time === 0) {
                         clearInterval(intervalId)
                         this.HighscoreScreen = new HighscoreScreen();
                         this.currentGameScreenNumber = 3;
@@ -146,10 +148,11 @@ class Game {
                 let audioLink = "./assets/sounds/sfx/buttonHitSFX.mp3"
                 let audio: HTMLAudioElement = new Audio(audioLink);
                 audio.play();
+                this.timer()
                 this.currentGameScreenNumber = 1;
                 let intervalId = setInterval(() => {
                     if (this.currentGameScreenNumber === 2) clearInterval(intervalId)
-                    if (this.Gamescreen.getCounter() === 0) {
+                    if (this.time === 0) {
                         clearInterval(intervalId)
                         this.HighscoreScreen = new HighscoreScreen();
                         this.currentGameScreenNumber = 3;
@@ -160,8 +163,6 @@ class Game {
 
                 }, 1000 / 60)
                 this.canvasElement.style.cursor = "url(./assets/images/shovelCursor.png), auto"
-                this.Gamescreen.timer()
-                console.log(this.Gamescreen.getHole())
             }
         }
     }
@@ -179,6 +180,22 @@ class Game {
         else {
             this.backgroundMusic.muted = false;
         }
+    }
+
+    public timer() {
+        let intervalId = setInterval(() => {
+            const timerText = document.getElementById("timerText");
+            timerText.innerHTML = `Tijd over: ${this.time} seconden`
+            this.time--;
+            if (this.time === 0) {
+                clearInterval(intervalId)
+                timerText.innerHTML = ''
+            }
+        }, 1000)
+    }
+
+    public resetCounter(){
+        this.time = 150;
     }
 }
 
