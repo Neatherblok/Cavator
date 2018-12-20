@@ -142,13 +142,20 @@ class Game {
         this.audioLink = `./assets/sounds/music/dutch_street_organ.wav`;
         this.backgroundMusic = new Audio(this.audioLink);
         this.playBackgroundMusic();
+        let muteButton = document.getElementById("mute");
+        muteButton.addEventListener("click", (e) => this.muteBackgroundMusic());
     }
     playBackgroundMusic() {
         this.backgroundMusic.loop = true;
         this.backgroundMusic.play();
     }
-    pauseBackgroundMusic() {
-        this.backgroundMusic.pause();
+    muteBackgroundMusic() {
+        if (this.backgroundMusic.muted == false) {
+            this.backgroundMusic.muted = true;
+        }
+        else {
+            this.backgroundMusic.muted = false;
+        }
     }
 }
 window.addEventListener('load', init);

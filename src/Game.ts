@@ -24,6 +24,8 @@ class Game {
         this.audioLink = `./assets/sounds/music/dutch_street_organ.wav`;
         this.backgroundMusic = new Audio(this.audioLink);
         this.playBackgroundMusic();
+        let muteButton = document.getElementById("mute");
+        muteButton.addEventListener("click", (e:Event) => this.muteBackgroundMusic());
     }
 
     public draw = () => {
@@ -31,21 +33,25 @@ class Game {
         eval(this.screen[this.currentGameScreenNumber])
     }
 
-
     public playBackgroundMusic() {
         this.backgroundMusic.loop = true;
         this.backgroundMusic.play();
     }
 
-    public pauseBackgroundMusic() {
-        this.backgroundMusic.pause();
+    public muteBackgroundMusic() {
+        if (this.backgroundMusic.muted == false) {
+            this.backgroundMusic.muted = true;
+        }
+        else {
+            this.backgroundMusic.muted = false;
+        }
     }
 
     public nextScreen = (event: any) => {
         console.log(this.currentGameScreenNumber)
-        if(this.currentGameScreenNumber == 3){
+        if (this.currentGameScreenNumber == 3) {
             if (event.clientX >= (this._canvas.getCenter().X - 111) && event.clientX <= (this._canvas.getCenter().X + 111)
-            && event.clientY >= (this._canvas.getCenter().Y + 200) && event.clientY <= this._canvas.getCenter().Y + 239) {
+                && event.clientY >= (this._canvas.getCenter().Y + 200) && event.clientY <= this._canvas.getCenter().Y + 239) {
                 let audioLink = "./assets/sounds/sfx/buttonHitSFX.mp3"
                 let audio: HTMLAudioElement = new Audio(audioLink);
                 audio.play();
@@ -74,10 +80,10 @@ class Game {
                         this.HighscoreScreen = new HighscoreScreen();
                         this.currentGameScreenNumber = 3;
                         this.canvasElement.style.cursor = "url(./assets/images/FeatherCursor2.png), auto"
-                    
+
                     }
-                        this.draw();
-                    
+                    this.draw();
+
                 }, 1000 / 60)
             }
             else if (event.clientX >= this.MouseListener.eraScreenClick(1).Xmin && event.clientX <= this.MouseListener.eraScreenClick(1).Xmax
@@ -116,10 +122,10 @@ class Game {
                         this.HighscoreScreen = new HighscoreScreen();
                         this.currentGameScreenNumber = 3;
                         this.canvasElement.style.cursor = "url(./assets/images/FeatherCursor2.png), auto"
-                    
+
                     }
-                        this.draw();
-                    
+                    this.draw();
+
                 }, 1000 / 60)
             }
         }
@@ -149,7 +155,7 @@ class Game {
         }
         else if (this.currentGameScreenNumber == 0) {
             if (event.clientX >= (this._canvas.getCenter().X - 111) && event.clientX <= (this._canvas.getCenter().X + 111)
-            && event.clientY >= (this._canvas.getCenter().Y + 200) && event.clientY <= this._canvas.getCenter().Y + 239) {
+                && event.clientY >= (this._canvas.getCenter().Y + 200) && event.clientY <= this._canvas.getCenter().Y + 239) {
                 let audioLink = "./assets/sounds/sfx/buttonHitSFX.mp3"
                 let audio: HTMLAudioElement = new Audio(audioLink);
                 audio.play();
@@ -161,10 +167,10 @@ class Game {
                         this.HighscoreScreen = new HighscoreScreen();
                         this.currentGameScreenNumber = 3;
                         this.canvasElement.style.cursor = "url(./assets/images/FeatherCursor2.png), auto"
-                    
+
                     }
-                        this.draw();
-                    
+                    this.draw();
+
                 }, 1000 / 60)
                 this.canvasElement.style.cursor = "url(./assets/images/cursor.png), auto"
                 this.Gamescreen.timer()
