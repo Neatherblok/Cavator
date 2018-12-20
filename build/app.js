@@ -268,6 +268,30 @@ class Item {
                     hint3: "Het eerste fossiel van een T-rex werd gevonden 1874."
                 },
                 {
+                    name: "Een mammoet",
+                    source: "./assets/images/items/1mammoet.png",
+                    era: 1,
+                    hint1: "Een dier dat al is uitgestorven",
+                    hint2: "Het is familie van de olifant",
+                    hint3: "De grootste mammoetverzameling ter wereld is te zien in Naturalis"
+                },
+                {
+                    name: "Stonehenge",
+                    source: "./assets/images/items/1stonehenge.png",
+                    era: 2,
+                    hint1: "Het is een monument gelegen in Engeland",
+                    hint2: "Het staat op de werelderfgoedlijst van Unesco",
+                    hint3: "Het komt uit de Jonge Steentijd"
+                },
+                {
+                    name: "Grotschilderingen",
+                    source: "./assets/images/items/1grotschilderingen.png",
+                    era: 2,
+                    hint1: "Deze grotschilderingen werden getekend door jagers-verzamelers",
+                    hint2: "Dit waren de eerste tekenen van kunst door de mens",
+                    hint3: "Dit soort tekeningen konden als ritueel voor de jacht staan"
+                },
+                {
                     name: "het Colosseum",
                     source: "./assets/images/items/2colosseum.png",
                     era: 2,
@@ -300,6 +324,30 @@ class Item {
                     hint3: "Toetanchamon was maar 19 toen hij stierf."
                 },
                 {
+                    name: "het Parthenon",
+                    source: "./assets/images/items/2parthenon.png",
+                    era: 2,
+                    hint1: "Dit was gebouwd voor de beschermgodin van Athene, Athena Parthenos",
+                    hint2: "Deze tempel was het hoogtepunt van klassieke, Atheense bouwkunst",
+                    hint3: "Onderdeel van de monumentale herbouw van de Akropolis"
+                },
+                {
+                    name: "de Olympische Spelen",
+                    source: "./assets/images/items/2discuswerper.png",
+                    era: 2,
+                    hint1: "Het is genoemd naar Olympia, de plaats waar ze gehouden werden",
+                    hint2: "Vroeger konden alleen mannen konden meedoen",
+                    hint3: "Het wordt nog steeds gedaan, maar heel anders dan vroeger"
+                },
+                {
+                    name: "Sfinx van Gizeh",
+                    source: "./assets/images/items/2sfinx.png",
+                    era: 2,
+                    hint1: "Het staat bij de drie grote priamiden in Gizeh",
+                    hint2: "Het was gebouwd voor de farao Khafra",
+                    hint3: "Het nog steeds een misterie hoe het z'n nues verloor"
+                },
+                {
                     name: "het zwaard van Sint Cosmas en Damianus",
                     source: "./assets/images/items/3zwaard_sint_cosmas.png",
                     era: 3,
@@ -330,6 +378,30 @@ class Item {
                     hint1: "Het zwaard is gevonden in Skaftárhreppur, IJsland.",
                     hint2: "Het is misschien het zwaard van de eerste inwoner van IJsland.",
                     hint3: "Het zwaard werd waarschijnlijk gebruikt voor een begrafenis.",
+                },
+                {
+                    name: "",
+                    source: "./assets/images/items/",
+                    era: 2,
+                    hint1: "",
+                    hint2: "",
+                    hint3: ""
+                },
+                {
+                    name: "",
+                    source: "./assets/images/items/",
+                    era: 2,
+                    hint1: "",
+                    hint2: "",
+                    hint3: ""
+                },
+                {
+                    name: "",
+                    source: "./assets/images/items/",
+                    era: 2,
+                    hint1: "",
+                    hint2: "",
+                    hint3: ""
                 },
                 {
                     name: "een penning uit Holland",
