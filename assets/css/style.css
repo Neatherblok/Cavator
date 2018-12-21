@@ -25,11 +25,20 @@ body {
   
 #mute {
     position:absolute;
-    right:0%;
+    right: 0;
+    margin: 2.25% 4.75% 0% 0%;
+    padding: 0.5%;
+    font-family: "Minecraft";
+    background-color: grey;
+    border: 2px solid yellow;
+    color: white;
 }
 
 .timerText {
-    z-index: 100;
+    z-index: 1;
+    margin: 2.25% 0% 0% 4.75%;
+    font-size: 20px;
     color: white;
     position: absolute;
+    font-family: "Minecraft"
 }

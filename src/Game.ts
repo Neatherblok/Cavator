@@ -15,8 +15,9 @@ class Game {
     private currentGameScreenNumber: number = 0;
     private audioLink: string;
     private backgroundMusic: HTMLAudioElement;
+    private muteButton: HTMLElement;
         //defines amount of time left
-    private time: number = 150;
+    private time: number = 151;
 
     public constructor() {
         this.canvasElement = <HTMLCanvasElement>document.getElementById('canvas');
@@ -31,9 +32,9 @@ class Game {
         this.backgroundMusic = new Audio(this.audioLink);
             //starts background music
         this.playBackgroundMusic();
-        let muteButton = document.getElementById("mute");
+        this.muteButton = document.getElementById("mute");
             //defines clickable mute button
-        muteButton.addEventListener("click", (e:Event) => this.muteBackgroundMusic());
+        this.muteButton.addEventListener("click", (e:Event) => this.muteBackgroundMusic());
     }
 
     //draws current screen
@@ -168,9 +169,11 @@ class Game {
     public muteBackgroundMusic() {
         if (this.backgroundMusic.muted == false) {
             this.backgroundMusic.muted = true;
+            this.muteButton.innerHTML = "Muziek uit";
         }
         else {
             this.backgroundMusic.muted = false;
+            this.muteButton.innerHTML = "Muziek aan";
         }
     }
 
@@ -179,7 +182,7 @@ class Game {
         let intervalId = setInterval(() => {
             const timerText = document.getElementById("timerText");
                 //views timeleft on screen
-            timerText.innerHTML = `Tijd over: ${this.time} seconden`
+            timerText.innerHTML = `Tijd over: ${this.time - 1} seconden`
                 //reduces time left
             this.time--;
             if (this.time === 0) {
@@ -195,7 +198,7 @@ class Game {
 
         //resets timer back to basic settings
     public resetCounter(){
-        this.time = 150;
+        this.time = 151;
     }
 }
 

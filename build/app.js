@@ -3,7 +3,7 @@ class Game {
         this.screen = ["this.Startscreen.draw()", "this.Gamescreen.draw()", "this.EraSelectionscreen.draw()", "this.HighscoreScreen.draw(this.Gamescreen.getScore())"];
         this.sounds = ['buttonHitSFX', 'digging1', 'digging2', 'digging3', 'digging4', 'digging5'];
         this.currentGameScreenNumber = 0;
-        this.time = 150;
+        this.time = 151;
         this.draw = () => {
             this._canvas.clear();
             eval(this.screen[this.currentGameScreenNumber]);
@@ -102,8 +102,8 @@ class Game {
         this.audioLink = `./assets/sounds/music/dutch_street_organ.wav`;
         this.backgroundMusic = new Audio(this.audioLink);
         this.playBackgroundMusic();
-        let muteButton = document.getElementById("mute");
-        muteButton.addEventListener("click", (e) => this.muteBackgroundMusic());
+        this.muteButton = document.getElementById("mute");
+        this.muteButton.addEventListener("click", (e) => this.muteBackgroundMusic());
     }
     playBackgroundMusic() {
         this.backgroundMusic.loop = true;
@@ -112,15 +112,17 @@ class Game {
     muteBackgroundMusic() {
         if (this.backgroundMusic.muted == false) {
             this.backgroundMusic.muted = true;
+            this.muteButton.innerHTML = "Muziek uit";
         }
         else {
             this.backgroundMusic.muted = false;
+            this.muteButton.innerHTML = "Muziek aan";
         }
     }
     timer() {
         let intervalId = setInterval(() => {
             const timerText = document.getElementById("timerText");
-            timerText.innerHTML = `Tijd over: ${this.time} seconden`;
+            timerText.innerHTML = `Tijd over: ${this.time - 1} seconden`;
             this.time--;
             if (this.time === 0) {
                 clearInterval(intervalId);
@@ -132,7 +134,7 @@ class Game {
         }, 1000);
     }
     resetCounter() {
-        this.time = 150;
+        this.time = 151;
     }
 }
 window.addEventListener('load', init);
@@ -656,6 +658,9 @@ class CanvasHelper {
     getCenter() {
         return { X: this.getWidth() / 2, Y: this.getHeight() / 2 };
     }
+    loopImage(image, aXpos, aYpos) {
+        this._context.drawImage(image, aXpos, aYpos);
+    }
     writeTextToCanvas(aText, aFontSize, aXpos, aYpos, aColor = "white", aAlignment = "center") {
         this._context.font = `${aFontSize}px Minecraft`;
         this._context.fillStyle = aColor;
@@ -791,6 +796,9 @@ class GameScreen {
 class HighscoreScreen {
     constructor() {
         this.draw = (score) => {
+            this.canvasElement.style.backgroundImage = "url(./assets/images/backgrounds/tableBackground.jpg)";
+            this.canvasElement.style.backgroundSize = "100% 100%";
+            this.canvasElement.style.cursor = "url(./assets/images/FeatherCursor.png), auto";
             this._canvas.writeTextToCanvas(`Je hebt een score van ${score} behaald!`, 45, this._canvas.getCenter().X, 100, "yellow");
             this._canvas.writeButtonToCanvas("Probeer opnieuw", undefined, this._canvas.getCenter().Y + 200);
         };
@@ -802,9 +810,10 @@ class StartScreen {
     constructor() {
         this.draw = () => {
             this.canvasElement.style.backgroundImage = "url(./assets/images/backgrounds/groundBackground.png)";
+            this.canvasElement.style.backgroundSize = "auto";
             this.canvasElement.style.cursor = "url(./assets/images/FeatherCursor.png), auto";
             this._canvas.writeImageToCanvas("./assets/images/Cavator_logo/CavatorLogo.png", this._canvas.getCenter().X - 200, this._canvas.getCenter().Y - 300);
-            this._canvas.writeButtonToCanvas("Play", undefined, this._canvas.getCenter().Y + 200);
+            this._canvas.writeButtonToCanvas("Speel", undefined, this._canvas.getCenter().Y + 200);
         };
         this.canvasElement = document.getElementById('canvas');
         this._canvas = new CanvasHelper(this.canvasElement);
