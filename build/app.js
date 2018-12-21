@@ -238,7 +238,7 @@ class Item {
                 {
                     name: "Stonehenge",
                     source: "./assets/images/items/1stonehenge.png",
-                    era: 2,
+                    era: 1,
                     hint1: "Het is een monument gelegen in Engeland",
                     hint2: "Het staat op de werelderfgoedlijst van Unesco",
                     hint3: "Het komt uit de Jonge Steentijd"
@@ -246,7 +246,7 @@ class Item {
                 {
                     name: "Grotschilderingen",
                     source: "./assets/images/items/1grotschilderingen.png",
-                    era: 2,
+                    era: 1,
                     hint1: "Deze grotschilderingen werden getekend door jagers-verzamelers",
                     hint2: "Dit waren de eerste tekenen van kunst door de mens",
                     hint3: "Dit soort tekeningen konden als ritueel voor de jacht staan"
@@ -342,7 +342,7 @@ class Item {
                 {
                     name: "",
                     source: "./assets/images/items/",
-                    era: 2,
+                    era: 3,
                     hint1: "",
                     hint2: "",
                     hint3: ""
@@ -350,7 +350,7 @@ class Item {
                 {
                     name: "",
                     source: "./assets/images/items/",
-                    era: 2,
+                    era: 3,
                     hint1: "",
                     hint2: "",
                     hint3: ""
@@ -358,7 +358,7 @@ class Item {
                 {
                     name: "",
                     source: "./assets/images/items/",
-                    era: 2,
+                    era: 3,
                     hint1: "",
                     hint2: "",
                     hint3: ""
