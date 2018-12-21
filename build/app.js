@@ -656,9 +656,6 @@ class CanvasHelper {
     getCenter() {
         return { X: this.getWidth() / 2, Y: this.getHeight() / 2 };
     }
-    loopImage(image, aXpos, aYpos) {
-        this._context.drawImage(image, aXpos, aYpos);
-    }
     writeTextToCanvas(aText, aFontSize, aXpos, aYpos, aColor = "white", aAlignment = "center") {
         this._context.font = `${aFontSize}px Minecraft`;
         this._context.fillStyle = aColor;

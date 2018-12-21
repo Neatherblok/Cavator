@@ -10,6 +10,7 @@ class ExplanationScreen{
         this.explanation = "Het doel om het spel is om zoveel mogelijk voorwerpen op te graven ";
     }
 
+    //draws explanationscreen
     public draw = () => {
         this._canvas.writeTextToCanvas(this.explanation,20,this._canvas.getCenter().X,this._canvas.getCenter().Y);
         this._canvas.writeButtonToCanvas("Terug naar titelscherm", undefined, this._canvas.getCenter().Y + 200);
