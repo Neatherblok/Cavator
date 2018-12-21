@@ -7,11 +7,15 @@ class Game {
     private HighscoreScreen: HighscoreScreen;
     private itemList: Item;
     private MouseListener: MouseListener;
+        //defines all possible screens
     private screen: string[] = ["this.Startscreen.draw()", "this.Gamescreen.draw()", "this.EraSelectionscreen.draw()", "this.HighscoreScreen.draw(this.Gamescreen.getScore())"];
+        //defines all possible sounds
     private sounds: string[] = ['buttonHitSFX', 'digging1', 'digging2', 'digging3', 'digging4', 'digging5'];
+        //defines the current gamescreen
     private currentGameScreenNumber: number = 0;
     private audioLink: string;
     private backgroundMusic: HTMLAudioElement;
+        //defines amount of time left
     private time: number = 150;
 
     public constructor() {
@@ -22,27 +26,35 @@ class Game {
         this.EraSelectionscreen = new EraSelectionScreen();
         this.MouseListener = new MouseListener();
         this.itemList = new Item();
+            //define background music
         this.audioLink = `./assets/sounds/music/dutch_street_organ.wav`;
         this.backgroundMusic = new Audio(this.audioLink);
+            //starts background music
         this.playBackgroundMusic();
         let muteButton = document.getElementById("mute");
+            //defines clickable mute button
         muteButton.addEventListener("click", (e:Event) => this.muteBackgroundMusic());
     }
 
+    //draws current screen
     public draw = () => {
         this._canvas.clear();
         eval(this.screen[this.currentGameScreenNumber])
         console.log(this.time)
     }
 
+    //sets next screen after clicks
     public nextScreen = (event: any) => {
-        console.log(this.currentGameScreenNumber)
         if (this.currentGameScreenNumber == 3) {
+                //defines place where must be clicked
             if (event.clientX >= (this._canvas.getCenter().X - 111) && event.clientX <= (this._canvas.getCenter().X + 111)
                 && event.clientY >= (this._canvas.getCenter().Y + 200) && event.clientY <= this._canvas.getCenter().Y + 239) {
+                    //defines button soundeffect
                 let audioLink = "./assets/sounds/sfx/buttonHitSFX.mp3"
                 let audio: HTMLAudioElement = new Audio(audioLink);
+                    //plays button soundeffect
                 audio.play();
+                    //reset current screen to startscreen settings
                 this.currentGameScreenNumber = 0;
                 this.resetCounter();
                 this.Gamescreen.resetScore();
@@ -51,30 +63,22 @@ class Game {
             }
         }
         else if (this.currentGameScreenNumber == 2) {
+                //defines right place where must be clicked
             if (event.clientX >= this.MouseListener.eraScreenClick(this.EraSelectionscreen.randomItemNumber()).Xmin && event.clientX <= this.MouseListener.eraScreenClick(this.EraSelectionscreen.randomItemNumber()).Xmax
                 && event.clientY >= this.MouseListener.eraScreenClick(this.EraSelectionscreen.randomItemNumber()).Ymin && event.clientY <= this.MouseListener.eraScreenClick(this.EraSelectionscreen.randomItemNumber()).Ymax) {
+                    //add point to scoreCounter
                 this.Gamescreen.addScoreCounter();
-                this.currentGameScreenNumber = 1;
+                    //defines button soundeffect
                 let audioLink = `./assets/sounds/sfx/checkSFX/rightSFX.mp3`
                 let audio: HTMLAudioElement = new Audio(audioLink);
+                    //playes right answer soundeffect
                 audio.play();
-                this.canvasElement.style.backgroundImage = "url(./assets/images/backgrounds/groundBackground.png)";
-                this.canvasElement.style.backgroundSize = "auto";
-                this.canvasElement.style.cursor = "url(./assets/images/shovelCursor.png), auto"
-                let intervalId = setInterval(() => {
-                    if (this.currentGameScreenNumber === 2) clearInterval(intervalId)
-                    if (this.time === 0) {
-                        clearInterval(intervalId)
-                        this.HighscoreScreen = new HighscoreScreen();
-                        this.currentGameScreenNumber = 3;
-                        this.canvasElement.style.cursor = "url(./assets/images/FeatherCursor2.png), auto"
-
-                    }
-                    this.draw();
-
-                }, 1000 / 60)
+                    //sets current screen to gamescreen settings
+                this.currentGameScreenNumber = 1;
+                this.draw();
             }
-            else if (event.clientX >= this.MouseListener.eraScreenClick(1).Xmin && event.clientX <= this.MouseListener.eraScreenClick(1).Xmax
+                //defines wrong (era) coordinates where could be clicked
+            else if(event.clientX >= this.MouseListener.eraScreenClick(1).Xmin && event.clientX <= this.MouseListener.eraScreenClick(1).Xmax
                 && event.clientY >= this.MouseListener.eraScreenClick(1).Ymin && event.clientY <= this.MouseListener.eraScreenClick(1).Ymax
                 || event.clientX >= this.MouseListener.eraScreenClick(2).Xmin && event.clientX <= this.MouseListener.eraScreenClick(2).Xmax
                 && event.clientY >= this.MouseListener.eraScreenClick(2).Ymin && event.clientY <= this.MouseListener.eraScreenClick(2).Ymax
@@ -95,84 +99,72 @@ class Game {
                 || event.clientX >= this.MouseListener.eraScreenClick(10).Xmin && event.clientX <= this.MouseListener.eraScreenClick(10).Xmax
                 && event.clientY >= this.MouseListener.eraScreenClick(10).Ymin && event.clientY <= this.MouseListener.eraScreenClick(10).Ymax
                 && !(event.clientX >= this.MouseListener.eraScreenClick(this.EraSelectionscreen.randomItemNumber()).Xmin && event.clientX <= this.MouseListener.eraScreenClick(this.EraSelectionscreen.randomItemNumber()).Xmax
-                    && event.clientY >= this.MouseListener.eraScreenClick(this.EraSelectionscreen.randomItemNumber()).Ymin && event.clientY <= this.MouseListener.eraScreenClick(this.EraSelectionscreen.randomItemNumber()).Ymax)) {
-                this.currentGameScreenNumber = 1;
+                && event.clientY >= this.MouseListener.eraScreenClick(this.EraSelectionscreen.randomItemNumber()).Ymin && event.clientY <= this.MouseListener.eraScreenClick(this.EraSelectionscreen.randomItemNumber()).Ymax)) {
+                
+                    //defines button soundeffect
                 let audioLink = `./assets/sounds/sfx/checkSFX/wrongSFX.mp3`
                 let audio: HTMLAudioElement = new Audio(audioLink);
+                    //plays button soundeffect
                 audio.play();
-                this.canvasElement.style.backgroundImage = "url(./assets/images/backgrounds/groundBackground.png)";
-                this.canvasElement.style.backgroundSize = "auto";
-                this.canvasElement.style.cursor = "url(./assets/images/shovelCursor.png), auto"
-                let intervalId = setInterval(() => {
-                    if (this.currentGameScreenNumber === 2) clearInterval(intervalId)
-                    if (this.time === 0) {
-                        clearInterval(intervalId)
-                        this.HighscoreScreen = new HighscoreScreen();
-                        this.currentGameScreenNumber = 3;
-                        this.canvasElement.style.cursor = "url(./assets/images/FeatherCursor2.png), auto"
-
-                    }
-                    this.draw();
-
-                }, 1000 / 60)
+                    //sets current screen to gamescreen settings
+                this.currentGameScreenNumber = 1;
+                this.draw();
             }
         }
         else if (this.currentGameScreenNumber == 1) {
+                //gets holes
             for (let i = 0; i < this.Gamescreen.getHole().length; i++) {
+                    //defines place where must be clicked
                 if (this.Gamescreen.getHole()[i].getX() <= event.clientX && this.Gamescreen.getHole()[i].getX() + 128 >= event.clientX
                     && this.Gamescreen.getHole()[i].getY() <= event.clientY && this.Gamescreen.getHole()[i].getY() + 110 >= event.clientY) {
-
+                        //defines digging soundeffect
                     const randomDigSound = MathHelper.randomNumber(1, this.sounds.length - 1);
                     let audioLink = `./assets/sounds/sfx/diggingSFX/${this.sounds[randomDigSound]}.mp3`
                     let audio: HTMLAudioElement = new Audio(audioLink);
+                        //plays digging soundeffect
                     audio.play();
+                        //checks if clickcounter == 0
                     if (this.Gamescreen.getHole()[i].getClicks() == 0) {
-                        console.log('bigger than 0')
+                            //sets current screen to eraselectionscreen settings
                         this.currentGameScreenNumber = 2;
-                        this.canvasElement.style.backgroundImage = "url(./assets/images/backgrounds/tableBackground.jpg)";
-                        this.canvasElement.style.backgroundSize = "100% 100%"
-                        this.canvasElement.style.cursor = "url(./assets/images/FeatherCursor2.png), auto"
+                            //activates function which generates new hole and removes old
                         this.Gamescreen.regenerateHole(i);
                     }
                     else {
+                            //activates function which reduces amount of clicks on hole
                         this.Gamescreen.getHole()[i].lowerClicks();
                     }
 
                 }
             }
+            this.draw()
 
         }
         else if (this.currentGameScreenNumber == 0) {
+                //defines place where must be clicked
             if (event.clientX >= (this._canvas.getCenter().X - 111) && event.clientX <= (this._canvas.getCenter().X + 111)
                 && event.clientY >= (this._canvas.getCenter().Y + 200) && event.clientY <= this._canvas.getCenter().Y + 239) {
+                    //defines button soundeffect
                 let audioLink = "./assets/sounds/sfx/buttonHitSFX.mp3"
                 let audio: HTMLAudioElement = new Audio(audioLink);
+                    //plays button soundeffect
                 audio.play();
+                    //activates play countdown
                 this.timer()
+                    //sets current screen to gamescreen settings
                 this.currentGameScreenNumber = 1;
-                let intervalId = setInterval(() => {
-                    if (this.currentGameScreenNumber === 2) clearInterval(intervalId)
-                    if (this.time === 0) {
-                        clearInterval(intervalId)
-                        this.HighscoreScreen = new HighscoreScreen();
-                        this.currentGameScreenNumber = 3;
-                        this.canvasElement.style.cursor = "url(./assets/images/FeatherCursor2.png), auto"
-
-                    }
-                    this.draw();
-
-                }, 1000 / 60)
-                this.canvasElement.style.cursor = "url(./assets/images/shovelCursor.png), auto"
+                this.draw();
             }
         }
     }
 
-    
+    //sets backgroundmusic and plays in loop
     public playBackgroundMusic() {
         this.backgroundMusic.loop = true;
         this.backgroundMusic.play();
     }
 
+    //sets mute or unmute for backgroundmusic
     public muteBackgroundMusic() {
         if (this.backgroundMusic.muted == false) {
             this.backgroundMusic.muted = true;
@@ -182,18 +174,26 @@ class Game {
         }
     }
 
+    //sets a timer with countdown to highscorescreen
     public timer() {
         let intervalId = setInterval(() => {
             const timerText = document.getElementById("timerText");
+                //views timeleft on screen
             timerText.innerHTML = `Tijd over: ${this.time} seconden`
+                //reduces time left
             this.time--;
             if (this.time === 0) {
                 clearInterval(intervalId)
                 timerText.innerHTML = ''
+                    //sets current screen to highscorescreen settings
+                this.HighscoreScreen = new HighscoreScreen();
+                this.currentGameScreenNumber = 3
+                this.draw()
             }
         }, 1000)
     }
 
+        //resets timer back to basic settings
     public resetCounter(){
         this.time = 150;
     }
@@ -201,10 +201,10 @@ class Game {
 
 window.addEventListener('load', init);
 
+    //sets game after site is started
 function init(): void {
     const cavator = new Game();
     cavator.draw()
     window.addEventListener("click", cavator.nextScreen);
-    cavator.canvasElement.style.cursor = "url(./assets/images/FeatherCursor2.png), auto";
 
 }
