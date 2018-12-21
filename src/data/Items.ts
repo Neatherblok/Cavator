@@ -4,7 +4,7 @@ class Item {
     public constructor() {
         this._itemList = 
         [
-            // ERA 1
+            // ERA 1 Prehistorie -3000 v. Chr.
             {
                 name:"een speerpunt",
                 source:"./assets/images/items/1speerpunt.png",
@@ -37,7 +37,31 @@ class Item {
                 hint2: "Deze Dinosauriërs leefden in het laat krijt.",
                 hint3: "Het eerste fossiel van een T-rex werd gevonden 1874."
             },
-            // ERA 2
+            {
+                name:"Een mammoet",
+                source:"./assets/images/items/1mammoet.png",
+                era: 1,
+                hint1: "Een dier dat al is uitgestorven",
+                hint2: "Het is familie van de olifant",
+                hint3: "De grootste mammoetverzameling ter wereld is te zien in Naturalis"
+            },
+            {
+                name:"Stonehenge",
+                source:"./assets/images/items/1stonehenge.png",
+                era:2,
+                hint1:"Het is een monument gelegen in Engeland",
+                hint2:"Het staat op de werelderfgoedlijst van Unesco",
+                hint3:"Het komt uit de Jonge Steentijd"
+            },            
+            {
+                name:"Grotschilderingen",
+                source:"./assets/images/items/1grotschilderingen.png",
+                era:2,
+                hint1:"Deze grotschilderingen werden getekend door jagers-verzamelers",
+                hint2:"Dit waren de eerste tekenen van kunst door de mens",
+                hint3:"Dit soort tekeningen konden als ritueel voor de jacht staan"
+            },
+            // ERA 2 3000 v. Chr.-500 n. Chr
             {
                 name:"het Colosseum",
                 source:"./assets/images/items/2colosseum.png",
@@ -70,7 +94,31 @@ class Item {
                 hint2:"Het graf van de farao werd gevonden in 1922 door Howard Carter.",
                 hint3:"Toetanchamon was maar 19 toen hij stierf."
             },
-            // ERA 3
+            {
+                name:"het Parthenon",
+                source:"./assets/images/items/2parthenon.png",
+                era:2,
+                hint1:"Dit was gebouwd voor de beschermgodin van Athene, Athena Parthenos",
+                hint2:"Deze tempel was het hoogtepunt van klassieke, Atheense bouwkunst",
+                hint3:"Onderdeel van de monumentale herbouw van de Akropolis"
+            },
+            {
+                name:"de Olympische Spelen",
+                source:"./assets/images/items/2discuswerper.png",
+                era:2,
+                hint1:"Het is genoemd naar Olympia, de plaats waar ze gehouden werden",
+                hint2:"Vroeger konden alleen mannen konden meedoen",
+                hint3:"Het wordt nog steeds gedaan, maar heel anders dan vroeger"
+            },
+            {
+                name:"Sfinx van Gizeh",
+                source:"./assets/images/items/2sfinx.png",
+                era:2,
+                hint1:"Het staat bij de drie grote priamiden in Gizeh",
+                hint2:"Het was gebouwd voor de farao Khafra",
+                hint3:"Het nog steeds een misterie hoe het z'n nues verloor"
+            },
+            // ERA 3 500-1000
             {
                 name:"het zwaard van Sint Cosmas en Damianus",
                 source:"./assets/images/items/3zwaard_sint_cosmas.png",
@@ -103,7 +151,31 @@ class Item {
                 hint2:"Het is misschien het zwaard van de eerste inwoner van IJsland.",
                 hint3:"Het zwaard werd waarschijnlijk gebruikt voor een begrafenis.",
             },
-            // ERA 4
+            {
+                name:"",
+                source:"./assets/images/items/",
+                era:2,
+                hint1:"",
+                hint2:"",
+                hint3:""
+            },
+            {
+                name:"",
+                source:"./assets/images/items/",
+                era:2,
+                hint1:"",
+                hint2:"",
+                hint3:""
+            },
+            {
+                name:"",
+                source:"./assets/images/items/",
+                era:2,
+                hint1:"",
+                hint2:"",
+                hint3:""
+            },
+            // ERA 4 1000-1500
             {
                 name:"een penning uit Holland",
                 source:"./assets/images/items/4penning.png",
@@ -136,7 +208,7 @@ class Item {
                 hint2:"Het stadhuis is ontworpen door onder andere Lieve de Key.",
                 hint3:"Het gebouw is tegenwoordig ook een rijksmonument."
             },
-            // ERA 5
+            // ERA 5 1500-1600
             {
                 name:"de Mona Lisa",
                 source:"./assets/images/items/5mona_lisa.png",
@@ -177,7 +249,7 @@ class Item {
                 hint2:"De lepel had groeven zodat de boter niet bleef plakken.",
                 hint3:"boter word pas vanaf de 16e eeuw gegeten, daarvoor werd het als zelf gebruikt."
             },
-            // ERA 6
+            // ERA 6 1600-1700
             {
                 name:"de Nachtwacht",
                 source:"./assets/images/items/6nachtwacht.png",
@@ -210,7 +282,7 @@ class Item {
                 hint2:"Als brandstof werd raapolie gebruikt.",
                 hint3:"De lantaarn was voorzien van 2 ruiten."
             },
-            // ERA 7
+            // ERA 7 1700-1800
             {
                 name:"een trekschuit",
                 source:"./assets/images/items/7trekschuit.png",
@@ -235,7 +307,7 @@ class Item {
                 hint2:"Hij was een befaamd militair mastermind.",
                 hint3:"Zijn broer Lodewijk werd koning van Holland."
             },
-            // ERA 8
+            // ERA 8 1800-1900
             {
                 name:"een hoge Bi",
                 source:"./assets/images/items/8hoge_bi.png",
@@ -276,7 +348,7 @@ class Item {
                 hint2: "Deze werd verbeterd door James Watt",
                 hint3: "Deze verbeteringen maakte de stoommachine tot wat het nu is"
             },
-            // ERA 9
+            // ERA 9 1900-1950
             {
                 name:"een vliegtuigbom",
                 source:"./assets/images/items/9vliegtuigbom.png",
@@ -309,7 +381,7 @@ class Item {
                 hint2:"Er was een tekort aan soldaten.",
                 hint3:"Het personage op de poster is Uncle Sam."
             },
-            // ERA 10
+            // ERA 10 1950-heden
             {
                 name:"een televisie handboek",
                 source:"./assets/images/items/10handboek_televisie.png",
