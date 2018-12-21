@@ -51,10 +51,12 @@ class Hole {
         return this._height;
     }
 
+    //function that return the amount of clicks left
     public getClicks(): number {
         return this._clicks;
     }
 
+    //function that lowers the clicks that are left
     public lowerClicks() {
         this._clicks--;
     }

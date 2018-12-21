@@ -2,6 +2,7 @@ class Item {
     public _itemList: Array<any>;
 
     public constructor() {
+        //list of items, that are available
         this._itemList = 
         [
             // ERA 1 Prehistorie -3000 v. Chr.
@@ -417,6 +418,7 @@ class Item {
         ];
     }
 
+    //function that returns a value from asked era
     public getItemProperty(
         itemNumber: number,
         property: string
@@ -424,6 +426,7 @@ class Item {
         return this._itemList[itemNumber][property];
     }
 
+    //function that returns the length of the item array
     public getItemArrayLength() {
         return this._itemList.length
     }

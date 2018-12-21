@@ -7,7 +7,7 @@ class ExplanationScreen{
     public constructor(){
         this.canvasElement = <HTMLCanvasElement>document.getElementById('canvas');
         this._canvas = new CanvasHelper(this.canvasElement);
-        this.explanation = "Het doel om het spel is om zoveel mogelijk voorwerpen op te graven ";
+        this.explanation = "Het doel om het spel is om zoveel mogelijk voorwerpen op te graven";
     }
 
     //draws explanationscreen

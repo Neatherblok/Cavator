@@ -743,11 +743,12 @@ class EraSelectionScreen {
 class ExplanationScreen {
     constructor() {
         this.draw = () => {
-            this._canvas.writeTextToCanvas("Uitleg", 20, this._canvas.getCenter().X, this._canvas.getCenter().Y);
+            this._canvas.writeTextToCanvas(this.explanation, 20, this._canvas.getCenter().X, this._canvas.getCenter().Y);
             this._canvas.writeButtonToCanvas("Terug naar titelscherm", undefined, this._canvas.getCenter().Y + 200);
         };
         this.canvasElement = document.getElementById('canvas');
         this._canvas = new CanvasHelper(this.canvasElement);
+        this.explanation = "Het doel om het spel is om zoveel mogelijk voorwerpen op te graven";
     }
 }
 class GameScreen {
