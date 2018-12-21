@@ -112,11 +112,11 @@ class Game {
     muteBackgroundMusic() {
         if (this.backgroundMusic.muted == false) {
             this.backgroundMusic.muted = true;
-            this.muteButton.innerHTML = "Muziek uit";
+            this.muteButton.innerHTML = "<img src='./assets/images/UI/volOff.png' alt='background music muted'>";
         }
         else {
             this.backgroundMusic.muted = false;
-            this.muteButton.innerHTML = "Muziek aan";
+            this.muteButton.innerHTML = "<img src='./assets/images/UI/volUp.png' alt='background music on'>";
         }
     }
     timer() {
