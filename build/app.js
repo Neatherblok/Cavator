@@ -10,7 +10,6 @@ class Game {
             console.log(this.time);
         };
         this.nextScreen = (event) => {
-            console.log(this.currentGameScreenNumber);
             if (this.currentGameScreenNumber == 3) {
                 if (event.clientX >= (this._canvas.getCenter().X - 111) && event.clientX <= (this._canvas.getCenter().X + 111)
                     && event.clientY >= (this._canvas.getCenter().Y + 200) && event.clientY <= this._canvas.getCenter().Y + 239) {
@@ -27,24 +26,11 @@ class Game {
                 if (event.clientX >= this.MouseListener.eraScreenClick(this.EraSelectionscreen.randomItemNumber()).Xmin && event.clientX <= this.MouseListener.eraScreenClick(this.EraSelectionscreen.randomItemNumber()).Xmax
                     && event.clientY >= this.MouseListener.eraScreenClick(this.EraSelectionscreen.randomItemNumber()).Ymin && event.clientY <= this.MouseListener.eraScreenClick(this.EraSelectionscreen.randomItemNumber()).Ymax) {
                     this.Gamescreen.addScoreCounter();
-                    this.currentGameScreenNumber = 1;
                     let audioLink = `./assets/sounds/sfx/checkSFX/rightSFX.mp3`;
                     let audio = new Audio(audioLink);
                     audio.play();
-                    this.canvasElement.style.backgroundImage = "url(./assets/images/backgrounds/groundBackground.png)";
-                    this.canvasElement.style.backgroundSize = "auto";
-                    this.canvasElement.style.cursor = "url(./assets/images/shovelCursor.png), auto";
-                    let intervalId = setInterval(() => {
-                        if (this.currentGameScreenNumber === 2)
-                            clearInterval(intervalId);
-                        if (this.time === 0) {
-                            clearInterval(intervalId);
-                            this.HighscoreScreen = new HighscoreScreen();
-                            this.currentGameScreenNumber = 3;
-                            this.canvasElement.style.cursor = "url(./assets/images/FeatherCursor2.png), auto";
-                        }
-                        this.draw();
-                    }, 1000 / 60);
+                    this.currentGameScreenNumber = 1;
+                    this.draw();
                 }
                 else if (event.clientX >= this.MouseListener.eraScreenClick(1).Xmin && event.clientX <= this.MouseListener.eraScreenClick(1).Xmax
                     && event.clientY >= this.MouseListener.eraScreenClick(1).Ymin && event.clientY <= this.MouseListener.eraScreenClick(1).Ymax
@@ -68,24 +54,11 @@ class Game {
                         && event.clientY >= this.MouseListener.eraScreenClick(10).Ymin && event.clientY <= this.MouseListener.eraScreenClick(10).Ymax
                         && !(event.clientX >= this.MouseListener.eraScreenClick(this.EraSelectionscreen.randomItemNumber()).Xmin && event.clientX <= this.MouseListener.eraScreenClick(this.EraSelectionscreen.randomItemNumber()).Xmax
                             && event.clientY >= this.MouseListener.eraScreenClick(this.EraSelectionscreen.randomItemNumber()).Ymin && event.clientY <= this.MouseListener.eraScreenClick(this.EraSelectionscreen.randomItemNumber()).Ymax)) {
-                    this.currentGameScreenNumber = 1;
                     let audioLink = `./assets/sounds/sfx/checkSFX/wrongSFX.mp3`;
                     let audio = new Audio(audioLink);
                     audio.play();
-                    this.canvasElement.style.backgroundImage = "url(./assets/images/backgrounds/groundBackground.png)";
-                    this.canvasElement.style.backgroundSize = "auto";
-                    this.canvasElement.style.cursor = "url(./assets/images/shovelCursor.png), auto";
-                    let intervalId = setInterval(() => {
-                        if (this.currentGameScreenNumber === 2)
-                            clearInterval(intervalId);
-                        if (this.time === 0) {
-                            clearInterval(intervalId);
-                            this.HighscoreScreen = new HighscoreScreen();
-                            this.currentGameScreenNumber = 3;
-                            this.canvasElement.style.cursor = "url(./assets/images/FeatherCursor2.png), auto";
-                        }
-                        this.draw();
-                    }, 1000 / 60);
+                    this.currentGameScreenNumber = 1;
+                    this.draw();
                 }
             }
             else if (this.currentGameScreenNumber == 1) {
@@ -97,11 +70,7 @@ class Game {
                         let audio = new Audio(audioLink);
                         audio.play();
                         if (this.Gamescreen.getHole()[i].getClicks() == 0) {
-                            console.log('bigger than 0');
                             this.currentGameScreenNumber = 2;
-                            this.canvasElement.style.backgroundImage = "url(./assets/images/backgrounds/tableBackground.jpg)";
-                            this.canvasElement.style.backgroundSize = "100% 100%";
-                            this.canvasElement.style.cursor = "url(./assets/images/FeatherCursor2.png), auto";
                             this.Gamescreen.regenerateHole(i);
                         }
                         else {
@@ -109,6 +78,7 @@ class Game {
                         }
                     }
                 }
+                this.draw();
             }
             else if (this.currentGameScreenNumber == 0) {
                 if (event.clientX >= (this._canvas.getCenter().X - 111) && event.clientX <= (this._canvas.getCenter().X + 111)
@@ -118,18 +88,7 @@ class Game {
                     audio.play();
                     this.timer();
                     this.currentGameScreenNumber = 1;
-                    let intervalId = setInterval(() => {
-                        if (this.currentGameScreenNumber === 2)
-                            clearInterval(intervalId);
-                        if (this.time === 0) {
-                            clearInterval(intervalId);
-                            this.HighscoreScreen = new HighscoreScreen();
-                            this.currentGameScreenNumber = 3;
-                            this.canvasElement.style.cursor = "url(./assets/images/FeatherCursor2.png), auto";
-                        }
-                        this.draw();
-                    }, 1000 / 60);
-                    this.canvasElement.style.cursor = "url(./assets/images/shovelCursor.png), auto";
+                    this.draw();
                 }
             }
         };
@@ -166,6 +125,9 @@ class Game {
             if (this.time === 0) {
                 clearInterval(intervalId);
                 timerText.innerHTML = '';
+                this.HighscoreScreen = new HighscoreScreen();
+                this.currentGameScreenNumber = 3;
+                this.draw();
             }
         }, 1000);
     }
@@ -178,14 +140,12 @@ function init() {
     const cavator = new Game();
     cavator.draw();
     window.addEventListener("click", cavator.nextScreen);
-    cavator.canvasElement.style.cursor = "url(./assets/images/FeatherCursor2.png), auto";
 }
 class MouseListener {
     constructor() {
         this.onMouseMove = (event) => {
             clearTimeout(this.dTimer);
             this.dTimer = setTimeout(() => {
-                console.log(event.pageX, event.pageY);
             }, 500);
         };
         this.canvasElement = document.getElementById('canvas');
@@ -738,6 +698,9 @@ class EraSelectionScreen {
     constructor() {
         this.draw = () => {
             this.randomItemPicker();
+            this.canvasElement.style.backgroundImage = "url(./assets/images/backgrounds/tableBackground.jpg)";
+            this.canvasElement.style.backgroundSize = "100% 100%";
+            this.canvasElement.style.cursor = "url(./assets/images/FeatherCursor.png), auto";
             this._canvas.writeTextToCanvas(`Je hebt ${this.itemList.getItemProperty(this.pickedItem, "name")} gevonden!`, 45, this._canvas.getCenter().X, 100, "yellow");
             this._canvas.writeImageToCanvas(this.itemList.getItemProperty(this.pickedItem, "source"), this._canvas.getCenter().X - 150, this._canvas.getCenter().Y - 200);
             this._canvas.writeImageToCanvas("./assets/images/eraLogos/era1.png", this._canvas.getWidth() * 0.017, this._canvas.getHeight() - 200);
@@ -789,6 +752,9 @@ class GameScreen {
                 this.hole[i].draw();
             }
             this._canvas.writeTextToCanvas(`Score: ${this.score}`, 20, 75, 75, "white", "left");
+            this.canvasElement.style.backgroundImage = "url(./assets/images/backgrounds/groundBackground.png)";
+            this.canvasElement.style.backgroundSize = "auto";
+            this.canvasElement.style.cursor = "url(./assets/images/shovelCursor.png), auto";
         };
         this.imageUrl = imageUrl;
         this.canvasElement = document.getElementById('canvas');
@@ -827,6 +793,8 @@ class HighscoreScreen {
 class StartScreen {
     constructor() {
         this.draw = () => {
+            this.canvasElement.style.backgroundImage = "url(./assets/images/backgrounds/groundBackground.png)";
+            this.canvasElement.style.cursor = "url(./assets/images/FeatherCursor.png), auto";
             this._canvas.writeImageToCanvas("./assets/images/Cavator_logo/CavatorLogo.png", this._canvas.getCenter().X - 200, this._canvas.getCenter().Y - 300);
             this._canvas.writeButtonToCanvas("Play", undefined, this._canvas.getCenter().Y + 200);
         };
