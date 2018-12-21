@@ -26,22 +26,27 @@ class Hole {
         this._clicks = clicks;
     }
 
+    //function that draws the holes on the screen
     public draw() {
         this._canvas.writeImageToCanvas(this._imageSrc, this._xPos, this._yPos);
     }
 
+    //function that returns the most left X-position of the hole
     public getX(): number {
         return this._xPos;
     }
 
+    //function that returns the most upper Y-position of the hole
     public getY(): number {
         return this._yPos
     }
 
+    //function that returns the width of the hole
     public getWidth(): number {
         return this._width;
     }
 
+    //function that returns the height of the hole
     public getHeight(): number {
         return this._height;
     }
