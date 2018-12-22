@@ -1,10 +1,11 @@
-class Item { 
+class Item {
     public _itemList: Array<any>;
 
-    constructor() {
+    public constructor() {
+        //list of items, that are available
         this._itemList = 
         [
-            // ERA 1
+            // ERA 1 Prehistorie -3000 v. Chr.
             {
                 name:"een speerpunt",
                 source:"./assets/images/items/1speerpunt.png",
@@ -21,7 +22,47 @@ class Item {
                 hint2:"De man was gevonden in het ijs.",
                 hint3:"Hij droeg dierenvellen kleding en een koperen bijl."
             },
-            // ERA 2
+            {
+                name:"een hunebed",
+                source:"./assets/images/items/1hunebed.png",
+                era:1,
+                hint1:"Hunebedden zijn resten van grafkamers.",
+                hint2:"Ze zijn terug te vinden in het gebied van de trechterbekercultuur.",
+                hint3:"De meeste hunebedden zijn in Drenthe."
+            },
+            {
+                name:"een T-rex fossiel",
+                source:"./assets/images/items/1t_rex.png",
+                era: 1,
+                hint1: "De T-rex of Tyrannosaurus Rex betekent koning-tiransauriër.",
+                hint2: "Deze Dinosauriërs leefden in het laat krijt.",
+                hint3: "Het eerste fossiel van een T-rex werd gevonden 1874."
+            },
+            {
+                name:"Een mammoet",
+                source:"./assets/images/items/1mammoet.png",
+                era: 1,
+                hint1: "Een dier dat al is uitgestorven",
+                hint2: "Het is familie van de olifant",
+                hint3: "De grootste mammoetverzameling ter wereld is te zien in Naturalis"
+            },
+            {
+                name:"Stonehenge",
+                source:"./assets/images/items/1stonehenge.png",
+                era:1,
+                hint1:"Het is een monument gelegen in Engeland",
+                hint2:"Het staat op de werelderfgoedlijst van Unesco",
+                hint3:"Het komt uit de Jonge Steentijd"
+            },            
+            {
+                name:"Grotschilderingen",
+                source:"./assets/images/items/1grotschilderingen.png",
+                era:1,
+                hint1:"Deze grotschilderingen werden getekend door jagers-verzamelers",
+                hint2:"Dit waren de eerste tekenen van kunst door de mens",
+                hint3:"Dit soort tekeningen konden als ritueel voor de jacht staan"
+            },
+            // ERA 2 3000 v. Chr.-500 n. Chr
             {
                 name:"het Colosseum",
                 source:"./assets/images/items/2colosseum.png",
@@ -38,7 +79,47 @@ class Item {
                 hint2:"De officier zat bij ruiterafdeling STABLESIA VI.",
                 hint3:"De helm is verguld zilveren versierd."
             },
-            // ERA 3
+            {
+                name:"een ostrakon",
+                source:"./assets/images/items/2ostrakon.png",
+                era:2,
+                hint1:"Werd gebruikt om minder belangrijke dingen op te schrijven.",
+                hint2:"In Athene werd hiermee een stem uitgebracht.",
+                hint3:"Papyrus was hier te duur voor."
+            },
+            {
+                name:"het masker van Toetanchamon",
+                source:"./assets/images/items/2masker_toetanchamon.png",
+                era:2,
+                hint1:"Toetanchamon was een farao van de 18e Dynastie.",
+                hint2:"Het graf van de farao werd gevonden in 1922 door Howard Carter.",
+                hint3:"Toetanchamon was maar 19 toen hij stierf."
+            },
+            {
+                name:"het Parthenon",
+                source:"./assets/images/items/2parthenon.png",
+                era:2,
+                hint1:"Dit was gebouwd voor de beschermgodin van Athene, Athena Parthenos",
+                hint2:"Deze tempel was het hoogtepunt van klassieke, Atheense bouwkunst",
+                hint3:"Onderdeel van de monumentale herbouw van de Akropolis"
+            },
+            {
+                name:"de Olympische Spelen",
+                source:"./assets/images/items/2discuswerper.png",
+                era:2,
+                hint1:"Het is genoemd naar Olympia, de plaats waar ze gehouden werden",
+                hint2:"Vroeger konden alleen mannen konden meedoen",
+                hint3:"Het wordt nog steeds gedaan, maar heel anders dan vroeger"
+            },
+            {
+                name:"Sfinx van Gizeh",
+                source:"./assets/images/items/2sfinx.png",
+                era:2,
+                hint1:"Het staat bij de drie grote priamiden in Gizeh",
+                hint2:"Het was gebouwd voor de farao Khafra",
+                hint3:"Het nog steeds een misterie hoe het z'n nues verloor"
+            },
+            // ERA 3 500-1000
             {
                 name:"het zwaard van Sint Cosmas en Damianus",
                 source:"./assets/images/items/3zwaard_sint_cosmas.png",
@@ -55,7 +136,47 @@ class Item {
                 hint2:"Zorgde voor de Karolingische renaissance.",
                 hint3:"Onder hem kregen kunst, literatuur en architectuur een ongewone opleving."
             },
-            // ERA 4
+            {
+                name:"een penannulaire broche",
+                source:"./assets/images/items/3broche.png",
+                era:3,
+                hint1:"Was eigendom van een belangrijke viking.",
+                hint2:"Het is een onvolledige ring.",
+                hint3:"Gemaakt in Schotland of Ierland."
+            },
+            {
+                name:"een viking zwaard.",
+                source:"./assets/images/items/3viking_zwaard.png",
+                era:3,
+                hint1:"Het zwaard is gevonden in Skaftárhreppur, IJsland.",
+                hint2:"Het is misschien het zwaard van de eerste inwoner van IJsland.",
+                hint3:"Het zwaard werd waarschijnlijk gebruikt voor een begrafenis.",
+            },
+            {
+                name:"",
+                source:"./assets/images/items/",
+                era:3,
+                hint1:"",
+                hint2:"",
+                hint3:""
+            },
+            {
+                name:"",
+                source:"./assets/images/items/",
+                era:3,
+                hint1:"",
+                hint2:"",
+                hint3:""
+            },
+            {
+                name:"",
+                source:"./assets/images/items/",
+                era:3,
+                hint1:"",
+                hint2:"",
+                hint3:""
+            },
+            // ERA 4 1000-1500
             {
                 name:"een penning uit Holland",
                 source:"./assets/images/items/4penning.png",
@@ -72,7 +193,23 @@ class Item {
                 hint2:"Het was ooit eigendom van een rijke boer.",
                 hint3:"Het strijkglas is een voorganger van het moderne strijkijzer."
             },
-            // ERA 5
+            {
+                name:"een narrenschoen",
+                source:"./assets/images/items/4narrenschoen.png",
+                era:4,
+                hint1:"De hofnar is de grappenmaker van een vorst.",
+                hint2:"Hij kon grappen maken zonder dat hij gestraft werd.",
+                hint3:"Soms droeg hij ook een staf."
+            },
+            {
+                name:"het stadhuis van Haarlem",
+                source:"./assets/images/items/4stadhuis_haarlem.png",
+                era:4,
+                hint1:"Het gebouw staat op de grote markt in Haarlem en word tegenwoordig vooral gebruikt als trouwlocatie.",
+                hint2:"Het stadhuis is ontworpen door onder andere Lieve de Key.",
+                hint3:"Het gebouw is tegenwoordig ook een rijksmonument."
+            },
+            // ERA 5 1500-1600
             {
                 name:"de Mona Lisa",
                 source:"./assets/images/items/5mona_lisa.png",
@@ -93,11 +230,27 @@ class Item {
                 name:"Willem van Oranje",
                 source:"./assets/images/items/5willem_van_oranje.png",
                 era:5,
-                hint1:"Dit is Willem van Oranje",
-                hint2:"Hij is vader des vaderlands",
-                hint3:""
+                hint1:"Hij is de stichter van het Huis van Oranje.",
+                hint2:"Hij verkocht zijn bezittingen om tegen het Spanje te vechten.",
+                hint3:"De lijfspreuk van de prins was 'Je maintiendrai'."
             },
-            // ERA 6
+            {
+                name:"Maarten Luther",
+                source:"./assets/images/items/5maarten_luther.png",
+                era:5,
+                hint1:"Hij was tegen het aflaatsysteem van de katholieke kerk.",
+                hint2:"Hij schrijft 95 stellingen waarin hij de wantoestanden aan de kaak stelt.",
+                hint3:"Deze daad wordt gezien als het begin van de reformatie."
+            },
+            {
+                name:"een boterspaan",
+                source:"./assets/images/items/5boterspaan.png",
+                era:5,
+                hint1:"Houten lepel die werd gebruikt om boter te scheppen.",
+                hint2:"De lepel had groeven zodat de boter niet bleef plakken.",
+                hint3:"boter word pas vanaf de 16e eeuw gegeten, daarvoor werd het als zelf gebruikt."
+            },
+            // ERA 6 1600-1700
             {
                 name:"de Nachtwacht",
                 source:"./assets/images/items/6nachtwacht.png",
@@ -114,14 +267,38 @@ class Item {
                 hint2:"Zorgde voor een financiële opbloei.",
                 hint3:"De VOC was de eerste multinational ter wereld."
             },
-            // ERA 7
             {
-                name:"een Trekschuit",
+                name:"het Paleis op de Dam",
+                source:"./assets/images/items/6paleis_dam.png",
+                era:6,
+                hint1:"Het werd gebouwd als stadhuis.",
+                hint2:"Later werd het aan Lodewijk Napoleon aangeboden als paleis.",
+                hint3:"Het bevindt zich op de Dam in Amsterdam."
+            },
+            {
+                name:"een straatlantaarn",
+                source:"./assets/images/items/6lantaarn.png",
+                era:6,
+                hint1:"Ontworpen door Jan van der Heyden.",
+                hint2:"Als brandstof werd raapolie gebruikt.",
+                hint3:"De lantaarn was voorzien van 2 ruiten."
+            },
+            // ERA 7 1700-1800
+            {
+                name:"een trekschuit",
                 source:"./assets/images/items/7trekschuit.png",
                 era:7,
                 hint1:"Binnenvaartschip dat werd getrokken door paarden aan de oever.",
                 hint2:"De schepen werden gebruikt voor zowel vracht als personen vervoer.",
                 hint3:"Het was een van de voorlopers van modern openbaar vervoer."
+            },
+            {
+                name: "De Amsterdam",
+                source: "./assets/images/items/7amsterdam.png",
+                era: 7,
+                hint1: "De Amsterdam was een transportschip voor de VOC",
+                hint2: "Tijdens de eerste reis van het schip ging de Amsterdam verloren door een storm",
+                hint3: "Er is een replica gebouwd van het schip in Amsterdam"
             },
             {
                 name:"Napoleon Bonaparte",
@@ -131,7 +308,7 @@ class Item {
                 hint2:"Hij was een befaamd militair mastermind.",
                 hint3:"Zijn broer Lodewijk werd koning van Holland."
             },
-            // ERA 8
+            // ERA 8 1800-1900
             {
                 name:"een hoge Bi",
                 source:"./assets/images/items/8hoge_bi.png",
@@ -144,11 +321,35 @@ class Item {
                 name:"een weverij",
                 source:"./assets/images/items/8weverij.png",
                 era:8,
-                hint1:"Het stoken van kolen zorgt voor de aandrijving",
-                hint2:"Soms werkten ook kinderen in de weverij",
+                hint1:"Het stoken van kolen zorgt voor de aandrijving.",
+                hint2:"Soms werkten ook kinderen in de weverij.",
                 hint3:"Later kwamen er sociale voorzieningen voor de fabrieksarbeiders."
             },
-            // ERA 9
+            {
+                name:"de eerste foto",
+                source:"./assets/images/items/8eerste_foto.png",
+                era:8,
+                hint1:"Gemaakt door Joseph Niépce.",
+                hint2:"Het duurde 8 uur om de foto te maken.",
+                hint3:"Hij noemde het 'schrijven met de zon'."
+            },
+            {
+                name:"Max Havelaar",
+                source:"./assets/images/items/8max_havelaar.png",
+                era:8,
+                hint1:"Boek geschreven door Multatuli.",
+                hint2:"In het boek werd kritiek gegeven op het cultuurstelsel.",
+                hint3:"Dit stelsel was in Nederlands-Indië."
+            },
+            {
+                name: "een stoommachine",
+                source: "./assets/images/items/7stoommachine.png",
+                era: 8,
+                hint1: "De eerste, werkende stoommachine werd ontworpen door Thomas Savery en Thomas Newcomen",
+                hint2: "Deze werd verbeterd door James Watt",
+                hint3: "Deze verbeteringen maakte de stoommachine tot wat het nu is"
+            },
+            // ERA 9 1900-1950
             {
                 name:"een vliegtuigbom",
                 source:"./assets/images/items/9vliegtuigbom.png",
@@ -173,13 +374,21 @@ class Item {
                 hint2:"Dit gelde alleen in bepaalde gedeeltes van Europa voor een bepaalde periode.",
                 hint3:"Alle Joden vanaf 6 jaar oud moesten de ster dragen."
             },
-            // ERA 10
+            {
+                name:"een propaganda poster",
+                source:"./assets/images/items/9propaganda.png",
+                era:9,
+                hint1:"Een poster van de Verenigde Staten.",
+                hint2:"Er was een tekort aan soldaten.",
+                hint3:"Het personage op de poster is Uncle Sam."
+            },
+            // ERA 10 1950-heden
             {
                 name:"een televisie handboek",
                 source:"./assets/images/items/10handboek_televisie.png",
                 era:10,
                 hint1:"Boekje ter informatie over hoe een televisie werkt.",
-                hint2:"De eerste landelijke uitzending was vanuit studio Irene in Hilversum.",
+                hint2:"De eerste landelijke uitzending was vanuit Hilversum.",
                 hint3:"De eerste televisiezender heette Nederland 1."
             },
             {
@@ -189,18 +398,36 @@ class Item {
                 hint1:"Uitgebracht door Nintendo in Japan.",
                 hint2:"Bekend van spelletjes als Super Mario en Pokémon.",
                 hint3:"De spelletjes stonden op cassettes."
+            },
+            {
+                name:"de eerste mobiele telefoon",
+                source:"./assets/images/items/10mobiele_telefoon.png",
+                era:10,
+                hint1:"Gemaakt door Ericsson.",
+                hint2:"Het werd gebruikt door dokters in Zweden.",
+                hint3:"Hij weegt 14 kilogram."
+            },
+            {
+                name:"de Oosterscheldekering",
+                source:"./assets/images/items/10oosterscheldekering.png",
+                era:10,
+                hint1:"Kan gesloten worden bij hoog water.",
+                hint2:"Is onderdeel van het Deltaplan.",
+                hint3:"Dit plan werd gestart na de stormvloed."
             }
         ];
     }
 
+    //function that returns a value from asked era
     public getItemProperty(
         itemNumber: number,
         property: string
     ) {
-       return this._itemList[itemNumber][property];
+        return this._itemList[itemNumber][property];
     }
 
-    public getItemArrayLength(){
+    //function that returns the length of the item array
+    public getItemArrayLength() {
         return this._itemList.length
     }
 

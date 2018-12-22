@@ -3,12 +3,13 @@ class Game {
         this.screen = ["this.Startscreen.draw()", "this.Gamescreen.draw()", "this.EraSelectionscreen.draw()", "this.HighscoreScreen.draw(this.Gamescreen.getScore())"];
         this.sounds = ['buttonHitSFX', 'digging1', 'digging2', 'digging3', 'digging4', 'digging5'];
         this.currentGameScreenNumber = 0;
+        this.time = 151;
         this.draw = () => {
             this._canvas.clear();
             eval(this.screen[this.currentGameScreenNumber]);
+            console.log(this.time);
         };
         this.nextScreen = (event) => {
-            console.log(this.currentGameScreenNumber);
             if (this.currentGameScreenNumber == 3) {
                 if (event.clientX >= (this._canvas.getCenter().X - 111) && event.clientX <= (this._canvas.getCenter().X + 111)
                     && event.clientY >= (this._canvas.getCenter().Y + 200) && event.clientY <= this._canvas.getCenter().Y + 239) {
@@ -16,7 +17,7 @@ class Game {
                     let audio = new Audio(audioLink);
                     audio.play();
                     this.currentGameScreenNumber = 0;
-                    this.Gamescreen.resetCounter();
+                    this.resetCounter();
                     this.Gamescreen.resetScore();
                     this.draw();
                 }
@@ -25,24 +26,11 @@ class Game {
                 if (event.clientX >= this.MouseListener.eraScreenClick(this.EraSelectionscreen.randomItemNumber()).Xmin && event.clientX <= this.MouseListener.eraScreenClick(this.EraSelectionscreen.randomItemNumber()).Xmax
                     && event.clientY >= this.MouseListener.eraScreenClick(this.EraSelectionscreen.randomItemNumber()).Ymin && event.clientY <= this.MouseListener.eraScreenClick(this.EraSelectionscreen.randomItemNumber()).Ymax) {
                     this.Gamescreen.addScoreCounter();
-                    this.currentGameScreenNumber = 1;
                     let audioLink = `./assets/sounds/sfx/checkSFX/rightSFX.mp3`;
                     let audio = new Audio(audioLink);
                     audio.play();
-                    this.canvasElement.style.backgroundImage = "url(./assets/images/backgrounds/groundBackground.png)";
-                    this.canvasElement.style.backgroundSize = "auto";
-                    this.canvasElement.style.cursor = "url(./assets/images/cursor.png), auto";
-                    let intervalId = setInterval(() => {
-                        if (this.currentGameScreenNumber === 2)
-                            clearInterval(intervalId);
-                        if (this.Gamescreen.getCounter() === 0) {
-                            clearInterval(intervalId);
-                            this.HighscoreScreen = new HighscoreScreen();
-                            this.currentGameScreenNumber = 3;
-                            this.canvasElement.style.cursor = "url(./assets/images/FeatherCursor2.png), auto";
-                        }
-                        this.draw();
-                    }, 1000 / 60);
+                    this.currentGameScreenNumber = 1;
+                    this.draw();
                 }
                 else if (event.clientX >= this.MouseListener.eraScreenClick(1).Xmin && event.clientX <= this.MouseListener.eraScreenClick(1).Xmax
                     && event.clientY >= this.MouseListener.eraScreenClick(1).Ymin && event.clientY <= this.MouseListener.eraScreenClick(1).Ymax
@@ -66,47 +54,31 @@ class Game {
                         && event.clientY >= this.MouseListener.eraScreenClick(10).Ymin && event.clientY <= this.MouseListener.eraScreenClick(10).Ymax
                         && !(event.clientX >= this.MouseListener.eraScreenClick(this.EraSelectionscreen.randomItemNumber()).Xmin && event.clientX <= this.MouseListener.eraScreenClick(this.EraSelectionscreen.randomItemNumber()).Xmax
                             && event.clientY >= this.MouseListener.eraScreenClick(this.EraSelectionscreen.randomItemNumber()).Ymin && event.clientY <= this.MouseListener.eraScreenClick(this.EraSelectionscreen.randomItemNumber()).Ymax)) {
-                    this.currentGameScreenNumber = 1;
                     let audioLink = `./assets/sounds/sfx/checkSFX/wrongSFX.mp3`;
                     let audio = new Audio(audioLink);
                     audio.play();
-                    this.canvasElement.style.backgroundImage = "url(./assets/images/backgrounds/groundBackground.png)";
-                    this.canvasElement.style.backgroundSize = "auto";
-                    this.canvasElement.style.cursor = "url(./assets/images/cursor.png), auto";
-                    let intervalId = setInterval(() => {
-                        if (this.currentGameScreenNumber === 2)
-                            clearInterval(intervalId);
-                        if (this.Gamescreen.getCounter() === 0) {
-                            clearInterval(intervalId);
-                            this.HighscoreScreen = new HighscoreScreen();
-                            this.currentGameScreenNumber = 3;
-                            this.canvasElement.style.cursor = "url(./assets/images/FeatherCursor2.png), auto";
-                        }
-                        this.draw();
-                    }, 1000 / 60);
+                    this.currentGameScreenNumber = 1;
+                    this.draw();
                 }
             }
             else if (this.currentGameScreenNumber == 1) {
-                for (let i = 0; i < this.Gamescreen.getHoles().length; i++) {
-                    if (this.Gamescreen.getHoles()[i].getX() <= event.clientX && this.Gamescreen.getHoles()[i].getX() + 128 >= event.clientX
-                        && this.Gamescreen.getHoles()[i].getY() <= event.clientY && this.Gamescreen.getHoles()[i].getY() + 110 >= event.clientY) {
+                for (let i = 0; i < this.Gamescreen.getHole().length; i++) {
+                    if (this.Gamescreen.getHole()[i].getX() <= event.clientX && this.Gamescreen.getHole()[i].getX() + 128 >= event.clientX
+                        && this.Gamescreen.getHole()[i].getY() <= event.clientY && this.Gamescreen.getHole()[i].getY() + 110 >= event.clientY) {
                         const randomDigSound = MathHelper.randomNumber(1, this.sounds.length - 1);
                         let audioLink = `./assets/sounds/sfx/diggingSFX/${this.sounds[randomDigSound]}.mp3`;
                         let audio = new Audio(audioLink);
                         audio.play();
-                        if (this.Gamescreen.getHoles()[i].getClicks() == 0) {
-                            console.log('bigger than 0');
+                        if (this.Gamescreen.getHole()[i].getClicks() == 0) {
                             this.currentGameScreenNumber = 2;
-                            this.canvasElement.style.backgroundImage = "url(./assets/images/backgrounds/tableBackgroundConcept.jpg)";
-                            this.canvasElement.style.backgroundSize = "100% 100%";
-                            this.canvasElement.style.cursor = "url(./assets/images/FeatherCursor2.png), auto";
                             this.Gamescreen.regenerateHole(i);
                         }
                         else {
-                            this.Gamescreen.getHoles()[i].lowerClicks();
+                            this.Gamescreen.getHole()[i].lowerClicks();
                         }
                     }
                 }
+                this.draw();
             }
             else if (this.currentGameScreenNumber == 0) {
                 if (event.clientX >= (this._canvas.getCenter().X - 111) && event.clientX <= (this._canvas.getCenter().X + 111)
@@ -114,21 +86,9 @@ class Game {
                     let audioLink = "./assets/sounds/sfx/buttonHitSFX.mp3";
                     let audio = new Audio(audioLink);
                     audio.play();
+                    this.timer();
                     this.currentGameScreenNumber = 1;
-                    let intervalId = setInterval(() => {
-                        if (this.currentGameScreenNumber === 2)
-                            clearInterval(intervalId);
-                        if (this.Gamescreen.getCounter() === 0) {
-                            clearInterval(intervalId);
-                            this.HighscoreScreen = new HighscoreScreen();
-                            this.currentGameScreenNumber = 3;
-                            this.canvasElement.style.cursor = "url(./assets/images/FeatherCursor2.png), auto";
-                        }
-                        this.draw();
-                    }, 1000 / 60);
-                    this.canvasElement.style.cursor = "url(./assets/images/cursor.png), auto";
-                    this.Gamescreen.timer();
-                    console.log(this.Gamescreen.getHoles());
+                    this.draw();
                 }
             }
         };
@@ -139,10 +99,42 @@ class Game {
         this.EraSelectionscreen = new EraSelectionScreen();
         this.MouseListener = new MouseListener();
         this.itemList = new Item();
-        let audioLink = `./assets/sounds/music/dutch_street_organ.wav`;
-        let backgroundMusic = new Audio(audioLink);
-        backgroundMusic.loop = true;
-        backgroundMusic.play();
+        this.audioLink = `./assets/sounds/music/dutch_street_organ.wav`;
+        this.backgroundMusic = new Audio(this.audioLink);
+        this.playBackgroundMusic();
+        this.muteButton = document.getElementById("mute");
+        this.muteButton.addEventListener("click", (e) => this.muteBackgroundMusic());
+    }
+    playBackgroundMusic() {
+        this.backgroundMusic.loop = true;
+        this.backgroundMusic.play();
+    }
+    muteBackgroundMusic() {
+        if (this.backgroundMusic.muted == false) {
+            this.backgroundMusic.muted = true;
+            this.muteButton.innerHTML = "<img src='./assets/images/UI/volOff.png' alt='background music muted'>";
+        }
+        else {
+            this.backgroundMusic.muted = false;
+            this.muteButton.innerHTML = "<img src='./assets/images/UI/volUp.png' alt='background music on'>";
+        }
+    }
+    timer() {
+        let intervalId = setInterval(() => {
+            const timerText = document.getElementById("timerText");
+            timerText.innerHTML = `Tijd over: ${this.time - 1} seconden`;
+            this.time--;
+            if (this.time === 0) {
+                clearInterval(intervalId);
+                timerText.innerHTML = '';
+                this.HighscoreScreen = new HighscoreScreen();
+                this.currentGameScreenNumber = 3;
+                this.draw();
+            }
+        }, 1000);
+    }
+    resetCounter() {
+        this.time = 151;
     }
 }
 window.addEventListener('load', init);
@@ -150,14 +142,12 @@ function init() {
     const cavator = new Game();
     cavator.draw();
     window.addEventListener("click", cavator.nextScreen);
-    cavator.canvasElement.style.cursor = "url(./assets/images/FeatherCursor2.png), auto";
 }
 class MouseListener {
     constructor() {
         this.onMouseMove = (event) => {
             clearTimeout(this.dTimer);
             this.dTimer = setTimeout(() => {
-                console.log(event.pageX, event.pageY);
             }, 500);
         };
         this.canvasElement = document.getElementById('canvas');
@@ -172,34 +162,34 @@ class MouseListener {
     }
     eraScreenClick(eraNumber) {
         if (eraNumber == 1) {
-            return { Xmin: 110, Xmax: 193, Ymin: this._canvas.getHeight() - 127, Ymax: this._canvas.getHeight() - 56 };
+            return { Xmin: this._canvas.getWidth() * 0.017, Xmax: this._canvas.getWidth() * 0.017 + 102, Ymin: this._canvas.getHeight() - 200, Ymax: this._canvas.getHeight() - 83 };
         }
         else if (eraNumber == 2) {
-            return { Xmin: 252, Xmax: 335, Ymin: this._canvas.getHeight() - 127, Ymax: this._canvas.getHeight() - 56 };
+            return { Xmin: this._canvas.getWidth() * 0.117, Xmax: this._canvas.getWidth() * 0.117 + 102, Ymin: this._canvas.getHeight() - 200, Ymax: this._canvas.getHeight() - 83 };
         }
         else if (eraNumber == 3) {
-            return { Xmin: 394, Xmax: 477, Ymin: this._canvas.getHeight() - 127, Ymax: this._canvas.getHeight() - 56 };
+            return { Xmin: this._canvas.getWidth() * 0.217, Xmax: this._canvas.getWidth() * 0.217 + 102, Ymin: this._canvas.getHeight() - 200, Ymax: this._canvas.getHeight() - 83 };
         }
         else if (eraNumber == 4) {
-            return { Xmin: 540, Xmax: 623, Ymin: this._canvas.getHeight() - 127, Ymax: this._canvas.getHeight() - 56 };
+            return { Xmin: this._canvas.getWidth() * 0.317, Xmax: this._canvas.getWidth() * 0.317 + 102, Ymin: this._canvas.getHeight() - 200, Ymax: this._canvas.getHeight() - 83 };
         }
         else if (eraNumber == 5) {
-            return { Xmin: 683, Xmax: 766, Ymin: this._canvas.getHeight() - 127, Ymax: this._canvas.getHeight() - 56 };
+            return { Xmin: this._canvas.getWidth() * 0.417, Xmax: this._canvas.getWidth() * 0.417 + 102, Ymin: this._canvas.getHeight() - 200, Ymax: this._canvas.getHeight() - 83 };
         }
         else if (eraNumber == 6) {
-            return { Xmin: 825, Xmax: 908, Ymin: this._canvas.getHeight() - 127, Ymax: this._canvas.getHeight() - 56 };
+            return { Xmin: this._canvas.getWidth() * 0.517, Xmax: this._canvas.getWidth() * 0.517 + 102, Ymin: this._canvas.getHeight() - 200, Ymax: this._canvas.getHeight() - 83 };
         }
         else if (eraNumber == 7) {
-            return { Xmin: 969, Xmax: 1052, Ymin: this._canvas.getHeight() - 127, Ymax: this._canvas.getHeight() - 56 };
+            return { Xmin: this._canvas.getWidth() * 0.617, Xmax: this._canvas.getWidth() * 0.617 + 102, Ymin: this._canvas.getHeight() - 200, Ymax: this._canvas.getHeight() - 83 };
         }
         else if (eraNumber == 8) {
-            return { Xmin: 1113, Xmax: 1196, Ymin: this._canvas.getHeight() - 127, Ymax: this._canvas.getHeight() - 56 };
+            return { Xmin: this._canvas.getWidth() * 0.717, Xmax: this._canvas.getWidth() * 0.717 + 102, Ymin: this._canvas.getHeight() - 200, Ymax: this._canvas.getHeight() - 83 };
         }
         else if (eraNumber == 9) {
-            return { Xmin: 1263, Xmax: 1346, Ymin: this._canvas.getHeight() - 127, Ymax: this._canvas.getHeight() - 56 };
+            return { Xmin: this._canvas.getWidth() * 0.817, Xmax: this._canvas.getWidth() * 0.817 + 102, Ymin: this._canvas.getHeight() - 200, Ymax: this._canvas.getHeight() - 83 };
         }
         else if (eraNumber == 10) {
-            return { Xmin: 1413, Xmax: 1496, Ymin: this._canvas.getHeight() - 127, Ymax: this._canvas.getHeight() - 56 };
+            return { Xmin: this._canvas.getWidth() * 0.917, Xmax: this._canvas.getWidth() * 0.917 + 102, Ymin: this._canvas.getHeight() - 200, Ymax: this._canvas.getHeight() - 83 };
         }
     }
 }
@@ -224,6 +214,46 @@ class Item {
                     hint3: "Hij droeg dierenvellen kleding en een koperen bijl."
                 },
                 {
+                    name: "een hunebed",
+                    source: "./assets/images/items/1hunebed.png",
+                    era: 1,
+                    hint1: "Hunebedden zijn resten van grafkamers.",
+                    hint2: "Ze zijn terug te vinden in het gebied van de trechterbekercultuur.",
+                    hint3: "De meeste hunebedden zijn in Drenthe."
+                },
+                {
+                    name: "een T-rex fossiel",
+                    source: "./assets/images/items/1t_rex.png",
+                    era: 1,
+                    hint1: "De T-rex of Tyrannosaurus Rex betekent koning-tiransauriër.",
+                    hint2: "Deze Dinosauriërs leefden in het laat krijt.",
+                    hint3: "Het eerste fossiel van een T-rex werd gevonden 1874."
+                },
+                {
+                    name: "Een mammoet",
+                    source: "./assets/images/items/1mammoet.png",
+                    era: 1,
+                    hint1: "Een dier dat al is uitgestorven",
+                    hint2: "Het is familie van de olifant",
+                    hint3: "De grootste mammoetverzameling ter wereld is te zien in Naturalis"
+                },
+                {
+                    name: "Stonehenge",
+                    source: "./assets/images/items/1stonehenge.png",
+                    era: 1,
+                    hint1: "Het is een monument gelegen in Engeland",
+                    hint2: "Het staat op de werelderfgoedlijst van Unesco",
+                    hint3: "Het komt uit de Jonge Steentijd"
+                },
+                {
+                    name: "Grotschilderingen",
+                    source: "./assets/images/items/1grotschilderingen.png",
+                    era: 1,
+                    hint1: "Deze grotschilderingen werden getekend door jagers-verzamelers",
+                    hint2: "Dit waren de eerste tekenen van kunst door de mens",
+                    hint3: "Dit soort tekeningen konden als ritueel voor de jacht staan"
+                },
+                {
                     name: "het Colosseum",
                     source: "./assets/images/items/2colosseum.png",
                     era: 2,
@@ -238,6 +268,46 @@ class Item {
                     hint1: "Deze helm was van een Romeins officier",
                     hint2: "De officier zat bij ruiterafdeling STABLESIA VI.",
                     hint3: "De helm is verguld zilveren versierd."
+                },
+                {
+                    name: "een ostrakon",
+                    source: "./assets/images/items/2ostrakon.png",
+                    era: 2,
+                    hint1: "Werd gebruikt om minder belangrijke dingen op te schrijven.",
+                    hint2: "In Athene werd hiermee een stem uitgebracht.",
+                    hint3: "Papyrus was hier te duur voor."
+                },
+                {
+                    name: "het masker van Toetanchamon",
+                    source: "./assets/images/items/2masker_toetanchamon.png",
+                    era: 2,
+                    hint1: "Toetanchamon was een farao van de 18e Dynastie.",
+                    hint2: "Het graf van de farao werd gevonden in 1922 door Howard Carter.",
+                    hint3: "Toetanchamon was maar 19 toen hij stierf."
+                },
+                {
+                    name: "het Parthenon",
+                    source: "./assets/images/items/2parthenon.png",
+                    era: 2,
+                    hint1: "Dit was gebouwd voor de beschermgodin van Athene, Athena Parthenos",
+                    hint2: "Deze tempel was het hoogtepunt van klassieke, Atheense bouwkunst",
+                    hint3: "Onderdeel van de monumentale herbouw van de Akropolis"
+                },
+                {
+                    name: "de Olympische Spelen",
+                    source: "./assets/images/items/2discuswerper.png",
+                    era: 2,
+                    hint1: "Het is genoemd naar Olympia, de plaats waar ze gehouden werden",
+                    hint2: "Vroeger konden alleen mannen konden meedoen",
+                    hint3: "Het wordt nog steeds gedaan, maar heel anders dan vroeger"
+                },
+                {
+                    name: "Sfinx van Gizeh",
+                    source: "./assets/images/items/2sfinx.png",
+                    era: 2,
+                    hint1: "Het staat bij de drie grote priamiden in Gizeh",
+                    hint2: "Het was gebouwd voor de farao Khafra",
+                    hint3: "Het nog steeds een misterie hoe het z'n nues verloor"
                 },
                 {
                     name: "het zwaard van Sint Cosmas en Damianus",
@@ -256,6 +326,46 @@ class Item {
                     hint3: "Onder hem kregen kunst, literatuur en architectuur een ongewone opleving."
                 },
                 {
+                    name: "een penannulaire broche",
+                    source: "./assets/images/items/3broche.png",
+                    era: 3,
+                    hint1: "Was eigendom van een belangrijke viking.",
+                    hint2: "Het is een onvolledige ring.",
+                    hint3: "Gemaakt in Schotland of Ierland."
+                },
+                {
+                    name: "een viking zwaard.",
+                    source: "./assets/images/items/3viking_zwaard.png",
+                    era: 3,
+                    hint1: "Het zwaard is gevonden in Skaftárhreppur, IJsland.",
+                    hint2: "Het is misschien het zwaard van de eerste inwoner van IJsland.",
+                    hint3: "Het zwaard werd waarschijnlijk gebruikt voor een begrafenis.",
+                },
+                {
+                    name: "",
+                    source: "./assets/images/items/",
+                    era: 3,
+                    hint1: "",
+                    hint2: "",
+                    hint3: ""
+                },
+                {
+                    name: "",
+                    source: "./assets/images/items/",
+                    era: 3,
+                    hint1: "",
+                    hint2: "",
+                    hint3: ""
+                },
+                {
+                    name: "",
+                    source: "./assets/images/items/",
+                    era: 3,
+                    hint1: "",
+                    hint2: "",
+                    hint3: ""
+                },
+                {
                     name: "een penning uit Holland",
                     source: "./assets/images/items/4penning.png",
                     era: 4,
@@ -270,6 +380,22 @@ class Item {
                     hint1: "Glas gevonden in Rotterdam, 2017.",
                     hint2: "Het was ooit eigendom van een rijke boer.",
                     hint3: "Het strijkglas is een voorganger van het moderne strijkijzer."
+                },
+                {
+                    name: "een narrenschoen",
+                    source: "./assets/images/items/4narrenschoen.png",
+                    era: 4,
+                    hint1: "De hofnar is de grappenmaker van een vorst.",
+                    hint2: "Hij kon grappen maken zonder dat hij gestraft werd.",
+                    hint3: "Soms droeg hij ook een staf."
+                },
+                {
+                    name: "het stadhuis van Haarlem",
+                    source: "./assets/images/items/4stadhuis_haarlem.png",
+                    era: 4,
+                    hint1: "Het gebouw staat op de grote markt in Haarlem en word tegenwoordig vooral gebruikt als trouwlocatie.",
+                    hint2: "Het stadhuis is ontworpen door onder andere Lieve de Key.",
+                    hint3: "Het gebouw is tegenwoordig ook een rijksmonument."
                 },
                 {
                     name: "de Mona Lisa",
@@ -291,9 +417,25 @@ class Item {
                     name: "Willem van Oranje",
                     source: "./assets/images/items/5willem_van_oranje.png",
                     era: 5,
-                    hint1: "Dit is Willem van Oranje",
-                    hint2: "Hij is vader des vaderlands",
-                    hint3: ""
+                    hint1: "Hij is de stichter van het Huis van Oranje.",
+                    hint2: "Hij verkocht zijn bezittingen om tegen het Spanje te vechten.",
+                    hint3: "De lijfspreuk van de prins was 'Je maintiendrai'."
+                },
+                {
+                    name: "Maarten Luther",
+                    source: "./assets/images/items/5maarten_luther.png",
+                    era: 5,
+                    hint1: "Hij was tegen het aflaatsysteem van de katholieke kerk.",
+                    hint2: "Hij schrijft 95 stellingen waarin hij de wantoestanden aan de kaak stelt.",
+                    hint3: "Deze daad wordt gezien als het begin van de reformatie."
+                },
+                {
+                    name: "een boterspaan",
+                    source: "./assets/images/items/5boterspaan.png",
+                    era: 5,
+                    hint1: "Houten lepel die werd gebruikt om boter te scheppen.",
+                    hint2: "De lepel had groeven zodat de boter niet bleef plakken.",
+                    hint3: "boter word pas vanaf de 16e eeuw gegeten, daarvoor werd het als zelf gebruikt."
                 },
                 {
                     name: "de Nachtwacht",
@@ -312,12 +454,36 @@ class Item {
                     hint3: "De VOC was de eerste multinational ter wereld."
                 },
                 {
-                    name: "een Trekschuit",
+                    name: "het Paleis op de Dam",
+                    source: "./assets/images/items/6paleis_dam.png",
+                    era: 6,
+                    hint1: "Het werd gebouwd als stadhuis.",
+                    hint2: "Later werd het aan Lodewijk Napoleon aangeboden als paleis.",
+                    hint3: "Het bevindt zich op de Dam in Amsterdam."
+                },
+                {
+                    name: "een straatlantaarn",
+                    source: "./assets/images/items/6lantaarn.png",
+                    era: 6,
+                    hint1: "Ontworpen door Jan van der Heyden.",
+                    hint2: "Als brandstof werd raapolie gebruikt.",
+                    hint3: "De lantaarn was voorzien van 2 ruiten."
+                },
+                {
+                    name: "een trekschuit",
                     source: "./assets/images/items/7trekschuit.png",
                     era: 7,
                     hint1: "Binnenvaartschip dat werd getrokken door paarden aan de oever.",
                     hint2: "De schepen werden gebruikt voor zowel vracht als personen vervoer.",
                     hint3: "Het was een van de voorlopers van modern openbaar vervoer."
+                },
+                {
+                    name: "De Amsterdam",
+                    source: "./assets/images/items/7amsterdam.png",
+                    era: 7,
+                    hint1: "De Amsterdam was een transportschip voor de VOC",
+                    hint2: "Tijdens de eerste reis van het schip ging de Amsterdam verloren door een storm",
+                    hint3: "Er is een replica gebouwd van het schip in Amsterdam"
                 },
                 {
                     name: "Napoleon Bonaparte",
@@ -339,9 +505,33 @@ class Item {
                     name: "een weverij",
                     source: "./assets/images/items/8weverij.png",
                     era: 8,
-                    hint1: "Het stoken van kolen zorgt voor de aandrijving",
-                    hint2: "Soms werkten ook kinderen in de weverij",
+                    hint1: "Het stoken van kolen zorgt voor de aandrijving.",
+                    hint2: "Soms werkten ook kinderen in de weverij.",
                     hint3: "Later kwamen er sociale voorzieningen voor de fabrieksarbeiders."
+                },
+                {
+                    name: "de eerste foto",
+                    source: "./assets/images/items/8eerste_foto.png",
+                    era: 8,
+                    hint1: "Gemaakt door Joseph Niépce.",
+                    hint2: "Het duurde 8 uur om de foto te maken.",
+                    hint3: "Hij noemde het 'schrijven met de zon'."
+                },
+                {
+                    name: "Max Havelaar",
+                    source: "./assets/images/items/8max_havelaar.png",
+                    era: 8,
+                    hint1: "Boek geschreven door Multatuli.",
+                    hint2: "In het boek werd kritiek gegeven op het cultuurstelsel.",
+                    hint3: "Dit stelsel was in Nederlands-Indië."
+                },
+                {
+                    name: "een stoommachine",
+                    source: "./assets/images/items/7stoommachine.png",
+                    era: 8,
+                    hint1: "De eerste, werkende stoommachine werd ontworpen door Thomas Savery en Thomas Newcomen",
+                    hint2: "Deze werd verbeterd door James Watt",
+                    hint3: "Deze verbeteringen maakte de stoommachine tot wat het nu is"
                 },
                 {
                     name: "een vliegtuigbom",
@@ -368,11 +558,19 @@ class Item {
                     hint3: "Alle Joden vanaf 6 jaar oud moesten de ster dragen."
                 },
                 {
+                    name: "een propaganda poster",
+                    source: "./assets/images/items/9propaganda.png",
+                    era: 9,
+                    hint1: "Een poster van de Verenigde Staten.",
+                    hint2: "Er was een tekort aan soldaten.",
+                    hint3: "Het personage op de poster is Uncle Sam."
+                },
+                {
                     name: "een televisie handboek",
                     source: "./assets/images/items/10handboek_televisie.png",
                     era: 10,
                     hint1: "Boekje ter informatie over hoe een televisie werkt.",
-                    hint2: "De eerste landelijke uitzending was vanuit studio Irene in Hilversum.",
+                    hint2: "De eerste landelijke uitzending was vanuit Hilversum.",
                     hint3: "De eerste televisiezender heette Nederland 1."
                 },
                 {
@@ -382,6 +580,22 @@ class Item {
                     hint1: "Uitgebracht door Nintendo in Japan.",
                     hint2: "Bekend van spelletjes als Super Mario en Pokémon.",
                     hint3: "De spelletjes stonden op cassettes."
+                },
+                {
+                    name: "de eerste mobiele telefoon",
+                    source: "./assets/images/items/10mobiele_telefoon.png",
+                    era: 10,
+                    hint1: "Gemaakt door Ericsson.",
+                    hint2: "Het werd gebruikt door dokters in Zweden.",
+                    hint3: "Hij weegt 14 kilogram."
+                },
+                {
+                    name: "de Oosterscheldekering",
+                    source: "./assets/images/items/10oosterscheldekering.png",
+                    era: 10,
+                    hint1: "Kan gesloten worden bij hoog water.",
+                    hint2: "Is onderdeel van het Deltaplan.",
+                    hint3: "Dit plan werd gestart na de stormvloed."
                 }
             ];
     }
@@ -486,32 +700,74 @@ class EraSelectionScreen {
     constructor() {
         this.draw = () => {
             this.randomItemPicker();
+            this.canvasElement.style.backgroundImage = "url(./assets/images/backgrounds/tableBackground.jpg)";
+            this.canvasElement.style.backgroundSize = "100% 100%";
+            this.canvasElement.style.cursor = "url(./assets/images/FeatherCursor.png), auto";
             this._canvas.writeTextToCanvas(`Je hebt ${this.itemList.getItemProperty(this.pickedItem, "name")} gevonden!`, 45, this._canvas.getCenter().X, 100, "yellow");
             this._canvas.writeImageToCanvas(this.itemList.getItemProperty(this.pickedItem, "source"), this._canvas.getCenter().X - 150, this._canvas.getCenter().Y - 200);
+            this._canvas.writeImageToCanvas("./assets/images/eraLogos/era1.png", this._canvas.getWidth() * 0.017, this._canvas.getHeight() - 200);
+            this._canvas.writeImageToCanvas("./assets/images/eraLogos/era2.png", this._canvas.getWidth() * 0.117, this._canvas.getHeight() - 200);
+            this._canvas.writeImageToCanvas("./assets/images/eraLogos/era3.png", this._canvas.getWidth() * 0.217, this._canvas.getHeight() - 200);
+            this._canvas.writeImageToCanvas("./assets/images/eraLogos/era4.png", this._canvas.getWidth() * 0.317, this._canvas.getHeight() - 200);
+            this._canvas.writeImageToCanvas("./assets/images/eraLogos/era5.png", this._canvas.getWidth() * 0.417, this._canvas.getHeight() - 200);
+            this._canvas.writeImageToCanvas("./assets/images/eraLogos/era6.png", this._canvas.getWidth() * 0.517, this._canvas.getHeight() - 200);
+            this._canvas.writeImageToCanvas("./assets/images/eraLogos/era7.png", this._canvas.getWidth() * 0.617, this._canvas.getHeight() - 200);
+            this._canvas.writeImageToCanvas("./assets/images/eraLogos/era8.png", this._canvas.getWidth() * 0.717, this._canvas.getHeight() - 200);
+            this._canvas.writeImageToCanvas("./assets/images/eraLogos/era9.png", this._canvas.getWidth() * 0.817, this._canvas.getHeight() - 200);
+            this._canvas.writeImageToCanvas("./assets/images/eraLogos/era10.png", this._canvas.getWidth() * 0.917, this._canvas.getHeight() - 200);
+            this._canvas._context.lineWidth = 2;
+            this._canvas._context.beginPath();
+            this._canvas._context.moveTo(this._canvas.getWidth() * 0.014, this._canvas.getHeight() - 80);
+            this._canvas._context.lineTo(this._canvas.getWidth() * 0.985, this._canvas.getHeight() - 80);
+            this._canvas._context.moveTo(this._canvas.getWidth() * 0.014, this._canvas.getHeight() - 79);
+            this._canvas._context.lineTo(this._canvas.getWidth() * 0.985, this._canvas.getHeight() - 79);
+            this._canvas._context.stroke();
+            this._canvas._context.strokeStyle = "yellow";
+            this._canvas._context.strokeRect(this._canvas.getWidth() * 0.70 - 1, this._canvas.getHeight() * 0.18 - 1, 422, this._canvas.getHeight() * 0.5 + 2);
+            this._canvas._context.fillStyle = "grey";
+            this._canvas._context.fillRect(this._canvas.getWidth() * 0.70, this._canvas.getHeight() * 0.18, 420, this._canvas.getHeight() * 0.5);
+            this._canvas.writeTextToCanvas('Hints', 40, this._canvas.getWidth() * 0.87, this._canvas.getHeight() * 0.24, "black", "right");
+            for (let i = 1; i <= 3; i++) {
+                this._canvas.writeTextToCanvas(`• ${this.itemList.getItemProperty(this.pickedItem, `hint${i}`).split(" ").splice(0, 5).join(" ")}`, 20, this._canvas.getWidth() * 0.83, this._canvas.getHeight() * (0.15 + 0.13 * i), "black", "center");
+                if (this.itemList.getItemProperty(this.pickedItem, `hint${i}`).length > 6) {
+                    this._canvas.writeTextToCanvas(this.itemList.getItemProperty(this.pickedItem, `hint${i}`).split(" ").splice(5, this.itemList.getItemProperty(this.pickedItem, `hint${i}`).length).join(" "), 20, this._canvas.getWidth() * 0.83, this._canvas.getHeight() * (0.20 + 0.13 * i), "black", "center");
+                }
+            }
         };
         this.canvasElement = document.getElementById('canvas');
         this._canvas = new CanvasHelper(this.canvasElement);
         this.itemList = new Item;
     }
     randomItemPicker() {
-        this.pickedItem = MathHelper.randomNumber(0, this.itemList.getItemArrayLength());
+        this.pickedItem = MathHelper.randomNumber(0, this.itemList.getItemArrayLength() - 1);
     }
     randomItemNumber() {
         return this.itemList.getItemProperty(this.pickedItem, "era");
     }
 }
+class ExplanationScreen {
+    constructor() {
+        this.draw = () => {
+            this._canvas.writeTextToCanvas(this.explanation, 20, this._canvas.getCenter().X, this._canvas.getCenter().Y);
+            this._canvas.writeButtonToCanvas("Terug naar titelscherm", undefined, this._canvas.getCenter().Y + 200);
+        };
+        this.canvasElement = document.getElementById('canvas');
+        this._canvas = new CanvasHelper(this.canvasElement);
+        this.explanation = "Het doel om het spel is om zoveel mogelijk voorwerpen op te graven";
+    }
+}
 class GameScreen {
     constructor(imageUrl) {
         this.hole = new Array();
-        this.counter = 150;
         this.score = 0;
         this.draw = () => {
             for (let i = 0; i < this.hole.length; i++) {
                 this.hole[i].draw();
             }
-            this._canvas.writeTextToCanvas(`Tijd over: ${this.counter} seconden`, 20, 175, 50);
-            console.log(this.counter);
-            this._canvas.writeTextToCanvas(`Score: ${this.score}`, 20, 100, 75);
+            this._canvas.writeTextToCanvas(`Score: ${this.score}`, 20, 75, 75, "white", "left");
+            this.canvasElement.style.backgroundImage = "url(./assets/images/backgrounds/groundBackground.png)";
+            this.canvasElement.style.backgroundSize = "auto";
+            this.canvasElement.style.cursor = "url(./assets/images/shovelCursor.png), auto";
         };
         this.imageUrl = imageUrl;
         this.canvasElement = document.getElementById('canvas');
@@ -520,28 +776,14 @@ class GameScreen {
             this.hole.push(new Hole(this.canvasElement, this.imageUrl, MathHelper.randomNumber(0, this._canvas.getWidth() - 200), MathHelper.randomNumber(0, this._canvas.getHeight() - 200), 130, 120, MathHelper.randomNumber(0, 2)));
         }
     }
-    timer() {
-        let intervalId = setInterval(() => {
-            this.counter--;
-            if (this.counter === 0) {
-                clearInterval(intervalId);
-            }
-        }, 1000);
-    }
-    getHoles() {
+    getHole() {
         return this.hole;
-    }
-    getCounter() {
-        return this.counter;
     }
     addScoreCounter() {
         this.score++;
     }
     getScore() {
         return this.score;
-    }
-    resetCounter() {
-        this.counter = 150;
     }
     resetScore() {
         this.score = 0;
@@ -554,6 +796,9 @@ class GameScreen {
 class HighscoreScreen {
     constructor() {
         this.draw = (score) => {
+            this.canvasElement.style.backgroundImage = "url(./assets/images/backgrounds/tableBackground.jpg)";
+            this.canvasElement.style.backgroundSize = "100% 100%";
+            this.canvasElement.style.cursor = "url(./assets/images/FeatherCursor.png), auto";
             this._canvas.writeTextToCanvas(`Je hebt een score van ${score} behaald!`, 45, this._canvas.getCenter().X, 100, "yellow");
             this._canvas.writeButtonToCanvas("Probeer opnieuw", undefined, this._canvas.getCenter().Y + 200);
         };
@@ -564,8 +809,11 @@ class HighscoreScreen {
 class StartScreen {
     constructor() {
         this.draw = () => {
+            this.canvasElement.style.backgroundImage = "url(./assets/images/backgrounds/groundBackground.png)";
+            this.canvasElement.style.backgroundSize = "auto";
+            this.canvasElement.style.cursor = "url(./assets/images/FeatherCursor.png), auto";
             this._canvas.writeImageToCanvas("./assets/images/Cavator_logo/CavatorLogo.png", this._canvas.getCenter().X - 200, this._canvas.getCenter().Y - 300);
-            this._canvas.writeButtonToCanvas("Play", undefined, this._canvas.getCenter().Y + 200);
+            this._canvas.writeButtonToCanvas("Speel", undefined, this._canvas.getCenter().Y + 200);
         };
         this.canvasElement = document.getElementById('canvas');
         this._canvas = new CanvasHelper(this.canvasElement);
