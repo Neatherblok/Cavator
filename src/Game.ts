@@ -6,6 +6,7 @@ class Game {
     private EraSelectionscreen: EraSelectionScreen;
     private HighscoreScreen: HighscoreScreen;
     private itemList: Item;
+    private _cookieAdd: CookieAdd;
     private MouseListener: MouseListener;
         //defines all possible screens
     private screen: string[] = ["this.Startscreen.draw()", "this.Gamescreen.draw()", "this.EraSelectionscreen.draw()", "this.HighscoreScreen.draw(this.Gamescreen.getScore())"];
@@ -27,6 +28,7 @@ class Game {
         this.EraSelectionscreen = new EraSelectionScreen();
         this.MouseListener = new MouseListener();
         this.itemList = new Item();
+        this._cookieAdd = new CookieAdd;
             //define background music
         this.audioLink = `./assets/sounds/music/dutch_street_organ.wav`;
         this.backgroundMusic = new Audio(this.audioLink);
@@ -169,12 +171,11 @@ class Game {
     public muteBackgroundMusic() {
         if (this.backgroundMusic.muted == false) {
             this.backgroundMusic.muted = true;
-            // this.muteButton.innerHTML = "Muziek uit";
             this.muteButton.innerHTML = "<img src='./assets/images/UI/volOff.png' alt='background music muted'>";
         }
         else {
             this.backgroundMusic.muted = false;
-            // this.muteButton.innerHTML = "Muziek aan";
+            this._cookieAdd.setCookie;
             this.muteButton.innerHTML = "<img src='./assets/images/UI/volUp.png' alt='background music on'>";
         }
     }

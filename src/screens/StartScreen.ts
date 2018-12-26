@@ -10,6 +10,9 @@ class StartScreen{
 
     //draws startscreen
     public draw = () => {
+        for(let i=1; i<6; i++){
+            document.getElementById(`place${i}`).innerHTML = '';
+        }
         this.canvasElement.style.backgroundImage = "url(./assets/images/backgrounds/groundBackground.png)";
         this.canvasElement.style.backgroundSize = "auto";
         this.canvasElement.style.cursor = "url(./assets/images/FeatherCursor.png), auto";
