@@ -17,7 +17,7 @@ class HighscoreScreen {
         this.canvasElement.style.cursor = "url(./assets/images/FeatherCursor.png), auto";
         this._canvas.writeTextToCanvas(`Je hebt een score van ${score} behaald!`, 45, this._canvas.getCenter().X, 100, "yellow");
         this._canvas.writeButtonToCanvas("Probeer opnieuw", undefined, this._canvas.getCenter().Y + 200);
-        this._cookieAdd.checkCookie(score);
+        this._cookieAdd.checkCookie('highscore', score);
     }
 
 }
