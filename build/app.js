@@ -115,6 +115,7 @@ class Game {
         else if (this._cookieAdd.checkCookie('backgroundMusic', null) == true) {
             this._cookieAdd.muteCookie(true);
             this.backgroundMusic.muted = false;
+            this._cookieAdd.setCookie;
             this.muteButton.innerHTML = "<img src='./assets/images/UI/volUp.png' alt='background music on'>";
         }
         else if (this._cookieAdd.checkCookie('backgroundMusic', null) == false) {
