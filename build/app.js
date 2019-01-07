@@ -359,7 +359,7 @@ class Item {
                     hint3: "Het eerste fossiel van een T-rex werd gevonden in 1874."
                 },
                 {
-                    name: "Een mammoet",
+                    name: "een mammoet",
                     source: "./assets/images/items/1mammoet.png",
                     era: 1,
                     hint1: "De mammoet is een al uitgestorven diersoort.",
@@ -375,7 +375,7 @@ class Item {
                     hint3: "Het komt uit de Jonge Steentijd."
                 },
                 {
-                    name: "Grotschilderingen",
+                    name: "grotschilderingen",
                     source: "./assets/images/items/1grotschilderingen.png",
                     era: 1,
                     hint1: "Deze grotschilderingen werden getekend door jagers-verzamelaars.",
@@ -1008,7 +1008,7 @@ class GameScreen {
         this.canvasElement = document.getElementById('canvas');
         this._canvas = new CanvasHelper(this.canvasElement);
         for (let index = 0; index < MathHelper.randomNumber(3, 6); index++) {
-            this.hole.push(new Hole(this.canvasElement, `./assets/images/holes/hole${MathHelper.randomNumber(1, 2)}.png`, MathHelper.randomNumber(0, this._canvas.getWidth() - 200), MathHelper.randomNumber(100, this._canvas.getHeight() - 200), 130, 120, MathHelper.randomNumber(4, 6)));
+            this.hole.push(new Hole(this.canvasElement, `./assets/images/holes/hole${MathHelper.randomNumber(1, 2)}.png`, MathHelper.randomNumber(0, this._canvas.getWidth() - 200), MathHelper.randomNumber(100, this._canvas.getHeight() - 250), 130, 120, MathHelper.randomNumber(4, 6)));
         }
     }
     ;
