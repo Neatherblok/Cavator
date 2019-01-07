@@ -425,12 +425,12 @@ class Item {
                     hint3: "Deze vikingschepen werden gebouwd door Scandinavische vikings"
                 },
                 {
-                    name: "",
+                    name: "de drukpers",
                     source: "./assets/images/items/",
                     era: 3,
-                    hint1: "",
-                    hint2: "",
-                    hint3: ""
+                    hint1: "Hiermee konden boeken gekopieerd worden en dus makkelijker verspreid worden",
+                    hint2: "Werd gebruikt door Maarten Luther om zijn ideeen te verspreiden",
+                    hint3: "Hiermee werd ook de Gutenbergbijbel verspreid"
                 },
                 {
                     name: "",
