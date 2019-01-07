@@ -11,9 +11,9 @@ class GameScreen {
         this.imageUrl = imageUrl
         this.canvasElement = <HTMLCanvasElement>document.getElementById('canvas');
         this._canvas = new CanvasHelper(this.canvasElement);
-            //generates random amount of holes between 6 and 9 and push them in an array
-        for (let index = 0; index < MathHelper.randomNumber(6,9); index++) {
-            this.hole.push(new Hole(this.canvasElement, this.imageUrl, MathHelper.randomNumber(0, this._canvas.getWidth() - 200), MathHelper.randomNumber(0, this._canvas.getHeight() - 200), 130, 120, MathHelper.randomNumber(0, 2)))
+            //generates random amount of holes between 3 and 6 and push them in an array
+        for (let index = 0; index < MathHelper.randomNumber(3,6); index++) {
+            this.hole.push(new Hole(this.canvasElement, this.imageUrl, MathHelper.randomNumber(0, this._canvas.getWidth() - 200), MathHelper.randomNumber(0, this._canvas.getHeight() - 200), 130, 120, MathHelper.randomNumber(4, 6)))
         }
     }
 
