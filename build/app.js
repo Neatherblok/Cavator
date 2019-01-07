@@ -1,6 +1,6 @@
 class Game {
     constructor() {
-        this.screen = ["this.Startscreen.draw()", "this.Gamescreen.draw()", "this.EraSelectionscreen.draw()", "this.HighscoreScreen.draw(this.Gamescreen.getScore())"];
+        this.screen = ["this.Startscreen.draw()", "this.Gamescreen.draw()", "this.EraSelectionscreen.draw()", "this.HighscoreScreen.draw(this.Gamescreen.getScore())", "this.GameExplanationscreen.draw()", "this.EraExplanationscreen.draw()"];
         this.sounds = ['buttonHitSFX', 'digging1', 'digging2', 'digging3', 'digging4', 'digging5'];
         this.currentGameScreenNumber = 0;
         this.time = 151;
@@ -10,7 +10,27 @@ class Game {
             console.log(this.time);
         };
         this.nextScreen = (event) => {
-            if (this.currentGameScreenNumber == 3) {
+            if (this.currentGameScreenNumber == 5) {
+                if (event.clientX >= (this._canvas.getCenter().X - 111) && event.clientX <= (this._canvas.getCenter().X + 111)
+                    && event.clientY >= (this._canvas.getCenter().Y + 250) && event.clientY <= this._canvas.getCenter().Y + 289) {
+                    let audioLink = "./assets/sounds/sfx/buttonHitSFX.mp3";
+                    let audio = new Audio(audioLink);
+                    audio.play();
+                    this.currentGameScreenNumber = 0;
+                    this.draw();
+                }
+            }
+            else if (this.currentGameScreenNumber == 4) {
+                if (event.clientX >= (this._canvas.getCenter().X - 111) && event.clientX <= (this._canvas.getCenter().X + 111)
+                    && event.clientY >= (this._canvas.getCenter().Y + 200) && event.clientY <= this._canvas.getCenter().Y + 239) {
+                    let audioLink = "./assets/sounds/sfx/buttonHitSFX.mp3";
+                    let audio = new Audio(audioLink);
+                    audio.play();
+                    this.currentGameScreenNumber = 0;
+                    this.draw();
+                }
+            }
+            else if (this.currentGameScreenNumber == 3) {
                 if (event.clientX >= (this._canvas.getCenter().X - 111) && event.clientX <= (this._canvas.getCenter().X + 111)
                     && event.clientY >= (this._canvas.getCenter().Y + 200) && event.clientY <= this._canvas.getCenter().Y + 239) {
                     let audioLink = "./assets/sounds/sfx/buttonHitSFX.mp3";
@@ -84,12 +104,28 @@ class Game {
             }
             else if (this.currentGameScreenNumber == 0) {
                 if (event.clientX >= (this._canvas.getCenter().X - 111) && event.clientX <= (this._canvas.getCenter().X + 111)
-                    && event.clientY >= (this._canvas.getCenter().Y + 200) && event.clientY <= this._canvas.getCenter().Y + 239) {
+                    && event.clientY >= (this._canvas.getCenter().Y + 150) && event.clientY <= this._canvas.getCenter().Y + 189) {
                     let audioLink = "./assets/sounds/sfx/buttonHitSFX.mp3";
                     let audio = new Audio(audioLink);
                     audio.play();
                     this.timer();
                     this.currentGameScreenNumber = 1;
+                    this.draw();
+                }
+                else if (event.clientX >= (this._canvas.getCenter().X - 111) && event.clientX <= (this._canvas.getCenter().X + 111)
+                    && event.clientY >= (this._canvas.getCenter().Y + 200) && event.clientY <= this._canvas.getCenter().Y + 239) {
+                    let audioLink = "./assets/sounds/sfx/buttonHitSFX.mp3";
+                    let audio = new Audio(audioLink);
+                    audio.play();
+                    this.currentGameScreenNumber = 4;
+                    this.draw();
+                }
+                else if (event.clientX >= (this._canvas.getCenter().X - 111) && event.clientX <= (this._canvas.getCenter().X + 111)
+                    && event.clientY >= (this._canvas.getCenter().Y + 250) && event.clientY <= this._canvas.getCenter().Y + 289) {
+                    let audioLink = "./assets/sounds/sfx/buttonHitSFX.mp3";
+                    let audio = new Audio(audioLink);
+                    audio.play();
+                    this.currentGameScreenNumber = 5;
                     this.draw();
                 }
             }
@@ -99,6 +135,8 @@ class Game {
         this.Startscreen = new StartScreen();
         this.Gamescreen = new GameScreen();
         this.EraSelectionscreen = new EraSelectionScreen();
+        this.GameExplanationscreen = new GameExplanationScreen();
+        this.EraExplanationscreen = new EraExplanationScreen();
         this.MouseListener = new MouseListener();
         this.itemList = new Item();
         this._cookieAdd = new CookieAdd;
@@ -810,6 +848,28 @@ class MathHelper {
         return Math.round(Math.random() * (max - min) + min);
     }
 }
+class EraExplanationScreen {
+    constructor() {
+        this.draw = () => {
+            this.canvasElement.style.backgroundImage = "url(./assets/images/backgrounds/tableBackground.jpg)";
+            this.canvasElement.style.backgroundSize = "100% 100%";
+            this.canvasElement.style.cursor = "url(./assets/images/FeatherCursor.png), auto";
+            this._canvas.writeImageToCanvas("./assets/images/eraLogos/era1.png", 25, 25);
+            this._canvas.writeImageToCanvas("./assets/images/eraLogos/era2.png", 25, 150);
+            this._canvas.writeImageToCanvas("./assets/images/eraLogos/era3.png", 25, 275);
+            this._canvas.writeImageToCanvas("./assets/images/eraLogos/era4.png", 25, 400);
+            this._canvas.writeImageToCanvas("./assets/images/eraLogos/era5.png", 475, 25);
+            this._canvas.writeImageToCanvas("./assets/images/eraLogos/era6.png", 475, 150);
+            this._canvas.writeImageToCanvas("./assets/images/eraLogos/era7.png", 475, 275);
+            this._canvas.writeImageToCanvas("./assets/images/eraLogos/era8.png", 475, 400);
+            this._canvas.writeImageToCanvas("./assets/images/eraLogos/era9.png", 925, 275);
+            this._canvas.writeImageToCanvas("./assets/images/eraLogos/era10.png", 925, 400);
+            this._canvas.writeButtonToCanvas("Terug", undefined, this._canvas.getCenter().Y + 250);
+        };
+        this.canvasElement = document.getElementById('canvas');
+        this._canvas = new CanvasHelper(this.canvasElement);
+    }
+}
 class EraSelectionScreen {
     constructor() {
         this.draw = () => {
@@ -859,15 +919,26 @@ class EraSelectionScreen {
         return this.itemList.getItemProperty(this.pickedItem, "era");
     }
 }
-class ExplanationScreen {
+class GameExplanationScreen {
     constructor() {
         this.draw = () => {
-            this._canvas.writeTextToCanvas(this.explanation, 20, this._canvas.getCenter().X, this._canvas.getCenter().Y);
-            this._canvas.writeButtonToCanvas("Terug naar titelscherm", undefined, this._canvas.getCenter().Y + 200);
+            this.canvasElement.style.backgroundImage = "url(./assets/images/backgrounds/tableBackground.jpg)";
+            this.canvasElement.style.backgroundSize = "100% 100%";
+            this.canvasElement.style.cursor = "url(./assets/images/FeatherCursor.png), auto";
+            this._canvas.writeTextToCanvas(this.explanation1, 20, this._canvas.getWidth() / 32, 100, "yellow", "left");
+            this._canvas.writeImageToCanvas("./assets/images/screenshots/gameScreen.png", this._canvas.getCenter().X + 130, 30);
+            this._canvas.writeTextToCanvas(this.explanation2, 20, this._canvas.getWidth() / 32, 250, "yellow", "left");
+            this._canvas.writeImageToCanvas("./assets/images/screenshots/eraSelectionScreen.png", this._canvas.getCenter().X + 130, 270);
+            this._canvas.writeTextToCanvas(this.explanation3_0, 20, this._canvas.getWidth() / 32, 400, "yellow", "left");
+            this._canvas.writeTextToCanvas(this.explanation3_1, 20, this._canvas.getWidth() / 32, 430, "yellow", "left");
+            this._canvas.writeButtonToCanvas("Terug", undefined, this._canvas.getCenter().Y + 200);
         };
         this.canvasElement = document.getElementById('canvas');
         this._canvas = new CanvasHelper(this.canvasElement);
-        this.explanation = "Het doel om het spel is om zoveel mogelijk voorwerpen op te graven";
+        this.explanation1 = "Het doel van het spel is om zoveel mogelijk voorwerpen op te graven.";
+        this.explanation2 = "Hierna krijg je de keuze om het goede tijdvak bij het voorwerp te zoeken.";
+        this.explanation3_0 = "Als je het goede antwoord hebt gekozen krijg je een punt erbij, ";
+        this.explanation3_1 = "als je het fout hebt krijg je het goede antwoord te zien.";
     }
 }
 class GameScreen {
@@ -929,11 +1000,13 @@ class StartScreen {
             for (let i = 1; i < 6; i++) {
                 document.getElementById(`place${i}`).innerHTML = '';
             }
-            this.canvasElement.style.backgroundImage = "url(./assets/images/backgrounds/groundBackground.png)";
-            this.canvasElement.style.backgroundSize = "auto";
+            this.canvasElement.style.backgroundImage = "url(./assets/images/backgrounds/tableBackground.jpg)";
+            this.canvasElement.style.backgroundSize = "100% 100%";
             this.canvasElement.style.cursor = "url(./assets/images/FeatherCursor.png), auto";
             this._canvas.writeImageToCanvas("./assets/images/Cavator_logo/CavatorLogo.png", this._canvas.getCenter().X - 200, this._canvas.getCenter().Y - 300);
-            this._canvas.writeButtonToCanvas("Speel", undefined, this._canvas.getCenter().Y + 200);
+            this._canvas.writeButtonToCanvas("Speel", undefined, this._canvas.getCenter().Y + 150);
+            this._canvas.writeButtonToCanvas("Speluitleg", undefined, this._canvas.getCenter().Y + 200);
+            this._canvas.writeButtonToCanvas("Uitleg tijdvakken", undefined, this._canvas.getCenter().Y + 250);
         };
         this.canvasElement = document.getElementById('canvas');
         this._canvas = new CanvasHelper(this.canvasElement);
