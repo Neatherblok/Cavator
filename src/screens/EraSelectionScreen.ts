@@ -63,8 +63,13 @@ class EraSelectionScreen {
     }
 
         //returns the era number of the picked item
-    public randomItemNumber() {
+    public getItemEraNumber() {
         return this.itemList.getItemProperty(this.pickedItem, "era")
+    }
+
+        //returns the picked item
+    public getPickedItem(){
+        return this.pickedItem
     }
 
 }

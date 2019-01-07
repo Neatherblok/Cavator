@@ -7,7 +7,6 @@ class Game {
         this.draw = () => {
             this._canvas.clear();
             eval(this.screen[this.currentGameScreenNumber]);
-            console.log(this.time);
         };
         this.nextScreen = (event) => {
             if (this.currentGameScreenNumber == 3) {
@@ -23,8 +22,8 @@ class Game {
                 }
             }
             else if (this.currentGameScreenNumber == 2) {
-                if (event.clientX >= this.MouseListener.eraScreenClick(this.EraSelectionscreen.randomItemNumber()).Xmin && event.clientX <= this.MouseListener.eraScreenClick(this.EraSelectionscreen.randomItemNumber()).Xmax
-                    && event.clientY >= this.MouseListener.eraScreenClick(this.EraSelectionscreen.randomItemNumber()).Ymin && event.clientY <= this.MouseListener.eraScreenClick(this.EraSelectionscreen.randomItemNumber()).Ymax) {
+                if (event.clientX >= this.MouseListener.eraScreenClick(this.EraSelectionscreen.getItemEraNumber()).Xmin && event.clientX <= this.MouseListener.eraScreenClick(this.EraSelectionscreen.getItemEraNumber()).Xmax
+                    && event.clientY >= this.MouseListener.eraScreenClick(this.EraSelectionscreen.getItemEraNumber()).Ymin && event.clientY <= this.MouseListener.eraScreenClick(this.EraSelectionscreen.getItemEraNumber()).Ymax) {
                     this.Gamescreen.addScoreCounter();
                     let audioLink = `./assets/sounds/sfx/checkSFX/rightSFX.mp3`;
                     let audio = new Audio(audioLink);
@@ -52,13 +51,15 @@ class Game {
                         && event.clientY >= this.MouseListener.eraScreenClick(9).Ymin && event.clientY <= this.MouseListener.eraScreenClick(9).Ymax
                     || event.clientX >= this.MouseListener.eraScreenClick(10).Xmin && event.clientX <= this.MouseListener.eraScreenClick(10).Xmax
                         && event.clientY >= this.MouseListener.eraScreenClick(10).Ymin && event.clientY <= this.MouseListener.eraScreenClick(10).Ymax
-                        && !(event.clientX >= this.MouseListener.eraScreenClick(this.EraSelectionscreen.randomItemNumber()).Xmin && event.clientX <= this.MouseListener.eraScreenClick(this.EraSelectionscreen.randomItemNumber()).Xmax
-                            && event.clientY >= this.MouseListener.eraScreenClick(this.EraSelectionscreen.randomItemNumber()).Ymin && event.clientY <= this.MouseListener.eraScreenClick(this.EraSelectionscreen.randomItemNumber()).Ymax)) {
+                        && !(event.clientX >= this.MouseListener.eraScreenClick(this.EraSelectionscreen.getItemEraNumber()).Xmin && event.clientX <= this.MouseListener.eraScreenClick(this.EraSelectionscreen.getItemEraNumber()).Xmax
+                            && event.clientY >= this.MouseListener.eraScreenClick(this.EraSelectionscreen.getItemEraNumber()).Ymin && event.clientY <= this.MouseListener.eraScreenClick(this.EraSelectionscreen.getItemEraNumber()).Ymax)) {
                     let audioLink = `./assets/sounds/sfx/checkSFX/wrongSFX.mp3`;
                     let audio = new Audio(audioLink);
                     audio.play();
                     this.currentGameScreenNumber = 1;
                     this.draw();
+                    this._canvas.writeTextToCanvas(`Het juiste tijdvak:`, 20, this._canvas.getCenter().X, 50, 'white');
+                    this._canvas.writeImageToCanvas(`./assets/images/eraLogos/era${this.EraSelectionscreen.getItemEraNumber()}.png`, this._canvas.getCenter().X + 100, 20, 2, 2);
                 }
             }
             else if (this.currentGameScreenNumber == 1) {
@@ -127,7 +128,6 @@ class Game {
             this.backgroundMusic.muted = true;
             this.muteButton.innerHTML = "<img src='./assets/images/UI/volOff.png' alt='background music muted'>";
         }
-        console.log(this._cookieAdd.checkCookie('backgroundMusic', null));
     }
     timer() {
         let intervalId = setInterval(() => {
@@ -779,12 +779,12 @@ class CanvasHelper {
         this._context.textAlign = aAlignment;
         this._context.fillText(aText, aXpos, aYpos);
     }
-    writeImageToCanvas(aSrc, aXpos, aYpos) {
+    writeImageToCanvas(aSrc, aXpos, aYpos, imgWidthDivide = 1, imgHeightDivide = 1) {
         let image = new Image();
-        image.addEventListener('load', () => {
-            this._context.drawImage(image, aXpos, aYpos);
-        });
         image.src = aSrc;
+        image.addEventListener('load', () => {
+            this._context.drawImage(image, aXpos, aYpos, image.width / imgWidthDivide, image.height / imgHeightDivide);
+        });
     }
     writeButtonToCanvas(aCaption, aXpos = -1, aYpos = -1) {
         let buttonImage = new Image();
@@ -853,8 +853,11 @@ class EraSelectionScreen {
     randomItemPicker() {
         this.pickedItem = MathHelper.randomNumber(0, this.itemList.getItemArrayLength() - 1);
     }
-    randomItemNumber() {
+    getItemEraNumber() {
         return this.itemList.getItemProperty(this.pickedItem, "era");
+    }
+    getPickedItem() {
+        return this.pickedItem;
     }
 }
 class ExplanationScreen {

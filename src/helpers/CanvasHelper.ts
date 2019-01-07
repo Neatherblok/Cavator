@@ -52,13 +52,15 @@ class CanvasHelper {
     public writeImageToCanvas(
         aSrc: string,
         aXpos: number,
-        aYpos: number
+        aYpos: number,
+        imgWidthDivide: number = 1,
+        imgHeightDivide: number = 1
     ) {
         let image = new Image();
-        image.addEventListener('load', () => {
-            this._context.drawImage(image,aXpos, aYpos);
-        });
         image.src = aSrc;
+        image.addEventListener('load', () => {
+            this._context.drawImage(image,aXpos, aYpos, image.width / imgWidthDivide, image.height / imgHeightDivide);
+        });
     }
 
     //function that places a button on the canvas
