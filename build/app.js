@@ -1,6 +1,6 @@
 class Game {
     constructor() {
-        this.screen = ["this.Startscreen.draw()", "this.Gamescreen.draw()", "this.EraSelectionscreen.draw()", "this.HighscoreScreen.draw(this.Gamescreen.getScore())"];
+        this.screen = ["this.Startscreen.draw()", "this.Gamescreen.draw()", "this.EraSelectionscreen.draw()", "this.HighscoreScreen.draw(this.Gamescreen.getScore())", "this.ExplanationScreen.draw()"];
         this.sounds = ['buttonHitSFX', 'digging1', 'digging2', 'digging3', 'digging4', 'digging5'];
         this.currentGameScreenNumber = 0;
         this.time = 151;
@@ -10,7 +10,17 @@ class Game {
             console.log(this.time);
         };
         this.nextScreen = (event) => {
-            if (this.currentGameScreenNumber == 3) {
+            if (this.currentGameScreenNumber == 4) {
+                if (event.clientX >= (this._canvas.getCenter().X - 111) && event.clientX <= (this._canvas.getCenter().X + 111)
+                    && event.clientY >= (this._canvas.getCenter().Y + 200) && event.clientY <= this._canvas.getCenter().Y + 239) {
+                    let audioLink = "./assets/sounds/sfx/buttonHitSFX.mp3";
+                    let audio = new Audio(audioLink);
+                    audio.play();
+                    this.currentGameScreenNumber = 0;
+                    this.draw();
+                }
+            }
+            else if (this.currentGameScreenNumber == 3) {
                 if (event.clientX >= (this._canvas.getCenter().X - 111) && event.clientX <= (this._canvas.getCenter().X + 111)
                     && event.clientY >= (this._canvas.getCenter().Y + 200) && event.clientY <= this._canvas.getCenter().Y + 239) {
                     let audioLink = "./assets/sounds/sfx/buttonHitSFX.mp3";
@@ -82,12 +92,20 @@ class Game {
             }
             else if (this.currentGameScreenNumber == 0) {
                 if (event.clientX >= (this._canvas.getCenter().X - 111) && event.clientX <= (this._canvas.getCenter().X + 111)
-                    && event.clientY >= (this._canvas.getCenter().Y + 200) && event.clientY <= this._canvas.getCenter().Y + 239) {
+                    && event.clientY >= (this._canvas.getCenter().Y + 150) && event.clientY <= this._canvas.getCenter().Y + 189) {
                     let audioLink = "./assets/sounds/sfx/buttonHitSFX.mp3";
                     let audio = new Audio(audioLink);
                     audio.play();
                     this.timer();
                     this.currentGameScreenNumber = 1;
+                    this.draw();
+                }
+                else if (event.clientX >= (this._canvas.getCenter().X - 111) && event.clientX <= (this._canvas.getCenter().X + 111)
+                    && event.clientY >= (this._canvas.getCenter().Y + 200) && event.clientY <= this._canvas.getCenter().Y + 239) {
+                    let audioLink = "./assets/sounds/sfx/buttonHitSFX.mp3";
+                    let audio = new Audio(audioLink);
+                    audio.play();
+                    this.currentGameScreenNumber = 4;
                     this.draw();
                 }
             }
@@ -97,6 +115,7 @@ class Game {
         this.Startscreen = new StartScreen();
         this.Gamescreen = new GameScreen("./assets/images/hole1.png");
         this.EraSelectionscreen = new EraSelectionScreen();
+        this.ExplanationScreen = new ExplanationScreen();
         this.MouseListener = new MouseListener();
         this.itemList = new Item();
         this._cookieAdd = new CookieAdd;
@@ -860,12 +879,19 @@ class EraSelectionScreen {
 class ExplanationScreen {
     constructor() {
         this.draw = () => {
-            this._canvas.writeTextToCanvas(this.explanation, 20, this._canvas.getCenter().X, this._canvas.getCenter().Y);
-            this._canvas.writeButtonToCanvas("Terug naar titelscherm", undefined, this._canvas.getCenter().Y + 200);
+            this.canvasElement.style.backgroundImage = "url(./assets/images/backgrounds/tableBackground.jpg)";
+            this.canvasElement.style.backgroundSize = "100% 100%";
+            this.canvasElement.style.cursor = "url(./assets/images/FeatherCursor.png), auto";
+            this._canvas.writeTextToCanvas(this.explanation1, 20, this._canvas.getWidth() / 32, 100, "yellow", "left");
+            this._canvas.writeTextToCanvas(this.explanation2, 20, this._canvas.getWidth() / 32, 250, "yellow", "left");
+            this._canvas.writeTextToCanvas(this.explanation3, 20, this._canvas.getWidth() / 32, 400, "yellow", "left");
+            this._canvas.writeButtonToCanvas("Terug", undefined, this._canvas.getCenter().Y + 200);
         };
         this.canvasElement = document.getElementById('canvas');
         this._canvas = new CanvasHelper(this.canvasElement);
-        this.explanation = "Het doel om het spel is om zoveel mogelijk voorwerpen op te graven";
+        this.explanation1 = "Het doel van het spel is om zoveel mogelijk voorwerpen op te graven.";
+        this.explanation2 = "Hierna krijg je de keuze om het goede tijdvak bij het voorwerp te zoeken.";
+        this.explanation3 = "Als je het goede antwoord hebt gekozen krijg je een punt erbij, als je het fout hebt krijg je het goede antwoord te zien.";
     }
 }
 class GameScreen {
@@ -926,11 +952,12 @@ class StartScreen {
             for (let i = 1; i < 6; i++) {
                 document.getElementById(`place${i}`).innerHTML = '';
             }
-            this.canvasElement.style.backgroundImage = "url(./assets/images/backgrounds/groundBackground.png)";
-            this.canvasElement.style.backgroundSize = "auto";
+            this.canvasElement.style.backgroundImage = "url(./assets/images/backgrounds/tableBackground.jpg)";
+            this.canvasElement.style.backgroundSize = "100% 100%";
             this.canvasElement.style.cursor = "url(./assets/images/FeatherCursor.png), auto";
             this._canvas.writeImageToCanvas("./assets/images/Cavator_logo/CavatorLogo.png", this._canvas.getCenter().X - 200, this._canvas.getCenter().Y - 300);
-            this._canvas.writeButtonToCanvas("Speel", undefined, this._canvas.getCenter().Y + 200);
+            this._canvas.writeButtonToCanvas("Speel", undefined, this._canvas.getCenter().Y + 150);
+            this._canvas.writeButtonToCanvas("Speluitleg", undefined, this._canvas.getCenter().Y + 200);
         };
         this.canvasElement = document.getElementById('canvas');
         this._canvas = new CanvasHelper(this.canvasElement);
