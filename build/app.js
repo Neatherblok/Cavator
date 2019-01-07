@@ -59,6 +59,8 @@ class Game {
                     audio.play();
                     this.currentGameScreenNumber = 1;
                     this.draw();
+                    this._canvas.writeTextToCanvas(`Het juiste tijdvak:`, 20, this._canvas.getCenter().X, 50, 'white');
+                    this._canvas.writeImageToCanvas(`./assets/images/eraLogos/era${this.EraSelectionscreen.randomItemNumber()}.png`, this._canvas.getCenter().X + 100, 20, 2, 2);
                 }
             }
             else if (this.currentGameScreenNumber == 1) {
@@ -95,7 +97,7 @@ class Game {
         this.canvasElement = document.getElementById('canvas');
         this._canvas = new CanvasHelper(this.canvasElement);
         this.Startscreen = new StartScreen();
-        this.Gamescreen = new GameScreen("./assets/images/hole1.png");
+        this.Gamescreen = new GameScreen();
         this.EraSelectionscreen = new EraSelectionScreen();
         this.MouseListener = new MouseListener();
         this.itemList = new Item();
@@ -779,12 +781,12 @@ class CanvasHelper {
         this._context.textAlign = aAlignment;
         this._context.fillText(aText, aXpos, aYpos);
     }
-    writeImageToCanvas(aSrc, aXpos, aYpos) {
+    writeImageToCanvas(aSrc, aXpos, aYpos, imgWidthDivide = 1, imgHeightDivide = 1) {
         let image = new Image();
-        image.addEventListener('load', () => {
-            this._context.drawImage(image, aXpos, aYpos);
-        });
         image.src = aSrc;
+        image.addEventListener('load', () => {
+            this._context.drawImage(image, aXpos, aYpos, image.width / imgWidthDivide, image.height / imgHeightDivide);
+        });
     }
     writeButtonToCanvas(aCaption, aXpos = -1, aYpos = -1) {
         let buttonImage = new Image();
@@ -816,7 +818,7 @@ class EraSelectionScreen {
             this.canvasElement.style.backgroundSize = "100% 100%";
             this.canvasElement.style.cursor = "url(./assets/images/FeatherCursor.png), auto";
             this._canvas.writeTextToCanvas(`Je hebt ${this.itemList.getItemProperty(this.pickedItem, "name")} gevonden!`, 45, this._canvas.getCenter().X, 100, "yellow");
-            this._canvas.writeImageToCanvas(this.itemList.getItemProperty(this.pickedItem, "source"), this._canvas.getCenter().X - 150, this._canvas.getCenter().Y - 200);
+            this._canvas.writeImageToCanvas(this.itemList.getItemProperty(this.pickedItem, "source"), this._canvas.getCenter().X / 2 - 150, this._canvas.getCenter().Y - 200);
             this._canvas.writeImageToCanvas("./assets/images/eraLogos/era1.png", this._canvas.getWidth() * 0.017, this._canvas.getHeight() - 200);
             this._canvas.writeImageToCanvas("./assets/images/eraLogos/era2.png", this._canvas.getWidth() * 0.117, this._canvas.getHeight() - 200);
             this._canvas.writeImageToCanvas("./assets/images/eraLogos/era3.png", this._canvas.getWidth() * 0.217, this._canvas.getHeight() - 200);
@@ -835,14 +837,14 @@ class EraSelectionScreen {
             this._canvas._context.lineTo(this._canvas.getWidth() * 0.985, this._canvas.getHeight() - 79);
             this._canvas._context.stroke();
             this._canvas._context.strokeStyle = "yellow";
-            this._canvas._context.strokeRect(this._canvas.getWidth() * 0.70 - 1, this._canvas.getHeight() * 0.18 - 1, 422, this._canvas.getHeight() * 0.5 + 2);
+            this._canvas._context.strokeRect((this._canvas.getWidth() * 0.75) - (this._canvas.getWidth() * 0.125), this._canvas.getHeight() * 0.18 - 1, this._canvas.getWidth() * 0.35, this._canvas.getHeight() * 0.5 + 2);
             this._canvas._context.fillStyle = "grey";
-            this._canvas._context.fillRect(this._canvas.getWidth() * 0.70, this._canvas.getHeight() * 0.18, 420, this._canvas.getHeight() * 0.5);
-            this._canvas.writeTextToCanvas('Hints', 40, this._canvas.getWidth() * 0.87, this._canvas.getHeight() * 0.24, "black", "right");
+            this._canvas._context.fillRect((this._canvas.getWidth() * 0.75) - (this._canvas.getWidth() * 0.125 - 1), this._canvas.getHeight() * 0.18, this._canvas.getWidth() * 0.35 - 2, this._canvas.getHeight() * 0.5);
+            this._canvas.writeTextToCanvas('Hints', 40, this._canvas.getWidth() * 0.83, this._canvas.getHeight() * 0.24, "black", "right");
             for (let i = 1; i <= 3; i++) {
-                this._canvas.writeTextToCanvas(`• ${this.itemList.getItemProperty(this.pickedItem, `hint${i}`).split(" ").splice(0, 5).join(" ")}`, 20, this._canvas.getWidth() * 0.83, this._canvas.getHeight() * (0.15 + 0.13 * i), "black", "center");
+                this._canvas.writeTextToCanvas(`• ${this.itemList.getItemProperty(this.pickedItem, `hint${i}`).split(" ").splice(0, 5).join(" ")}`, 20, this._canvas.getWidth() * 0.80, this._canvas.getHeight() * (0.15 + 0.13 * i), "black", "center");
                 if (this.itemList.getItemProperty(this.pickedItem, `hint${i}`).length > 6) {
-                    this._canvas.writeTextToCanvas(this.itemList.getItemProperty(this.pickedItem, `hint${i}`).split(" ").splice(5, this.itemList.getItemProperty(this.pickedItem, `hint${i}`).length).join(" "), 20, this._canvas.getWidth() * 0.83, this._canvas.getHeight() * (0.20 + 0.13 * i), "black", "center");
+                    this._canvas.writeTextToCanvas(this.itemList.getItemProperty(this.pickedItem, `hint${i}`).split(" ").splice(5, this.itemList.getItemProperty(this.pickedItem, `hint${i}`).length).join(" "), 20, this._canvas.getWidth() * 0.80, this._canvas.getHeight() * (0.20 + 0.13 * i), "black", "center");
                 }
             }
         };
@@ -869,9 +871,10 @@ class ExplanationScreen {
     }
 }
 class GameScreen {
-    constructor(imageUrl) {
+    constructor() {
         this.hole = new Array();
         this.score = 0;
+        this.holeUrl = ["./assets/images/hole1.png", ""];
         this.draw = () => {
             for (let i = 0; i < this.hole.length; i++) {
                 this.hole[i].draw();
@@ -881,13 +884,13 @@ class GameScreen {
             this.canvasElement.style.backgroundSize = "auto";
             this.canvasElement.style.cursor = "url(./assets/images/shovelCursor.png), auto";
         };
-        this.imageUrl = imageUrl;
         this.canvasElement = document.getElementById('canvas');
         this._canvas = new CanvasHelper(this.canvasElement);
         for (let index = 0; index < MathHelper.randomNumber(3, 6); index++) {
-            this.hole.push(new Hole(this.canvasElement, this.imageUrl, MathHelper.randomNumber(0, this._canvas.getWidth() - 200), MathHelper.randomNumber(0, this._canvas.getHeight() - 200), 130, 120, MathHelper.randomNumber(4, 6)));
+            this.hole.push(new Hole(this.canvasElement, `./assets/images/holes/hole${MathHelper.randomNumber(1, 2)}.png`, MathHelper.randomNumber(0, this._canvas.getWidth() - 200), MathHelper.randomNumber(100, this._canvas.getHeight() - 200), 130, 120, MathHelper.randomNumber(4, 6)));
         }
     }
+    ;
     getHole() {
         return this.hole;
     }
@@ -902,7 +905,7 @@ class GameScreen {
     }
     regenerateHole(numberOfHole) {
         this.hole.splice(numberOfHole, 1);
-        this.hole.push(new Hole(this.canvasElement, this.imageUrl, MathHelper.randomNumber(0, this._canvas.getWidth() - 200), MathHelper.randomNumber(0, this._canvas.getHeight() - 200), 130, 120, MathHelper.randomNumber(0, 2)));
+        this.hole.push(new Hole(this.canvasElement, `./assets/images/holes/hole${MathHelper.randomNumber(1, 2)}.png`, MathHelper.randomNumber(0, this._canvas.getWidth() - 200), MathHelper.randomNumber(0, this._canvas.getHeight() - 200), 130, 120, MathHelper.randomNumber(4, 6)));
     }
 }
 class HighscoreScreen {

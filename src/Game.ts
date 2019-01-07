@@ -24,7 +24,7 @@ class Game {
         this.canvasElement = <HTMLCanvasElement>document.getElementById('canvas');
         this._canvas = new CanvasHelper(this.canvasElement);
         this.Startscreen = new StartScreen();
-        this.Gamescreen = new GameScreen("./assets/images/hole1.png");
+        this.Gamescreen = new GameScreen();
         this.EraSelectionscreen = new EraSelectionScreen();
         this.MouseListener = new MouseListener();
         this.itemList = new Item();
@@ -117,6 +117,8 @@ class Game {
                 //sets current screen to gamescreen settings
                 this.currentGameScreenNumber = 1;
                 this.draw();
+                this._canvas.writeTextToCanvas(`Het juiste tijdvak:`, 20, this._canvas.getCenter().X, 50, 'white')
+                this._canvas.writeImageToCanvas(`./assets/images/eraLogos/era${this.EraSelectionscreen.randomItemNumber()}.png`, this._canvas.getCenter().X+100, 20, 2, 2)
             }
         }
         else if (this.currentGameScreenNumber == 1) {

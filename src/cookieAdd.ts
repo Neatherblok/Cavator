@@ -5,6 +5,7 @@ class CookieAdd {
 
     }
 
+    //this function can be called to set a specified cookie
     public setCookie(cname: any, cvalue: any, exdays: any) {
         var d = new Date();
         d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
@@ -12,6 +13,7 @@ class CookieAdd {
         document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
     }
 
+    //this function can be called to get a specified cookie
     public getCookie(cname: any) {
         var name = cname + "=";
         var decodedCookie = decodeURIComponent(document.cookie);
@@ -28,6 +30,7 @@ class CookieAdd {
         return "";
     }
 
+    //this function checks cookies and can add new highscores
     public checkCookie(subject: string, score: number): any {
         if (subject == 'highscore') {
             let i = 1
@@ -68,6 +71,7 @@ class CookieAdd {
         }
     }
 
+    //can be called to change the mute backgroundmusic cookie
     public muteCookie(condition: boolean){
         if(condition == true){
             this.setCookie('muted', 'false', 30);
