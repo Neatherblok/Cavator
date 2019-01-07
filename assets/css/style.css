@@ -1,6 +1,6 @@
 @font-face {
-    font-family: 'Minecraft';
-    src: url('../fonts/Minecraft.ttf') format('truetype');
+    font-family: 'galiver-sans';
+    src: url('../fonts/galiver-sans/GALS.ttf') format('truetype');
 }
 
 *{
@@ -28,7 +28,7 @@ body {
     right: 0;
     margin: 2.25% 4.75% 0% 0%;
     padding: 0.5%;
-    font-family: "Minecraft";
+    font-family: "galiver-sans";
     background-color: grey;
     border: 2px solid yellow;
     color: white;
@@ -40,7 +40,7 @@ body {
     font-size: 20px;
     color: white;
     position: absolute;
-    font-family: "Minecraft"
+    font-family: "galiver-sans"
 }
 
 .highScores{
@@ -52,5 +52,5 @@ body {
     font-size: 20px;
     color: yellow;
     position: fixed;
-    font-family: "Minecraft"
+    font-family: "galiver-sans"
 }
