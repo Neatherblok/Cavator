@@ -153,28 +153,20 @@ class Item {
                 hint3:"Het zwaard werd waarschijnlijk gebruikt voor een begrafenis.",
             },
             {
-                name:"",
-                source:"./assets/images/items/",
+                name:"een vikingschip",
+                source:"./assets/images/items/3vikingschip",
                 era:3,
-                hint1:"",
-                hint2:"",
-                hint3:""
+                hint1:"Het werd gebruikt voor transport, handel en ontdekkingsreizen",
+                hint2:"Ook werden ze gebruikt in oorlogsmissies en plunderingen",
+                hint3:"Deze vikingschepen werden gebouwd door Scandinavische vikings"
             },
             {
-                name:"",
+                name:"de drukpres",
                 source:"./assets/images/items/",
                 era:3,
-                hint1:"",
-                hint2:"",
-                hint3:""
-            },
-            {
-                name:"",
-                source:"./assets/images/items/",
-                era:3,
-                hint1:"",
-                hint2:"",
-                hint3:""
+                hint1:"Hiermee konden boeken gekopieerd worden en dus makkelijker verspreid worden",
+                hint2:"Werd gebruikt door Maarten Luther om zijn ideeen te verspreiden",
+                hint3:"Hiermee werd ook de Gutenbergbijbel verspreid"
             },
             // ERA 4 1000-1500
             {
@@ -208,6 +200,38 @@ class Item {
                 hint1:"Het gebouw staat op de grote markt in Haarlem en word tegenwoordig vooral gebruikt als trouwlocatie.",
                 hint2:"Het stadhuis is ontworpen door onder andere Lieve de Key.",
                 hint3:"Het gebouw is tegenwoordig ook een rijksmonument."
+            },
+            {
+                name:"het spinnewiel",
+                source:"./assets/images/items/",
+                era:4,
+                hint1:"",
+                hint2:"",
+                hint3:""
+            },
+            {
+                name:"een getijdenmolen",
+                source:"./assets/images/items/",
+                era:4,
+                hint1:"Het wordt aangedreven door het tij",
+                hint2:"Er zijn nog steeds resten te vinden in Zeeland",
+                hint3:"Het wordt gebruikt in combinatie met het waterrad"
+            },
+            {
+                name:"het waterrad",
+                source:"./assets/images/items/",
+                era:4,
+                hint1:"Door het waterrad kon overgestapt worden van mankracht naar waterkracht",
+                hint2:"Ze zijn aangelegd in heel Midden-Europa",
+                hint3:"Ze liggen vaak in de buurt bij getijdenmolens"
+            },
+            {
+                name:"een hoogoven",
+                source:"./assets/images/items/",
+                era:4,
+                hint1:"",
+                hint2:"",
+                hint3:""
             },
             // ERA 5 1500-1600
             {
@@ -250,6 +274,30 @@ class Item {
                 hint2:"De lepel had groeven zodat de boter niet bleef plakken.",
                 hint3:"boter word pas vanaf de 16e eeuw gegeten, daarvoor werd het als zelf gebruikt."
             },
+            {
+                name:"",
+                source:"./assets/images/items/",
+                era:5,
+                hint1:"",
+                hint2:"",
+                hint3:""
+            },
+            {
+                name:"",
+                source:"./assets/images/items/",
+                era:5,
+                hint1:"",
+                hint2:"",
+                hint3:""
+            },
+            {
+                name:"",
+                source:"./assets/images/items/",
+                era:5,
+                hint1:"",
+                hint2:"",
+                hint3:""
+            },
             // ERA 6 1600-1700
             {
                 name:"de Nachtwacht",
@@ -283,6 +331,30 @@ class Item {
                 hint2:"Als brandstof werd raapolie gebruikt.",
                 hint3:"De lantaarn was voorzien van 2 ruiten."
             },
+            {
+                name:"",
+                source:"./assets/images/items/",
+                era:6,
+                hint1:"",
+                hint2:"",
+                hint3:""
+            },
+            {
+                name:"",
+                source:"./assets/images/items/",
+                era:6,
+                hint1:"",
+                hint2:"",
+                hint3:""
+            },
+            {
+                name:"",
+                source:"./assets/images/items/",
+                era:6,
+                hint1:"",
+                hint2:"",
+                hint3:""
+            },
             // ERA 7 1700-1800
             {
                 name:"een trekschuit",
@@ -307,6 +379,30 @@ class Item {
                 hint1:"Het lukte hem een groot deel van Europa onder Frans gezag te brengen.",
                 hint2:"Hij was een befaamd militair mastermind.",
                 hint3:"Zijn broer Lodewijk werd koning van Holland."
+            },
+            {
+                name:"",
+                source:"./assets/images/items/",
+                era:7,
+                hint1:"",
+                hint2:"",
+                hint3:""
+            },
+            {
+                name:"",
+                source:"./assets/images/items/",
+                era:7,
+                hint1:"",
+                hint2:"",
+                hint3:""
+            },
+            {
+                name:"",
+                source:"./assets/images/items/",
+                era:7,
+                hint1:"",
+                hint2:"",
+                hint3:""
             },
             // ERA 8 1800-1900
             {
@@ -349,6 +445,30 @@ class Item {
                 hint2: "Deze werd verbeterd door James Watt",
                 hint3: "Deze verbeteringen maakte de stoommachine tot wat het nu is"
             },
+            {
+                name:"",
+                source:"./assets/images/items/",
+                era:8,
+                hint1:"",
+                hint2:"",
+                hint3:""
+            },
+            {
+                name:"",
+                source:"./assets/images/items/",
+                era:8,
+                hint1:"",
+                hint2:"",
+                hint3:""
+            },
+            {
+                name:"",
+                source:"./assets/images/items/",
+                era:8,
+                hint1:"",
+                hint2:"",
+                hint3:""
+            },
             // ERA 9 1900-1950
             {
                 name:"een vliegtuigbom",
@@ -382,6 +502,30 @@ class Item {
                 hint2:"Er was een tekort aan soldaten.",
                 hint3:"Het personage op de poster is Uncle Sam."
             },
+            {
+                name:"",
+                source:"./assets/images/items/",
+                era:9,
+                hint1:"",
+                hint2:"",
+                hint3:""
+            },
+            {
+                name:"",
+                source:"./assets/images/items/",
+                era:9,
+                hint1:"",
+                hint2:"",
+                hint3:""
+            },
+            {
+                name:"",
+                source:"./assets/images/items/",
+                era:9,
+                hint1:"",
+                hint2:"",
+                hint3:""
+            },
             // ERA 10 1950-heden
             {
                 name:"een televisie handboek",
@@ -414,6 +558,30 @@ class Item {
                 hint1:"Kan gesloten worden bij hoog water.",
                 hint2:"Is onderdeel van het Deltaplan.",
                 hint3:"Dit plan werd gestart na de stormvloed."
+            },
+            {
+                name:"",
+                source:"./assets/images/items/",
+                era:10,
+                hint1:"",
+                hint2:"",
+                hint3:""
+            },
+            {
+                name:"",
+                source:"./assets/images/items/",
+                era:10,
+                hint1:"",
+                hint2:"",
+                hint3:""
+            },
+            {
+                name:"",
+                source:"./assets/images/items/",
+                era:10,
+                hint1:"",
+                hint2:"",
+                hint3:""
             }
         ];
     }
