@@ -42,7 +42,7 @@ class CanvasHelper {
         aYpos: number,
         aColor: string = "white",
         aAlignment: CanvasTextAlign = "center") {
-            this._context.font = `${aFontSize}px Minecraft`;
+            this._context.font = `${aFontSize}px galiver-sans`;
             this._context.fillStyle = aColor;
             this._context.textAlign = aAlignment;
             this._context.fillText(aText, aXpos, aYpos);
