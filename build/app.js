@@ -425,17 +425,17 @@ class Item {
                     name: "een vikingschip",
                     source: "./assets/images/items/3vikingschip",
                     era: 3,
-                    hint1: "Het werd gebruikt voor transport, handel en ontdekkingsreizen",
-                    hint2: "Ook werden ze gebruikt in oorlogsmissies en plunderingen",
-                    hint3: "Deze vikingschepen werden gebouwd door Scandinavische vikings"
+                    hint1: "Het werd gebruikt voor transport, handel en ontdekkingsreizen.",
+                    hint2: "Ook werden ze gebruikt in oorlogsmissies en plunderingen.",
+                    hint3: "De vikingschepen werden gebouwd door Scandinavische vikings."
                 },
                 {
                     name: "de drukpers",
                     source: "./assets/images/items/",
                     era: 3,
                     hint1: "Hiermee konden boeken gekopieerd worden en dus makkelijker verspreid worden",
-                    hint2: "Werd gebruikt door Maarten Luther om zijn ideeen te verspreiden",
-                    hint3: "Hiermee werd ook de Gutenbergbijbel verspreid"
+                    hint2: "Werd gebruikt door Maarten Luther om zijn ideeen te verspreiden.",
+                    hint3: "Hiermee werd ook de Gutenbergbijbel gemaakt."
                 },
                 {
                     name: "",
@@ -774,7 +774,7 @@ class CanvasHelper {
         this._context.drawImage(image, aXpos, aYpos);
     }
     writeTextToCanvas(aText, aFontSize, aXpos, aYpos, aColor = "white", aAlignment = "center") {
-        this._context.font = `${aFontSize}px Minecraft`;
+        this._context.font = `${aFontSize}px galiver-sans`;
         this._context.fillStyle = aColor;
         this._context.textAlign = aAlignment;
         this._context.fillText(aText, aXpos, aYpos);
