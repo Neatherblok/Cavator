@@ -153,12 +153,13 @@ class Item {
                 hint3:"Het zwaard werd waarschijnlijk gebruikt voor een begrafenis.",
             },
             {
-                name:"",
-                source:"./assets/images/items/",
+                name:"een vikingschip",
+                source:"./assets/images/items/3vikingschip",
                 era:3,
-                hint1:"",
-                hint2:"",
-                hint3:""
+                hint1:"Het werd gebruikt voor transport, handel en ontdekkingsreizen",
+                hint2:"Ook werden ze gebruikt in oorlogsmissies en plunderingen",
+                hint3:"Deze vikingschepen werden gebouwd door Scandinavische vikings"      
+
             },
             {
                 name:"",
@@ -209,6 +210,39 @@ class Item {
                 hint2:"Het stadhuis is ontworpen door o.a. Lieve de Key.",
                 hint3:"Het gebouw is tegenwoordig een rijksmonument."
             },
+            {
+                name:"het spinnewiel",
+                source:"./assets/images/items/",
+                era:4,
+                hint1:"",
+                hint2:"",
+                hint3:""
+            },
+            {
+                name:"een getijdenmolen",
+                source:"./assets/images/items/",
+                era:4,
+                hint1:"Het wordt aangedreven door het tij",
+                hint2:"Er zijn nog steeds resten te vinden in Zeeland",
+                hint3:"Het wordt gebruikt in combinatie met het waterrad"
+            },
+            {
+                name:"het waterrad",
+                source:"./assets/images/items/",
+                era:4,
+                hint1:"Door het waterrad kon overgestapt worden van mankracht naar waterkracht",
+                hint2:"Ze zijn aangelegd in heel Midden-Europa",
+                hint3:"Ze liggen vaak in de buurt bij getijdenmolens"
+            },
+            {
+                name:"een hoogoven",
+                source:"./assets/images/items/",
+                era:4,
+                hint1:"",
+                hint2:"",
+                hint3:""
+            },
+
             // ERA 5 1500-1600
             {
                 name:"de Mona Lisa",
