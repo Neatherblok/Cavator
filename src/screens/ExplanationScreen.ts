@@ -1,4 +1,4 @@
-class ExplanationScreen{
+class GameExplanationScreen{
 
     protected readonly canvasElement: HTMLCanvasElement;
     protected readonly _canvas: CanvasHelper;

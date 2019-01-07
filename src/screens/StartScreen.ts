@@ -20,6 +20,7 @@ class StartScreen{
         this._canvas.writeImageToCanvas("./assets/images/Cavator_logo/CavatorLogo.png", this._canvas.getCenter().X-200, this._canvas.getCenter().Y-300)
         this._canvas.writeButtonToCanvas("Speel", undefined, this._canvas.getCenter().Y + 150);
         this._canvas.writeButtonToCanvas("Speluitleg", undefined, this._canvas.getCenter().Y + 200);
+        this._canvas.writeButtonToCanvas("Uitleg tijdvakken", undefined, this._canvas.getCenter().Y + 250);
 
     }
 
