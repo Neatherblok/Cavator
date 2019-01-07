@@ -5,13 +5,13 @@ class Game {
     private Gamescreen: GameScreen;
     private EraSelectionscreen: EraSelectionScreen;
     private HighscoreScreen: HighscoreScreen;
-    private GameExplanationscreen : GameExplanationScreen;
-    private EraExplanationscreen : EraExplanationScreen;
+    private GameExplanationscreen: GameExplanationScreen;
+    private EraExplanationscreen: EraExplanationScreen;
     private itemList: Item;
     private _cookieAdd: CookieAdd;
     private MouseListener: MouseListener;
     //defines all possible screens
-    private screen: string[] = ["this.Startscreen.draw()", "this.Gamescreen.draw()", "this.EraSelectionscreen.draw()", "this.HighscoreScreen.draw(this.Gamescreen.getScore())", "this.GameExplanationscreen.draw()", "this.EraExplanationscreen.draw()"];
+    private screen: string[] = ["this.Startscreen.draw()", "this.Gamescreen.draw()", "this.EraSelectionscreen.draw()", "this.HighscoreScreen.draw()", "this.GameExplanationscreen.draw()", "this.EraExplanationscreen.draw()"];
     //defines all possible sounds
     private sounds: string[] = ['buttonHitSFX', 'digging1', 'digging2', 'digging3', 'digging4', 'digging5'];
     //defines the current gamescreen
@@ -20,7 +20,7 @@ class Game {
     private backgroundMusic: HTMLAudioElement;
     private muteButton: HTMLElement;
     //defines amount of time left
-    private time: number = 151;
+    private time: number = 150;
 
     public constructor() {
         this.canvasElement = <HTMLCanvasElement>document.getElementById('canvas');
@@ -43,9 +43,9 @@ class Game {
         this.muteButton.addEventListener("click", (e: Event) => this.backgroundMusicController());
         document.addEventListener('mousedown', function (event) {
             if (event.detail > 1) {
-              event.preventDefault(); // of course, you still do not know what you prevent here... You could also check event.ctrlKey/event.shiftKey/event.altKey to not prevent something useful.
+                event.preventDefault(); // of course, you still do not know what you prevent here... You could also check event.ctrlKey/event.shiftKey/event.altKey to not prevent something useful.
             }
-          }, false);
+        }, false);
     }
 
     //draws current screen
@@ -89,14 +89,20 @@ class Game {
             //defines place where must be clicked
             if (event.clientX >= (this._canvas.getCenter().X - 111) && event.clientX <= (this._canvas.getCenter().X + 111)
                 && event.clientY >= (this._canvas.getCenter().Y + 200) && event.clientY <= this._canvas.getCenter().Y + 239) {
+                for (let i = 1; i < 6; i++) {
+                    document.getElementById(`place${i}`).innerHTML = '';
+                }
                 //defines button soundeffect
                 let audioLink = "./assets/sounds/sfx/buttonHitSFX.mp3"
                 let audio: HTMLAudioElement = new Audio(audioLink);
                 //plays button soundeffect
                 audio.play();
                 //reset current screen to startscreen settings
-                this.currentGameScreenNumber = 0;
+                this.currentGameScreenNumber = 1;
+                document.getElementById("timerText").innerHTML = `Tijd over: 150 seconden`;
+                document.getElementById("scoreText").innerHTML = `Je score is: 0`;
                 this.resetCounter();
+                this.timer();
                 this.Gamescreen.resetScore();
                 this.draw();
 
@@ -150,7 +156,7 @@ class Game {
                 this.currentGameScreenNumber = 1;
                 this.draw();
                 this._canvas.writeTextToCanvas(`Het juiste tijdvak:`, 20, this._canvas.getCenter().X, 50, 'white')
-                this._canvas.writeImageToCanvas(`./assets/images/eraLogos/era${this.EraSelectionscreen.randomItemNumber()}.png`, this._canvas.getCenter().X+100, 20, 2, 2)
+                this._canvas.writeImageToCanvas(`./assets/images/eraLogos/era${this.EraSelectionscreen.randomItemNumber()}.png`, this._canvas.getCenter().X + 100, 20, 2, 2)
             }
         }
         else if (this.currentGameScreenNumber == 1) {
@@ -195,6 +201,8 @@ class Game {
                 this.timer()
                 //sets current screen to gamescreen settings
                 this.currentGameScreenNumber = 1;
+                document.getElementById('scoreText').innerHTML = `Je score is: 0`;
+                document.getElementById("timerText").innerHTML = `Tijd over: 150 seconden`;
                 this.draw();
             }
             else if (event.clientX >= (this._canvas.getCenter().X - 111) && event.clientX <= (this._canvas.getCenter().X + 111)
@@ -257,13 +265,14 @@ class Game {
                 this.HighscoreScreen = new HighscoreScreen();
                 this.currentGameScreenNumber = 3
                 this.draw()
+                document.getElementById("scoreText").innerHTML = '';
             }
         }, 1000)
     }
 
     //resets timer back to basic settings
     public resetCounter() {
-        this.time = 151;
+        this.time = 150;
     }
 }
 

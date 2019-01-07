@@ -22,8 +22,6 @@ class GameScreen {
         for (let i = 0; i < this.hole.length; i++) {
             this.hole[i].draw();
         }
-            //draws current score on canvas
-        this._canvas.writeTextToCanvas(`Score: ${this.score}`, 20, 75, 75, "white", "left");
         this.canvasElement.style.backgroundImage = "url(./assets/images/backgrounds/groundBackground.png)";
         this.canvasElement.style.backgroundSize = "auto";
         this.canvasElement.style.cursor = "url(./assets/images/shovelCursor.png), auto"
@@ -37,12 +35,10 @@ class GameScreen {
         //function that add point to score counter
     public addScoreCounter() {
         this.score++;
+        document.getElementById('scoreText').innerHTML= `Je score is: ${this.score}`;
     }
 
         //function that returns current score
-    public getScore() {
-        return this.score;
-    }
 
         //function that reset score to 0
     public resetScore() {
