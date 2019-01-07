@@ -201,9 +201,9 @@ class Game {
                 this.timer()
                 //sets current screen to gamescreen settings
                 this.currentGameScreenNumber = 1;
+                this.draw();
                 document.getElementById('scoreText').innerHTML = `Je score is: 0`;
                 document.getElementById("timerText").innerHTML = `Tijd over: 150 seconden`;
-                this.draw();
             }
             else if (event.clientX >= (this._canvas.getCenter().X - 111) && event.clientX <= (this._canvas.getCenter().X + 111)
                 && event.clientY >= (this._canvas.getCenter().Y + 200) && event.clientY <= this._canvas.getCenter().Y + 239) {
