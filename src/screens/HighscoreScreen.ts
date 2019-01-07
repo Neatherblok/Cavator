@@ -11,13 +11,13 @@ class HighscoreScreen {
     }
 
     //draws highscorescreen
-    public draw = (score:number) => {
+    public draw = () => {
         this.canvasElement.style.backgroundImage = "url(./assets/images/backgrounds/tableBackground.jpg)";
         this.canvasElement.style.backgroundSize = "100% 100%"
         this.canvasElement.style.cursor = "url(./assets/images/FeatherCursor.png), auto";
-        this._canvas.writeTextToCanvas(`Je hebt een score van ${score} behaald!`, 45, this._canvas.getCenter().X, 100, "yellow");
+        this._canvas.writeTextToCanvas(`Je hebt een score van ${Number(document.getElementById("scoreText").nodeValue)} behaald!`, 45, this._canvas.getCenter().X, 100, "yellow");
         this._canvas.writeButtonToCanvas("Probeer opnieuw", undefined, this._canvas.getCenter().Y + 200);
-        this._cookieAdd.checkCookie('highscore', score);
+        this._cookieAdd.checkCookie('highscore', Number(document.getElementById("scoreText").nodeValue));
     }
 
 }

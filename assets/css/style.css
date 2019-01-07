@@ -44,6 +44,15 @@ body {
     font-family: "galiver-sans"
 }
 
+.scoreText {
+    z-index: 1;
+    margin: 3.75% 0% 0% 4.75%;
+    font-size: 20px;
+    color: white;
+    position: absolute;
+    font-family: "galiver-sans"
+}
+
 .highScores{
     z-index: 1;
     text-align: center;

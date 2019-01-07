@@ -11,7 +11,7 @@ class Game {
     private _cookieAdd: CookieAdd;
     private MouseListener: MouseListener;
     //defines all possible screens
-    private screen: string[] = ["this.Startscreen.draw()", "this.Gamescreen.draw()", "this.EraSelectionscreen.draw()", "this.HighscoreScreen.draw(this.Gamescreen.getScore())", "this.GameExplanationscreen.draw()", "this.EraExplanationscreen.draw()"];
+    private screen: string[] = ["this.Startscreen.draw()", "this.Gamescreen.draw()", "this.EraSelectionscreen.draw()", "this.HighscoreScreen.draw()", "this.GameExplanationscreen.draw()", "this.EraExplanationscreen.draw()"];
     //defines all possible sounds
     private sounds: string[] = ['buttonHitSFX', 'digging1', 'digging2', 'digging3', 'digging4', 'digging5'];
     //defines the current gamescreen
@@ -20,7 +20,7 @@ class Game {
     private backgroundMusic: HTMLAudioElement;
     private muteButton: HTMLElement;
     //defines amount of time left
-    private time: number = 151;
+    private time: number = 150;
 
     public constructor() {
         this.canvasElement = <HTMLCanvasElement>document.getElementById('canvas');
@@ -195,6 +195,8 @@ class Game {
                 this.timer()
                 //sets current screen to gamescreen settings
                 this.currentGameScreenNumber = 1;
+                document.getElementById('scoreText').innerHTML= `Je score is: 0`;
+                document.getElementById("timerText").innerHTML = `Tijd over: 150 seconden`;
                 this.draw();
             }
             else if (event.clientX >= (this._canvas.getCenter().X - 111) && event.clientX <= (this._canvas.getCenter().X + 111)

@@ -1,9 +1,9 @@
 class Game {
     constructor() {
-        this.screen = ["this.Startscreen.draw()", "this.Gamescreen.draw()", "this.EraSelectionscreen.draw()", "this.HighscoreScreen.draw(this.Gamescreen.getScore())", "this.GameExplanationscreen.draw()", "this.EraExplanationscreen.draw()"];
+        this.screen = ["this.Startscreen.draw()", "this.Gamescreen.draw()", "this.EraSelectionscreen.draw()", "this.HighscoreScreen.draw()", "this.GameExplanationscreen.draw()", "this.EraExplanationscreen.draw()"];
         this.sounds = ['buttonHitSFX', 'digging1', 'digging2', 'digging3', 'digging4', 'digging5'];
         this.currentGameScreenNumber = 0;
-        this.time = 151;
+        this.time = 150;
         this.draw = () => {
             this._canvas.clear();
             eval(this.screen[this.currentGameScreenNumber]);
@@ -110,6 +110,8 @@ class Game {
                     audio.play();
                     this.timer();
                     this.currentGameScreenNumber = 1;
+                    document.getElementById('scoreText').innerHTML = `Je score is: 0`;
+                    document.getElementById("timerText").innerHTML = `Tijd over: 150 seconden`;
                     this.draw();
                 }
                 else if (event.clientX >= (this._canvas.getCenter().X - 111) && event.clientX <= (this._canvas.getCenter().X + 111)
@@ -925,7 +927,8 @@ class GameExplanationScreen {
             this.canvasElement.style.backgroundImage = "url(./assets/images/backgrounds/tableBackground.jpg)";
             this.canvasElement.style.backgroundSize = "100% 100%";
             this.canvasElement.style.cursor = "url(./assets/images/FeatherCursor.png), auto";
-            this._canvas.writeTextToCanvas(this.explanation1, 20, this._canvas.getWidth() / 32, 100, "yellow", "left");
+            this._canvas.writeTextToCanvas(this.explanation1_0, 20, this._canvas.getWidth() / 32, 100, "yellow", "left");
+            this._canvas.writeTextToCanvas(this.explanation1_1, 20, this._canvas.getWidth() / 32, 130, "yellow", "left");
             this._canvas.writeImageToCanvas("./assets/images/screenshots/gameScreen.png", this._canvas.getCenter().X + 130, 30);
             this._canvas.writeTextToCanvas(this.explanation2, 20, this._canvas.getWidth() / 32, 250, "yellow", "left");
             this._canvas.writeImageToCanvas("./assets/images/screenshots/eraSelectionScreen.png", this._canvas.getCenter().X + 130, 270);
@@ -935,9 +938,10 @@ class GameExplanationScreen {
         };
         this.canvasElement = document.getElementById('canvas');
         this._canvas = new CanvasHelper(this.canvasElement);
-        this.explanation1 = "Het doel van het spel is om zoveel mogelijk voorwerpen op te graven.";
+        this.explanation1_0 = "Het doel van het spel is om zoveel mogelijk voorwerpen op te graven.";
+        this.explanation1_1 = "Dat doe je door meerdere keren te klikken op gaten.";
         this.explanation2 = "Hierna krijg je de keuze om het goede tijdvak bij het voorwerp te zoeken.";
-        this.explanation3_0 = "Als je het goede antwoord hebt gekozen krijg je een punt erbij, ";
+        this.explanation3_0 = "Als je het juiste antwoord hebt gekozen krijg je een punt erbij, ";
         this.explanation3_1 = "als je het fout hebt krijg je het goede antwoord te zien.";
     }
 }
@@ -950,7 +954,6 @@ class GameScreen {
             for (let i = 0; i < this.hole.length; i++) {
                 this.hole[i].draw();
             }
-            this._canvas.writeTextToCanvas(`Score: ${this.score}`, 20, 75, 75, "white", "left");
             this.canvasElement.style.backgroundImage = "url(./assets/images/backgrounds/groundBackground.png)";
             this.canvasElement.style.backgroundSize = "auto";
             this.canvasElement.style.cursor = "url(./assets/images/shovelCursor.png), auto";
@@ -967,9 +970,7 @@ class GameScreen {
     }
     addScoreCounter() {
         this.score++;
-    }
-    getScore() {
-        return this.score;
+        document.getElementById('scoreText').innerHTML = `Je score is: ${this.score}`;
     }
     resetScore() {
         this.score = 0;
@@ -981,13 +982,13 @@ class GameScreen {
 }
 class HighscoreScreen {
     constructor() {
-        this.draw = (score) => {
+        this.draw = () => {
             this.canvasElement.style.backgroundImage = "url(./assets/images/backgrounds/tableBackground.jpg)";
             this.canvasElement.style.backgroundSize = "100% 100%";
             this.canvasElement.style.cursor = "url(./assets/images/FeatherCursor.png), auto";
-            this._canvas.writeTextToCanvas(`Je hebt een score van ${score} behaald!`, 45, this._canvas.getCenter().X, 100, "yellow");
+            this._canvas.writeTextToCanvas(`Je hebt een score van ${Number(document.getElementById("scoreText").nodeValue)} behaald!`, 45, this._canvas.getCenter().X, 100, "yellow");
             this._canvas.writeButtonToCanvas("Probeer opnieuw", undefined, this._canvas.getCenter().Y + 200);
-            this._cookieAdd.checkCookie('highscore', score);
+            this._cookieAdd.checkCookie('highscore', Number(document.getElementById("scoreText").nodeValue));
         };
         this.canvasElement = document.getElementById('canvas');
         this._canvas = new CanvasHelper(this.canvasElement);
