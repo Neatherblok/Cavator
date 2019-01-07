@@ -99,25 +99,35 @@ class Game {
         this.EraSelectionscreen = new EraSelectionScreen();
         this.MouseListener = new MouseListener();
         this.itemList = new Item();
+        this._cookieAdd = new CookieAdd;
         this.audioLink = `./assets/sounds/music/dutch_street_organ.wav`;
         this.backgroundMusic = new Audio(this.audioLink);
-        this.playBackgroundMusic();
+        this._cookieAdd.muteCookie(this._cookieAdd.checkCookie('backgroundMusic', null));
         this.muteButton = document.getElementById("mute");
-        this.muteButton.addEventListener("click", (e) => this.muteBackgroundMusic());
+        this.muteButton.addEventListener("click", (e) => this.backgroundMusicController());
+        document.addEventListener('mousedown', function (event) {
+            if (event.detail > 1) {
+                event.preventDefault();
+            }
+        }, false);
     }
-    playBackgroundMusic() {
+    backgroundMusicController() {
         this.backgroundMusic.loop = true;
         this.backgroundMusic.play();
-    }
-    muteBackgroundMusic() {
-        if (this.backgroundMusic.muted == false) {
-            this.backgroundMusic.muted = true;
-            this.muteButton.innerHTML = "<img src='./assets/images/UI/volOff.png' alt='background music muted'>";
+        if (this._cookieAdd.checkCookie('backgroundMusic', null) != false && this._cookieAdd.checkCookie('backgroundMusic', null) != true) {
+            this._cookieAdd.muteCookie(true);
         }
-        else {
+        else if (this._cookieAdd.checkCookie('backgroundMusic', null) == true) {
+            this._cookieAdd.muteCookie(true);
             this.backgroundMusic.muted = false;
             this.muteButton.innerHTML = "<img src='./assets/images/UI/volUp.png' alt='background music on'>";
         }
+        else if (this._cookieAdd.checkCookie('backgroundMusic', null) == false) {
+            this._cookieAdd.muteCookie(false);
+            this.backgroundMusic.muted = true;
+            this.muteButton.innerHTML = "<img src='./assets/images/UI/volOff.png' alt='background music muted'>";
+        }
+        console.log(this._cookieAdd.checkCookie('backgroundMusic', null));
     }
     timer() {
         let intervalId = setInterval(() => {
@@ -140,6 +150,7 @@ class Game {
 window.addEventListener('load', init);
 function init() {
     const cavator = new Game();
+    cavator.backgroundMusicController();
     cavator.draw();
     window.addEventListener("click", cavator.nextScreen);
 }
@@ -190,6 +201,75 @@ class MouseListener {
         }
         else if (eraNumber == 10) {
             return { Xmin: this._canvas.getWidth() * 0.917, Xmax: this._canvas.getWidth() * 0.917 + 102, Ymin: this._canvas.getHeight() - 200, Ymax: this._canvas.getHeight() - 83 };
+        }
+    }
+}
+class CookieAdd {
+    constructor() {
+    }
+    setCookie(cname, cvalue, exdays) {
+        var d = new Date();
+        d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+        var expires = "expires=" + d.toUTCString();
+        document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+    }
+    getCookie(cname) {
+        var name = cname + "=";
+        var decodedCookie = decodeURIComponent(document.cookie);
+        var ca = decodedCookie.split(';');
+        for (var i = 0; i < ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+            }
+        }
+        return "";
+    }
+    checkCookie(subject, score) {
+        if (subject == 'highscore') {
+            let i = 1;
+            while (i < 6) {
+                var user = this.getCookie(`username` + i);
+                const points = Number(this.getCookie(`points` + i));
+                if ((points == null || points <= score)) {
+                    user = prompt("Geef een gamenaam in:", "");
+                    for (let y = 5; y > i - 1; y--) {
+                        this.setCookie((`username` + (y + 1)), this.getCookie(`username` + y), 30);
+                        this.setCookie((`points` + (y + 1)), Number(this.getCookie(`points` + y)), 30);
+                    }
+                    if (user != "" && user != null) {
+                        this.setCookie((`username` + i), user, 30);
+                        this.setCookie((`points` + i), score, 30);
+                    }
+                    i = 6;
+                }
+                else {
+                    i++;
+                }
+            }
+            for (let z = 1; z < 6; z++) {
+                document.getElementById(`place${z}`).innerHTML = `${this.getCookie(`username` + z)}: ${Number(this.getCookie(`points` + z))} punten`;
+            }
+        }
+        else if (subject == 'backgroundMusic') {
+            const muted = this.getCookie('muted');
+            if (muted == 'false') {
+                return false;
+            }
+            else if (muted == 'true') {
+                return true;
+            }
+        }
+    }
+    muteCookie(condition) {
+        if (condition == true) {
+            this.setCookie('muted', 'false', 30);
+        }
+        else if (condition == false) {
+            this.setCookie('muted', 'true', 30);
         }
     }
 }
@@ -772,7 +852,7 @@ class GameScreen {
         this.imageUrl = imageUrl;
         this.canvasElement = document.getElementById('canvas');
         this._canvas = new CanvasHelper(this.canvasElement);
-        for (let index = 0; index < MathHelper.randomNumber(3, 6); index++) {
+        for (let index = 0; index < MathHelper.randomNumber(6, 9); index++) {
             this.hole.push(new Hole(this.canvasElement, this.imageUrl, MathHelper.randomNumber(0, this._canvas.getWidth() - 200), MathHelper.randomNumber(0, this._canvas.getHeight() - 200), 130, 120, MathHelper.randomNumber(0, 2)));
         }
     }
@@ -801,14 +881,19 @@ class HighscoreScreen {
             this.canvasElement.style.cursor = "url(./assets/images/FeatherCursor.png), auto";
             this._canvas.writeTextToCanvas(`Je hebt een score van ${score} behaald!`, 45, this._canvas.getCenter().X, 100, "yellow");
             this._canvas.writeButtonToCanvas("Probeer opnieuw", undefined, this._canvas.getCenter().Y + 200);
+            this._cookieAdd.checkCookie('highscore', score);
         };
         this.canvasElement = document.getElementById('canvas');
         this._canvas = new CanvasHelper(this.canvasElement);
+        this._cookieAdd = new CookieAdd;
     }
 }
 class StartScreen {
     constructor() {
         this.draw = () => {
+            for (let i = 1; i < 6; i++) {
+                document.getElementById(`place${i}`).innerHTML = '';
+            }
             this.canvasElement.style.backgroundImage = "url(./assets/images/backgrounds/groundBackground.png)";
             this.canvasElement.style.backgroundSize = "auto";
             this.canvasElement.style.cursor = "url(./assets/images/FeatherCursor.png), auto";

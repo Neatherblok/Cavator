@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="nl">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,18 +13,27 @@
 <body>
     <div class="canvas-container" id="canvas-container">
         <canvas id="canvas"></canvas>
-        <button type="button" id='mute'><img src='./assets/images/UI/volUp.png' alt='background music on'></button> 
+        <button type="button" id='mute'><img src='./assets/images/UI/volUp.png' alt='background music on'></button>
         <p class="timerText" id="timerText"></p>
-    </div>  
+        <div class="highScores">
+            <p id="place1"></p>
+            <p id="place2"></p>
+            <p id="place3"></p>
+            <p id="place4"></p>
+            <p id="place5"></p>
+        </div>
+
+    </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
     <script>
         WebFont.load({
-            custom:{
+            custom: {
                 families: ['Minecraft']
             }
         });
     </script>
     <script src="./build/app.js"></script>
 </body>
+
 </html>
