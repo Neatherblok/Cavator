@@ -350,7 +350,7 @@ class Item {
                     hint3: "Deze vikingschepen werden gebouwd door Scandinavische vikings"
                 },
                 {
-                    name: "de drukpres",
+                    name: "de drukpers",
                     source: "./assets/images/items/",
                     era: 3,
                     hint1: "Hiermee konden boeken gekopieerd worden en dus makkelijker verspreid worden",
