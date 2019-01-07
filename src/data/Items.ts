@@ -39,7 +39,7 @@ class Item {
                 hint3: "Het eerste fossiel van een T-rex werd gevonden in 1874."
             },
             {
-                name:"Een mammoet",
+                name:"een mammoet",
                 source:"./assets/images/items/1mammoet.png",
                 era: 1,
                 hint1: "De mammoet is een al uitgestorven diersoort.",
@@ -55,7 +55,7 @@ class Item {
                 hint3:"Het komt uit de Jonge Steentijd."
             },            
             {
-                name:"Grotschilderingen",
+                name:"grotschilderingen",
                 source:"./assets/images/items/1grotschilderingen.png",
                 era:1,
                 hint1:"Deze grotschilderingen werden getekend door jagers-verzamelaars.",
