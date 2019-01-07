@@ -42,7 +42,7 @@ class CanvasHelper {
         aYpos: number,
         aColor: string = "white",
         aAlignment: CanvasTextAlign = "center") {
-            this._context.font = `${aFontSize}px Minecraft`;
+            this._context.font = `${aFontSize}px galiver-sans`;
             this._context.fillStyle = aColor;
             this._context.textAlign = aAlignment;
             this._context.fillText(aText, aXpos, aYpos);
@@ -52,13 +52,15 @@ class CanvasHelper {
     public writeImageToCanvas(
         aSrc: string,
         aXpos: number,
-        aYpos: number
+        aYpos: number,
+        imgWidthDivide: number = 1,
+        imgHeightDivide: number = 1
     ) {
         let image = new Image();
-        image.addEventListener('load', () => {
-            this._context.drawImage(image,aXpos, aYpos);
-        });
         image.src = aSrc;
+        image.addEventListener('load', () => {
+            this._context.drawImage(image,aXpos, aYpos, image.width/imgWidthDivide, image.height/imgHeightDivide);
+        });
     }
 
     //function that places a button on the canvas
