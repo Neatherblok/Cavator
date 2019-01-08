@@ -407,6 +407,14 @@ class Item {
                 hint2: "Het werkt doordat stoom voor beweging zorgt.",
                 hint3: "Deze verbeteringen maakte de stoommachine tot wat het nu is."
             },
+            {
+                name: "de Leeuw van Waterloo",
+                source: "./assets/images/items/8waterloo.png",
+                era: 8,
+                hint1: "Een herdenkingsmonument voor de Slag bij Waterloo.",
+                hint2: "Het monument staat op een 45 meter hoge kunstmatige heuvel.",
+                hint3: "Napoleon Bonaparte werd hier definitief verslagen."
+            },
             // ERA 9 1900-1950
             {
                 name:"een vliegtuigbom",
@@ -441,7 +449,7 @@ class Item {
                 hint3:"Het personage op de poster is Uncle Sam."
             },
             {
-                name:"een zeppeling",
+                name:"een zeppelin",
                 source:"./assets/images/items/9zeppelin.png",
                 era:9,
                 hint1:"Bedacht door graaf Ferdinand von Zeppelin.",
