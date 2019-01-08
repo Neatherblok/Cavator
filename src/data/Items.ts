@@ -177,6 +177,14 @@ class Item {
                 hint2:"Werd gebruikt door Maarten Luther om zijn ideeen te verspreiden.",
                 hint3:"Hiermee werd ook de Gutenbergbijbel gemaakt."
             },
+            {
+                name:"buskruit",
+                source:"./assets/images/items/3buskruit.png",
+                era:3,
+                hint1:"Buskruit is het oudst bekende explosieve mengsel.",
+                hint2:"Het werd al in tijdens de Tang-dynastie in China gemaakt.",
+                hint3:"Het wordt gebruikt om vuurpijlen af te schieten."
+            },
             // ERA 4 1000-1500
             {
                 name:"een penning uit Holland",
