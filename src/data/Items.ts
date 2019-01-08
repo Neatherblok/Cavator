@@ -383,16 +383,24 @@ class Item {
                 hint3:"Het tekenen van de verklaring word op 4 juli gevierd als Independence day."
             },
             {
-                name:"de eerste Nederlandse grondwet.",
+                name:"de eerste Nederlandse grondwet",
                 source:"./assets/images/items/7grondwet.png",
                 era:7,
                 hint1:"Opgesteld door de Bataafse republiek en de Nationale vergadering.",
                 hint2:"De wet stelde de scheiding van machten vast.",
                 hint3:"Er werd een zeker kiesrecht opgesteld in de grondwet."
             },
+            {
+                name:"een heteluchtballon",
+                source:"./assets/images/items/7heteluchtballon.png",
+                era:7,
+                hint1:"Luchtvaartuig waarbij een mand opstijgt, hangende aan een ballon.",
+                hint2:"De heteluchtballon werd door Joseph en Étienne Montgolfier gedemonstreerd.",
+                hint3:"De heteluchtballon is het oudste type luchtballon."
+            },
             // ERA 8 1800-1900
             {
-                name:"een hoge Bi",
+                name:"een hoge bi",
                 source:"./assets/images/items/8hoge_bi.png",
                 era:8,
                 hint1:"Wordt ook wel vélocipède genoemd.",
