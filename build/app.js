@@ -448,6 +448,14 @@ class Item {
                     hint3: "Het katvormige gebouw staat in de woestijn in Egypte."
                 },
                 {
+                    name: "de Chinese Muur",
+                    source: "./assets/images/items/2chinesemuur.png",
+                    era: 2,
+                    hint1: "Het Chinees keizerrijk bouwde deze muur tegen vijandelijke nomadische ruitervolkeren.",
+                    hint2: "Het wordt gezien als het grootste bouwwerk uit de geschiedenis.",
+                    hint3: "Wachttorens op de muur communiceerden met elkaar via rookpluimen.",
+                },
+                {
                     name: "het zwaard van Sint Cosmas en Damianus",
                     source: "./assets/images/items/3zwaard_sint_cosmas.png",
                     era: 3,
@@ -633,7 +641,7 @@ class Item {
                 },
                 {
                     name: "Michiel de Ruyter",
-                    source: "./assets/images/items/6de_Ruyter.jpg",
+                    source: "./assets/images/items/6de_Ruyter.png",
                     era: 6,
                     hint1: "Een berucht zeevaarder die vocht tegen de Engelsen.",
                     hint2: "Michiel de Ruyter was zoon van Adriaan, een bierdrager.",
@@ -641,7 +649,7 @@ class Item {
                 },
                 {
                     name: "een telescoop",
-                    source: "./assets/images/items/6telescoop.jpg",
+                    source: "./assets/images/items/6telescoop.png",
                     era: 6,
                     hint1: "Uitgevonden in Middelburg, tijdens Nederlands hoogtij dagen.",
                     hint2: "De mogelijke uitvinder had zijn microscoop aan een stadhouder laten zien.",

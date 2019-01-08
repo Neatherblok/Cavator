@@ -119,6 +119,14 @@ class Item {
                 hint2:"Het was gebouwd voor de farao Khafra.",
                 hint3:"Het katvormige gebouw staat in de woestijn in Egypte."
             },
+            {
+                name:"de Chinese Muur",
+                source:"./assets/images/items/2chinesemuur.png",
+                era:2,
+                hint1:"Het Chinees keizerrijk bouwde deze muur tegen vijandelijke nomadische ruitervolkeren.",
+                hint2:"Het wordt gezien als het grootste bouwwerk uit de geschiedenis.",
+                hint3:"Wachttorens op de muur communiceerden met elkaar via rookpluimen.",
+            },
             // ERA 3 500-1000
             {
                 name:"het zwaard van Sint Cosmas en Damianus",
