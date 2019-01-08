@@ -848,6 +848,14 @@ class Item {
                     hint3: "In Nederland werd het voor het eerst gebruikt in Kamp Westerbork."
                 },
                 {
+                    name: "een magnetron",
+                    source: "./assets/images/items/9magnetron.png",
+                    era: 9,
+                    hint1: "Een soort oven waarin met microgolfstraling voedsel verwarmd of gekookt kan worden.",
+                    hint2: "De eerste magnetron was de Amerikaanse RadaRange.",
+                    hint3: "Is per ongeluk ontdekt door Percy Spencer."
+                },
+                {
                     name: "een televisie handboek",
                     source: "./assets/images/items/10handboek_televisie.png",
                     era: 10,
