@@ -640,6 +640,14 @@ class Item {
                     hint3: "Hij heeft het Nederlands korps Mariniers opgericht."
                 },
                 {
+                    name: "een telescoop",
+                    source: "./assets/images/items/6telescoop.jpg",
+                    era: 6,
+                    hint1: "Uitgevonden in Middelburg, tijdens Nederlands hoogtij dagen.",
+                    hint2: "De mogelijke uitvinder had zijn microscoop aan een stadhouder laten zien.",
+                    hint3: "De eerste telescoop wordt Hollandse Kijker genoemd."
+                },
+                {
                     name: "een trekschuit",
                     source: "./assets/images/items/7trekschuit.png",
                     era: 7,

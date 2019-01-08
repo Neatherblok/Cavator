@@ -317,6 +317,14 @@ class Item {
                 hint2:"Michiel de Ruyter was zoon van Adriaan, een bierdrager.",
                 hint3:"Hij heeft het Nederlands korps Mariniers opgericht."
             },
+            {
+                name:"een telescoop",
+                source:"./assets/images/items/6telescoop.jpg",
+                era:6,
+                hint1:"Uitgevonden in Middelburg, tijdens Nederlands hoogtij dagen.",
+                hint2:"De mogelijke uitvinder had zijn microscoop aan een stadhouder laten zien.",
+                hint3:"De eerste telescoop wordt Hollandse Kijker genoemd."
+            },
             // ERA 7 1700-1800
             {
                 name:"een trekschuit",
@@ -341,6 +349,22 @@ class Item {
                 hint1:"Het lukte hem een groot deel van Europa onder Frans gezag te brengen.",
                 hint2:"Napoleon was een leider tijdens de Franse revolutie.",
                 hint3:"Zijn broer Lodewijk werd koning van Holland."
+            },
+            {
+                name:"de Amerikaanse onafhankelijkheidsverklaring",
+                source:"./assets/images/items/declaration.png",
+                era:7,
+                hint1:"Het document verklaard de VS onafhankelijk van Groot-Britannië.",
+                hint2:"De verklaring werd vertegenwoordigd door de 13 koloniën.",
+                hint3:"Het tekenen van de verklaring word op 4 juli gevierd als Idependence day."
+            },
+            {
+                name:"",
+                source:"",
+                era:7,
+                hint1:"",
+                hint2:"",
+                hint3:""
             },
             // ERA 8 1800-1900
             {
