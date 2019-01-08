@@ -416,6 +416,14 @@ class Item {
                 hint2:"Wervings poster, want er was een tekort aan soldaten.",
                 hint3:"Het personage op de poster is Uncle Sam."
             },
+            {
+                name:"een zeppeling",
+                source:"./assets/images/items/9zeppelin.png",
+                era:9,
+                hint1:"Bedacht door graaf Ferdinand von Zeppelin.",
+                hint2:"De ballon is gevuld met gas waardoor het gevaarte vliegt.",
+                hint3:"De zeppelin was de eerste militaire en commerciële luchtvaart voertuigen."
+            },
             // ERA 10 1950-heden
             {
                 name:"een televisie handboek",
