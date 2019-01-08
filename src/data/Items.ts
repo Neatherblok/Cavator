@@ -401,7 +401,7 @@ class Item {
             },
             {
                 name: "een stoommachine",
-                source: "./assets/images/items/7stoommachine.png",
+                source: "./assets/images/items/8stoommachine.png",
                 era: 8,
                 hint1: "De stoommachine werd ontworpen door Thomas Savery en Thomas Newcomen.",
                 hint2: "Het werkt doordat stoom voor beweging zorgt.",
