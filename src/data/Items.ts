@@ -655,6 +655,14 @@ class Item {
                 hint1:"Een soort licht dat maar in 1 richting straalt.",
                 hint2:"Lasers worden voor veel verschillende doelen gebruikt.",
                 hint3:"Volgens de kranten zou de laser toen 'een dodende straal' zijn.",
+            },
+            {
+                name:"een Super Soaker",
+                source:"./assets/images/items/10supersoaker.png",
+                era:10,
+                hint1:"Het idee kwam van NASA ingenieur Lonnie Johnson toen hij bezig was met een warmtepomp.",
+                hint2:"Het meest krachtige waterpistool ooit gemaakt schiet 1 liter water per seconde.",
+                hint3:"Deze schiet 15 meter ver.",
             }
         ];
     }
