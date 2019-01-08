@@ -456,7 +456,7 @@ class Item {
                     hint3: "Wachttorens op de muur communiceerden met elkaar via rookpluimen.",
                 },
                 {
-                    name: "het zwaard van Sint Cosmas en Damianus",
+                    name: "het zwaard van Sint Cosmas",
                     source: "./assets/images/items/3zwaard_sint_cosmas.png",
                     era: 3,
                     hint1: "Zij zouden allebei geneesheren zijn geweest.",
@@ -813,7 +813,15 @@ class Item {
                     era: 9,
                     hint1: "Bedacht door graaf Ferdinand von Zeppelin.",
                     hint2: "De ballon is gevuld met gas waardoor het gevaarte vliegt.",
-                    hint3: "De zeppelin was de eerste militaire en commerciële luchtvaart voertuigen."
+                    hint3: "De zeppelin was het eerste militaire en commerciële luchtvaart voertuig."
+                },
+                {
+                    name: "een winkelwagentje",
+                    source: "./assets/images/items/9winkelwagentje.png",
+                    era: 9,
+                    hint1: "De eerste winkelwagen was een uitvinding van Sylvan Goldman.",
+                    hint2: "Hij had gezien dat klanten moeite hadden met te volle winkelmanden.",
+                    hint3: "Veel winkels waren overgegaan op zelfbediening."
                 },
                 {
                     name: "een televisie handboek",
@@ -1066,7 +1074,7 @@ class EraSelectionScreen {
             this._canvas._context.strokeRect((this._canvas.getWidth() * 0.75) - (this._canvas.getWidth() * 0.125), this._canvas.getHeight() * 0.18 - 1, this._canvas.getWidth() * 0.35, this._canvas.getHeight() * 0.5 + 2);
             this._canvas._context.fillStyle = "grey";
             this._canvas._context.fillRect((this._canvas.getWidth() * 0.75) - (this._canvas.getWidth() * 0.125 - 1), this._canvas.getHeight() * 0.18, this._canvas.getWidth() * 0.35 - 2, this._canvas.getHeight() * 0.5);
-            this._canvas.writeTextToCanvas('Hints', 40, this._canvas.getWidth() * 0.83, this._canvas.getHeight() * 0.24, "black", "right");
+            this._canvas.writeTextToCanvas('Info', 40, this._canvas.getWidth() * 0.83, this._canvas.getHeight() * 0.24, "black", "right");
             for (let i = 1; i <= 3; i++) {
                 this._canvas.writeTextToCanvas(`• ${this.itemList.getItemProperty(this.pickedItem, `hint${i}`).split(" ").splice(0, 5).join(" ")}`, 20, this._canvas.getWidth() * 0.80, this._canvas.getHeight() * (0.15 + 0.13 * i), "black", "center");
                 if (this.itemList.getItemProperty(this.pickedItem, `hint${i}`).length > 6) {
@@ -1104,7 +1112,7 @@ class GameExplanationScreen {
         this.canvasElement = document.getElementById('canvas');
         this._canvas = new CanvasHelper(this.canvasElement);
         this.explanation1_0 = "Het doel van het spel is om zoveel mogelijk voorwerpen op te graven.";
-        this.explanation1_1 = "Dat doe je door meerdere keren te klikken op gaten.";
+        this.explanation1_1 = "Dat doe je door meerdere keren te klikken op de gaten.";
         this.explanation2 = "Hierna krijg je de keuze om het goede tijdvak bij het voorwerp te zoeken.";
         this.explanation3_0 = "Als je het juiste antwoord hebt gekozen krijg je een punt erbij, ";
         this.explanation3_1 = "als je het fout hebt krijg je het goede antwoord te zien.";

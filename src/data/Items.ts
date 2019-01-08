@@ -129,7 +129,7 @@ class Item {
             },
             // ERA 3 500-1000
             {
-                name:"het zwaard van Sint Cosmas en Damianus",
+                name:"het zwaard van Sint Cosmas",
                 source:"./assets/images/items/3zwaard_sint_cosmas.png",
                 era:3,
                 hint1:"Zij zouden allebei geneesheren zijn geweest.",
@@ -494,7 +494,15 @@ class Item {
                 era:9,
                 hint1:"Bedacht door graaf Ferdinand von Zeppelin.",
                 hint2:"De ballon is gevuld met gas waardoor het gevaarte vliegt.",
-                hint3:"De zeppelin was de eerste militaire en commerciële luchtvaart voertuigen."
+                hint3:"De zeppelin was het eerste militaire en commerciële luchtvaart voertuig."
+            },
+            {
+                name:"een winkelwagentje",
+                source:"./assets/images/items/9winkelwagentje.png",
+                era:9,
+                hint1:"De eerste winkelwagen was een uitvinding van Sylvan Goldman.",
+                hint2:"Hij had gezien dat klanten moeite hadden met te volle winkelmanden.",
+                hint3:"Veel winkels waren overgegaan op zelfbediening."
             },
             // ERA 10 1950-heden
             {

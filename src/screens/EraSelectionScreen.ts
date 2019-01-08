@@ -58,7 +58,7 @@ class EraSelectionScreen {
         this._canvas._context.strokeRect((this._canvas.getWidth() * 0.75) - (this._canvas.getWidth()*0.125), this._canvas.getHeight() * 0.18 - 1, this._canvas.getWidth()*0.35, this._canvas.getHeight() * 0.5 + 2);
         this._canvas._context.fillStyle = "grey";
         this._canvas._context.fillRect((this._canvas.getWidth() * 0.75) - (this._canvas.getWidth()*0.125-1), this._canvas.getHeight() * 0.18, this._canvas.getWidth()*0.35-2, this._canvas.getHeight() * 0.5);
-        this._canvas.writeTextToCanvas('Hints', 40, this._canvas.getWidth() * 0.83, this._canvas.getHeight() * 0.24, "black", "right");
+        this._canvas.writeTextToCanvas('Info', 40, this._canvas.getWidth() * 0.83, this._canvas.getHeight() * 0.24, "black", "right");
             //adds the 3 hints and breaks them apart to several lines
         for (let i = 1; i <= 3; i++) {
             this._canvas.writeTextToCanvas(`• ${this.itemList.getItemProperty(this.pickedItem, `hint${i}`).split(" ").splice(0, 5).join(" ")}`, 20, this._canvas.getWidth() * 0.80, this._canvas.getHeight() * (0.15 + 0.13 * i), "black", "center");

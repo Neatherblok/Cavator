@@ -12,7 +12,7 @@ class GameExplanationScreen{
         this.canvasElement = <HTMLCanvasElement>document.getElementById('canvas');
         this._canvas = new CanvasHelper(this.canvasElement);
         this.explanation1_0 = "Het doel van het spel is om zoveel mogelijk voorwerpen op te graven.";
-        this.explanation1_1 = "Dat doe je door meerdere keren te klikken op gaten."
+        this.explanation1_1 = "Dat doe je door meerdere keren te klikken op de gaten."
         this.explanation2 = "Hierna krijg je de keuze om het goede tijdvak bij het voorwerp te zoeken.";
         this.explanation3_0 = "Als je het juiste antwoord hebt gekozen krijg je een punt erbij, ";
         this.explanation3_1 = "als je het fout hebt krijg je het goede antwoord te zien.";
