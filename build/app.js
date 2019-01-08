@@ -222,34 +222,34 @@ class MouseListener {
     }
     eraScreenClick(eraNumber) {
         if (eraNumber == 1) {
-            return { Xmin: this._canvas.getWidth() * 0.017, Xmax: this._canvas.getWidth() * 0.017 + 102, Ymin: this._canvas.getHeight() - 200, Ymax: this._canvas.getHeight() - 83 };
+            return { Xmin: this._canvas.getWidth() * 0.017, Xmax: this._canvas.getWidth() * 0.017 + 102, Ymin: this._canvas.getHeight() - 180, Ymax: this._canvas.getHeight() - 63 };
         }
         else if (eraNumber == 2) {
-            return { Xmin: this._canvas.getWidth() * 0.117, Xmax: this._canvas.getWidth() * 0.117 + 102, Ymin: this._canvas.getHeight() - 200, Ymax: this._canvas.getHeight() - 83 };
+            return { Xmin: this._canvas.getWidth() * 0.117, Xmax: this._canvas.getWidth() * 0.117 + 102, Ymin: this._canvas.getHeight() - 180, Ymax: this._canvas.getHeight() - 63 };
         }
         else if (eraNumber == 3) {
-            return { Xmin: this._canvas.getWidth() * 0.217, Xmax: this._canvas.getWidth() * 0.217 + 102, Ymin: this._canvas.getHeight() - 200, Ymax: this._canvas.getHeight() - 83 };
+            return { Xmin: this._canvas.getWidth() * 0.217, Xmax: this._canvas.getWidth() * 0.217 + 102, Ymin: this._canvas.getHeight() - 180, Ymax: this._canvas.getHeight() - 63 };
         }
         else if (eraNumber == 4) {
-            return { Xmin: this._canvas.getWidth() * 0.317, Xmax: this._canvas.getWidth() * 0.317 + 102, Ymin: this._canvas.getHeight() - 200, Ymax: this._canvas.getHeight() - 83 };
+            return { Xmin: this._canvas.getWidth() * 0.317, Xmax: this._canvas.getWidth() * 0.317 + 102, Ymin: this._canvas.getHeight() - 180, Ymax: this._canvas.getHeight() - 63 };
         }
         else if (eraNumber == 5) {
-            return { Xmin: this._canvas.getWidth() * 0.417, Xmax: this._canvas.getWidth() * 0.417 + 102, Ymin: this._canvas.getHeight() - 200, Ymax: this._canvas.getHeight() - 83 };
+            return { Xmin: this._canvas.getWidth() * 0.417, Xmax: this._canvas.getWidth() * 0.417 + 102, Ymin: this._canvas.getHeight() - 180, Ymax: this._canvas.getHeight() - 63 };
         }
         else if (eraNumber == 6) {
-            return { Xmin: this._canvas.getWidth() * 0.517, Xmax: this._canvas.getWidth() * 0.517 + 102, Ymin: this._canvas.getHeight() - 200, Ymax: this._canvas.getHeight() - 83 };
+            return { Xmin: this._canvas.getWidth() * 0.517, Xmax: this._canvas.getWidth() * 0.517 + 102, Ymin: this._canvas.getHeight() - 180, Ymax: this._canvas.getHeight() - 63 };
         }
         else if (eraNumber == 7) {
-            return { Xmin: this._canvas.getWidth() * 0.617, Xmax: this._canvas.getWidth() * 0.617 + 102, Ymin: this._canvas.getHeight() - 200, Ymax: this._canvas.getHeight() - 83 };
+            return { Xmin: this._canvas.getWidth() * 0.617, Xmax: this._canvas.getWidth() * 0.617 + 102, Ymin: this._canvas.getHeight() - 180, Ymax: this._canvas.getHeight() - 63 };
         }
         else if (eraNumber == 8) {
-            return { Xmin: this._canvas.getWidth() * 0.717, Xmax: this._canvas.getWidth() * 0.717 + 102, Ymin: this._canvas.getHeight() - 200, Ymax: this._canvas.getHeight() - 83 };
+            return { Xmin: this._canvas.getWidth() * 0.717, Xmax: this._canvas.getWidth() * 0.717 + 102, Ymin: this._canvas.getHeight() - 180, Ymax: this._canvas.getHeight() - 63 };
         }
         else if (eraNumber == 9) {
-            return { Xmin: this._canvas.getWidth() * 0.817, Xmax: this._canvas.getWidth() * 0.817 + 102, Ymin: this._canvas.getHeight() - 200, Ymax: this._canvas.getHeight() - 83 };
+            return { Xmin: this._canvas.getWidth() * 0.817, Xmax: this._canvas.getWidth() * 0.817 + 102, Ymin: this._canvas.getHeight() - 180, Ymax: this._canvas.getHeight() - 63 };
         }
         else if (eraNumber == 10) {
-            return { Xmin: this._canvas.getWidth() * 0.917, Xmax: this._canvas.getWidth() * 0.917 + 102, Ymin: this._canvas.getHeight() - 200, Ymax: this._canvas.getHeight() - 83 };
+            return { Xmin: this._canvas.getWidth() * 0.917, Xmax: this._canvas.getWidth() * 0.917 + 102, Ymin: this._canvas.getHeight() - 180, Ymax: this._canvas.getHeight() - 63 };
         }
     }
 }
@@ -359,7 +359,7 @@ class Item {
                     hint3: "Het eerste fossiel van een T-rex werd gevonden in 1874."
                 },
                 {
-                    name: "Een mammoet",
+                    name: "een mammoet",
                     source: "./assets/images/items/1mammoet.png",
                     era: 1,
                     hint1: "De mammoet is een al uitgestorven diersoort.",
@@ -375,7 +375,7 @@ class Item {
                     hint3: "Het komt uit de Jonge Steentijd."
                 },
                 {
-                    name: "Grotschilderingen",
+                    name: "grotschilderingen",
                     source: "./assets/images/items/1grotschilderingen.png",
                     era: 1,
                     hint1: "Deze grotschilderingen werden getekend door jagers-verzamelaars.",
@@ -874,6 +874,46 @@ class EraExplanationScreen {
             this._canvas.writeImageToCanvas("./assets/images/eraLogos/era8.png", 475, 400);
             this._canvas.writeImageToCanvas("./assets/images/eraLogos/era9.png", 925, 275);
             this._canvas.writeImageToCanvas("./assets/images/eraLogos/era10.png", 925, 400);
+            this._canvas.writeTextToCanvas("Tijd van jagers en boeren", 15, 150, 50, "yellow", "left");
+            this._canvas.writeTextToCanvas("Prehistorie tot 3000 v. Chr.", 15, 150, 70, "yellow", "left");
+            this._canvas.writeTextToCanvas("De levenswijze van jagers-verzamelaars", 15, 150, 90, "yellow", "left");
+            this._canvas.writeTextToCanvas("Het ontstaan van landbouwsamenlevingen", 15, 150, 110, "yellow", "left");
+            this._canvas.writeTextToCanvas("Tijd van Grieken en Romeinen", 15, 150, 175, "yellow", "left");
+            this._canvas.writeTextToCanvas("3000 v. Chr. tot 500", 15, 150, 195, "yellow", "left");
+            this._canvas.writeTextToCanvas("De groei van het Romeinse rijk", 15, 150, 215, "yellow", "left");
+            this._canvas.writeTextToCanvas("Ontwikkeling van christendom en jodendom", 15, 150, 235, "yellow", "left");
+            this._canvas.writeTextToCanvas("Tijd van monniken en ridders", 15, 150, 300, "yellow", "left");
+            this._canvas.writeTextToCanvas("500 tot 1000", 15, 150, 320, "yellow", "left");
+            this._canvas.writeTextToCanvas("De verspreiding van het christendom", 15, 150, 340, "yellow", "left");
+            this._canvas.writeTextToCanvas("Agrarische cultuur via het hofstelsel", 15, 150, 360, "yellow", "left");
+            this._canvas.writeTextToCanvas("Tijd van steden en staten", 15, 150, 425, "yellow", "left");
+            this._canvas.writeTextToCanvas("1000 tot 1500", 15, 150, 445, "yellow", "left");
+            this._canvas.writeTextToCanvas("De opkomst van handel en ambacht", 15, 150, 465, "yellow", "left");
+            this._canvas.writeTextToCanvas("Begin van staatsvorming en centralisatie", 15, 150, 485, "yellow", "left");
+            this._canvas.writeTextToCanvas("Tijd van ontdekkers en hervormers", 15, 600, 50, "yellow", "left");
+            this._canvas.writeTextToCanvas("1500 tot 1600", 15, 600, 70, "yellow", "left");
+            this._canvas.writeTextToCanvas("De Opstand in de Nederlanden", 15, 600, 90, "yellow", "left");
+            this._canvas.writeTextToCanvas("De protestantse reformatie", 15, 600, 110, "yellow", "left");
+            this._canvas.writeTextToCanvas("Tijd van regenten en vorsten", 15, 600, 175, "yellow", "left");
+            this._canvas.writeTextToCanvas("1600 tot 1700", 15, 600, 195, "yellow", "left");
+            this._canvas.writeTextToCanvas("De Gouden Eeuw", 15, 600, 215, "yellow", "left");
+            this._canvas.writeTextToCanvas("Het begin van een wereldeconomie", 15, 600, 235, "yellow", "left");
+            this._canvas.writeTextToCanvas("Tijd van pruiken en revoluties", 15, 600, 300, "yellow", "left");
+            this._canvas.writeTextToCanvas("1700 tot 1800", 15, 600, 320, "yellow", "left");
+            this._canvas.writeTextToCanvas("De Verlichting", 15, 600, 340, "yellow", "left");
+            this._canvas.writeTextToCanvas("Democratische revoluties in Europa", 15, 600, 360, "yellow", "left");
+            this._canvas.writeTextToCanvas("Tijd van burgers en stoommachines", 15, 600, 425, "yellow", "left");
+            this._canvas.writeTextToCanvas("1800 tot 1900", 15, 600, 445, "yellow", "left");
+            this._canvas.writeTextToCanvas("De industriële revolutie", 15, 600, 465, "yellow", "left");
+            this._canvas.writeTextToCanvas("Verdergaande democratisering", 15, 600, 485, "yellow", "left");
+            this._canvas.writeTextToCanvas("Tijd van wereldoorlogen", 15, 1050, 300, "yellow", "left");
+            this._canvas.writeTextToCanvas("1900 tot 1950", 15, 1050, 320, "yellow", "left");
+            this._canvas.writeTextToCanvas("Het voeren van twee wereldoorlogen", 15, 1050, 340, "yellow", "left");
+            this._canvas.writeTextToCanvas("De Duitse bezetting van Nederland", 15, 1050, 360, "yellow", "left");
+            this._canvas.writeTextToCanvas("Tijd van televisie en computers", 15, 1050, 425, "yellow", "left");
+            this._canvas.writeTextToCanvas("1950 tot nu", 15, 1050, 445, "yellow", "left");
+            this._canvas.writeTextToCanvas("De dreiging van een atoomoorlog", 15, 1050, 465, "yellow", "left");
+            this._canvas.writeTextToCanvas("De toenemende westerse welvaart", 15, 1050, 485, "yellow", "left");
             this._canvas.writeButtonToCanvas("Terug", undefined, this._canvas.getCenter().Y + 250);
         };
         this.canvasElement = document.getElementById('canvas');
@@ -890,22 +930,31 @@ class EraSelectionScreen {
             this.canvasElement.style.cursor = "url(./assets/images/FeatherCursor.cur), auto";
             this._canvas.writeTextToCanvas(`Je hebt ${this.itemList.getItemProperty(this.pickedItem, "name")} gevonden!`, 35, this._canvas.getCenter().X, 100, "yellow");
             this._canvas.writeImageToCanvas(this.itemList.getItemProperty(this.pickedItem, "source"), this._canvas.getCenter().X / 2 - 150, this._canvas.getCenter().Y - 200);
-            this._canvas.writeImageToCanvas("./assets/images/eraLogos/era1.png", this._canvas.getWidth() * 0.017, this._canvas.getHeight() - 200);
-            this._canvas.writeImageToCanvas("./assets/images/eraLogos/era2.png", this._canvas.getWidth() * 0.117, this._canvas.getHeight() - 200);
-            this._canvas.writeImageToCanvas("./assets/images/eraLogos/era3.png", this._canvas.getWidth() * 0.217, this._canvas.getHeight() - 200);
-            this._canvas.writeImageToCanvas("./assets/images/eraLogos/era4.png", this._canvas.getWidth() * 0.317, this._canvas.getHeight() - 200);
-            this._canvas.writeImageToCanvas("./assets/images/eraLogos/era5.png", this._canvas.getWidth() * 0.417, this._canvas.getHeight() - 200);
-            this._canvas.writeImageToCanvas("./assets/images/eraLogos/era6.png", this._canvas.getWidth() * 0.517, this._canvas.getHeight() - 200);
-            this._canvas.writeImageToCanvas("./assets/images/eraLogos/era7.png", this._canvas.getWidth() * 0.617, this._canvas.getHeight() - 200);
-            this._canvas.writeImageToCanvas("./assets/images/eraLogos/era8.png", this._canvas.getWidth() * 0.717, this._canvas.getHeight() - 200);
-            this._canvas.writeImageToCanvas("./assets/images/eraLogos/era9.png", this._canvas.getWidth() * 0.817, this._canvas.getHeight() - 200);
-            this._canvas.writeImageToCanvas("./assets/images/eraLogos/era10.png", this._canvas.getWidth() * 0.917, this._canvas.getHeight() - 200);
+            this._canvas.writeImageToCanvas("./assets/images/eraLogos/era1.png", this._canvas.getWidth() * 0.017, this._canvas.getHeight() - 180);
+            this._canvas.writeImageToCanvas("./assets/images/eraLogos/era2.png", this._canvas.getWidth() * 0.117, this._canvas.getHeight() - 180);
+            this._canvas.writeImageToCanvas("./assets/images/eraLogos/era3.png", this._canvas.getWidth() * 0.217, this._canvas.getHeight() - 180);
+            this._canvas.writeImageToCanvas("./assets/images/eraLogos/era4.png", this._canvas.getWidth() * 0.317, this._canvas.getHeight() - 180);
+            this._canvas.writeImageToCanvas("./assets/images/eraLogos/era5.png", this._canvas.getWidth() * 0.417, this._canvas.getHeight() - 180);
+            this._canvas.writeImageToCanvas("./assets/images/eraLogos/era6.png", this._canvas.getWidth() * 0.517, this._canvas.getHeight() - 180);
+            this._canvas.writeImageToCanvas("./assets/images/eraLogos/era7.png", this._canvas.getWidth() * 0.617, this._canvas.getHeight() - 180);
+            this._canvas.writeImageToCanvas("./assets/images/eraLogos/era8.png", this._canvas.getWidth() * 0.717, this._canvas.getHeight() - 180);
+            this._canvas.writeImageToCanvas("./assets/images/eraLogos/era9.png", this._canvas.getWidth() * 0.817, this._canvas.getHeight() - 180);
+            this._canvas.writeImageToCanvas("./assets/images/eraLogos/era10.png", this._canvas.getWidth() * 0.917, this._canvas.getHeight() - 180);
             this._canvas._context.lineWidth = 2;
             this._canvas._context.beginPath();
-            this._canvas._context.moveTo(this._canvas.getWidth() * 0.014, this._canvas.getHeight() - 80);
-            this._canvas._context.lineTo(this._canvas.getWidth() * 0.985, this._canvas.getHeight() - 80);
-            this._canvas._context.moveTo(this._canvas.getWidth() * 0.014, this._canvas.getHeight() - 79);
-            this._canvas._context.lineTo(this._canvas.getWidth() * 0.985, this._canvas.getHeight() - 79);
+            this._canvas.writeTextToCanvas("-3000", 20, this._canvas.getWidth() * 0.105, this._canvas.getHeight() - 20, "yellow", "center");
+            this._canvas.writeTextToCanvas("500", 20, this._canvas.getWidth() * 0.205, this._canvas.getHeight() - 20, "yellow", "center");
+            this._canvas.writeTextToCanvas("1000", 20, this._canvas.getWidth() * 0.305, this._canvas.getHeight() - 20, "yellow", "center");
+            this._canvas.writeTextToCanvas("1500", 20, this._canvas.getWidth() * 0.405, this._canvas.getHeight() - 20, "yellow", "center");
+            this._canvas.writeTextToCanvas("1600", 20, this._canvas.getWidth() * 0.505, this._canvas.getHeight() - 20, "yellow", "center");
+            this._canvas.writeTextToCanvas("1700", 20, this._canvas.getWidth() * 0.605, this._canvas.getHeight() - 20, "yellow", "center");
+            this._canvas.writeTextToCanvas("1800", 20, this._canvas.getWidth() * 0.705, this._canvas.getHeight() - 20, "yellow", "center");
+            this._canvas.writeTextToCanvas("1900", 20, this._canvas.getWidth() * 0.805, this._canvas.getHeight() - 20, "yellow", "center");
+            this._canvas.writeTextToCanvas("1950", 20, this._canvas.getWidth() * 0.905, this._canvas.getHeight() - 20, "yellow", "center");
+            this._canvas._context.moveTo(this._canvas.getWidth() * 0.014, this._canvas.getHeight() - 60);
+            this._canvas._context.lineTo(this._canvas.getWidth() * 0.985, this._canvas.getHeight() - 60);
+            this._canvas._context.moveTo(this._canvas.getWidth() * 0.014, this._canvas.getHeight() - 59);
+            this._canvas._context.lineTo(this._canvas.getWidth() * 0.985, this._canvas.getHeight() - 59);
             this._canvas._context.stroke();
             this._canvas._context.strokeStyle = "yellow";
             this._canvas._context.strokeRect((this._canvas.getWidth() * 0.75) - (this._canvas.getWidth() * 0.125), this._canvas.getHeight() * 0.18 - 1, this._canvas.getWidth() * 0.35, this._canvas.getHeight() * 0.5 + 2);
@@ -972,7 +1021,7 @@ class GameScreen {
         this.canvasElement = document.getElementById('canvas');
         this._canvas = new CanvasHelper(this.canvasElement);
         for (let index = 0; index < MathHelper.randomNumber(3, 6); index++) {
-            this.hole.push(new Hole(this.canvasElement, `./assets/images/holes/hole${MathHelper.randomNumber(1, 2)}.png`, MathHelper.randomNumber(0, this._canvas.getWidth() - 200), MathHelper.randomNumber(100, this._canvas.getHeight() - 200), 130, 120, MathHelper.randomNumber(4, 6)));
+            this.hole.push(new Hole(this.canvasElement, `./assets/images/holes/hole${MathHelper.randomNumber(1, 2)}.png`, MathHelper.randomNumber(0, this._canvas.getWidth() - 200), MathHelper.randomNumber(100, this._canvas.getHeight() - 250), 130, 120, MathHelper.randomNumber(4, 6)));
         }
     }
     ;

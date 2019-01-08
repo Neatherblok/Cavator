@@ -26,23 +26,33 @@ class EraSelectionScreen {
         this._canvas.writeTextToCanvas(`Je hebt ${this.itemList.getItemProperty(this.pickedItem, "name")} gevonden!`, 35, this._canvas.getCenter().X, 100, "yellow")
         this._canvas.writeImageToCanvas(this.itemList.getItemProperty(this.pickedItem, "source"), this._canvas.getCenter().X /2 - 150, this._canvas.getCenter().Y - 200)
             //adds era timeline viewable to the canvas
-        this._canvas.writeImageToCanvas("./assets/images/eraLogos/era1.png", this._canvas.getWidth() * 0.017, this._canvas.getHeight() - 200)
-        this._canvas.writeImageToCanvas("./assets/images/eraLogos/era2.png", this._canvas.getWidth() * 0.117, this._canvas.getHeight() - 200)
-        this._canvas.writeImageToCanvas("./assets/images/eraLogos/era3.png", this._canvas.getWidth() * 0.217, this._canvas.getHeight() - 200)
-        this._canvas.writeImageToCanvas("./assets/images/eraLogos/era4.png", this._canvas.getWidth() * 0.317, this._canvas.getHeight() - 200)
-        this._canvas.writeImageToCanvas("./assets/images/eraLogos/era5.png", this._canvas.getWidth() * 0.417, this._canvas.getHeight() - 200)
-        this._canvas.writeImageToCanvas("./assets/images/eraLogos/era6.png", this._canvas.getWidth() * 0.517, this._canvas.getHeight() - 200)
-        this._canvas.writeImageToCanvas("./assets/images/eraLogos/era7.png", this._canvas.getWidth() * 0.617, this._canvas.getHeight() - 200)
-        this._canvas.writeImageToCanvas("./assets/images/eraLogos/era8.png", this._canvas.getWidth() * 0.717, this._canvas.getHeight() - 200)
-        this._canvas.writeImageToCanvas("./assets/images/eraLogos/era9.png", this._canvas.getWidth() * 0.817, this._canvas.getHeight() - 200)
-        this._canvas.writeImageToCanvas("./assets/images/eraLogos/era10.png", this._canvas.getWidth() * 0.917, this._canvas.getHeight() - 200)
+        this._canvas.writeImageToCanvas("./assets/images/eraLogos/era1.png", this._canvas.getWidth() * 0.017, this._canvas.getHeight() - 180);
+        this._canvas.writeImageToCanvas("./assets/images/eraLogos/era2.png", this._canvas.getWidth() * 0.117, this._canvas.getHeight() - 180);
+        this._canvas.writeImageToCanvas("./assets/images/eraLogos/era3.png", this._canvas.getWidth() * 0.217, this._canvas.getHeight() - 180);
+        this._canvas.writeImageToCanvas("./assets/images/eraLogos/era4.png", this._canvas.getWidth() * 0.317, this._canvas.getHeight() - 180);
+        this._canvas.writeImageToCanvas("./assets/images/eraLogos/era5.png", this._canvas.getWidth() * 0.417, this._canvas.getHeight() - 180);
+        this._canvas.writeImageToCanvas("./assets/images/eraLogos/era6.png", this._canvas.getWidth() * 0.517, this._canvas.getHeight() - 180);
+        this._canvas.writeImageToCanvas("./assets/images/eraLogos/era7.png", this._canvas.getWidth() * 0.617, this._canvas.getHeight() - 180);
+        this._canvas.writeImageToCanvas("./assets/images/eraLogos/era8.png", this._canvas.getWidth() * 0.717, this._canvas.getHeight() - 180);
+        this._canvas.writeImageToCanvas("./assets/images/eraLogos/era9.png", this._canvas.getWidth() * 0.817, this._canvas.getHeight() - 180);
+        this._canvas.writeImageToCanvas("./assets/images/eraLogos/era10.png", this._canvas.getWidth() * 0.917, this._canvas.getHeight() - 180);
         this._canvas._context.lineWidth = 2;
         this._canvas._context.beginPath();
+            //adds era time periods viewable to the canvas
+        this._canvas.writeTextToCanvas("-3000",20,this._canvas.getWidth() * 0.105,this._canvas.getHeight()-20,"yellow","center");
+        this._canvas.writeTextToCanvas("500",20,this._canvas.getWidth() * 0.205,this._canvas.getHeight()-20,"yellow","center");
+        this._canvas.writeTextToCanvas("1000",20,this._canvas.getWidth() * 0.305,this._canvas.getHeight()-20,"yellow","center");
+        this._canvas.writeTextToCanvas("1500",20,this._canvas.getWidth() * 0.405,this._canvas.getHeight()-20,"yellow","center");
+        this._canvas.writeTextToCanvas("1600",20,this._canvas.getWidth() * 0.505,this._canvas.getHeight()-20,"yellow","center");
+        this._canvas.writeTextToCanvas("1700",20,this._canvas.getWidth() * 0.605,this._canvas.getHeight()-20,"yellow","center");
+        this._canvas.writeTextToCanvas("1800",20,this._canvas.getWidth() * 0.705,this._canvas.getHeight()-20,"yellow","center");
+        this._canvas.writeTextToCanvas("1900",20,this._canvas.getWidth() * 0.805,this._canvas.getHeight()-20,"yellow","center");
+        this._canvas.writeTextToCanvas("1950",20,this._canvas.getWidth() * 0.905,this._canvas.getHeight()-20,"yellow","center");
             //adds hint area viewable to the canvas
-        this._canvas._context.moveTo(this._canvas.getWidth() * 0.014, this._canvas.getHeight() - 80);
-        this._canvas._context.lineTo(this._canvas.getWidth() * 0.985, this._canvas.getHeight() - 80);
-        this._canvas._context.moveTo(this._canvas.getWidth() * 0.014, this._canvas.getHeight() - 79);
-        this._canvas._context.lineTo(this._canvas.getWidth() * 0.985, this._canvas.getHeight() - 79);
+        this._canvas._context.moveTo(this._canvas.getWidth() * 0.014, this._canvas.getHeight() - 60);
+        this._canvas._context.lineTo(this._canvas.getWidth() * 0.985, this._canvas.getHeight() - 60);
+        this._canvas._context.moveTo(this._canvas.getWidth() * 0.014, this._canvas.getHeight() - 59);
+        this._canvas._context.lineTo(this._canvas.getWidth() * 0.985, this._canvas.getHeight() - 59);
         this._canvas._context.stroke();
         this._canvas._context.strokeStyle = "yellow";
         this._canvas._context.strokeRect((this._canvas.getWidth() * 0.75) - (this._canvas.getWidth()*0.125), this._canvas.getHeight() * 0.18 - 1, this._canvas.getWidth()*0.35, this._canvas.getHeight() * 0.5 + 2);
