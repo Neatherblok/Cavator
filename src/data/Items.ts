@@ -349,6 +349,14 @@ class Item {
                 hint2:"De mogelijke uitvinder had zijn microscoop aan een stadhouder laten zien.",
                 hint3:"De eerste telescoop wordt Hollandse Kijker genoemd."
             },
+            {
+                name:"de eerste duikboot",
+                source:"./assets/images/items/6duikboot.png",
+                era:6,
+                hint1:"Is ontworpen door Cornelis Drebbel.",
+                hint2:"Drebbel heeft meerdere keren gevaren op de Theems.",
+                hint3:"Het was bekleed met ingevet varkensleer, waardoor het waterdicht was."
+            },
             // ERA 7 1700-1800
             {
                 name:"een trekschuit",
