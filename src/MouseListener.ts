@@ -46,7 +46,7 @@
       }
         //era 7
       else if(eraNumber == 7){
-        return {Xmin: this._canvas.getWidth()*0.617, Xmax: this._canvas.getWidth()*0.617+102, Ymin: this._canvas.getHeight()-180, Ymax: this._6anvas.getHeight()-63}
+        return {Xmin: this._canvas.getWidth()*0.617, Xmax: this._canvas.getWidth()*0.617+102, Ymin: this._canvas.getHeight()-180, Ymax: this._canvas.getHeight()-63}
       }
         //era 8
       else if(eraNumber == 8){
