@@ -347,6 +347,14 @@ class Item {
                 hint2:"De beiaard is het zwaarste van alle muziekinstrumenten.",
                 hint3:"De beiaardcultuur wordt erkend als immaterieel cultureel erfgoed."
             },
+            {
+                name:"een tekening van de Beeldenstorm",
+                source:"./assets/images/items/5beeldenstorm.png",
+                era:5,
+                hint1:"Een vernieling van heiligenbeelden en andere katholieke objecten.",
+                hint2:"De oorzaak was een opkomst van het calvinisme in de Nederlanden.",
+                hint3:"Zij waren tegen het vereren van heiligen."
+            },
             // ERA 6 1600-1700
             {
                 name:"de Nachtwacht",
