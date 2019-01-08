@@ -47,7 +47,7 @@ class Item {
                 hint3: "Het had een dikke vacht, voor tegen de kou."
             },
             {
-                name:"Stonehenge",
+                name:"de Stonehenge",
                 source:"./assets/images/items/1stonehenge.png",
                 era:1,
                 hint1:"Het is een oud monument gelegen in Engeland.",
@@ -145,7 +145,7 @@ class Item {
                 hint3:"Gemaakt in Schotland of Ierland."
             },
             {
-                name:"een viking zwaard.",
+                name:"een viking zwaard",
                 source:"./assets/images/items/3viking_zwaard.png",
                 era:3,
                 hint1:"Het zwaard is gevonden in Skaftárhreppur, IJsland.",
@@ -154,7 +154,7 @@ class Item {
             },
             {
                 name:"een vikingschip",
-                source:"./assets/images/items/3vikingschip",
+                source:"./assets/images/items/3vikingschip.png",
                 era:3,
                 hint1:"Het werd gebruikt voor transport, handel en ontdekkingsreizen.",
                 hint2:"Ook werden ze gebruikt in oorlogsmissies en plunderingen.",
@@ -163,19 +163,11 @@ class Item {
             },
             {
                 name:"de drukpers",
-                source:"./assets/images/items/",
+                source:"./assets/images/items/3drukpers.png",
                 era:3,
-                hint1:"Hiermee konden boeken gekopieerd worden en dus makkelijker verspreid worden",
+                hint1:"Hiermee konden boeken gekopieerd worden en dus makkelijker verspreid worden.",
                 hint2:"Werd gebruikt door Maarten Luther om zijn ideeen te verspreiden.",
                 hint3:"Hiermee werd ook de Gutenbergbijbel gemaakt."
-            },
-            {
-                name:"",
-                source:"./assets/images/items/",
-                era:3,
-                hint1:"",
-                hint2:"",
-                hint3:""
             },
             // ERA 4 1000-1500
             {
@@ -211,36 +203,36 @@ class Item {
                 hint3:"Het gebouw is tegenwoordig een rijksmonument."
             },
             {
-                name:"het spinnewiel",
-                source:"./assets/images/items/",
+                name:"een spinnewiel",
+                source:"./assets/images/items/4spinnewiel.png",
                 era:4,
-                hint1:"",
-                hint2:"",
-                hint3:""
+                hint1:"Een mechaniek om van wol een draad te spinnen.",
+                hint2:"Ook wel een schippertje genoemd, omdat het vaak werd gebruikt op schepen.",
+                hint3:"Er ook katoen of vlas gebruikt worden voor het spinnen."
             },
             {
-                name:"een getijdenmolen",
-                source:"./assets/images/items/",
+                name:"de getijdenmolen van Middelburg",
+                source:"./assets/images/items/4getijdenmolen.png",
                 era:4,
-                hint1:"Het wordt aangedreven door het tij",
-                hint2:"Er zijn nog steeds resten te vinden in Zeeland",
-                hint3:"Het wordt gebruikt in combinatie met het waterrad"
+                hint1:"Het wordt aangedreven door het tij.",
+                hint2:"Er zijn nog steeds resten te vinden in Zeeland.",
+                hint3:"Het wordt gebruikt in combinatie met het waterrad."
             },
             {
-                name:"het waterrad",
-                source:"./assets/images/items/",
+                name:"een waterrad",
+                source:"./assets/images/items/4waterrad.png",
                 era:4,
-                hint1:"Door het waterrad kon overgestapt worden van mankracht naar waterkracht",
-                hint2:"Ze zijn aangelegd in heel Midden-Europa",
-                hint3:"Ze liggen vaak in de buurt bij getijdenmolens"
+                hint1:"Door het waterrad kon overgestapt worden van mankracht naar waterkracht.",
+                hint2:"Ze zijn aangelegd in heel Midden-Europa.",
+                hint3:"Ze liggen vaak in de buurt bij getijdenmolens."
             },
             {
                 name:"een hoogoven",
-                source:"./assets/images/items/",
+                source:"./assets/images/items/4hoogoven.png",
                 era:4,
-                hint1:"",
-                hint2:"",
-                hint3:""
+                hint1:"Installatie waarin ijzererts wordt omgezet in ijzer.",
+                hint2:"Omdat het ijzer vloeibaar is kan het gegoten worden.",
+                hint3:"Voor de verhitting is koolstof nodig."
             },
 
             // ERA 5 1500-1600
@@ -432,6 +424,14 @@ class Item {
                 hint2:"Wervings poster, want er was een tekort aan soldaten.",
                 hint3:"Het personage op de poster is Uncle Sam."
             },
+            {
+                name:"een zeppeling",
+                source:"./assets/images/items/9zeppelin.png",
+                era:9,
+                hint1:"Bedacht door graaf Ferdinand von Zeppelin.",
+                hint2:"De ballon is gevuld met gas waardoor het gevaarte vliegt.",
+                hint3:"De zeppelin was de eerste militaire en commerciële luchtvaart voertuigen."
+            },
             // ERA 10 1950-heden
             {
                 name:"een televisie handboek",
@@ -464,6 +464,14 @@ class Item {
                 hint1:"Kan gesloten worden bij hoog water.",
                 hint2:"Is onderdeel van het Deltaplan.",
                 hint3:"Dit plan werd gestart als resultaat van de watersnoodramp."
+            },
+            {
+                name:"het International Space Station (ISS)",
+                source:"./assets/images/items/10iss.png",
+                era:10,
+                hint1:"ISS is een bemande sataliet gebouwd voor onderzoek.",
+                hint2:"Vliegt in 93 om de aarde.",
+                hint3:"Het station weegt ongeveer 420kg.",
             }
         ];
     }
