@@ -673,19 +673,19 @@ class Item {
                 },
                 {
                     name: "de Amerikaanse onafhankelijkheidsverklaring",
-                    source: "./assets/images/items/declaration.png",
+                    source: "./assets/images/items/7declaration.png",
                     era: 7,
                     hint1: "Het document verklaard de VS onafhankelijk van Groot-Britannië.",
                     hint2: "De verklaring werd vertegenwoordigd door de 13 koloniën.",
-                    hint3: "Het tekenen van de verklaring word op 4 juli gevierd als Idependence day."
+                    hint3: "Het tekenen van de verklaring word op 4 juli gevierd als Independence day."
                 },
                 {
-                    name: "",
-                    source: "",
+                    name: "de eerste Nederlandse grondwet.",
+                    source: "./assets/images/items/7grondwet.png",
                     era: 7,
-                    hint1: "",
-                    hint2: "",
-                    hint3: ""
+                    hint1: "Opgesteld door de Bataafse republiek en de Nationale vergadering.",
+                    hint2: "De wet stelde de scheiding van machten vast.",
+                    hint3: "Er werd een zeker kiesrecht opgesteld in de grondwet."
                 },
                 {
                     name: "een hoge Bi",
