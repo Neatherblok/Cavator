@@ -58,7 +58,7 @@ class Item {
                 name:"grotschilderingen",
                 source:"./assets/images/items/1grotschilderingen.png",
                 era:1,
-                hint1:"Deze grotschilderingen werden getekend door jagers-verzamelaars.",
+                hint1:"Deze schilderingen werden getekend door jagers-verzamelaars.",
                 hint2:"Dit waren de eerste tekenen van kunst door de mens.",
                 hint3:"Dit soort tekeningen konden als ritueel voor de jacht staan."
             },
@@ -619,7 +619,7 @@ class Item {
                 name:"een magnetron",
                 source:"./assets/images/items/9magnetron.png",
                 era:9,
-                hint1:"Een soort oven waarin met microgolfstraling voedsel verwarmd of gekookt kan worden.",
+                hint1:"Een soort oven waarin met microgolfstraling voedsel verwarmd kan worden.",
                 hint2:"De eerste magnetron was de Amerikaanse RadaRange.",
                 hint3:"Is per ongeluk ontdekt door Percy Spencer."
             },
@@ -673,7 +673,7 @@ class Item {
                 hint3:"Dit plan werd gestart als resultaat van de watersnoodramp."
             },
             {
-                name:"het International Space Station (ISS)",
+                name:"het International Space Station",
                 source:"./assets/images/items/10iss.png",
                 era:10,
                 hint1:"ISS is een bemande sataliet gebouwd voor onderzoek.",
