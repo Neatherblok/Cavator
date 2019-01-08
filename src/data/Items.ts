@@ -568,6 +568,14 @@ class Item {
                 hint1:"Een optische schijf, die voor de opslag van muziek werd gebruikt.",
                 hint2:"De CD is gezamenlijk ontwikkeld door Philips en Sony.",
                 hint3:"Later werd de CD ook voor video gebruikt.",
+            },
+            {
+                name:"een laser",
+                source:"./assets/images/items/10cd.png",
+                era:10,
+                hint1:"Een soort licht dat maar in 1 richting straalt.",
+                hint2:"Lasers worden voor veel verschillende doelen gebruikt.",
+                hint3:"Volgens de kranten zou de laser toen 'een dodende straal' zijn.",
             }
         ];
     }
