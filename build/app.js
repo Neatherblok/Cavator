@@ -400,6 +400,14 @@ class Item {
                     hint3: "Pottenbakken gebeurde eerst in open vuren, later bakte men in speciale veldovens."
                 },
                 {
+                    name: "een vuistbijl",
+                    source: "./assets/images/items/1vuistbijl.png",
+                    era: 1,
+                    hint1: "Deze vuistbijl is gemaakt van vuursteen.",
+                    hint2: "Gevonden in de Oosterschelde bij Serooskerke.",
+                    hint3: "Vuistbijlen werden gebruikt voor het slachten en het hakken van hout."
+                },
+                {
                     name: "het Colosseum",
                     source: "./assets/images/items/2colosseum.png",
                     era: 2,
