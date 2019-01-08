@@ -720,6 +720,14 @@ class Item {
                     hint3: "De heteluchtballon is het oudste type luchtballon."
                 },
                 {
+                    name: "de eerste batterij",
+                    source: "./assets/images/items/7batterij.png",
+                    era: 7,
+                    hint1: "Eerst werd het gebruikt voor geneeskrachtige werkingen.",
+                    hint2: "Met de eerste paar werd geëxperimenteerd op kikkerpoten die samentrokken.",
+                    hint3: "De eerste paar batterijen bestonden uit koper, zink en vilt."
+                },
+                {
                     name: "een hoge bi",
                     source: "./assets/images/items/8hoge_bi.png",
                     era: 8,

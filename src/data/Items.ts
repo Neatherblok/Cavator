@@ -398,6 +398,14 @@ class Item {
                 hint2:"De heteluchtballon werd door Joseph en Étienne Montgolfier gedemonstreerd.",
                 hint3:"De heteluchtballon is het oudste type luchtballon."
             },
+            {
+                name:"de eerste batterij",
+                source:"./assets/images/items/7batterij.png",
+                era:7,
+                hint1:"Eerst werd het gebruikt voor geneeskrachtige werkingen.",
+                hint2:"Met de eerste paar werd geëxperimenteerd op kikkerpoten die samentrokken.",
+                hint3:"De eerste paar batterijen bestonden uit koper, zink en vilt."
+            },
             // ERA 8 1800-1900
             {
                 name:"een hoge bi",
