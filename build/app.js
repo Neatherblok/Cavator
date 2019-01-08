@@ -98,15 +98,24 @@ class Game {
                         let audio = new Audio(audioLink);
                         audio.play();
                         if (this.Gamescreen.getHole()[i].getClicks() == 0) {
-                            this.currentGameScreenNumber = 2;
-                            this.Gamescreen.regenerateHole(i);
+                            if (this.Gamescreen.getHole()[i].itemOrJokerSelector() == false) {
+                                this.currentGameScreenNumber = 2;
+                                this.Gamescreen.regenerateHole(i);
+                                this.draw();
+                            }
+                            else if (this.Gamescreen.getHole()[i].itemOrJokerSelector() == true) {
+                                this.time += 10;
+                                this.Gamescreen.regenerateHole(i);
+                                this.draw();
+                                this._canvas.writeTextToCanvas(`Je hebt een zandloper gevonden!`, 20, this._canvas.getCenter().X, 50, 'white');
+                                this._canvas.writeTextToCanvas(`+10 seconden`, 20, this._canvas.getCenter().X, 80, 'white');
+                            }
                         }
                         else {
                             this.Gamescreen.getHole()[i].lowerClicks();
                         }
                     }
                 }
-                this.draw();
             }
             else if (this.currentGameScreenNumber == 0) {
                 if (event.clientX >= (this._canvas.getCenter().X - 111) && event.clientX <= (this._canvas.getCenter().X + 111)
@@ -631,6 +640,14 @@ class Item {
                     hint3: "De lantaarn was voorzien van 2 ruiten."
                 },
                 {
+                    name: "Michiel de Ruyter",
+                    source: "./assets/images/items/6de_Ruyter.jpg",
+                    era: 6,
+                    hint1: "Een berucht zeevaarder die vocht tegen de Engelsen.",
+                    hint2: "Michiel de Ruyter was zoon van Adriaan, een bierdrager.",
+                    hint3: "Hij heeft het Nederlands korps Mariniers opgericht."
+                },
+                {
                     name: "een trekschuit",
                     source: "./assets/images/items/7trekschuit.png",
                     era: 7,
@@ -769,7 +786,7 @@ class Item {
 }
 ;
 class Hole {
-    constructor(canvas, imageSource, xCoor, yCoor, width, height, clicks) {
+    constructor(canvas, imageSource, xCoor, yCoor, width, height, clicks, itemOrJoker) {
         this._canvas = new CanvasHelper(canvas);
         this._imageSrc = imageSource;
         this._xPos = xCoor;
@@ -777,6 +794,7 @@ class Hole {
         this._width = width;
         this._height = height;
         this._clicks = clicks;
+        this._itemOrJoker = itemOrJoker;
     }
     draw() {
         this._canvas.writeImageToCanvas(this._imageSrc, this._xPos, this._yPos);
@@ -798,6 +816,14 @@ class Hole {
     }
     lowerClicks() {
         this._clicks--;
+    }
+    itemOrJokerSelector() {
+        if (this._itemOrJoker == 14) {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 }
 class CanvasHelper {
@@ -1021,7 +1047,7 @@ class GameScreen {
         this.canvasElement = document.getElementById('canvas');
         this._canvas = new CanvasHelper(this.canvasElement);
         for (let index = 0; index < MathHelper.randomNumber(3, 6); index++) {
-            this.hole.push(new Hole(this.canvasElement, `./assets/images/holes/hole${MathHelper.randomNumber(1, 2)}.png`, MathHelper.randomNumber(0, this._canvas.getWidth() - 200), MathHelper.randomNumber(100, this._canvas.getHeight() - 250), 130, 120, MathHelper.randomNumber(4, 6)));
+            this.hole.push(new Hole(this.canvasElement, `./assets/images/holes/hole${MathHelper.randomNumber(1, 2)}.png`, MathHelper.randomNumber(0, this._canvas.getWidth() - 200), MathHelper.randomNumber(100, this._canvas.getHeight() - 250), 130, 120, MathHelper.randomNumber(4, 6), MathHelper.randomNumber(0, 14)));
         }
     }
     ;
@@ -1037,7 +1063,7 @@ class GameScreen {
     }
     regenerateHole(numberOfHole) {
         this.hole.splice(numberOfHole, 1);
-        this.hole.push(new Hole(this.canvasElement, `./assets/images/holes/hole${MathHelper.randomNumber(1, 2)}.png`, MathHelper.randomNumber(0, this._canvas.getWidth() - 200), MathHelper.randomNumber(0, this._canvas.getHeight() - 200), 130, 120, MathHelper.randomNumber(4, 6)));
+        this.hole.push(new Hole(this.canvasElement, `./assets/images/holes/hole${MathHelper.randomNumber(1, 2)}.png`, MathHelper.randomNumber(0, this._canvas.getWidth() - 200), MathHelper.randomNumber(100, this._canvas.getHeight() - 250), 130, 120, MathHelper.randomNumber(4, 6), MathHelper.randomNumber(0, 14)));
     }
 }
 class HighscoreScreen {
