@@ -38,7 +38,7 @@ class CookieAdd {
                 var user = this.getCookie(`username` + i);
                 const points = Number(this.getCookie(`points` + i));
                 if ((points == null || points <= score)) {
-                    user = prompt("Geef een gamenaam in:", "");
+                    user = prompt("HIGHSCORE! Geef een spelersnaam in:", "");
 
                     for (let y = 5; y > i - 1; y--) {
                         this.setCookie((`username` + (y + 1)), this.getCookie(`username` + y), 30);

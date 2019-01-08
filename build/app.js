@@ -98,15 +98,24 @@ class Game {
                         let audio = new Audio(audioLink);
                         audio.play();
                         if (this.Gamescreen.getHole()[i].getClicks() == 0) {
-                            this.currentGameScreenNumber = 2;
-                            this.Gamescreen.regenerateHole(i);
+                            if (this.Gamescreen.getHole()[i].itemOrJokerSelector() == false) {
+                                this.currentGameScreenNumber = 2;
+                                this.Gamescreen.regenerateHole(i);
+                                this.draw();
+                            }
+                            else if (this.Gamescreen.getHole()[i].itemOrJokerSelector() == true) {
+                                this.time += 10;
+                                this.Gamescreen.regenerateHole(i);
+                                this.draw();
+                                this._canvas.writeTextToCanvas(`Je hebt een zandloper gevonden!`, 20, this._canvas.getCenter().X, 50, 'white');
+                                this._canvas.writeTextToCanvas(`+10 seconden`, 20, this._canvas.getCenter().X, 80, 'white');
+                            }
                         }
                         else {
                             this.Gamescreen.getHole()[i].lowerClicks();
                         }
                     }
                 }
-                this.draw();
             }
             else if (this.currentGameScreenNumber == 0) {
                 if (event.clientX >= (this._canvas.getCenter().X - 111) && event.clientX <= (this._canvas.getCenter().X + 111)
@@ -284,7 +293,7 @@ class CookieAdd {
                 var user = this.getCookie(`username` + i);
                 const points = Number(this.getCookie(`points` + i));
                 if ((points == null || points <= score)) {
-                    user = prompt("Geef een gamenaam in:", "");
+                    user = prompt("HIGHSCORE! Geef een spelersnaam in:", "");
                     for (let y = 5; y > i - 1; y--) {
                         this.setCookie((`username` + (y + 1)), this.getCookie(`username` + y), 30);
                         this.setCookie((`points` + (y + 1)), Number(this.getCookie(`points` + y)), 30);
@@ -623,6 +632,14 @@ class Item {
                     hint3: "De lantaarn was voorzien van 2 ruiten."
                 },
                 {
+                    name: "Michiel de Ruyter",
+                    source: "./assets/images/items/6de_Ruyter.jpg",
+                    era: 6,
+                    hint1: "Een berucht zeevaarder die vocht tegen de Engelsen.",
+                    hint2: "Michiel de Ruyter was zoon van Adriaan, een bierdrager.",
+                    hint3: "Hij heeft het Nederlands korps Mariniers opgericht."
+                },
+                {
                     name: "een trekschuit",
                     source: "./assets/images/items/7trekschuit.png",
                     era: 7,
@@ -719,6 +736,14 @@ class Item {
                     hint3: "Het personage op de poster is Uncle Sam."
                 },
                 {
+                    name: "een zeppeling",
+                    source: "./assets/images/items/9zeppelin.png",
+                    era: 9,
+                    hint1: "Bedacht door graaf Ferdinand von Zeppelin.",
+                    hint2: "De ballon is gevuld met gas waardoor het gevaarte vliegt.",
+                    hint3: "De zeppelin was de eerste militaire en commerciële luchtvaart voertuigen."
+                },
+                {
                     name: "een televisie handboek",
                     source: "./assets/images/items/10handboek_televisie.png",
                     era: 10,
@@ -749,6 +774,14 @@ class Item {
                     hint1: "Kan gesloten worden bij hoog water.",
                     hint2: "Is onderdeel van het Deltaplan.",
                     hint3: "Dit plan werd gestart als resultaat van de watersnoodramp."
+                },
+                {
+                    name: "het International Space Station (ISS)",
+                    source: "./assets/images/items/10iss.png",
+                    era: 10,
+                    hint1: "ISS is een bemande sataliet gebouwd voor onderzoek.",
+                    hint2: "Vliegt in 93 om de aarde.",
+                    hint3: "Het station weegt ongeveer 420kg.",
                 }
             ];
     }
@@ -761,7 +794,7 @@ class Item {
 }
 ;
 class Hole {
-    constructor(canvas, imageSource, xCoor, yCoor, width, height, clicks) {
+    constructor(canvas, imageSource, xCoor, yCoor, width, height, clicks, itemOrJoker) {
         this._canvas = new CanvasHelper(canvas);
         this._imageSrc = imageSource;
         this._xPos = xCoor;
@@ -769,6 +802,7 @@ class Hole {
         this._width = width;
         this._height = height;
         this._clicks = clicks;
+        this._itemOrJoker = itemOrJoker;
     }
     draw() {
         this._canvas.writeImageToCanvas(this._imageSrc, this._xPos, this._yPos);
@@ -790,6 +824,14 @@ class Hole {
     }
     lowerClicks() {
         this._clicks--;
+    }
+    itemOrJokerSelector() {
+        if (this._itemOrJoker == 14) {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 }
 class CanvasHelper {
@@ -855,6 +897,7 @@ class EraExplanationScreen {
             this.canvasElement.style.backgroundImage = "url(./assets/images/backgrounds/tableBackground.jpg)";
             this.canvasElement.style.backgroundSize = "100% 100%";
             this.canvasElement.style.cursor = "url(./assets/images/FeatherCursor.png), auto";
+            this.canvasElement.style.cursor = "url(./assets/images/FeatherCursor.cur), auto";
             this._canvas.writeImageToCanvas("./assets/images/eraLogos/era1.png", 25, 25);
             this._canvas.writeImageToCanvas("./assets/images/eraLogos/era2.png", 25, 150);
             this._canvas.writeImageToCanvas("./assets/images/eraLogos/era3.png", 25, 275);
@@ -918,6 +961,7 @@ class EraSelectionScreen {
             this.canvasElement.style.backgroundImage = "url(./assets/images/backgrounds/tableBackground.jpg)";
             this.canvasElement.style.backgroundSize = "100% 100%";
             this.canvasElement.style.cursor = "url(./assets/images/FeatherCursor.png), auto";
+            this.canvasElement.style.cursor = "url(./assets/images/FeatherCursor.cur), auto";
             this._canvas.writeTextToCanvas(`Je hebt ${this.itemList.getItemProperty(this.pickedItem, "name")} gevonden!`, 35, this._canvas.getCenter().X, 100, "yellow");
             this._canvas.writeImageToCanvas(this.itemList.getItemProperty(this.pickedItem, "source"), this._canvas.getCenter().X / 2 - 150, this._canvas.getCenter().Y - 200);
             this._canvas.writeImageToCanvas("./assets/images/eraLogos/era1.png", this._canvas.getWidth() * 0.017, this._canvas.getHeight() - 180);
@@ -974,7 +1018,8 @@ class GameExplanationScreen {
         this.draw = () => {
             this.canvasElement.style.backgroundImage = "url(./assets/images/backgrounds/tableBackground.jpg)";
             this.canvasElement.style.backgroundSize = "100% 100%";
-            this.canvasElement.style.cursor = "url(./assets/images/FeatherCursor.png), auto";
+            this.canvasElement.style.cursor = "url(./assets/images/FeatherCursor.png) 4 12, auto";
+            this.canvasElement.style.cursor = "url(./assets/images/FeatherCursor.cur), auto";
             this._canvas.writeTextToCanvas(this.explanation1_0, 20, this._canvas.getWidth() / 32, 100, "yellow", "left");
             this._canvas.writeTextToCanvas(this.explanation1_1, 20, this._canvas.getWidth() / 32, 130, "yellow", "left");
             this._canvas.writeImageToCanvas("./assets/images/screenshots/gameScreen.png", this._canvas.getCenter().X + 130, 30);
@@ -1004,12 +1049,13 @@ class GameScreen {
             }
             this.canvasElement.style.backgroundImage = "url(./assets/images/backgrounds/groundBackground.png)";
             this.canvasElement.style.backgroundSize = "auto";
-            this.canvasElement.style.cursor = "url(./assets/images/shovelCursor.png), auto";
+            this.canvasElement.style.cursor = "url(./assets/images/shovelCursor.png) 4 12, auto";
+            this.canvasElement.style.cursor = "url(./assets/images/shovelCursor.cur), auto";
         };
         this.canvasElement = document.getElementById('canvas');
         this._canvas = new CanvasHelper(this.canvasElement);
         for (let index = 0; index < MathHelper.randomNumber(3, 6); index++) {
-            this.hole.push(new Hole(this.canvasElement, `./assets/images/holes/hole${MathHelper.randomNumber(1, 2)}.png`, MathHelper.randomNumber(0, this._canvas.getWidth() - 200), MathHelper.randomNumber(100, this._canvas.getHeight() - 250), 130, 120, MathHelper.randomNumber(4, 6)));
+            this.hole.push(new Hole(this.canvasElement, `./assets/images/holes/hole${MathHelper.randomNumber(1, 2)}.png`, MathHelper.randomNumber(0, this._canvas.getWidth() - 200), MathHelper.randomNumber(100, this._canvas.getHeight() - 250), 130, 120, MathHelper.randomNumber(4, 6), MathHelper.randomNumber(0, 14)));
         }
     }
     ;
@@ -1025,7 +1071,7 @@ class GameScreen {
     }
     regenerateHole(numberOfHole) {
         this.hole.splice(numberOfHole, 1);
-        this.hole.push(new Hole(this.canvasElement, `./assets/images/holes/hole${MathHelper.randomNumber(1, 2)}.png`, MathHelper.randomNumber(0, this._canvas.getWidth() - 200), MathHelper.randomNumber(0, this._canvas.getHeight() - 200), 130, 120, MathHelper.randomNumber(4, 6)));
+        this.hole.push(new Hole(this.canvasElement, `./assets/images/holes/hole${MathHelper.randomNumber(1, 2)}.png`, MathHelper.randomNumber(0, this._canvas.getWidth() - 200), MathHelper.randomNumber(100, this._canvas.getHeight() - 250), 130, 120, MathHelper.randomNumber(4, 6), MathHelper.randomNumber(0, 14)));
     }
 }
 class HighscoreScreen {
@@ -1033,7 +1079,8 @@ class HighscoreScreen {
         this.draw = () => {
             this.canvasElement.style.backgroundImage = "url(./assets/images/backgrounds/tableBackground.jpg)";
             this.canvasElement.style.backgroundSize = "100% 100%";
-            this.canvasElement.style.cursor = "url(./assets/images/FeatherCursor.png), auto";
+            this.canvasElement.style.cursor = "url(./assets/images/FeatherCursor.png) 4 12, auto";
+            this.canvasElement.style.cursor = "url(./assets/images/FeatherCursor.cur), auto";
             this._canvas.writeTextToCanvas(`Je hebt een score van ${Number(document.getElementById("scoreText").innerHTML.substring('Je score is: '.length))} behaald!`, 45, this._canvas.getCenter().X, 100, "yellow");
             this._canvas.writeButtonToCanvas("Probeer opnieuw", undefined, this._canvas.getCenter().Y + 200);
             this._cookieAdd.checkCookie('highscore', Number(document.getElementById("scoreText").innerHTML.substring('Je score is: '.length)));
@@ -1053,6 +1100,7 @@ class StartScreen {
             this.canvasElement.style.backgroundImage = "url(./assets/images/backgrounds/tableBackground.jpg)";
             this.canvasElement.style.backgroundSize = "100% 100%";
             this.canvasElement.style.cursor = "url(./assets/images/FeatherCursor.png), auto";
+            this.canvasElement.style.cursor = "url(./assets/images/FeatherCursor.cur), auto";
             this._canvas.writeImageToCanvas("./assets/images/Cavator_logo/CavatorLogo.png", this._canvas.getCenter().X - 200, this._canvas.getCenter().Y - 300);
             this._canvas.writeButtonToCanvas("Speel", undefined, this._canvas.getCenter().Y + 150);
             this._canvas.writeButtonToCanvas("Speluitleg", undefined, this._canvas.getCenter().Y + 200);

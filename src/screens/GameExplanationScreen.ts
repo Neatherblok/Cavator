@@ -23,7 +23,8 @@ class GameExplanationScreen{
     public draw = () => {
         this.canvasElement.style.backgroundImage = "url(./assets/images/backgrounds/tableBackground.jpg)";
         this.canvasElement.style.backgroundSize = "100% 100%"
-        this.canvasElement.style.cursor = "url(./assets/images/FeatherCursor.png), auto";
+        this.canvasElement.style.cursor = "url(./assets/images/FeatherCursor.png) 4 12, auto"
+        this.canvasElement.style.cursor = "url(./assets/images/FeatherCursor.cur), auto"
         this._canvas.writeTextToCanvas(this.explanation1_0,20,this._canvas.getWidth()/32,100,"yellow","left");
         this._canvas.writeTextToCanvas(this.explanation1_1,20,this._canvas.getWidth()/32,130,"yellow","left");
         this._canvas.writeImageToCanvas("./assets/images/screenshots/gameScreen.png", this._canvas.getCenter().X+130, 30);

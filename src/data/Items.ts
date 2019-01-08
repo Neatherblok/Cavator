@@ -309,6 +309,14 @@ class Item {
                 hint2:"Als brandstof werd raapolie gebruikt.",
                 hint3:"De lantaarn was voorzien van 2 ruiten."
             },
+            {
+                name:"Michiel de Ruyter",
+                source: "./assets/images/items/6de_Ruyter.jpg",
+                era:6,
+                hint1:"Een berucht zeevaarder die vocht tegen de Engelsen.",
+                hint2:"Michiel de Ruyter was zoon van Adriaan, een bierdrager.",
+                hint3:"Hij heeft het Nederlands korps Mariniers opgericht."
+            },
             // ERA 7 1700-1800
             {
                 name:"een trekschuit",
@@ -408,6 +416,14 @@ class Item {
                 hint2:"Wervings poster, want er was een tekort aan soldaten.",
                 hint3:"Het personage op de poster is Uncle Sam."
             },
+            {
+                name:"een zeppeling",
+                source:"./assets/images/items/9zeppelin.png",
+                era:9,
+                hint1:"Bedacht door graaf Ferdinand von Zeppelin.",
+                hint2:"De ballon is gevuld met gas waardoor het gevaarte vliegt.",
+                hint3:"De zeppelin was de eerste militaire en commerciële luchtvaart voertuigen."
+            },
             // ERA 10 1950-heden
             {
                 name:"een televisie handboek",
@@ -440,6 +456,14 @@ class Item {
                 hint1:"Kan gesloten worden bij hoog water.",
                 hint2:"Is onderdeel van het Deltaplan.",
                 hint3:"Dit plan werd gestart als resultaat van de watersnoodramp."
+            },
+            {
+                name:"het International Space Station (ISS)",
+                source:"./assets/images/items/10iss.png",
+                era:10,
+                hint1:"ISS is een bemande sataliet gebouwd voor onderzoek.",
+                hint2:"Vliegt in 93 om de aarde.",
+                hint3:"Het station weegt ongeveer 420kg.",
             }
         ];
     }

@@ -13,7 +13,8 @@ class EraExplanationScreen{
     public draw = () => {
         this.canvasElement.style.backgroundImage = "url(./assets/images/backgrounds/tableBackground.jpg)";
         this.canvasElement.style.backgroundSize = "100% 100%"
-        this.canvasElement.style.cursor = "url(./assets/images/FeatherCursor.png), auto";
+        this.canvasElement.style.cursor = "url(./assets/images/FeatherCursor.png), auto"
+        this.canvasElement.style.cursor = "url(./assets/images/FeatherCursor.cur), auto"
         this._canvas.writeImageToCanvas("./assets/images/eraLogos/era1.png", 25, 25);
         this._canvas.writeImageToCanvas("./assets/images/eraLogos/era2.png", 25, 150);
         this._canvas.writeImageToCanvas("./assets/images/eraLogos/era3.png", 25, 275);
