@@ -305,8 +305,8 @@ class Item {
                 name:"de Nachtwacht",
                 source:"./assets/images/items/6nachtwacht.png",
                 era:6,
-                hint1:"Gemaakt door Rembrandt van Rijn",
-                hint2:"Hangt op dit moment in het Rijksmuseum",
+                hint1:"Gemaakt door Rembrandt van Rijn.",
+                hint2:"Hangt op dit moment in het Rijksmuseum.",
                 hint3:"Bij het inkorten verdween de afbeelding van twee schutters."
             },
             {
@@ -463,6 +463,14 @@ class Item {
                 hint2: "Het eerste bericht was 'Mr. Watson, come here. I want to see you.'",
                 hint3: "Zijn telefoonmaatschappij werd een van 's werelds grootste bedrijven."
             },
+            {
+                name: "een stethoscoop",
+                source: "./assets/images/items/8stethoscoop.png",
+                era: 8,
+                hint1: "Een instrument om naar geluiden in het lichaam te luisteren.",
+                hint2: "De meeste artsen maken nog gebruik van het traditionele model.",
+                hint3: "Artsen moeten hem eigenlijk altijd bij zich hebben."
+            },
             // ERA 9 1900-1950
             {
                 name:"een vliegtuigbom",
@@ -552,6 +560,22 @@ class Item {
                 hint1:"ISS is een bemande sataliet gebouwd voor onderzoek.",
                 hint2:"Vliegt in 93 om de aarde.",
                 hint3:"Het station weegt ongeveer 420kg.",
+            },
+            {
+                name:"een muziekcassette",
+                source:"./assets/images/items/10muziekcassette.png",
+                era:10,
+                hint1:"Een magneetband die wordt gebruikt om muziek op te slaan.",
+                hint2:"De compacte muziekcassette is een ontwikkeling geweest door Lou Ottens.",
+                hint3:"Hij was een werknemer van Philips.",
+            },
+            {
+                name:"een compact disc",
+                source:"./assets/images/items/10cd.png",
+                era:10,
+                hint1:"Een optische schijf, die voor de opslag van muziek werd gebruikt.",
+                hint2:"De CD is gezamenlijk ontwikkeld door Philips en Sony.",
+                hint3:"Later werd de CD ook voor video gebruikt.",
             }
         ];
     }
