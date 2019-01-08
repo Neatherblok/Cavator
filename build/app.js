@@ -367,7 +367,7 @@ class Item {
                     hint3: "Het had een dikke vacht, voor tegen de kou."
                 },
                 {
-                    name: "Stonehenge",
+                    name: "de Stonehenge",
                     source: "./assets/images/items/1stonehenge.png",
                     era: 1,
                     hint1: "Het is een oud monument gelegen in Engeland.",
@@ -463,7 +463,7 @@ class Item {
                     hint3: "Gemaakt in Schotland of Ierland."
                 },
                 {
-                    name: "een viking zwaard.",
+                    name: "een viking zwaard",
                     source: "./assets/images/items/3viking_zwaard.png",
                     era: 3,
                     hint1: "Het zwaard is gevonden in Skaftárhreppur, IJsland.",
@@ -472,7 +472,7 @@ class Item {
                 },
                 {
                     name: "een vikingschip",
-                    source: "./assets/images/items/3vikingschip",
+                    source: "./assets/images/items/3vikingschip.png",
                     era: 3,
                     hint1: "Het werd gebruikt voor transport, handel en ontdekkingsreizen.",
                     hint2: "Ook werden ze gebruikt in oorlogsmissies en plunderingen.",
@@ -480,19 +480,11 @@ class Item {
                 },
                 {
                     name: "de drukpers",
-                    source: "./assets/images/items/",
+                    source: "./assets/images/items/3drukpers.png",
                     era: 3,
-                    hint1: "Hiermee konden boeken gekopieerd worden en dus makkelijker verspreid worden",
+                    hint1: "Hiermee konden boeken gekopieerd worden en dus makkelijker verspreid worden.",
                     hint2: "Werd gebruikt door Maarten Luther om zijn ideeen te verspreiden.",
                     hint3: "Hiermee werd ook de Gutenbergbijbel gemaakt."
-                },
-                {
-                    name: "",
-                    source: "./assets/images/items/",
-                    era: 3,
-                    hint1: "",
-                    hint2: "",
-                    hint3: ""
                 },
                 {
                     name: "een penning uit Holland",
@@ -527,36 +519,36 @@ class Item {
                     hint3: "Het gebouw is tegenwoordig een rijksmonument."
                 },
                 {
-                    name: "het spinnewiel",
-                    source: "./assets/images/items/",
+                    name: "een spinnewiel",
+                    source: "./assets/images/items/4spinnewiel.png",
                     era: 4,
-                    hint1: "",
-                    hint2: "",
-                    hint3: ""
+                    hint1: "Een mechaniek om van wol een draad te spinnen.",
+                    hint2: "Ook wel een schippertje genoemd, omdat het vaak werd gebruikt op schepen.",
+                    hint3: "Er ook katoen of vlas gebruikt worden voor het spinnen."
                 },
                 {
-                    name: "een getijdenmolen",
-                    source: "./assets/images/items/",
+                    name: "de getijdenmolen van Middelburg",
+                    source: "./assets/images/items/4getijdenmolen.png",
                     era: 4,
-                    hint1: "Het wordt aangedreven door het tij",
-                    hint2: "Er zijn nog steeds resten te vinden in Zeeland",
-                    hint3: "Het wordt gebruikt in combinatie met het waterrad"
+                    hint1: "Het wordt aangedreven door het tij.",
+                    hint2: "Er zijn nog steeds resten te vinden in Zeeland.",
+                    hint3: "Het wordt gebruikt in combinatie met het waterrad."
                 },
                 {
-                    name: "het waterrad",
-                    source: "./assets/images/items/",
+                    name: "een waterrad",
+                    source: "./assets/images/items/4waterrad.png",
                     era: 4,
-                    hint1: "Door het waterrad kon overgestapt worden van mankracht naar waterkracht",
-                    hint2: "Ze zijn aangelegd in heel Midden-Europa",
-                    hint3: "Ze liggen vaak in de buurt bij getijdenmolens"
+                    hint1: "Door het waterrad kon overgestapt worden van mankracht naar waterkracht.",
+                    hint2: "Ze zijn aangelegd in heel Midden-Europa.",
+                    hint3: "Ze liggen vaak in de buurt bij getijdenmolens."
                 },
                 {
                     name: "een hoogoven",
-                    source: "./assets/images/items/",
+                    source: "./assets/images/items/4hoogoven.png",
                     era: 4,
-                    hint1: "",
-                    hint2: "",
-                    hint3: ""
+                    hint1: "Installatie waarin ijzererts wordt omgezet in ijzer.",
+                    hint2: "Omdat het ijzer vloeibaar is kan het gegoten worden.",
+                    hint3: "Voor de verhitting is koolstof nodig."
                 },
                 {
                     name: "de Mona Lisa",
