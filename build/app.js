@@ -222,34 +222,34 @@ class MouseListener {
     }
     eraScreenClick(eraNumber) {
         if (eraNumber == 1) {
-            return { Xmin: this._canvas.getWidth() * 0.017, Xmax: this._canvas.getWidth() * 0.017 + 102, Ymin: this._canvas.getHeight() - 200, Ymax: this._canvas.getHeight() - 83 };
+            return { Xmin: this._canvas.getWidth() * 0.017, Xmax: this._canvas.getWidth() * 0.017 + 102, Ymin: this._canvas.getHeight() - 180, Ymax: this._canvas.getHeight() - 63 };
         }
         else if (eraNumber == 2) {
-            return { Xmin: this._canvas.getWidth() * 0.117, Xmax: this._canvas.getWidth() * 0.117 + 102, Ymin: this._canvas.getHeight() - 200, Ymax: this._canvas.getHeight() - 83 };
+            return { Xmin: this._canvas.getWidth() * 0.117, Xmax: this._canvas.getWidth() * 0.117 + 102, Ymin: this._canvas.getHeight() - 180, Ymax: this._canvas.getHeight() - 63 };
         }
         else if (eraNumber == 3) {
-            return { Xmin: this._canvas.getWidth() * 0.217, Xmax: this._canvas.getWidth() * 0.217 + 102, Ymin: this._canvas.getHeight() - 200, Ymax: this._canvas.getHeight() - 83 };
+            return { Xmin: this._canvas.getWidth() * 0.217, Xmax: this._canvas.getWidth() * 0.217 + 102, Ymin: this._canvas.getHeight() - 180, Ymax: this._canvas.getHeight() - 63 };
         }
         else if (eraNumber == 4) {
-            return { Xmin: this._canvas.getWidth() * 0.317, Xmax: this._canvas.getWidth() * 0.317 + 102, Ymin: this._canvas.getHeight() - 200, Ymax: this._canvas.getHeight() - 83 };
+            return { Xmin: this._canvas.getWidth() * 0.317, Xmax: this._canvas.getWidth() * 0.317 + 102, Ymin: this._canvas.getHeight() - 180, Ymax: this._canvas.getHeight() - 63 };
         }
         else if (eraNumber == 5) {
-            return { Xmin: this._canvas.getWidth() * 0.417, Xmax: this._canvas.getWidth() * 0.417 + 102, Ymin: this._canvas.getHeight() - 200, Ymax: this._canvas.getHeight() - 83 };
+            return { Xmin: this._canvas.getWidth() * 0.417, Xmax: this._canvas.getWidth() * 0.417 + 102, Ymin: this._canvas.getHeight() - 180, Ymax: this._canvas.getHeight() - 63 };
         }
         else if (eraNumber == 6) {
-            return { Xmin: this._canvas.getWidth() * 0.517, Xmax: this._canvas.getWidth() * 0.517 + 102, Ymin: this._canvas.getHeight() - 200, Ymax: this._canvas.getHeight() - 83 };
+            return { Xmin: this._canvas.getWidth() * 0.517, Xmax: this._canvas.getWidth() * 0.517 + 102, Ymin: this._canvas.getHeight() - 180, Ymax: this._canvas.getHeight() - 63 };
         }
         else if (eraNumber == 7) {
-            return { Xmin: this._canvas.getWidth() * 0.617, Xmax: this._canvas.getWidth() * 0.617 + 102, Ymin: this._canvas.getHeight() - 200, Ymax: this._canvas.getHeight() - 83 };
+            return { Xmin: this._canvas.getWidth() * 0.617, Xmax: this._canvas.getWidth() * 0.617 + 102, Ymin: this._canvas.getHeight() - 180, Ymax: this._canvas.getHeight() - 63 };
         }
         else if (eraNumber == 8) {
-            return { Xmin: this._canvas.getWidth() * 0.717, Xmax: this._canvas.getWidth() * 0.717 + 102, Ymin: this._canvas.getHeight() - 200, Ymax: this._canvas.getHeight() - 83 };
+            return { Xmin: this._canvas.getWidth() * 0.717, Xmax: this._canvas.getWidth() * 0.717 + 102, Ymin: this._canvas.getHeight() - 180, Ymax: this._canvas.getHeight() - 63 };
         }
         else if (eraNumber == 9) {
-            return { Xmin: this._canvas.getWidth() * 0.817, Xmax: this._canvas.getWidth() * 0.817 + 102, Ymin: this._canvas.getHeight() - 200, Ymax: this._canvas.getHeight() - 83 };
+            return { Xmin: this._canvas.getWidth() * 0.817, Xmax: this._canvas.getWidth() * 0.817 + 102, Ymin: this._canvas.getHeight() - 180, Ymax: this._canvas.getHeight() - 63 };
         }
         else if (eraNumber == 10) {
-            return { Xmin: this._canvas.getWidth() * 0.917, Xmax: this._canvas.getWidth() * 0.917 + 102, Ymin: this._canvas.getHeight() - 200, Ymax: this._canvas.getHeight() - 83 };
+            return { Xmin: this._canvas.getWidth() * 0.917, Xmax: this._canvas.getWidth() * 0.917 + 102, Ymin: this._canvas.getHeight() - 180, Ymax: this._canvas.getHeight() - 63 };
         }
     }
 }
@@ -284,7 +284,7 @@ class CookieAdd {
                 var user = this.getCookie(`username` + i);
                 const points = Number(this.getCookie(`points` + i));
                 if ((points == null || points <= score)) {
-                    user = prompt("Geef een gamenaam in:", "");
+                    user = prompt("HIGHSCORE! Geef een spelersnaam in:", "");
                     for (let y = 5; y > i - 1; y--) {
                         this.setCookie((`username` + (y + 1)), this.getCookie(`username` + y), 30);
                         this.setCookie((`points` + (y + 1)), Number(this.getCookie(`points` + y)), 30);
@@ -863,6 +863,7 @@ class EraExplanationScreen {
             this.canvasElement.style.backgroundImage = "url(./assets/images/backgrounds/tableBackground.jpg)";
             this.canvasElement.style.backgroundSize = "100% 100%";
             this.canvasElement.style.cursor = "url(./assets/images/FeatherCursor.png), auto";
+            this.canvasElement.style.cursor = "url(./assets/images/FeatherCursor.cur), auto";
             this._canvas.writeImageToCanvas("./assets/images/eraLogos/era1.png", 25, 25);
             this._canvas.writeImageToCanvas("./assets/images/eraLogos/era2.png", 25, 150);
             this._canvas.writeImageToCanvas("./assets/images/eraLogos/era3.png", 25, 275);
@@ -926,24 +927,34 @@ class EraSelectionScreen {
             this.canvasElement.style.backgroundImage = "url(./assets/images/backgrounds/tableBackground.jpg)";
             this.canvasElement.style.backgroundSize = "100% 100%";
             this.canvasElement.style.cursor = "url(./assets/images/FeatherCursor.png), auto";
+            this.canvasElement.style.cursor = "url(./assets/images/FeatherCursor.cur), auto";
             this._canvas.writeTextToCanvas(`Je hebt ${this.itemList.getItemProperty(this.pickedItem, "name")} gevonden!`, 35, this._canvas.getCenter().X, 100, "yellow");
             this._canvas.writeImageToCanvas(this.itemList.getItemProperty(this.pickedItem, "source"), this._canvas.getCenter().X / 2 - 150, this._canvas.getCenter().Y - 200);
-            this._canvas.writeImageToCanvas("./assets/images/eraLogos/era1.png", this._canvas.getWidth() * 0.017, this._canvas.getHeight() - 200);
-            this._canvas.writeImageToCanvas("./assets/images/eraLogos/era2.png", this._canvas.getWidth() * 0.117, this._canvas.getHeight() - 200);
-            this._canvas.writeImageToCanvas("./assets/images/eraLogos/era3.png", this._canvas.getWidth() * 0.217, this._canvas.getHeight() - 200);
-            this._canvas.writeImageToCanvas("./assets/images/eraLogos/era4.png", this._canvas.getWidth() * 0.317, this._canvas.getHeight() - 200);
-            this._canvas.writeImageToCanvas("./assets/images/eraLogos/era5.png", this._canvas.getWidth() * 0.417, this._canvas.getHeight() - 200);
-            this._canvas.writeImageToCanvas("./assets/images/eraLogos/era6.png", this._canvas.getWidth() * 0.517, this._canvas.getHeight() - 200);
-            this._canvas.writeImageToCanvas("./assets/images/eraLogos/era7.png", this._canvas.getWidth() * 0.617, this._canvas.getHeight() - 200);
-            this._canvas.writeImageToCanvas("./assets/images/eraLogos/era8.png", this._canvas.getWidth() * 0.717, this._canvas.getHeight() - 200);
-            this._canvas.writeImageToCanvas("./assets/images/eraLogos/era9.png", this._canvas.getWidth() * 0.817, this._canvas.getHeight() - 200);
-            this._canvas.writeImageToCanvas("./assets/images/eraLogos/era10.png", this._canvas.getWidth() * 0.917, this._canvas.getHeight() - 200);
+            this._canvas.writeImageToCanvas("./assets/images/eraLogos/era1.png", this._canvas.getWidth() * 0.017, this._canvas.getHeight() - 180);
+            this._canvas.writeImageToCanvas("./assets/images/eraLogos/era2.png", this._canvas.getWidth() * 0.117, this._canvas.getHeight() - 180);
+            this._canvas.writeImageToCanvas("./assets/images/eraLogos/era3.png", this._canvas.getWidth() * 0.217, this._canvas.getHeight() - 180);
+            this._canvas.writeImageToCanvas("./assets/images/eraLogos/era4.png", this._canvas.getWidth() * 0.317, this._canvas.getHeight() - 180);
+            this._canvas.writeImageToCanvas("./assets/images/eraLogos/era5.png", this._canvas.getWidth() * 0.417, this._canvas.getHeight() - 180);
+            this._canvas.writeImageToCanvas("./assets/images/eraLogos/era6.png", this._canvas.getWidth() * 0.517, this._canvas.getHeight() - 180);
+            this._canvas.writeImageToCanvas("./assets/images/eraLogos/era7.png", this._canvas.getWidth() * 0.617, this._canvas.getHeight() - 180);
+            this._canvas.writeImageToCanvas("./assets/images/eraLogos/era8.png", this._canvas.getWidth() * 0.717, this._canvas.getHeight() - 180);
+            this._canvas.writeImageToCanvas("./assets/images/eraLogos/era9.png", this._canvas.getWidth() * 0.817, this._canvas.getHeight() - 180);
+            this._canvas.writeImageToCanvas("./assets/images/eraLogos/era10.png", this._canvas.getWidth() * 0.917, this._canvas.getHeight() - 180);
             this._canvas._context.lineWidth = 2;
             this._canvas._context.beginPath();
-            this._canvas._context.moveTo(this._canvas.getWidth() * 0.014, this._canvas.getHeight() - 80);
-            this._canvas._context.lineTo(this._canvas.getWidth() * 0.985, this._canvas.getHeight() - 80);
-            this._canvas._context.moveTo(this._canvas.getWidth() * 0.014, this._canvas.getHeight() - 79);
-            this._canvas._context.lineTo(this._canvas.getWidth() * 0.985, this._canvas.getHeight() - 79);
+            this._canvas.writeTextToCanvas("-3000", 20, this._canvas.getWidth() * 0.105, this._canvas.getHeight() - 20, "yellow", "center");
+            this._canvas.writeTextToCanvas("500", 20, this._canvas.getWidth() * 0.205, this._canvas.getHeight() - 20, "yellow", "center");
+            this._canvas.writeTextToCanvas("1000", 20, this._canvas.getWidth() * 0.305, this._canvas.getHeight() - 20, "yellow", "center");
+            this._canvas.writeTextToCanvas("1500", 20, this._canvas.getWidth() * 0.405, this._canvas.getHeight() - 20, "yellow", "center");
+            this._canvas.writeTextToCanvas("1600", 20, this._canvas.getWidth() * 0.505, this._canvas.getHeight() - 20, "yellow", "center");
+            this._canvas.writeTextToCanvas("1700", 20, this._canvas.getWidth() * 0.605, this._canvas.getHeight() - 20, "yellow", "center");
+            this._canvas.writeTextToCanvas("1800", 20, this._canvas.getWidth() * 0.705, this._canvas.getHeight() - 20, "yellow", "center");
+            this._canvas.writeTextToCanvas("1900", 20, this._canvas.getWidth() * 0.805, this._canvas.getHeight() - 20, "yellow", "center");
+            this._canvas.writeTextToCanvas("1950", 20, this._canvas.getWidth() * 0.905, this._canvas.getHeight() - 20, "yellow", "center");
+            this._canvas._context.moveTo(this._canvas.getWidth() * 0.014, this._canvas.getHeight() - 60);
+            this._canvas._context.lineTo(this._canvas.getWidth() * 0.985, this._canvas.getHeight() - 60);
+            this._canvas._context.moveTo(this._canvas.getWidth() * 0.014, this._canvas.getHeight() - 59);
+            this._canvas._context.lineTo(this._canvas.getWidth() * 0.985, this._canvas.getHeight() - 59);
             this._canvas._context.stroke();
             this._canvas._context.strokeStyle = "yellow";
             this._canvas._context.strokeRect((this._canvas.getWidth() * 0.75) - (this._canvas.getWidth() * 0.125), this._canvas.getHeight() * 0.18 - 1, this._canvas.getWidth() * 0.35, this._canvas.getHeight() * 0.5 + 2);
@@ -973,7 +984,8 @@ class GameExplanationScreen {
         this.draw = () => {
             this.canvasElement.style.backgroundImage = "url(./assets/images/backgrounds/tableBackground.jpg)";
             this.canvasElement.style.backgroundSize = "100% 100%";
-            this.canvasElement.style.cursor = "url(./assets/images/FeatherCursor.png), auto";
+            this.canvasElement.style.cursor = "url(./assets/images/FeatherCursor.png) 4 12, auto";
+            this.canvasElement.style.cursor = "url(./assets/images/FeatherCursor.cur), auto";
             this._canvas.writeTextToCanvas(this.explanation1_0, 20, this._canvas.getWidth() / 32, 100, "yellow", "left");
             this._canvas.writeTextToCanvas(this.explanation1_1, 20, this._canvas.getWidth() / 32, 130, "yellow", "left");
             this._canvas.writeImageToCanvas("./assets/images/screenshots/gameScreen.png", this._canvas.getCenter().X + 130, 30);
@@ -1003,7 +1015,8 @@ class GameScreen {
             }
             this.canvasElement.style.backgroundImage = "url(./assets/images/backgrounds/groundBackground.png)";
             this.canvasElement.style.backgroundSize = "auto";
-            this.canvasElement.style.cursor = "url(./assets/images/shovelCursor.png), auto";
+            this.canvasElement.style.cursor = "url(./assets/images/shovelCursor.png) 4 12, auto";
+            this.canvasElement.style.cursor = "url(./assets/images/shovelCursor.cur), auto";
         };
         this.canvasElement = document.getElementById('canvas');
         this._canvas = new CanvasHelper(this.canvasElement);
@@ -1032,7 +1045,8 @@ class HighscoreScreen {
         this.draw = () => {
             this.canvasElement.style.backgroundImage = "url(./assets/images/backgrounds/tableBackground.jpg)";
             this.canvasElement.style.backgroundSize = "100% 100%";
-            this.canvasElement.style.cursor = "url(./assets/images/FeatherCursor.png), auto";
+            this.canvasElement.style.cursor = "url(./assets/images/FeatherCursor.png) 4 12, auto";
+            this.canvasElement.style.cursor = "url(./assets/images/FeatherCursor.cur), auto";
             this._canvas.writeTextToCanvas(`Je hebt een score van ${Number(document.getElementById("scoreText").innerHTML.substring('Je score is: '.length))} behaald!`, 45, this._canvas.getCenter().X, 100, "yellow");
             this._canvas.writeButtonToCanvas("Probeer opnieuw", undefined, this._canvas.getCenter().Y + 200);
             this._cookieAdd.checkCookie('highscore', Number(document.getElementById("scoreText").innerHTML.substring('Je score is: '.length)));
@@ -1052,6 +1066,7 @@ class StartScreen {
             this.canvasElement.style.backgroundImage = "url(./assets/images/backgrounds/tableBackground.jpg)";
             this.canvasElement.style.backgroundSize = "100% 100%";
             this.canvasElement.style.cursor = "url(./assets/images/FeatherCursor.png), auto";
+            this.canvasElement.style.cursor = "url(./assets/images/FeatherCursor.cur), auto";
             this._canvas.writeImageToCanvas("./assets/images/Cavator_logo/CavatorLogo.png", this._canvas.getCenter().X - 200, this._canvas.getCenter().Y - 300);
             this._canvas.writeButtonToCanvas("Speel", undefined, this._canvas.getCenter().Y + 150);
             this._canvas.writeButtonToCanvas("Speluitleg", undefined, this._canvas.getCenter().Y + 200);
