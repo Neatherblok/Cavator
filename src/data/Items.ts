@@ -292,6 +292,14 @@ class Item {
                 hint2:"Het was geen precisiewapen, maar op korte afstand uiterst gevaarlijk.",
                 hint3:"De lading bestond uit een bundel kogels (ook wel een druiventros genoemd)."
             },
+            {
+                name:"een beiaard",
+                source:"./assets/images/items/5beiaard.png",
+                era:5,
+                hint1:"Muziekinstrument bestaande uit op elkaar afgestemde bronzen klokken.",
+                hint2:"De beiaard is het zwaarste van alle muziekinstrumenten.",
+                hint3:"De beiaardcultuur wordt erkend als immaterieel cultureel erfgoed."
+            },
             // ERA 6 1600-1700
             {
                 name:"de Nachtwacht",
