@@ -608,6 +608,14 @@ class Item {
                     hint3: "Boter wordt pas vanaf de 16e eeuw gegeten."
                 },
                 {
+                    name: "een donderbus",
+                    source: "./assets/images/items/5donderbus.png",
+                    era: 5,
+                    hint1: "Een handvuurwapen dat werd gebruikt door strijdende partijen op het slagveld.",
+                    hint2: "Het was geen precisiewapen, maar op korte afstand uiterst gevaarlijk.",
+                    hint3: "De lading bestond uit een bundel kogels (ook wel een druiventros genoemd)."
+                },
+                {
                     name: "de Nachtwacht",
                     source: "./assets/images/items/6nachtwacht.png",
                     era: 6,
