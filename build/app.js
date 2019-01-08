@@ -672,6 +672,22 @@ class Item {
                     hint3: "Zijn broer Lodewijk werd koning van Holland."
                 },
                 {
+                    name: "de Amerikaanse onafhankelijkheidsverklaring",
+                    source: "./assets/images/items/declaration.png",
+                    era: 7,
+                    hint1: "Het document verklaard de VS onafhankelijk van Groot-Britannië.",
+                    hint2: "De verklaring werd vertegenwoordigd door de 13 koloniën.",
+                    hint3: "Het tekenen van de verklaring word op 4 juli gevierd als Idependence day."
+                },
+                {
+                    name: "",
+                    source: "",
+                    era: 7,
+                    hint1: "",
+                    hint2: "",
+                    hint3: ""
+                },
+                {
                     name: "een hoge Bi",
                     source: "./assets/images/items/8hoge_bi.png",
                     era: 8,
@@ -710,6 +726,14 @@ class Item {
                     hint1: "De stoommachine werd ontworpen door Thomas Savery en Thomas Newcomen.",
                     hint2: "Het werkt doordat stoom voor beweging zorgt.",
                     hint3: "Deze verbeteringen maakte de stoommachine tot wat het nu is."
+                },
+                {
+                    name: "de Leeuw van Waterloo",
+                    source: "./assets/images/items/8waterloo.png",
+                    era: 8,
+                    hint1: "Een herdenkingsmonument voor de Slag bij Waterloo.",
+                    hint2: "Het monument staat op een 45 meter hoge kunstmatige heuvel.",
+                    hint3: "Napoleon Bonaparte werd hier definitief verslagen."
                 },
                 {
                     name: "een vliegtuigbom",
