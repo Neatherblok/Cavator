@@ -449,7 +449,7 @@ class Item {
                 hint3:"Het personage op de poster is Uncle Sam."
             },
             {
-                name:"een zeppeling",
+                name:"een zeppelin",
                 source:"./assets/images/items/9zeppelin.png",
                 era:9,
                 hint1:"Bedacht door graaf Ferdinand von Zeppelin.",
