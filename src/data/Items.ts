@@ -357,6 +357,14 @@ class Item {
                 hint2:"Drebbel heeft meerdere keren gevaren op de Theems.",
                 hint3:"Het was bekleed met ingevet varkensleer, waardoor het waterdicht was."
             },
+            {
+                name:"een mechanische rekenmachine",
+                source:"./assets/images/items/6rekenmachine.png",
+                era:6,
+                hint1:"Is gebouwd door Wilhelm Schickard.",
+                hint2:"De machine kon getallen van zes cijfers optellen en aftrekken.",
+                hint3:"De rekenmachine werd gebruikt om astronomische tabellen te berekenen."
+            },
             // ERA 7 1700-1800
             {
                 name:"een trekschuit",
