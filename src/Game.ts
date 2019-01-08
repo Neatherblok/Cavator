@@ -43,7 +43,7 @@ class Game {
         this.muteButton.addEventListener("click", (e: Event) => this.backgroundMusicController());
         document.addEventListener('mousedown', function (event) {
             if (event.detail > 1) {
-                event.preventDefault(); // of course, you still do not know what you prevent here... You could also check event.ctrlKey/event.shiftKey/event.altKey to not prevent something useful.
+                event.preventDefault();
             }
         }, false);
     }
@@ -173,10 +173,21 @@ class Game {
                     audio.play();
                     //checks if clickcounter == 0
                     if (this.Gamescreen.getHole()[i].getClicks() == 0) {
-                        //sets current screen to eraselectionscreen settings
-                        this.currentGameScreenNumber = 2;
-                        //activates function which generates new hole and removes old
-                        this.Gamescreen.regenerateHole(i);
+                        if (this.Gamescreen.getHole()[i].itemOrJokerSelector() == false) {
+                            //sets current screen to eraselectionscreen settings
+                            this.currentGameScreenNumber = 2;
+                            //activates function which generates new hole and removes old
+                            this.Gamescreen.regenerateHole(i);
+                            this.draw()
+                        }
+                        else if (this.Gamescreen.getHole()[i].itemOrJokerSelector() == true) {
+                            this.time += 10;
+                            this.Gamescreen.regenerateHole(i);
+                            this.draw();
+                            this._canvas.writeTextToCanvas(`Je hebt een zandloper gevonden!`, 20, this._canvas.getCenter().X, 50, 'white')
+                            this._canvas.writeTextToCanvas(`+10 seconden`, 20, this._canvas.getCenter().X, 80, 'white')
+
+                        }
                     }
                     else {
                         //activates function which reduces amount of clicks on hole
@@ -185,7 +196,6 @@ class Game {
 
                 }
             }
-            this.draw()
 
         }
         else if (this.currentGameScreenNumber == 0) {

@@ -317,6 +317,14 @@ class Item {
                 hint2:"Als brandstof werd raapolie gebruikt.",
                 hint3:"De lantaarn was voorzien van 2 ruiten."
             },
+            {
+                name:"Michiel de Ruyter",
+                source: "./assets/images/items/6de_Ruyter.jpg",
+                era:6,
+                hint1:"Een berucht zeevaarder die vocht tegen de Engelsen.",
+                hint2:"Michiel de Ruyter was zoon van Adriaan, een bierdrager.",
+                hint3:"Hij heeft het Nederlands korps Mariniers opgericht."
+            },
             // ERA 7 1700-1800
             {
                 name:"een trekschuit",

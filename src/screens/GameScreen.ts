@@ -12,7 +12,7 @@ class GameScreen {
         this._canvas = new CanvasHelper(this.canvasElement);
             //generates random amount of holes between 3 and 6 and push them in an array
         for (let index = 0; index < MathHelper.randomNumber(3,6); index++) {
-            this.hole.push(new Hole(this.canvasElement, `./assets/images/holes/hole${MathHelper.randomNumber(1, 2)}.png`, MathHelper.randomNumber(0, this._canvas.getWidth() - 200), MathHelper.randomNumber(100, this._canvas.getHeight() - 250), 130, 120, MathHelper.randomNumber(4, 6)))
+            this.hole.push(new Hole(this.canvasElement, `./assets/images/holes/hole${MathHelper.randomNumber(1, 2)}.png`, MathHelper.randomNumber(0, this._canvas.getWidth() - 200), MathHelper.randomNumber(100, this._canvas.getHeight() - 250), 130, 120, MathHelper.randomNumber(4, 6), MathHelper.randomNumber(0,14)))
         }
     }
 
@@ -49,6 +49,6 @@ class GameScreen {
         //function that deletes and add new hole
     public regenerateHole(numberOfHole: number) {
         this.hole.splice(numberOfHole, 1);
-        this.hole.push(new Hole(this.canvasElement, `./assets/images/holes/hole${MathHelper.randomNumber(1, 2)}.png`, MathHelper.randomNumber(0, this._canvas.getWidth() - 200), MathHelper.randomNumber(0, this._canvas.getHeight() - 200), 130, 120, MathHelper.randomNumber(4, 6)))
+        this.hole.push(new Hole(this.canvasElement, `./assets/images/holes/hole${MathHelper.randomNumber(1, 2)}.png`, MathHelper.randomNumber(0, this._canvas.getWidth() - 200), MathHelper.randomNumber(100, this._canvas.getHeight() - 250), 130, 120, MathHelper.randomNumber(4, 6), MathHelper.randomNumber(0,14)))
     }
 }
