@@ -423,6 +423,14 @@ class Item {
                 hint2: "Het monument staat op een 45 meter hoge kunstmatige heuvel.",
                 hint3: "Napoleon Bonaparte werd hier definitief verslagen."
             },
+            {
+                name: "de eerste telefoon",
+                source: "./assets/images/items/8telefoon.png",
+                era: 8,
+                hint1: "Uitgevonden door Alexander Graham Bell.",
+                hint2: "Het eerste bericht was 'Mr. Watson, come here. I want to see you.'",
+                hint3: "Zijn telefoonmaatschappij werd een van 's werelds grootste bedrijven."
+            },
             // ERA 9 1900-1950
             {
                 name:"een vliegtuigbom",
