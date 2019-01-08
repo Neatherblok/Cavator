@@ -591,6 +591,14 @@ class Item {
                 hint2:"Hij stond op een kar en werd getrokken door paarden.",
                 hint3:"Alleen rijke mensen en bedrijven konden een stofzuiger betalen."
             },
+            {
+                name:"een vliegtuig",
+                source:"./assets/images/items/9vliegtuig.png",
+                era:9,
+                hint1:"De eerste gecontroleerde vlucht met een motorisch vliegtuig waren door Amerikanen.",
+                hint2:"De eerste tests begonnen eind 19e eeuw al, na het zweefvliegtuig.",
+                hint3:"Het werd vooral gebruikt als sport- en stuntapparaat."
+            },
             // ERA 10 1950-heden
             {
                 name:"een televisie handboek",
