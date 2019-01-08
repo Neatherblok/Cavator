@@ -456,6 +456,14 @@ class Item {
                 hint1:"Kan gesloten worden bij hoog water.",
                 hint2:"Is onderdeel van het Deltaplan.",
                 hint3:"Dit plan werd gestart als resultaat van de watersnoodramp."
+            },
+            {
+                name:"het International Space Station (ISS)",
+                source:"./assets/images/items/10iss.png",
+                era:10,
+                hint1:"ISS is een bemande sataliet gebouwd voor onderzoek.",
+                hint2:"Vliegt in 93 om de aarde.",
+                hint3:"Het station weegt ongeveer 420kg.",
             }
         ];
     }
