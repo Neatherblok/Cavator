@@ -350,6 +350,22 @@ class Item {
                 hint2:"Napoleon was een leider tijdens de Franse revolutie.",
                 hint3:"Zijn broer Lodewijk werd koning van Holland."
             },
+            {
+                name:"de Amerikaanse onafhankelijkheidsverklaring",
+                source:"./assets/images/items/7declaration.png",
+                era:7,
+                hint1:"Het document verklaard de VS onafhankelijk van Groot-Britannië.",
+                hint2:"De verklaring werd vertegenwoordigd door de 13 koloniën.",
+                hint3:"Het tekenen van de verklaring word op 4 juli gevierd als Independence day."
+            },
+            {
+                name:"de eerste Nederlandse grondwet.",
+                source:"./assets/images/items/7grondwet.png",
+                era:7,
+                hint1:"Opgesteld door de Bataafse republiek en de Nationale vergadering.",
+                hint2:"De wet stelde de scheiding van machten vast.",
+                hint3:"Er werd een zeker kiesrecht opgesteld in de grondwet."
+            },
             // ERA 8 1800-1900
             {
                 name:"een hoge Bi",
@@ -385,7 +401,7 @@ class Item {
             },
             {
                 name: "een stoommachine",
-                source: "./assets/images/items/7stoommachine.png",
+                source: "./assets/images/items/8stoommachine.png",
                 era: 8,
                 hint1: "De stoommachine werd ontworpen door Thomas Savery en Thomas Newcomen.",
                 hint2: "Het werkt doordat stoom voor beweging zorgt.",
