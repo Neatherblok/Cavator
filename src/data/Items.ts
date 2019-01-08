@@ -185,6 +185,14 @@ class Item {
                 hint2:"Het werd al in tijdens de Tang-dynastie in China gemaakt.",
                 hint3:"Het wordt gebruikt om vuurpijlen af te schieten."
             },
+            {
+                name:"een grafsteen",
+                source:"./assets/images/items/3grafsteen.png",
+                era:3,
+                hint1:"Domitianus van Hoei was de eerste bisschop in Nederland.",
+                hint2:"Hij woonde toen in Maastricht.",
+                hint3:"Deze grafsteen komt uit diezelfde tijd."
+            },
             // ERA 4 1000-1500
             {
                 name:"een penning uit Holland",
