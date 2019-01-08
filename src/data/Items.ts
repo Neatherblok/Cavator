@@ -365,6 +365,14 @@ class Item {
                 hint2:"De machine kon getallen van zes cijfers optellen en aftrekken.",
                 hint3:"De rekenmachine werd gebruikt om astronomische tabellen te berekenen."
             },
+            {
+                name:"een slingeruurwerk",
+                source:"./assets/images/items/6slingeruurwerk.png",
+                era:6,
+                hint1:"De uitvinder van het slingeruurwerk is Christiaan Huygens.",
+                hint2:"De klok blijft gelijkmatig lopen door de slinger.",
+                hint3:"Als de klok verkeerd afgesteld is, loopt de klok te snel of te langzaam."
+            },
             // ERA 7 1700-1800
             {
                 name:"een trekschuit",
