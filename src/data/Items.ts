@@ -650,7 +650,7 @@ class Item {
             },
             {
                 name:"een laser",
-                source:"./assets/images/items/10cd.png",
+                source:"./assets/images/items/10laser.png",
                 era:10,
                 hint1:"Een soort licht dat maar in 1 richting straalt.",
                 hint2:"Lasers worden voor veel verschillende doelen gebruikt.",
