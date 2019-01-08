@@ -1,4 +1,4 @@
-180class MouseListener {
+class MouseListener {
     private dTimer: number;
     protected readonly canvasElement: HTMLCanvasElement;
     protected readonly _canvas: CanvasHelper;
