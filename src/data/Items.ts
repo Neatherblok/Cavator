@@ -560,6 +560,14 @@ class Item {
                 hint1:"Een magneetband die wordt gebruikt om muziek op te slaan.",
                 hint2:"De compacte muziekcassette is een ontwikkeling geweest door Lou Ottens.",
                 hint3:"Hij was een werknemer van Philips.",
+            },
+            {
+                name:"een compact disc",
+                source:"./assets/images/items/10cd.png",
+                era:10,
+                hint1:"Een optische schijf, die voor de opslag van muziek werd gebruikt.",
+                hint2:"De CD is gezamenlijk ontwikkeld door Philips en Sony.",
+                hint3:"Later werd de CD ook voor video gebruikt.",
             }
         ];
     }
