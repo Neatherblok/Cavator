@@ -392,6 +392,14 @@ class Item {
                     hint3: "Dit soort tekeningen konden als ritueel voor de jacht staan."
                 },
                 {
+                    name: "een pot",
+                    source: "./assets/images/items/1pot.png",
+                    era: 1,
+                    hint1: "Deze pot is gemaakt van klei.",
+                    hint2: "Potten zijn bedoeld om voedsel en drank in te bewaren of om in te koken.",
+                    hint3: "Pottenbakken gebeurde eerst in open vuren, later bakte men in speciale veldovens."
+                },
+                {
                     name: "het Colosseum",
                     source: "./assets/images/items/2colosseum.png",
                     era: 2,
