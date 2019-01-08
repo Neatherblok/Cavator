@@ -736,6 +736,14 @@ class Item {
                     hint3: "Napoleon Bonaparte werd hier definitief verslagen."
                 },
                 {
+                    name: "de eerste telefoon",
+                    source: "./assets/images/items/8telefoon.png",
+                    era: 8,
+                    hint1: "Uitgevonden door Alexander Graham Bell.",
+                    hint2: "Het eerste bericht was 'Mr. Watson, come here. I want to see you.'",
+                    hint3: "Zijn telefoonmaatschappij werd een van 's werelds grootste bedrijven."
+                },
+                {
                     name: "een vliegtuigbom",
                     source: "./assets/images/items/9vliegtuigbom.png",
                     era: 9,
