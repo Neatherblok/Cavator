@@ -840,6 +840,14 @@ class Item {
                     hint3: "Veel winkels waren overgegaan op zelfbediening."
                 },
                 {
+                    name: "penicilline",
+                    source: "./assets/images/items/9penicilline.png",
+                    era: 9,
+                    hint1: "Was ontdekt door Alexander Fleming.",
+                    hint2: "Het was het eerste algemeen bruikbare antibioticum.",
+                    hint3: "In Nederland werd het voor het eerst gebruikt in Kamp Westerbork."
+                },
+                {
                     name: "een televisie handboek",
                     source: "./assets/images/items/10handboek_televisie.png",
                     era: 10,
