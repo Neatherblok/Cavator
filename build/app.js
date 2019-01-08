@@ -512,6 +512,14 @@ class Item {
                     hint3: "Het wordt gebruikt om vuurpijlen af te schieten."
                 },
                 {
+                    name: "een grafsteen",
+                    source: "./assets/images/items/3grafsteen.png",
+                    era: 3,
+                    hint1: "Domitianus van Hoei was de eerste bisschop in Nederland.",
+                    hint2: "Hij woonde toen in Maastricht.",
+                    hint3: "Deze grafsteen komt uit diezelfde tijd."
+                },
+                {
                     name: "een penning uit Holland",
                     source: "./assets/images/items/4penning.png",
                     era: 4,
@@ -969,7 +977,7 @@ class Item {
                 },
                 {
                     name: "een laser",
-                    source: "./assets/images/items/10cd.png",
+                    source: "./assets/images/items/10laser.png",
                     era: 10,
                     hint1: "Een soort licht dat maar in 1 richting straalt.",
                     hint2: "Lasers worden voor veel verschillende doelen gebruikt.",
