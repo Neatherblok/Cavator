@@ -456,6 +456,14 @@ class Item {
                     hint3: "Wachttorens op de muur communiceerden met elkaar via rookpluimen.",
                 },
                 {
+                    name: "een ploeg",
+                    source: "./assets/images/items/2ploeg.png",
+                    era: 2,
+                    hint1: "Niemand weet precies zeker wie het heeft uitgevonden.",
+                    hint2: "De bekendste gebruikers van de eerste ploegen waren de Egyptenaren.",
+                    hint3: "De ploegen waren gemaakt van ijzer en hout."
+                },
+                {
                     name: "het zwaard van Sint Cosmas",
                     source: "./assets/images/items/3zwaard_sint_cosmas.png",
                     era: 3,

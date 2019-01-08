@@ -127,6 +127,14 @@ class Item {
                 hint2:"Het wordt gezien als het grootste bouwwerk uit de geschiedenis.",
                 hint3:"Wachttorens op de muur communiceerden met elkaar via rookpluimen.",
             },
+            {
+                name:"een ploeg",
+                source:"./assets/images/items/2ploeg.png",
+                era:2,
+                hint1:"Niemand weet precies zeker wie het heeft uitgevonden.",
+                hint2:"De bekendste gebruikers van de eerste ploegen waren de Egyptenaren.",
+                hint3:"De ploegen waren gemaakt van ijzer en hout."
+            },
             // ERA 3 500-1000
             {
                 name:"het zwaard van Sint Cosmas",
