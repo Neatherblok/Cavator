@@ -680,6 +680,14 @@ class Item {
                     hint3: "Zij waren tegen het vereren van heiligen."
                 },
                 {
+                    name: "een musketier",
+                    source: "./assets/images/items/5musketier.png",
+                    era: 5,
+                    hint1: "Het wapen is een voorloper van het geweer.",
+                    hint2: "De musketiers leerden in gecoördineerde bewegingen marcheren, laden en vuren.",
+                    hint3: "Het leger van Maurits van Oranje-Nassau was hier zeer goed in."
+                },
+                {
                     name: "de Nachtwacht",
                     source: "./assets/images/items/6nachtwacht.png",
                     era: 6,
