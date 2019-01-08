@@ -17,6 +17,7 @@ class StartScreen{
         this.canvasElement.style.backgroundImage = "url(./assets/images/backgrounds/tableBackground.jpg)";
         this.canvasElement.style.backgroundSize = "100% 100%"
         this.canvasElement.style.cursor = "url(./assets/images/FeatherCursor.png), auto";
+        this.canvasElement.style.cursor = "url(./assets/images/FeatherCursor.cur), auto";
         this._canvas.writeImageToCanvas("./assets/images/Cavator_logo/CavatorLogo.png", this._canvas.getCenter().X-200, this._canvas.getCenter().Y-300)
         this._canvas.writeButtonToCanvas("Speel", undefined, this._canvas.getCenter().Y + 150);
         this._canvas.writeButtonToCanvas("Speluitleg", undefined, this._canvas.getCenter().Y + 200);

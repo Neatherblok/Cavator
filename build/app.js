@@ -116,9 +116,9 @@ class Game {
                     audio.play();
                     this.timer();
                     this.currentGameScreenNumber = 1;
+                    this.draw();
                     document.getElementById('scoreText').innerHTML = `Je score is: 0`;
                     document.getElementById("timerText").innerHTML = `Tijd over: 150 seconden`;
-                    this.draw();
                 }
                 else if (event.clientX >= (this._canvas.getCenter().X - 111) && event.clientX <= (this._canvas.getCenter().X + 111)
                     && event.clientY >= (this._canvas.getCenter().Y + 200) && event.clientY <= this._canvas.getCenter().Y + 239) {
@@ -284,7 +284,7 @@ class CookieAdd {
                 var user = this.getCookie(`username` + i);
                 const points = Number(this.getCookie(`points` + i));
                 if ((points == null || points <= score)) {
-                    user = prompt("Geef een gamenaam in:", "");
+                    user = prompt("HIGHSCORE! Geef een spelersnaam in:", "");
                     for (let y = 5; y > i - 1; y--) {
                         this.setCookie((`username` + (y + 1)), this.getCookie(`username` + y), 30);
                         this.setCookie((`points` + (y + 1)), Number(this.getCookie(`points` + y)), 30);
@@ -863,6 +863,7 @@ class EraExplanationScreen {
             this.canvasElement.style.backgroundImage = "url(./assets/images/backgrounds/tableBackground.jpg)";
             this.canvasElement.style.backgroundSize = "100% 100%";
             this.canvasElement.style.cursor = "url(./assets/images/FeatherCursor.png), auto";
+            this.canvasElement.style.cursor = "url(./assets/images/FeatherCursor.cur), auto";
             this._canvas.writeImageToCanvas("./assets/images/eraLogos/era1.png", 25, 25);
             this._canvas.writeImageToCanvas("./assets/images/eraLogos/era2.png", 25, 150);
             this._canvas.writeImageToCanvas("./assets/images/eraLogos/era3.png", 25, 275);
@@ -886,7 +887,8 @@ class EraSelectionScreen {
             this.canvasElement.style.backgroundImage = "url(./assets/images/backgrounds/tableBackground.jpg)";
             this.canvasElement.style.backgroundSize = "100% 100%";
             this.canvasElement.style.cursor = "url(./assets/images/FeatherCursor.png), auto";
-            this._canvas.writeTextToCanvas(`Je hebt ${this.itemList.getItemProperty(this.pickedItem, "name")} gevonden!`, 45, this._canvas.getCenter().X, 100, "yellow");
+            this.canvasElement.style.cursor = "url(./assets/images/FeatherCursor.cur), auto";
+            this._canvas.writeTextToCanvas(`Je hebt ${this.itemList.getItemProperty(this.pickedItem, "name")} gevonden!`, 35, this._canvas.getCenter().X, 100, "yellow");
             this._canvas.writeImageToCanvas(this.itemList.getItemProperty(this.pickedItem, "source"), this._canvas.getCenter().X / 2 - 150, this._canvas.getCenter().Y - 200);
             this._canvas.writeImageToCanvas("./assets/images/eraLogos/era1.png", this._canvas.getWidth() * 0.017, this._canvas.getHeight() - 200);
             this._canvas.writeImageToCanvas("./assets/images/eraLogos/era2.png", this._canvas.getWidth() * 0.117, this._canvas.getHeight() - 200);
@@ -933,7 +935,8 @@ class GameExplanationScreen {
         this.draw = () => {
             this.canvasElement.style.backgroundImage = "url(./assets/images/backgrounds/tableBackground.jpg)";
             this.canvasElement.style.backgroundSize = "100% 100%";
-            this.canvasElement.style.cursor = "url(./assets/images/FeatherCursor.png), auto";
+            this.canvasElement.style.cursor = "url(./assets/images/FeatherCursor.png) 4 12, auto";
+            this.canvasElement.style.cursor = "url(./assets/images/FeatherCursor.cur), auto";
             this._canvas.writeTextToCanvas(this.explanation1_0, 20, this._canvas.getWidth() / 32, 100, "yellow", "left");
             this._canvas.writeTextToCanvas(this.explanation1_1, 20, this._canvas.getWidth() / 32, 130, "yellow", "left");
             this._canvas.writeImageToCanvas("./assets/images/screenshots/gameScreen.png", this._canvas.getCenter().X + 130, 30);
@@ -963,7 +966,8 @@ class GameScreen {
             }
             this.canvasElement.style.backgroundImage = "url(./assets/images/backgrounds/groundBackground.png)";
             this.canvasElement.style.backgroundSize = "auto";
-            this.canvasElement.style.cursor = "url(./assets/images/shovelCursor.png), auto";
+            this.canvasElement.style.cursor = "url(./assets/images/shovelCursor.png) 4 12, auto";
+            this.canvasElement.style.cursor = "url(./assets/images/shovelCursor.cur), auto";
         };
         this.canvasElement = document.getElementById('canvas');
         this._canvas = new CanvasHelper(this.canvasElement);
@@ -992,7 +996,8 @@ class HighscoreScreen {
         this.draw = () => {
             this.canvasElement.style.backgroundImage = "url(./assets/images/backgrounds/tableBackground.jpg)";
             this.canvasElement.style.backgroundSize = "100% 100%";
-            this.canvasElement.style.cursor = "url(./assets/images/FeatherCursor.png), auto";
+            this.canvasElement.style.cursor = "url(./assets/images/FeatherCursor.png) 4 12, auto";
+            this.canvasElement.style.cursor = "url(./assets/images/FeatherCursor.cur), auto";
             this._canvas.writeTextToCanvas(`Je hebt een score van ${Number(document.getElementById("scoreText").innerHTML.substring('Je score is: '.length))} behaald!`, 45, this._canvas.getCenter().X, 100, "yellow");
             this._canvas.writeButtonToCanvas("Probeer opnieuw", undefined, this._canvas.getCenter().Y + 200);
             this._cookieAdd.checkCookie('highscore', Number(document.getElementById("scoreText").innerHTML.substring('Je score is: '.length)));
@@ -1012,6 +1017,7 @@ class StartScreen {
             this.canvasElement.style.backgroundImage = "url(./assets/images/backgrounds/tableBackground.jpg)";
             this.canvasElement.style.backgroundSize = "100% 100%";
             this.canvasElement.style.cursor = "url(./assets/images/FeatherCursor.png), auto";
+            this.canvasElement.style.cursor = "url(./assets/images/FeatherCursor.cur), auto";
             this._canvas.writeImageToCanvas("./assets/images/Cavator_logo/CavatorLogo.png", this._canvas.getCenter().X - 200, this._canvas.getCenter().Y - 300);
             this._canvas.writeButtonToCanvas("Speel", undefined, this._canvas.getCenter().Y + 150);
             this._canvas.writeButtonToCanvas("Speluitleg", undefined, this._canvas.getCenter().Y + 200);

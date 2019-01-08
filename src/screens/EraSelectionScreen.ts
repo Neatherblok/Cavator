@@ -21,8 +21,9 @@ class EraSelectionScreen {
         this.canvasElement.style.backgroundImage = "url(./assets/images/backgrounds/tableBackground.jpg)";
         this.canvasElement.style.backgroundSize = "100% 100%"
         this.canvasElement.style.cursor = "url(./assets/images/FeatherCursor.png), auto"
+        this.canvasElement.style.cursor = "url(./assets/images/FeatherCursor.cur), auto"
             //gets item and let it see on the canvas
-        this._canvas.writeTextToCanvas(`Je hebt ${this.itemList.getItemProperty(this.pickedItem, "name")} gevonden!`, 45, this._canvas.getCenter().X, 100, "yellow")
+        this._canvas.writeTextToCanvas(`Je hebt ${this.itemList.getItemProperty(this.pickedItem, "name")} gevonden!`, 35, this._canvas.getCenter().X, 100, "yellow")
         this._canvas.writeImageToCanvas(this.itemList.getItemProperty(this.pickedItem, "source"), this._canvas.getCenter().X /2 - 150, this._canvas.getCenter().Y - 200)
             //adds era timeline viewable to the canvas
         this._canvas.writeImageToCanvas("./assets/images/eraLogos/era1.png", this._canvas.getWidth() * 0.017, this._canvas.getHeight() - 200)

@@ -24,7 +24,8 @@ class GameScreen {
         }
         this.canvasElement.style.backgroundImage = "url(./assets/images/backgrounds/groundBackground.png)";
         this.canvasElement.style.backgroundSize = "auto";
-        this.canvasElement.style.cursor = "url(./assets/images/shovelCursor.png), auto"
+        this.canvasElement.style.cursor = "url(./assets/images/shovelCursor.png) 4 12, auto"
+        this.canvasElement.style.cursor = "url(./assets/images/shovelCursor.cur), auto"
     }
 
         //function returns every hole
