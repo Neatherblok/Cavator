@@ -250,7 +250,14 @@ class Item {
                 hint2:"Omdat het ijzer vloeibaar is kan het gegoten worden.",
                 hint3:"Voor de verhitting is koolstof nodig."
             },
-
+            {
+                name:"een standerdmolen",
+                source:"./assets/images/items/4standerdmolen.png",
+                era:4,
+                hint1:"De oudste vermelding van een standerdmolen in Nederland is uit Willemskerke (Zeeuws-Vlaanderen).",
+                hint2:"Het oudste houten type windmolen in de Lage Landen.",
+                hint3:"Uit de standerdmolen is de bekende wipmolen ontstaan."
+            },
             // ERA 5 1500-1600
             {
                 name:"de Mona Lisa",
