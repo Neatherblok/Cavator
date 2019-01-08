@@ -904,6 +904,14 @@ class Item {
                     hint3: "Is per ongeluk ontdekt door Percy Spencer."
                 },
                 {
+                    name: "een stofzuiger",
+                    source: "./assets/images/items/9stofzuiger.png",
+                    era: 9,
+                    hint1: "De eerste stofzuiger was 50 kilogram.",
+                    hint2: "Hij stond op een kar en werd getrokken door paarden.",
+                    hint3: "Alleen rijke mensen en bedrijven konden een stofzuiger betalen."
+                },
+                {
                     name: "een televisie handboek",
                     source: "./assets/images/items/10handboek_televisie.png",
                     era: 10,

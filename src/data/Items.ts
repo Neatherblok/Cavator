@@ -583,6 +583,14 @@ class Item {
                 hint2:"De eerste magnetron was de Amerikaanse RadaRange.",
                 hint3:"Is per ongeluk ontdekt door Percy Spencer."
             },
+            {
+                name:"een stofzuiger",
+                source:"./assets/images/items/9stofzuiger.png",
+                era:9,
+                hint1:"De eerste stofzuiger was 50 kilogram.",
+                hint2:"Hij stond op een kar en werd getrokken door paarden.",
+                hint3:"Alleen rijke mensen en bedrijven konden een stofzuiger betalen."
+            },
             // ERA 10 1950-heden
             {
                 name:"een televisie handboek",
