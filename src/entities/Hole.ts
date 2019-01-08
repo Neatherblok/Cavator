@@ -7,6 +7,7 @@ class Hole {
     protected readonly _imageSrc: string;
     protected readonly _canvas: CanvasHelper;
     private _clicks: number;
+    private _itemOrJoker: number;
 
     public constructor(
         canvas: HTMLCanvasElement,
@@ -15,7 +16,8 @@ class Hole {
         yCoor: number,
         width: number,
         height: number,
-        clicks: number
+        clicks: number,
+        itemOrJoker: number,
     ){
         this._canvas = new CanvasHelper(canvas);
         this._imageSrc = imageSource;
@@ -24,6 +26,7 @@ class Hole {
         this._width = width;
         this._height = height;
         this._clicks = clicks;
+        this._itemOrJoker = itemOrJoker;
     }
 
     //function that draws the holes on the screen
@@ -59,5 +62,14 @@ class Hole {
     //function that lowers the clicks that are left
     public lowerClicks() {
         this._clicks--;
+    }
+
+    public itemOrJokerSelector(){
+        if(this._itemOrJoker == 14){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 }

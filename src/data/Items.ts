@@ -317,6 +317,22 @@ class Item {
                 hint2:"Als brandstof werd raapolie gebruikt.",
                 hint3:"De lantaarn was voorzien van 2 ruiten."
             },
+            {
+                name:"Michiel de Ruyter",
+                source: "./assets/images/items/6de_Ruyter.jpg",
+                era:6,
+                hint1:"Een berucht zeevaarder die vocht tegen de Engelsen.",
+                hint2:"Michiel de Ruyter was zoon van Adriaan, een bierdrager.",
+                hint3:"Hij heeft het Nederlands korps Mariniers opgericht."
+            },
+            {
+                name:"een telescoop",
+                source:"./assets/images/items/6telescoop.jpg",
+                era:6,
+                hint1:"Uitgevonden in Middelburg, tijdens Nederlands hoogtij dagen.",
+                hint2:"De mogelijke uitvinder had zijn microscoop aan een stadhouder laten zien.",
+                hint3:"De eerste telescoop wordt Hollandse Kijker genoemd."
+            },
             // ERA 7 1700-1800
             {
                 name:"een trekschuit",
