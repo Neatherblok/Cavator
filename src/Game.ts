@@ -52,7 +52,6 @@ class Game {
     public draw = () => {
         this._canvas.clear();
         eval(this.screen[this.currentGameScreenNumber])
-        console.log(this.time)
     }
 
     //sets next screen after clicks
@@ -110,8 +109,8 @@ class Game {
         }
         else if (this.currentGameScreenNumber == 2) {
             //defines right place where must be clicked
-            if (event.clientX >= this.MouseListener.eraScreenClick(this.EraSelectionscreen.randomItemNumber()).Xmin && event.clientX <= this.MouseListener.eraScreenClick(this.EraSelectionscreen.randomItemNumber()).Xmax
-                && event.clientY >= this.MouseListener.eraScreenClick(this.EraSelectionscreen.randomItemNumber()).Ymin && event.clientY <= this.MouseListener.eraScreenClick(this.EraSelectionscreen.randomItemNumber()).Ymax) {
+            if (event.clientX >= this.MouseListener.eraScreenClick(this.EraSelectionscreen.getItemEraNumber()).Xmin && event.clientX <= this.MouseListener.eraScreenClick(this.EraSelectionscreen.getItemEraNumber()).Xmax
+                && event.clientY >= this.MouseListener.eraScreenClick(this.EraSelectionscreen.getItemEraNumber()).Ymin && event.clientY <= this.MouseListener.eraScreenClick(this.EraSelectionscreen.getItemEraNumber()).Ymax) {
                 //add point to scoreCounter
                 this.Gamescreen.addScoreCounter();
                 //defines button soundeffect
@@ -144,8 +143,8 @@ class Game {
                 && event.clientY >= this.MouseListener.eraScreenClick(9).Ymin && event.clientY <= this.MouseListener.eraScreenClick(9).Ymax
                 || event.clientX >= this.MouseListener.eraScreenClick(10).Xmin && event.clientX <= this.MouseListener.eraScreenClick(10).Xmax
                 && event.clientY >= this.MouseListener.eraScreenClick(10).Ymin && event.clientY <= this.MouseListener.eraScreenClick(10).Ymax
-                && !(event.clientX >= this.MouseListener.eraScreenClick(this.EraSelectionscreen.randomItemNumber()).Xmin && event.clientX <= this.MouseListener.eraScreenClick(this.EraSelectionscreen.randomItemNumber()).Xmax
-                    && event.clientY >= this.MouseListener.eraScreenClick(this.EraSelectionscreen.randomItemNumber()).Ymin && event.clientY <= this.MouseListener.eraScreenClick(this.EraSelectionscreen.randomItemNumber()).Ymax)) {
+                && !(event.clientX >= this.MouseListener.eraScreenClick(this.EraSelectionscreen.getItemEraNumber()).Xmin && event.clientX <= this.MouseListener.eraScreenClick(this.EraSelectionscreen.getItemEraNumber()).Xmax
+                    && event.clientY >= this.MouseListener.eraScreenClick(this.EraSelectionscreen.getItemEraNumber()).Ymin && event.clientY <= this.MouseListener.eraScreenClick(this.EraSelectionscreen.getItemEraNumber()).Ymax)) {
 
                 //defines button soundeffect
                 let audioLink = `./assets/sounds/sfx/checkSFX/wrongSFX.mp3`
@@ -257,7 +256,6 @@ class Game {
             this.backgroundMusic.muted = true;
             this.muteButton.innerHTML = "<img src='./assets/images/UI/volOff.png' alt='background music muted'>";
         }
-        console.log(this._cookieAdd.checkCookie('backgroundMusic', null))
     }
 
     //sets a timer with countdown to highscorescreen
