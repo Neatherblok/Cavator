@@ -59,7 +59,7 @@ class CanvasHelper {
         let image = new Image();
         image.src = aSrc;
         image.addEventListener('load', () => {
-            this._context.drawImage(image,aXpos, aYpos, image.width / imgWidthDivide, image.height / imgHeightDivide);
+            this._context.drawImage(image,aXpos, aYpos, image.width/imgWidthDivide, image.height/imgHeightDivide);
         });
     }
 

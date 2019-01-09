@@ -5,15 +5,14 @@ class GameScreen {
     private hole = new Array<Hole>();
     //keeps the score in the game
     private score: number = 0;
-    private imageUrl: string;
+    private holeUrl: string[] = ["./assets/images/hole1.png", ""];;
 
-    public constructor(imageUrl: string) {
-        this.imageUrl = imageUrl
+    public constructor() {
         this.canvasElement = <HTMLCanvasElement>document.getElementById('canvas');
         this._canvas = new CanvasHelper(this.canvasElement);
             //generates random amount of holes between 3 and 6 and push them in an array
         for (let index = 0; index < MathHelper.randomNumber(3,6); index++) {
-            this.hole.push(new Hole(this.canvasElement, this.imageUrl, MathHelper.randomNumber(0, this._canvas.getWidth() - 200), MathHelper.randomNumber(0, this._canvas.getHeight() - 200), 130, 120, MathHelper.randomNumber(4, 6)))
+            this.hole.push(new Hole(this.canvasElement, `./assets/images/holes/hole${MathHelper.randomNumber(1, 2)}.png`, MathHelper.randomNumber(0, this._canvas.getWidth() - 200), MathHelper.randomNumber(100, this._canvas.getHeight() - 250), 130, 120, MathHelper.randomNumber(4, 6), MathHelper.randomNumber(0,14)))
         }
     }
 
@@ -23,11 +22,10 @@ class GameScreen {
         for (let i = 0; i < this.hole.length; i++) {
             this.hole[i].draw();
         }
-            //draws current score on canvas
-        this._canvas.writeTextToCanvas(`Score: ${this.score}`, 20, 75, 75, "white", "left");
         this.canvasElement.style.backgroundImage = "url(./assets/images/backgrounds/groundBackground.png)";
         this.canvasElement.style.backgroundSize = "auto";
-        this.canvasElement.style.cursor = "url(./assets/images/shovelCursor.png), auto"
+        this.canvasElement.style.cursor = "url(./assets/images/shovelCursor.png) 4 12, auto"
+        this.canvasElement.style.cursor = "url(./assets/images/shovelCursor.cur), auto"
     }
 
         //function returns every hole
@@ -38,12 +36,10 @@ class GameScreen {
         //function that add point to score counter
     public addScoreCounter() {
         this.score++;
+        document.getElementById('scoreText').innerHTML= `Je score is: ${this.score}`;
     }
 
         //function that returns current score
-    public getScore() {
-        return this.score;
-    }
 
         //function that reset score to 0
     public resetScore() {
@@ -53,6 +49,6 @@ class GameScreen {
         //function that deletes and add new hole
     public regenerateHole(numberOfHole: number) {
         this.hole.splice(numberOfHole, 1);
-        this.hole.push(new Hole(this.canvasElement, this.imageUrl, MathHelper.randomNumber(0, this._canvas.getWidth() - 200), MathHelper.randomNumber(0, this._canvas.getHeight() - 200), 130, 120, MathHelper.randomNumber(0, 2)))
+        this.hole.push(new Hole(this.canvasElement, `./assets/images/holes/hole${MathHelper.randomNumber(1, 2)}.png`, MathHelper.randomNumber(0, this._canvas.getWidth() - 200), MathHelper.randomNumber(100, this._canvas.getHeight() - 250), 130, 120, MathHelper.randomNumber(4, 6), MathHelper.randomNumber(0,14)))
     }
 }

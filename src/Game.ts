@@ -5,11 +5,13 @@ class Game {
     private Gamescreen: GameScreen;
     private EraSelectionscreen: EraSelectionScreen;
     private HighscoreScreen: HighscoreScreen;
+    private GameExplanationscreen: GameExplanationScreen;
+    private EraExplanationscreen: EraExplanationScreen;
     private itemList: Item;
     private _cookieAdd: CookieAdd;
     private MouseListener: MouseListener;
     //defines all possible screens
-    private screen: string[] = ["this.Startscreen.draw()", "this.Gamescreen.draw()", "this.EraSelectionscreen.draw()", "this.HighscoreScreen.draw(this.Gamescreen.getScore())"];
+    private screen: string[] = ["this.Startscreen.draw()", "this.Gamescreen.draw()", "this.EraSelectionscreen.draw()", "this.HighscoreScreen.draw()", "this.GameExplanationscreen.draw()", "this.EraExplanationscreen.draw()"];
     //defines all possible sounds
     private sounds: string[] = ['buttonHitSFX', 'digging1', 'digging2', 'digging3', 'digging4', 'digging5'];
     //defines the current gamescreen
@@ -18,14 +20,16 @@ class Game {
     private backgroundMusic: HTMLAudioElement;
     private muteButton: HTMLElement;
     //defines amount of time left
-    private time: number = 151;
+    private time: number = 150;
 
     public constructor() {
         this.canvasElement = <HTMLCanvasElement>document.getElementById('canvas');
         this._canvas = new CanvasHelper(this.canvasElement);
         this.Startscreen = new StartScreen();
-        this.Gamescreen = new GameScreen("./assets/images/hole1.png");
+        this.Gamescreen = new GameScreen();
         this.EraSelectionscreen = new EraSelectionScreen();
+        this.GameExplanationscreen = new GameExplanationScreen();
+        this.EraExplanationscreen = new EraExplanationScreen();
         this.MouseListener = new MouseListener();
         this.itemList = new Item();
         this._cookieAdd = new CookieAdd;
@@ -39,9 +43,9 @@ class Game {
         this.muteButton.addEventListener("click", (e: Event) => this.backgroundMusicController());
         document.addEventListener('mousedown', function (event) {
             if (event.detail > 1) {
-              event.preventDefault(); // of course, you still do not know what you prevent here... You could also check event.ctrlKey/event.shiftKey/event.altKey to not prevent something useful.
+                event.preventDefault();
             }
-          }, false);
+        }, false);
     }
 
     //draws current screen
@@ -52,7 +56,21 @@ class Game {
 
     //sets next screen after clicks
     public nextScreen = (event: any) => {
-        if (this.currentGameScreenNumber == 3) {
+        if (this.currentGameScreenNumber == 5) {
+            //defines place where must be clicked
+            if (event.clientX >= (this._canvas.getCenter().X - 111) && event.clientX <= (this._canvas.getCenter().X + 111)
+                && event.clientY >= (this._canvas.getCenter().Y + 250) && event.clientY <= this._canvas.getCenter().Y + 289) {
+                //defines button soundeffect
+                let audioLink = "./assets/sounds/sfx/buttonHitSFX.mp3"
+                let audio: HTMLAudioElement = new Audio(audioLink);
+                //plays button soundeffect
+                audio.play();
+                //reset current screen to startscreen settings
+                this.currentGameScreenNumber = 0;
+                this.draw();
+            }
+        }
+        else if (this.currentGameScreenNumber == 4) {
             //defines place where must be clicked
             if (event.clientX >= (this._canvas.getCenter().X - 111) && event.clientX <= (this._canvas.getCenter().X + 111)
                 && event.clientY >= (this._canvas.getCenter().Y + 200) && event.clientY <= this._canvas.getCenter().Y + 239) {
@@ -63,7 +81,27 @@ class Game {
                 audio.play();
                 //reset current screen to startscreen settings
                 this.currentGameScreenNumber = 0;
+                this.draw();
+            }
+        }
+        else if (this.currentGameScreenNumber == 3) {
+            //defines place where must be clicked
+            if (event.clientX >= (this._canvas.getCenter().X - 111) && event.clientX <= (this._canvas.getCenter().X + 111)
+                && event.clientY >= (this._canvas.getCenter().Y + 200) && event.clientY <= this._canvas.getCenter().Y + 239) {
+                for (let i = 1; i < 6; i++) {
+                    document.getElementById(`place${i}`).innerHTML = '';
+                }
+                //defines button soundeffect
+                let audioLink = "./assets/sounds/sfx/buttonHitSFX.mp3"
+                let audio: HTMLAudioElement = new Audio(audioLink);
+                //plays button soundeffect
+                audio.play();
+                //reset current screen to startscreen settings
+                this.currentGameScreenNumber = 1;
+                document.getElementById("timerText").innerHTML = `Tijd over: 150 seconden`;
+                document.getElementById("scoreText").innerHTML = `Je score is: 0`;
                 this.resetCounter();
+                this.timer();
                 this.Gamescreen.resetScore();
                 this.draw();
 
@@ -117,7 +155,7 @@ class Game {
                 this.currentGameScreenNumber = 1;
                 this.draw();
                 this._canvas.writeTextToCanvas(`Het juiste tijdvak:`, 20, this._canvas.getCenter().X, 50, 'white')
-                this._canvas.writeImageToCanvas(`./assets/images/eraLogos/era${this.EraSelectionscreen.getItemEraNumber()}.png`, this._canvas.getCenter().X+100, 20, 2, 2)
+                this._canvas.writeImageToCanvas(`./assets/images/eraLogos/era${this.EraSelectionscreen.randomItemNumber()}.png`, this._canvas.getCenter().X + 100, 20, 2, 2)
             }
         }
         else if (this.currentGameScreenNumber == 1) {
@@ -134,10 +172,21 @@ class Game {
                     audio.play();
                     //checks if clickcounter == 0
                     if (this.Gamescreen.getHole()[i].getClicks() == 0) {
-                        //sets current screen to eraselectionscreen settings
-                        this.currentGameScreenNumber = 2;
-                        //activates function which generates new hole and removes old
-                        this.Gamescreen.regenerateHole(i);
+                        if (this.Gamescreen.getHole()[i].itemOrJokerSelector() == false) {
+                            //sets current screen to eraselectionscreen settings
+                            this.currentGameScreenNumber = 2;
+                            //activates function which generates new hole and removes old
+                            this.Gamescreen.regenerateHole(i);
+                            this.draw()
+                        }
+                        else if (this.Gamescreen.getHole()[i].itemOrJokerSelector() == true) {
+                            this.time += 10;
+                            this.Gamescreen.regenerateHole(i);
+                            this.draw();
+                            this._canvas.writeTextToCanvas(`Je hebt een zandloper gevonden!`, 20, this._canvas.getCenter().X, 50, 'white')
+                            this._canvas.writeTextToCanvas(`+10 seconden`, 20, this._canvas.getCenter().X, 80, 'white')
+
+                        }
                     }
                     else {
                         //activates function which reduces amount of clicks on hole
@@ -146,13 +195,12 @@ class Game {
 
                 }
             }
-            this.draw()
 
         }
         else if (this.currentGameScreenNumber == 0) {
             //defines place where must be clicked
             if (event.clientX >= (this._canvas.getCenter().X - 111) && event.clientX <= (this._canvas.getCenter().X + 111)
-                && event.clientY >= (this._canvas.getCenter().Y + 200) && event.clientY <= this._canvas.getCenter().Y + 239) {
+                && event.clientY >= (this._canvas.getCenter().Y + 150) && event.clientY <= this._canvas.getCenter().Y + 189) {
                 //defines button soundeffect
                 let audioLink = "./assets/sounds/sfx/buttonHitSFX.mp3"
                 let audio: HTMLAudioElement = new Audio(audioLink);
@@ -162,6 +210,30 @@ class Game {
                 this.timer()
                 //sets current screen to gamescreen settings
                 this.currentGameScreenNumber = 1;
+                this.draw();
+                document.getElementById('scoreText').innerHTML = `Je score is: 0`;
+                document.getElementById("timerText").innerHTML = `Tijd over: 150 seconden`;
+            }
+            else if (event.clientX >= (this._canvas.getCenter().X - 111) && event.clientX <= (this._canvas.getCenter().X + 111)
+                && event.clientY >= (this._canvas.getCenter().Y + 200) && event.clientY <= this._canvas.getCenter().Y + 239) {
+                //defines button soundeffect
+                let audioLink = "./assets/sounds/sfx/buttonHitSFX.mp3"
+                let audio: HTMLAudioElement = new Audio(audioLink);
+                //plays button soundeffect
+                audio.play();
+                //sets current screen to gamescreen settings
+                this.currentGameScreenNumber = 4;
+                this.draw();
+            }
+            else if (event.clientX >= (this._canvas.getCenter().X - 111) && event.clientX <= (this._canvas.getCenter().X + 111)
+                && event.clientY >= (this._canvas.getCenter().Y + 250) && event.clientY <= this._canvas.getCenter().Y + 289) {
+                //defines button soundeffect
+                let audioLink = "./assets/sounds/sfx/buttonHitSFX.mp3"
+                let audio: HTMLAudioElement = new Audio(audioLink);
+                //plays button soundeffect
+                audio.play();
+                //sets current screen to gamescreen settings
+                this.currentGameScreenNumber = 5;
                 this.draw();
             }
         }
@@ -201,13 +273,14 @@ class Game {
                 this.HighscoreScreen = new HighscoreScreen();
                 this.currentGameScreenNumber = 3
                 this.draw()
+                document.getElementById("scoreText").innerHTML = '';
             }
         }, 1000)
     }
 
     //resets timer back to basic settings
     public resetCounter() {
-        this.time = 151;
+        this.time = 150;
     }
 }
 
