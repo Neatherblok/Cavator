@@ -85,7 +85,7 @@ class Game {
                     this.currentGameScreenNumber = 1;
                     this.draw();
                     this._canvas.writeTextToCanvas(`Het juiste tijdvak:`, 20, this._canvas.getCenter().X, 50, 'white');
-                    this._canvas.writeImageToCanvas(`./assets/images/eraLogos/era${this.EraSelectionscreen.randomItemNumber()}.png`, this._canvas.getCenter().X + 100, 20, 2, 2);
+                    this._canvas.writeImageToCanvas(`./assets/images/eraLogos/era${this.EraSelectionscreen.getItemEraNumber()}.png`, this._canvas.getCenter().X + 100, 20, 2, 2);
                 }
             }
             else if (this.currentGameScreenNumber == 1) {
