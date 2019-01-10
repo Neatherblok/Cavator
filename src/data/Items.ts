@@ -290,6 +290,14 @@ class Item {
                 hint2:"Het oudste houten type windmolen in de Lage Landen.",
                 hint3:"Uit de standerdmolen is de bekende wipmolen ontstaan."
             },
+            {
+                name:"een kruistocht",
+                source:"./assets/images/items/4kruistocht.png",
+                era:4,
+                hint1:"Dit waren religieuse ondernemingen, om het geloof te beschermen.",
+                hint2:"Ze kwamen op gang, nadat invasies van vikingen stopten.",
+                hint3:"Ze werden gevoerd door Christenen om Jeruzalem te veroveren."
+            },
             // ERA 5 1500-1600
             {
                 name:"de Mona Lisa",
