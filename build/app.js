@@ -490,6 +490,14 @@ class Item {
                     hint3: "De ploegen waren gemaakt van ijzer en hout."
                 },
                 {
+                    name: "een aquaduct",
+                    source: "./assets/images/items/2aquaduct.png",
+                    era: 2,
+                    hint1: "Het is een brug waar water over heen stroomt.",
+                    hint2: "Andere verkeer kan gewoon onder het water door reizen.",
+                    hint3: "De eerste werd gebouwd door Romeinen, voor hun drinkwater."
+                },
+                {
                     name: "het zwaard van Sint Cosmas",
                     source: "./assets/images/items/3zwaard_sint_cosmas.png",
                     era: 3,
@@ -560,6 +568,14 @@ class Item {
                     hint1: "Het werd voor het eerst gevierd in de 7e eeuw.",
                     hint2: "Mohammed stelde deze feestdag voor in Medina, nadat hij was gevlucht.",
                     hint3: "Het wordt gevierd om o.a. de minderbedeelden te helpen."
+                },
+                {
+                    name: "een klooster",
+                    source: "./assets/images/items/3klooster.png",
+                    era: 3,
+                    hint1: "Het eerste klooster in Nederland was in o.a. Maastricht.",
+                    hint2: "Ze stonden op het platteland en verbouwden planten.",
+                    hint3: "Ze werden bewoond door monnikken, die hele dagen bidden en werken."
                 },
                 {
                     name: "een penning uit Holland",
