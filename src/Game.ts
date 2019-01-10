@@ -106,6 +106,11 @@ class Game {
                 this.draw();
 
             }
+            else if (event.clientX >= (this._canvas.getCenter().X - 111) && event.clientX <= (this._canvas.getCenter().X + 111)
+                && event.clientY >= (this._canvas.getCenter().Y + 250) && event.clientY <= this._canvas.getCenter().Y + 289) {
+                //refreshes the page from cache if available
+                window.location.reload(false); 
+            }
         }
         else if (this.currentGameScreenNumber == 2) {
             //defines right place where must be clicked
