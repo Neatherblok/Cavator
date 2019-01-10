@@ -16,10 +16,10 @@ class HighscoreScreen {
         this.canvasElement.style.backgroundSize = "100% 100%"
         this.canvasElement.style.cursor = "url(./assets/images/FeatherCursor.png) 4 12, auto"
         this.canvasElement.style.cursor = "url(./assets/images/FeatherCursor.cur), auto"
+        document.getElementById("homescreenButton").innerHTML = ''
         this._canvas.writeTextToCanvas(`Je hebt een score van ${Number(document.getElementById("scoreText").innerHTML.substring('Je score is: '.length))} behaald!`, 45, this._canvas.getCenter().X, 100, "yellow");
         this._canvas.writeButtonToCanvas("Probeer opnieuw", undefined, this._canvas.getCenter().Y + 200);
         this._canvas.writeButtonToCanvas("Titelscherm", undefined, this._canvas.getCenter().Y + 250);
         this._cookieAdd.checkCookie('highscore', Number(document.getElementById("scoreText").innerHTML.substring('Je score is: '.length)));
-        console.log(document.getElementById("scoreText").innerHTML.substring('Je score is: '.length))
     }
 }

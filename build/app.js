@@ -48,7 +48,7 @@ class Game {
                 }
                 else if (event.clientX >= (this._canvas.getCenter().X - 111) && event.clientX <= (this._canvas.getCenter().X + 111)
                     && event.clientY >= (this._canvas.getCenter().Y + 250) && event.clientY <= this._canvas.getCenter().Y + 289) {
-                    window.location.reload(false);
+                    this.restart();
                 }
             }
             else if (this.currentGameScreenNumber == 2) {
@@ -164,7 +164,9 @@ class Game {
         this.backgroundMusic = new Audio(this.audioLink);
         this._cookieAdd.muteCookie(this._cookieAdd.checkCookie('backgroundMusic', null));
         this.muteButton = document.getElementById("mute");
+        this.goBackButton = document.getElementById("homescreenButton");
         this.muteButton.addEventListener("click", (e) => this.backgroundMusicController());
+        this.goBackButton.addEventListener("click", (e) => this.restart());
         document.addEventListener('mousedown', function (event) {
             if (event.detail > 1) {
                 event.preventDefault();
@@ -205,6 +207,9 @@ class Game {
     }
     resetCounter() {
         this.time = 150;
+    }
+    restart() {
+        window.location.reload(false);
     }
 }
 window.addEventListener('load', init);
@@ -1392,6 +1397,7 @@ class GameScreen {
             this.canvasElement.style.backgroundSize = "auto";
             this.canvasElement.style.cursor = "url(./assets/images/shovelCursor.png) 4 12, auto";
             this.canvasElement.style.cursor = "url(./assets/images/shovelCursor.cur), auto";
+            document.getElementById("homescreenButton").innerHTML = `<button type="button" id='goBack'><img src="./assets/images/UI/home.png" alt='home screen icon'></button>`;
         };
         this.canvasElement = document.getElementById('canvas');
         this._canvas = new CanvasHelper(this.canvasElement);
@@ -1422,11 +1428,11 @@ class HighscoreScreen {
             this.canvasElement.style.backgroundSize = "100% 100%";
             this.canvasElement.style.cursor = "url(./assets/images/FeatherCursor.png) 4 12, auto";
             this.canvasElement.style.cursor = "url(./assets/images/FeatherCursor.cur), auto";
+            document.getElementById("homescreenButton").innerHTML = '';
             this._canvas.writeTextToCanvas(`Je hebt een score van ${Number(document.getElementById("scoreText").innerHTML.substring('Je score is: '.length))} behaald!`, 45, this._canvas.getCenter().X, 100, "yellow");
             this._canvas.writeButtonToCanvas("Probeer opnieuw", undefined, this._canvas.getCenter().Y + 200);
             this._canvas.writeButtonToCanvas("Titelscherm", undefined, this._canvas.getCenter().Y + 250);
             this._cookieAdd.checkCookie('highscore', Number(document.getElementById("scoreText").innerHTML.substring('Je score is: '.length)));
-            console.log(document.getElementById("scoreText").innerHTML.substring('Je score is: '.length));
         };
         this.canvasElement = document.getElementById('canvas');
         this._canvas = new CanvasHelper(this.canvasElement);
