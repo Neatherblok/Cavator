@@ -509,6 +509,30 @@ class Item {
                 hint2:"Met de eerste paar werd geëxperimenteerd op kikkerpoten die samentrokken.",
                 hint3:"De eerste paar batterijen bestonden uit koper, zink en vilt."
             },
+            {
+                name:"Montesquieu",
+                source:"./assets/images/items/7montesquieu.png",
+                era:7,
+                hint1:"Montesquieu was een Franse rechter en politiek filosoof.",
+                hint2:"Hij is vooral beroemd van zijn ideeën over de scheiding van machten.",
+                hint3:"Hij was één van de belangrijkste filosofen van de verlichting."
+            },
+            {
+                name:"een anti-slavernij penning",
+                source:"./assets/images/items/7antislavernijpenning.png",
+                era:7,
+                hint1:"Bedacht door Joshia Wedgewood.",
+                hint2:"De penning werd bedacht om abolitionistme te supporten.",
+                hint3:"Op de penning staat vaak 'Am I not a man and a brother'."
+            },
+            {
+                name:"Frederik II van Pruisen",
+                source:"./assets/images/items/7.png",
+                era:7,
+                hint1:"Koning van Oost-Pruisen, Brandenburg en Pruisen.",
+                hint2:"Frederik had gespannen relaties met veel landen in Europa.",
+                hint3:"Frederik was erg gesteld op zijn honden."
+            },
             // ERA 8 1800-1900
             {
                 name:"een hoge bi",
