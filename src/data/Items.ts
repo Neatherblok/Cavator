@@ -559,7 +559,7 @@ class Item {
             },
             {
                 name:"Frederik II van Pruisen",
-                source:"./assets/images/items/7.png",
+                source:"./assets/images/items/7frederik.png",
                 era:7,
                 hint1:"Koning van Oost-Pruisen, Brandenburg en Pruisen.",
                 hint2:"Frederik had gespannen relaties met veel landen in Europa.",
