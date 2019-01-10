@@ -626,6 +626,14 @@ class Item {
                     hint3: "Uit de standerdmolen is de bekende wipmolen ontstaan."
                 },
                 {
+                    name: "een kruistocht",
+                    source: "./assets/images/items/4kruistocht.png",
+                    era: 4,
+                    hint1: "Dit waren religieuse ondernemingen, om het geloof te beschermen.",
+                    hint2: "Ze kwamen op gang, nadat invasies van vikingen stopten.",
+                    hint3: "Ze werden gevoerd door Christenen om Jeruzalem te veroveren."
+                },
+                {
                     name: "de Mona Lisa",
                     source: "./assets/images/items/5mona_lisa.png",
                     era: 5,
