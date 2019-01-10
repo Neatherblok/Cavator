@@ -714,6 +714,14 @@ class Item {
                     hint3: "Het leger van Maurits van Oranje-Nassau was hier zeer goed in."
                 },
                 {
+                    name: "een Unie van Utrecht",
+                    source: "./assets/images/items/5unie_utrecht.png",
+                    era: 5,
+                    hint1: "Een verbond tusseen zeven opstandige Noord-Nederlandse gewesten.",
+                    hint2: "Deze Unie is het begin van de Republiek der Nederlanden.",
+                    hint3: "Ze zijn solidair in hun strijd tegen koning Filips II."
+                },
+                {
                     name: "de Nachtwacht",
                     source: "./assets/images/items/6nachtwacht.png",
                     era: 6,
