@@ -735,6 +735,14 @@ class Item {
                 hint1:"Het idee kwam van NASA ingenieur Lonnie Johnson toen hij bezig was met een warmtepomp.",
                 hint2:"Het meest krachtige waterpistool ooit gemaakt schiet 1 liter water per seconde.",
                 hint3:"Deze schiet 15 meter ver.",
+            },
+            {
+                name:"een space shuttle",
+                source:"./assets/images/items/10spaceshuttle.png",
+                era:10,
+                hint1:"De Columbia was de eerste space shuttle dat in een baan rond de aarde werd gebracht.",
+                hint2:"In totaal, tot aan eind juli 2011, zijn er 135 missies gevlogen.",
+                hint3:"De space shuttles werden gebruikt om ISS te bouwen.",
             }
         ];
     }
