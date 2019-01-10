@@ -233,6 +233,14 @@ class Item {
                 hint2:"Mohammed stelde deze feestdag voor in Medina, nadat hij was gevlucht.",
                 hint3:"Het wordt gevierd om o.a. de minderbedeelden te helpen."
             },
+            {
+                name:"een klooster",
+                source:"./assets/images/items/3klooster.png",
+                era:3,
+                hint1:"Het eerste klooster in Nederland was in o.a. Maastricht.",
+                hint2:"Ze stonden op het platteland en verbouwden planten.",
+                hint3:"Ze werden bewoond door monnikken, die hele dagen bidden en werken."
+            },
             // ERA 4 1000-1500
             {
                 name:"een penning uit Holland",
