@@ -574,6 +574,14 @@ class Item {
                 hint2: "De meeste artsen maken nog gebruik van het traditionele model.",
                 hint3: "Artsen moeten hem eigenlijk altijd bij zich hebben."
             },
+            {
+                name: "een gloeilamp",
+                source: "./assets/images/items/8gloeilamp.png",
+                era: 8,
+                hint1: "Thomas Edison is de uitvinder van de gloeilamp.",
+                hint2: "De grootse gloeilampen fabriek was Philips te Eindhoven.",
+                hint3: "De fabriek groeide uit tot Koninklijke Philips Electronics."
+            },
             // ERA 9 1900-1950
             {
                 name:"een vliegtuigbom",
