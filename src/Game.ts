@@ -19,6 +19,7 @@ class Game {
     private audioLink: string;
     private backgroundMusic: HTMLAudioElement;
     private muteButton: HTMLElement;
+    private goBackButton: HTMLElement;
     //defines amount of time left
     private time: number = 150;
 
@@ -39,8 +40,10 @@ class Game {
         //corrects cookie if muted was true after page reload
         this._cookieAdd.muteCookie(this._cookieAdd.checkCookie('backgroundMusic', null))
         this.muteButton = document.getElementById("mute");
+        this.goBackButton = document.getElementById("homescreenButton");
         //defines clickable mute button
         this.muteButton.addEventListener("click", (e: Event) => this.backgroundMusicController());
+        this.goBackButton.addEventListener("click", (e: Event) => this.restart());
         document.addEventListener('mousedown', function (event) {
             if (event.detail > 1) {
                 event.preventDefault();
@@ -109,7 +112,7 @@ class Game {
             else if (event.clientX >= (this._canvas.getCenter().X - 111) && event.clientX <= (this._canvas.getCenter().X + 111)
                 && event.clientY >= (this._canvas.getCenter().Y + 250) && event.clientY <= this._canvas.getCenter().Y + 289) {
                 //refreshes the page from cache if available
-                window.location.reload(false); 
+                this.restart();
             }
         }
         else if (this.currentGameScreenNumber == 2) {
@@ -286,6 +289,11 @@ class Game {
     //resets timer back to basic settings
     public resetCounter() {
         this.time = 150;
+    }
+
+    //restarts the game
+    public restart(){
+        window.location.reload(false); 
     }
 }
 
