@@ -159,6 +159,14 @@ class Item {
                 hint2:"De bekendste gebruikers van de eerste ploegen waren de Egyptenaren.",
                 hint3:"De ploegen waren gemaakt van ijzer en hout."
             },
+            {
+                name:"een aquaduct",
+                source:"./assets/images/items/2aquaduct.png",
+                era:2,
+                hint1:"Het is een brug waar water over heen stroomt.",
+                hint2:"Andere verkeer kan gewoon onder het water door reizen.",
+                hint3:"De eerste werd gebouwd door Romeinen, voor hun drinkwater."
+            },
             // ERA 3 500-1000
             {
                 name:"het zwaard van Sint Cosmas",

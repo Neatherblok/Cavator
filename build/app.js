@@ -490,6 +490,14 @@ class Item {
                     hint3: "De ploegen waren gemaakt van ijzer en hout."
                 },
                 {
+                    name: "een aquaduct",
+                    source: "./assets/images/items/2aquaduct.png",
+                    era: 2,
+                    hint1: "Het is een brug waar water over heen stroomt.",
+                    hint2: "Andere verkeer kan gewoon onder het water door reizen.",
+                    hint3: "De eerste werd gebouwd door Romeinen, voor hun drinkwater."
+                },
+                {
                     name: "het zwaard van Sint Cosmas",
                     source: "./assets/images/items/3zwaard_sint_cosmas.png",
                     era: 3,
