@@ -225,6 +225,14 @@ class Item {
                 hint2:"Hij woonde toen in Maastricht.",
                 hint3:"Deze grafsteen komt uit diezelfde tijd."
             },
+            {
+                name:"het suikerfeest",
+                source:"./assets/images/items/3suikerfeest.png",
+                era:3,
+                hint1:"Het werd voor het eerst gevierd in de 7e eeuw.",
+                hint2:"Mohammed stelde deze feestdag voor in Medina, nadat hij was gevlucht.",
+                hint3:"Het wordt gevierd om o.a. de minderbedeelden te helpen."
+            },
             // ERA 4 1000-1500
             {
                 name:"een penning uit Holland",
