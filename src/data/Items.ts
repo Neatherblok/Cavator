@@ -286,7 +286,7 @@ class Item {
                 name:"een standerdmolen",
                 source:"./assets/images/items/4standerdmolen.png",
                 era:4,
-                hint1:"De oudste vermelding van een standerdmolen in Nederland is uit Willemskerke (Zeeuws-Vlaanderen).",
+                hint1:"Het oudste type molen in Nederland is de standerdmolen.",
                 hint2:"Het oudste houten type windmolen in de Lage Landen.",
                 hint3:"Uit de standerdmolen is de bekende wipmolen ontstaan."
             },

@@ -46,6 +46,10 @@ class Game {
                     this.Gamescreen.resetScore();
                     this.draw();
                 }
+                else if (event.clientX >= (this._canvas.getCenter().X - 111) && event.clientX <= (this._canvas.getCenter().X + 111)
+                    && event.clientY >= (this._canvas.getCenter().Y + 250) && event.clientY <= this._canvas.getCenter().Y + 289) {
+                    window.location.reload(false);
+                }
             }
             else if (this.currentGameScreenNumber == 2) {
                 if (event.clientX >= this.MouseListener.eraScreenClick(this.EraSelectionscreen.getItemEraNumber()).Xmin && event.clientX <= this.MouseListener.eraScreenClick(this.EraSelectionscreen.getItemEraNumber()).Xmax
@@ -609,7 +613,7 @@ class Item {
                     name: "een standerdmolen",
                     source: "./assets/images/items/4standerdmolen.png",
                     era: 4,
-                    hint1: "De oudste vermelding van een standerdmolen in Nederland is uit Willemskerke (Zeeuws-Vlaanderen).",
+                    hint1: "Het oudste type molen in Nederland is de standerdmolen.",
                     hint2: "Het oudste houten type windmolen in de Lage Landen.",
                     hint3: "Uit de standerdmolen is de bekende wipmolen ontstaan."
                 },
@@ -1332,6 +1336,7 @@ class HighscoreScreen {
             this.canvasElement.style.cursor = "url(./assets/images/FeatherCursor.cur), auto";
             this._canvas.writeTextToCanvas(`Je hebt een score van ${Number(document.getElementById("scoreText").innerHTML.substring('Je score is: '.length))} behaald!`, 45, this._canvas.getCenter().X, 100, "yellow");
             this._canvas.writeButtonToCanvas("Probeer opnieuw", undefined, this._canvas.getCenter().Y + 200);
+            this._canvas.writeButtonToCanvas("Titelscherm", undefined, this._canvas.getCenter().Y + 250);
             this._cookieAdd.checkCookie('highscore', Number(document.getElementById("scoreText").innerHTML.substring('Je score is: '.length)));
             console.log(document.getElementById("scoreText").innerHTML.substring('Je score is: '.length));
         };
