@@ -804,11 +804,11 @@ class Item {
                 },
                 {
                     name: "een microscoop",
-                    source: "./assets/images/items/6.png",
+                    source: "./assets/images/items/6microscoop.png",
                     era: 6,
-                    hint1: "Het is uitgevonden door bekende, Nederlandse uitvinder Anthonie van Leeuwenhoek",
-                    hint2: "Jan Swammerdam maakte de eerste wetenschappelijke ontdekking ermee",
-                    hint3: "De ontdekking van de microscoop is verbonden met de telescoop"
+                    hint1: "Het is uitgevonden door bekende, Nederlandse uitvinder Anthonie van Leeuwenhoek.",
+                    hint2: "Jan Swammerdam maakte de eerste wetenschappelijke ontdekking ermee.",
+                    hint3: "De ontdekking van de microscoop is verbonden met de telescoop."
                 },
                 {
                     name: "een trekschuit",
