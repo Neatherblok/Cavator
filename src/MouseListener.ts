@@ -1,22 +1,12 @@
 class MouseListener {
-    private dTimer: number;
     protected readonly canvasElement: HTMLCanvasElement;
     protected readonly _canvas: CanvasHelper;
   
     constructor() {
       this.canvasElement = <HTMLCanvasElement>document.getElementById('canvas');
       this._canvas = new CanvasHelper(this.canvasElement);
-      this.init();
     }
-  
-    public init() {
-      this.mouseHandlers();
-    }
-  
-      //function that activate a follow on the movement of the mouse
-    private mouseHandlers() {
-      document.addEventListener('mousemove', this.onMouseMove)
-    }
+
 
       //function that defines every era area on canvas screen
     public eraScreenClick(eraNumber: number): {Xmin: number, Xmax: number, Ymin: number, Ymax: number}{
@@ -60,13 +50,6 @@ class MouseListener {
       else if(eraNumber == 10){
         return {Xmin: this._canvas.getWidth()*0.917, Xmax: this._canvas.getWidth()*0.917+102, Ymin: this._canvas.getHeight()-180, Ymax: this._canvas.getHeight()-63}
       }
-    }
-  
-      //function that follows the movement of the mouse
-    private onMouseMove = (event: MouseEvent) => {
-      clearTimeout(this.dTimer);
-      this.dTimer = setTimeout(() => {
-      }, 500);
     }
   }
     

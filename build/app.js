@@ -48,7 +48,7 @@ class Game {
                 }
                 else if (event.clientX >= (this._canvas.getCenter().X - 111) && event.clientX <= (this._canvas.getCenter().X + 111)
                     && event.clientY >= (this._canvas.getCenter().Y + 250) && event.clientY <= this._canvas.getCenter().Y + 289) {
-                    window.location.reload(false);
+                    this.restart();
                 }
             }
             else if (this.currentGameScreenNumber == 2) {
@@ -164,7 +164,9 @@ class Game {
         this.backgroundMusic = new Audio(this.audioLink);
         this._cookieAdd.muteCookie(this._cookieAdd.checkCookie('backgroundMusic', null));
         this.muteButton = document.getElementById("mute");
+        this.goBackButton = document.getElementById("homescreenButton");
         this.muteButton.addEventListener("click", (e) => this.backgroundMusicController());
+        this.goBackButton.addEventListener("click", (e) => this.restart());
         document.addEventListener('mousedown', function (event) {
             if (event.detail > 1) {
                 event.preventDefault();
@@ -206,6 +208,9 @@ class Game {
     resetCounter() {
         this.time = 150;
     }
+    restart() {
+        window.location.reload(false);
+    }
 }
 window.addEventListener('load', init);
 function init() {
@@ -216,20 +221,8 @@ function init() {
 }
 class MouseListener {
     constructor() {
-        this.onMouseMove = (event) => {
-            clearTimeout(this.dTimer);
-            this.dTimer = setTimeout(() => {
-            }, 500);
-        };
         this.canvasElement = document.getElementById('canvas');
         this._canvas = new CanvasHelper(this.canvasElement);
-        this.init();
-    }
-    init() {
-        this.mouseHandlers();
-    }
-    mouseHandlers() {
-        document.addEventListener('mousemove', this.onMouseMove);
     }
     eraScreenClick(eraNumber) {
         if (eraNumber == 1) {
@@ -410,6 +403,14 @@ class Item {
                     hint3: "Vuistbijlen werden gebruikt voor het slachten en het hakken van hout."
                 },
                 {
+                    name: "het eerste wiel",
+                    source: "./assets/images/items/1wiel.png",
+                    era: 1,
+                    hint1: "De uitvinder is onbekend.",
+                    hint2: "Het wiel is een van de belangrijkste innovaties ooit.",
+                    hint3: "De Azteken en Inca's hebben het wiel nooit gekend."
+                },
+                {
                     name: "het Colosseum",
                     source: "./assets/images/items/2colosseum.png",
                     era: 2,
@@ -482,6 +483,14 @@ class Item {
                     hint3: "De ploegen waren gemaakt van ijzer en hout."
                 },
                 {
+                    name: "een aquaduct",
+                    source: "./assets/images/items/2aquaduct.png",
+                    era: 2,
+                    hint1: "Het is een brug waar water over heen stroomt.",
+                    hint2: "Andere verkeer kan gewoon onder het water door reizen.",
+                    hint3: "De eerste werd gebouwd door Romeinen, voor hun drinkwater."
+                },
+                {
                     name: "het zwaard van Sint Cosmas",
                     source: "./assets/images/items/3zwaard_sint_cosmas.png",
                     era: 3,
@@ -544,6 +553,22 @@ class Item {
                     hint1: "Domitianus van Hoei was de eerste bisschop in Nederland.",
                     hint2: "Hij woonde toen in Maastricht.",
                     hint3: "Deze grafsteen komt uit diezelfde tijd."
+                },
+                {
+                    name: "het suikerfeest",
+                    source: "./assets/images/items/3suikerfeest.png",
+                    era: 3,
+                    hint1: "Het werd voor het eerst gevierd in de 7e eeuw.",
+                    hint2: "Mohammed stelde deze feestdag voor in Medina, nadat hij was gevlucht.",
+                    hint3: "Het wordt gevierd om o.a. de minderbedeelden te helpen."
+                },
+                {
+                    name: "een klooster",
+                    source: "./assets/images/items/3klooster.png",
+                    era: 3,
+                    hint1: "Het eerste klooster in Nederland was in o.a. Maastricht.",
+                    hint2: "Ze stonden op het platteland en verbouwden planten.",
+                    hint3: "Ze werden bewoond door monnikken, die hele dagen bidden en werken."
                 },
                 {
                     name: "een penning uit Holland",
@@ -618,6 +643,14 @@ class Item {
                     hint3: "Uit de standerdmolen is de bekende wipmolen ontstaan."
                 },
                 {
+                    name: "een kruistocht",
+                    source: "./assets/images/items/4kruistocht.png",
+                    era: 4,
+                    hint1: "Dit waren religieuse ondernemingen, om het geloof te beschermen.",
+                    hint2: "Ze kwamen op gang, nadat invasies van vikingen stopten.",
+                    hint3: "Ze werden gevoerd door Christenen om Jeruzalem te veroveren."
+                },
+                {
                     name: "de Mona Lisa",
                     source: "./assets/images/items/5mona_lisa.png",
                     era: 5,
@@ -688,6 +721,14 @@ class Item {
                     hint1: "Het wapen is een voorloper van het geweer.",
                     hint2: "De musketiers leerden in gecoördineerde bewegingen marcheren, laden en vuren.",
                     hint3: "Het leger van Maurits van Oranje-Nassau was hier zeer goed in."
+                },
+                {
+                    name: "een Unie van Utrecht",
+                    source: "./assets/images/items/5unie_utrecht.png",
+                    era: 5,
+                    hint1: "Een verbond tusseen zeven opstandige Noord-Nederlandse gewesten.",
+                    hint2: "Deze Unie is het begin van de Republiek der Nederlanden.",
+                    hint3: "Ze zijn solidair in hun strijd tegen koning Filips II."
                 },
                 {
                     name: "de Nachtwacht",
@@ -762,6 +803,14 @@ class Item {
                     hint3: "Als de klok verkeerd afgesteld is, loopt de klok te snel of te langzaam."
                 },
                 {
+                    name: "een microscoop",
+                    source: "./assets/images/items/6microscoop.png",
+                    era: 6,
+                    hint1: "Het is uitgevonden door bekende, Nederlandse uitvinder Anthonie van Leeuwenhoek.",
+                    hint2: "Jan Swammerdam maakte de eerste wetenschappelijke ontdekking ermee.",
+                    hint3: "De ontdekking van de microscoop is verbonden met de telescoop."
+                },
+                {
                     name: "een trekschuit",
                     source: "./assets/images/items/7trekschuit.png",
                     era: 7,
@@ -816,6 +865,30 @@ class Item {
                     hint1: "Eerst werd het gebruikt voor geneeskrachtige werkingen.",
                     hint2: "Met de eerste paar werd geëxperimenteerd op kikkerpoten die samentrokken.",
                     hint3: "De eerste paar batterijen bestonden uit koper, zink en vilt."
+                },
+                {
+                    name: "Montesquieu",
+                    source: "./assets/images/items/7montesquieu.png",
+                    era: 7,
+                    hint1: "Montesquieu was een Franse rechter en politiek filosoof.",
+                    hint2: "Hij is vooral beroemd van zijn ideeën over de scheiding van machten.",
+                    hint3: "Hij was één van de belangrijkste filosofen van de verlichting."
+                },
+                {
+                    name: "een anti-slavernij penning",
+                    source: "./assets/images/items/7antislavernijpenning.png",
+                    era: 7,
+                    hint1: "Bedacht door Joshia Wedgewood.",
+                    hint2: "De penning werd bedacht om abolitionistme te supporten.",
+                    hint3: "Op de penning staat vaak 'Am I not a man and a brother'."
+                },
+                {
+                    name: "Frederik II van Pruisen",
+                    source: "./assets/images/items/7frederik.png",
+                    era: 7,
+                    hint1: "Koning van Oost-Pruisen, Brandenburg en Pruisen.",
+                    hint2: "Frederik had gespannen relaties met veel landen in Europa.",
+                    hint3: "Frederik was erg gesteld op zijn honden."
                 },
                 {
                     name: "een hoge bi",
@@ -880,6 +953,14 @@ class Item {
                     hint1: "Een instrument om naar geluiden in het lichaam te luisteren.",
                     hint2: "De meeste artsen maken nog gebruik van het traditionele model.",
                     hint3: "Artsen moeten hem eigenlijk altijd bij zich hebben."
+                },
+                {
+                    name: "een gloeilamp",
+                    source: "./assets/images/items/8gloeilamp.png",
+                    era: 8,
+                    hint1: "Thomas Edison is de uitvinder van de gloeilamp.",
+                    hint2: "De grootse gloeilampen fabriek was Philips te Eindhoven.",
+                    hint3: "De fabriek groeide uit tot Koninklijke Philips Electronics."
                 },
                 {
                     name: "een vliegtuigbom",
@@ -1032,6 +1113,14 @@ class Item {
                     hint1: "Het idee kwam van NASA ingenieur Lonnie Johnson toen hij bezig was met een warmtepomp.",
                     hint2: "Het meest krachtige waterpistool ooit gemaakt schiet 1 liter water per seconde.",
                     hint3: "Deze schiet 15 meter ver.",
+                },
+                {
+                    name: "een space shuttle",
+                    source: "./assets/images/items/10spaceshuttle.png",
+                    era: 10,
+                    hint1: "De Columbia was de eerste space shuttle dat in een baan rond de aarde werd gebracht.",
+                    hint2: "In totaal, tot aan eind juli 2011, zijn er 135 missies gevlogen.",
+                    hint3: "De space shuttles werden gebruikt om ISS te bouwen.",
                 }
             ];
     }
@@ -1102,9 +1191,6 @@ class CanvasHelper {
     }
     getCenter() {
         return { X: this.getWidth() / 2, Y: this.getHeight() / 2 };
-    }
-    loopImage(image, aXpos, aYpos) {
-        this._context.drawImage(image, aXpos, aYpos);
     }
     writeTextToCanvas(aText, aFontSize, aXpos, aYpos, aColor = "white", aAlignment = "center") {
         this._context.font = `${aFontSize}px galiver-sans`;
@@ -1262,9 +1348,6 @@ class EraSelectionScreen {
     getItemEraNumber() {
         return this.itemList.getItemProperty(this.pickedItem, "era");
     }
-    getPickedItem() {
-        return this.pickedItem;
-    }
 }
 class GameExplanationScreen {
     constructor() {
@@ -1304,6 +1387,7 @@ class GameScreen {
             this.canvasElement.style.backgroundSize = "auto";
             this.canvasElement.style.cursor = "url(./assets/images/shovelCursor.png) 4 12, auto";
             this.canvasElement.style.cursor = "url(./assets/images/shovelCursor.cur), auto";
+            document.getElementById("homescreenButton").innerHTML = `<button type="button" id='goBack'><img src="./assets/images/UI/home.png" alt='home screen icon'></button>`;
         };
         this.canvasElement = document.getElementById('canvas');
         this._canvas = new CanvasHelper(this.canvasElement);
@@ -1334,11 +1418,11 @@ class HighscoreScreen {
             this.canvasElement.style.backgroundSize = "100% 100%";
             this.canvasElement.style.cursor = "url(./assets/images/FeatherCursor.png) 4 12, auto";
             this.canvasElement.style.cursor = "url(./assets/images/FeatherCursor.cur), auto";
+            document.getElementById("homescreenButton").innerHTML = '';
             this._canvas.writeTextToCanvas(`Je hebt een score van ${Number(document.getElementById("scoreText").innerHTML.substring('Je score is: '.length))} behaald!`, 45, this._canvas.getCenter().X, 100, "yellow");
             this._canvas.writeButtonToCanvas("Probeer opnieuw", undefined, this._canvas.getCenter().Y + 200);
             this._canvas.writeButtonToCanvas("Titelscherm", undefined, this._canvas.getCenter().Y + 250);
             this._cookieAdd.checkCookie('highscore', Number(document.getElementById("scoreText").innerHTML.substring('Je score is: '.length)));
-            console.log(document.getElementById("scoreText").innerHTML.substring('Je score is: '.length));
         };
         this.canvasElement = document.getElementById('canvas');
         this._canvas = new CanvasHelper(this.canvasElement);

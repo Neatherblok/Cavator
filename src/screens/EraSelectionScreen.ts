@@ -78,9 +78,4 @@ class EraSelectionScreen {
         return this.itemList.getItemProperty(this.pickedItem, "era")
     }
 
-        //returns the picked item
-    public getPickedItem(){
-        return this.pickedItem
-    }
-
 }
