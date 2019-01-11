@@ -40,8 +40,6 @@ class GameScreen {
         document.getElementById('scoreText').innerHTML= `Je score is: ${this.score}`;
     }
 
-        //function that returns current score
-
         //function that reset score to 0
     public resetScore() {
         this.score = 0;

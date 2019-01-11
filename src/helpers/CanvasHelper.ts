@@ -29,11 +29,6 @@ class CanvasHelper {
         return {X: this.getWidth()/2, Y: this.getHeight()/2};
     }
 
-    //function that loops background image
-    public loopImage(image: HTMLImageElement, aXpos: number, aYpos: number) {
-        this._context.drawImage(image, aXpos, aYpos);
-    }
-
     //function that writes text to the canvas
     public writeTextToCanvas(
         aText: string,
