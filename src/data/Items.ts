@@ -460,6 +460,14 @@ class Item {
                 hint2:"De klok blijft gelijkmatig lopen door de slinger.",
                 hint3:"Als de klok verkeerd afgesteld is, loopt de klok te snel of te langzaam."
             },
+            {
+                name:"een microscoop",
+                source:"./assets/images/items/6.png",
+                era:6,
+                hint1:"Het is uitgevonden door bekende, Nederlandse uitvinder Anthonie van Leeuwenhoek",
+                hint2:"Jan Swammerdam maakte de eerste wetenschappelijke ontdekking ermee",
+                hint3:"De ontdekking van de microscoop is verbonden met de telescoop"
+            },
             // ERA 7 1700-1800
             {
                 name:"een trekschuit",
