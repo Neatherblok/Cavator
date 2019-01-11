@@ -159,6 +159,14 @@ class Item {
                 hint2:"De bekendste gebruikers van de eerste ploegen waren de Egyptenaren.",
                 hint3:"De ploegen waren gemaakt van ijzer en hout."
             },
+            {
+                name:"een aquaduct",
+                source:"./assets/images/items/2aquaduct.png",
+                era:2,
+                hint1:"Het is een brug waar water over heen stroomt.",
+                hint2:"Andere verkeer kan gewoon onder het water door reizen.",
+                hint3:"De eerste werd gebouwd door Romeinen, voor hun drinkwater."
+            },
             // ERA 3 500-1000
             {
                 name:"het zwaard van Sint Cosmas",
@@ -232,6 +240,14 @@ class Item {
                 hint1:"Het werd voor het eerst gevierd in de 7e eeuw.",
                 hint2:"Mohammed stelde deze feestdag voor in Medina, nadat hij was gevlucht.",
                 hint3:"Het wordt gevierd om o.a. de minderbedeelden te helpen."
+            },
+            {
+                name:"een klooster",
+                source:"./assets/images/items/3klooster.png",
+                era:3,
+                hint1:"Het eerste klooster in Nederland was in o.a. Maastricht.",
+                hint2:"Ze stonden op het platteland en verbouwden planten.",
+                hint3:"Ze werden bewoond door monnikken, die hele dagen bidden en werken."
             },
             // ERA 4 1000-1500
             {
@@ -387,6 +403,14 @@ class Item {
                 hint2:"De musketiers leerden in gecoördineerde bewegingen marcheren, laden en vuren.",
                 hint3:"Het leger van Maurits van Oranje-Nassau was hier zeer goed in."
             },
+            {
+                name:"een Unie van Utrecht",
+                source:"./assets/images/items/5unie_utrecht.png",
+                era:5,
+                hint1:"Een verbond tusseen zeven opstandige Noord-Nederlandse gewesten.",
+                hint2:"Deze Unie is het begin van de Republiek der Nederlanden.",
+                hint3:"Ze zijn solidair in hun strijd tegen koning Filips II."
+            },
             // ERA 6 1600-1700
             {
                 name:"de Nachtwacht",
@@ -525,6 +549,30 @@ class Item {
                 hint2:"Met de eerste paar werd geëxperimenteerd op kikkerpoten die samentrokken.",
                 hint3:"De eerste paar batterijen bestonden uit koper, zink en vilt."
             },
+            {
+                name:"Montesquieu",
+                source:"./assets/images/items/7montesquieu.png",
+                era:7,
+                hint1:"Montesquieu was een Franse rechter en politiek filosoof.",
+                hint2:"Hij is vooral beroemd van zijn ideeën over de scheiding van machten.",
+                hint3:"Hij was één van de belangrijkste filosofen van de verlichting."
+            },
+            {
+                name:"een anti-slavernij penning",
+                source:"./assets/images/items/7antislavernijpenning.png",
+                era:7,
+                hint1:"Bedacht door Joshia Wedgewood.",
+                hint2:"De penning werd bedacht om abolitionistme te supporten.",
+                hint3:"Op de penning staat vaak 'Am I not a man and a brother'."
+            },
+            {
+                name:"Frederik II van Pruisen",
+                source:"./assets/images/items/7frederik.png",
+                era:7,
+                hint1:"Koning van Oost-Pruisen, Brandenburg en Pruisen.",
+                hint2:"Frederik had gespannen relaties met veel landen in Europa.",
+                hint3:"Frederik was erg gesteld op zijn honden."
+            },
             // ERA 8 1800-1900
             {
                 name:"een hoge bi",
@@ -589,6 +637,14 @@ class Item {
                 hint1: "Een instrument om naar geluiden in het lichaam te luisteren.",
                 hint2: "De meeste artsen maken nog gebruik van het traditionele model.",
                 hint3: "Artsen moeten hem eigenlijk altijd bij zich hebben."
+            },
+            {
+                name: "een gloeilamp",
+                source: "./assets/images/items/8gloeilamp.png",
+                era: 8,
+                hint1: "Thomas Edison is de uitvinder van de gloeilamp.",
+                hint2: "De grootse gloeilampen fabriek was Philips te Eindhoven.",
+                hint3: "De fabriek groeide uit tot Koninklijke Philips Electronics."
             },
             // ERA 9 1900-1950
             {

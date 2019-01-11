@@ -24,15 +24,20 @@ body {
     background-color:lightgrey;
 }
   
-#mute {
+#goBack, #mute  {
     position:absolute;
     right: 0;
-    margin: 2.25% 4.75% 0% 0%;
     padding: 0.5%;
-    font-family: "galiver-sans";
     background-color: grey;
     border: 2px solid yellow;
-    color: white;
+}
+
+#mute {
+    margin: 2.25% 4.75% 0% 0%;
+}
+
+#goBack {
+    margin: 2.25% 8.75% 0% 0%;
 }
 
 .timerText {

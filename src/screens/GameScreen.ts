@@ -26,6 +26,7 @@ class GameScreen {
         this.canvasElement.style.backgroundSize = "auto";
         this.canvasElement.style.cursor = "url(./assets/images/shovelCursor.png) 4 12, auto"
         this.canvasElement.style.cursor = "url(./assets/images/shovelCursor.cur), auto"
+        document.getElementById("homescreenButton").innerHTML= `<button type="button" id='goBack'><img src="./assets/images/UI/home.png" alt='home screen icon'></button>`
     }
 
         //function returns every hole
